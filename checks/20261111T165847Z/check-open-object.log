@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "programs": 39,
+  "instructions": 13558,
+  "object_sha256": "8580b74a075b58245531444c3bba1376464c26e96f3c3630521e41c1dae97b5f",
+  "fresh_lean_exports_match": true,
+  "independent_decoder": "/usr/lib/aarch64-linux-gnu/libLLVM.so.21.1",
+  "checks": [
+    "object and source hashes",
+    "fresh Lean text export equality",
+    "every instruction boundary",
+    "mnemonics (explicit aliases)",
+    "address-size prefixes except padding"
+  ],
+  "not_proved": [
+    "full operand equivalence",
+    "original FFmpeg binary identity",
+    "closed image placement",
+    "external contracts"
+  ]
+}

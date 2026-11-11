@@ -32,7 +32,10 @@
       "Kraken.Examples.Sbr.SessionBin.session_config"
     ],
     "compatibility_change": "allSome helper renamed to krakenAllSome in 3 source files; all other upstream dependency sources match pinned commit",
-    "wrapper_identity_check": "scripts/extract-public-calls.py"
+    "wrapper_identity_check": "scripts/extract-public-calls.py",
+    "metrics": "reuse-metrics.json",
+    "upstream_public_theorem": "Kraken.Examples.Sbr.SessionBin.apply_top",
+    "upstream_linked_theorem": "Kraken.Examples.Sbr.ff_aac_sbr_apply_linked"
   },
   "certificate_chain": [
     "FFmpeg/Calls.lean: wp_apply_owned/wp_apply obtains the original Eventually native execution proof",
@@ -43,7 +46,7 @@
   ],
   "validation": {
     "file": "validation.json",
-    "local_modules": 35,
+    "local_modules": 34,
     "audited_theorems": 40,
     "axioms": [
       "propext",

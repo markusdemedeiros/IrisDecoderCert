@@ -1,0 +1,12 @@
+Waiting for project build slot
+SbrClient/Machine/Frame.lean:297:39: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+SbrClient/Machine/Frame.lean:297:43: error: (deterministic) timeout at `«synthesize pending MVars»`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+Build exit=1; peak system unavailable RAM=10.83 GB

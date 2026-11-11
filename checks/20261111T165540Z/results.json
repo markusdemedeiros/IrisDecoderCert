@@ -1,0 +1,282 @@
+[
+  {
+    "check": "source-excerpts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.08993378328159451,
+    "log": "checks/20261111T165540Z/source-excerpts.log"
+  },
+  {
+    "check": "reuse-metrics",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.0647251107729971,
+    "log": "checks/20261111T165540Z/reuse-metrics.log"
+  },
+  {
+    "check": "upstream-build",
+    "exit": 0,
+    "clean": true,
+    "seconds": 55.50507786497474,
+    "log": "checks/20261111T165540Z/upstream-build.log"
+  },
+  {
+    "check": "SbrClient.Logic.CertifiedWP",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.302600503899157,
+    "log": "checks/20261111T165540Z/SbrClient.Logic.CertifiedWP.log"
+  },
+  {
+    "check": "SbrClient.Audit.Core",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.553033015690744,
+    "log": "checks/20261111T165540Z/SbrClient.Audit.Core.log"
+  },
+  {
+    "check": "SbrClient.Machine.Execution",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.805457233916968,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Execution.log"
+  },
+  {
+    "check": "SbrClient.Machine.Frame",
+    "exit": 0,
+    "clean": true,
+    "seconds": 22.09826146485284,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Frame.log"
+  },
+  {
+    "check": "SbrClient.Machine.Language",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.05509289028123,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Language.log"
+  },
+  {
+    "check": "SbrClient.Machine.MapInstances",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.050677901133895,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.MapInstances.log"
+  },
+  {
+    "check": "SbrClient.Machine.Ownership",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3065965860150754,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Ownership.log"
+  },
+  {
+    "check": "SbrClient.Machine.Adapter",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8010707898065448,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Adapter.log"
+  },
+  {
+    "check": "SbrClient.Host.Language",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.553444161079824,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Language.log"
+  },
+  {
+    "check": "SbrClient.Host.Rules",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3050686647184193,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Rules.log"
+  },
+  {
+    "check": "SbrClient.Host.Lock",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3054075459949672,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Lock.log"
+  },
+  {
+    "check": "SbrClient.Host.Mailbox",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3063762267120183,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Mailbox.log"
+  },
+  {
+    "check": "SbrClient.Host.Fork",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0529232881963253,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Fork.log"
+  },
+  {
+    "check": "SbrClient.Audit.Host",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8029280710034072,
+    "log": "checks/20261111T165540Z/SbrClient.Audit.Host.log"
+  },
+  {
+    "check": "SbrClient.Machine.Resources",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.054785768967122,
+    "log": "checks/20261111T165540Z/SbrClient.Machine.Resources.log"
+  },
+  {
+    "check": "SbrClient.Audit.Machine",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8047486329451203,
+    "log": "checks/20261111T165540Z/SbrClient.Audit.Machine.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Resources",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.050370126031339,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Resources.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Contracts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.301959383767098,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Contracts.log"
+  },
+  {
+    "check": "SbrClient.Host.Native",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.801959590986371,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Native.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Calls",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0552952489815652,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Calls.log"
+  },
+  {
+    "check": "SbrClient.Host.Stores",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.056109449826181,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Stores.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.CallSetup",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8050057929940522,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.CallSetup.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Reusable",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.056775331031531,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Reusable.log"
+  },
+  {
+    "check": "SbrClient.Host.Consumer",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.062176894862205,
+    "log": "checks/20261111T165540Z/SbrClient.Host.Consumer.log"
+  },
+  {
+    "check": "SbrClient.Client.OutputConsumer",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.054285209160298,
+    "log": "checks/20261111T165540Z/SbrClient.Client.OutputConsumer.log"
+  },
+  {
+    "check": "SbrClient.Client.Service",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3048064247705042,
+    "log": "checks/20261111T165540Z/SbrClient.Client.Service.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Startup",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0560854501090944,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Startup.log"
+  },
+  {
+    "check": "SbrClient.Client.Application",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0539370090700686,
+    "log": "checks/20261111T165540Z/SbrClient.Client.Application.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.UpstreamCalls",
+    "exit": 0,
+    "clean": true,
+    "seconds": 3.307726413011551,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.UpstreamCalls.log"
+  },
+  {
+    "check": "SbrClient.FFmpeg.Provider",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8047851929441094,
+    "log": "checks/20261111T165540Z/SbrClient.FFmpeg.Provider.log"
+  },
+  {
+    "check": "SbrClient.Client.VerifiedService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0567686511203647,
+    "log": "checks/20261111T165540Z/SbrClient.Client.VerifiedService.log"
+  },
+  {
+    "check": "SbrClient.Client.ReadyService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.304737625643611,
+    "log": "checks/20261111T165540Z/SbrClient.Client.ReadyService.log"
+  },
+  {
+    "check": "SbrClient.Client.VerifiedReadyService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0529135279357433,
+    "log": "checks/20261111T165540Z/SbrClient.Client.VerifiedReadyService.log"
+  },
+  {
+    "check": "SbrClient.Audit.Service",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8056041542440653,
+    "log": "checks/20261111T165540Z/SbrClient.Audit.Service.log"
+  },
+  {
+    "check": "export-texts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0559599697589874,
+    "log": "checks/20261111T165540Z/export-texts.log"
+  },
+  {
+    "check": "assemble-open-object",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.3201580257155001,
+    "log": "checks/20261111T165540Z/assemble-open-object.log"
+  },
+  {
+    "check": "check-open-object",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.2584424619562924,
+    "log": "checks/20261111T165540Z/check-open-object.log"
+  }
+]

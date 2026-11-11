@@ -1,0 +1,12 @@
+Waiting for project build slot
+'SbrClient.instruction_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.instrOutcome_frame' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.local_progress' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.local_simulate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.owns_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.owns_write' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.machineWorld' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.ownsPred_sep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.ownsPred_sep_intro' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.certificate_of_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build exit=0; peak system unavailable RAM=10.09 GB

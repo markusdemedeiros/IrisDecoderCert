@@ -130,13 +130,13 @@ private theorem submap_agrees {p σ : Mem 64} (h : PartialMap.submap (M := ByteM
       have hk : ¬ k ∈ p := by
         simp only [Std.ExtHashMap.mem_iff_isSome_getElem?, hp, Option.isSome_none,
           Bool.false_eq_true, not_false_eq_true]
-      rw [if_neg hk]
-      simp only [hp, Option.or_none]
+      rw [ite_eq_right hk]
+      simp only [Option.or_none]
     | some b =>
       have hs := h k b hp
       change σ[k]? = some b at hs
       have hk : k ∈ p := Std.ExtHashMap.mem_iff_isSome_getElem?.mpr (by simp only [hp]; rfl)
-      rw [if_pos hk]
+      rw [ite_eq_left hk]
       simpa only [Option.none_or, hp] using hs
 
 private theorem domain_none {p p' : Mem 64} (h : SameDomain p p') {k : BitVec 64}
@@ -152,7 +152,7 @@ private theorem full_overlay {p p' : Mem 64} (h : SameDomain p p') : p.union p' 
   intro k
   simp only [Std.ExtHashMap.union_eq, Std.ExtHashMap.getElem?_union]
   cases hp : p'[k]? with
-  | none => simp [hp, domain_none h hp]
+  | none => simp [domain_none h hp]
   | some b => rfl
 
 private theorem replace_frame {p p' f : Mem 64} (h : SameDomain p p')
@@ -161,7 +161,7 @@ private theorem replace_frame {p p' f : Mem 64} (h : SameDomain p p')
   intro k
   simp only [Std.ExtHashMap.union_eq, Std.ExtHashMap.getElem?_union]
   cases hp : p'[k]? with
-  | none => simp [hp, domain_none h hp]
+  | none => simp [domain_none h hp]
   | some b =>
     have hf : f[k]? = none := by
       apply Std.ExtHashMap.getElem?_eq_none
@@ -210,4 +210,3 @@ def machineWorld : BinaryCert.World (Expr := Expr M) (GF := GF) (Mem 64) where
 
 end World
 end SbrClient
-

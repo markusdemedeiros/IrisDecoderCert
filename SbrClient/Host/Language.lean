@@ -3,9 +3,12 @@ import SbrClient.Machine.Adapter
 
 /-! An explicit host/FFI machine. A native call takes one Kraken instruction
 per physical step; other threads may run between instructions. Host loads,
-stores and compare/exchanges are atomic byte operations on the SAME heap.
-The host controller is a modeled high-level runtime, not claimed verified
-x86 machine code. -/
+stores and compare/exchanges are atomic byte operations on the same heap.
+Each native expression carries its thread-local CPU and host continuation.
+The language state is the shared `Mem 64`; `CPU.pack` combines the two when
+entering Kraken's semantics. These rules model sequentially consistent host
+operations. Compilation, runtime implementation and hardware memory-model
+refinement are outside this development. -/
 namespace SbrClient.Host
 open Kraken Iris Iris.ProgramLogic Iris.BI Iris.ProofMode Iris.Std
 

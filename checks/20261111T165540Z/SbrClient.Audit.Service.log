@@ -1,0 +1,16 @@
+Waiting for project build slot
+'SbrClient.SbrAPI.verifiedCalls' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.wp_scan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_consumeOutputs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_applyMany' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_configOnce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_concurrent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_verifiedService' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.cwp_verifiedService' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_consumeOutputs_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_takeFinal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_ready_shared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_readyService' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.wp_verifiedReadyService' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.SbrAPI.cwp_verifiedReadyService' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build exit=0; peak system unavailable RAM=10.24 GB

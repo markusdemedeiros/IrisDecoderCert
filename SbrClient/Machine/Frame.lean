@@ -86,10 +86,10 @@ theorem storeInt_frame {m f : Mem 64} (hd : Disjoint m f)
     exact not_mem_empty hx'
   simp only [Mem.storeInt, Mem.storeBytes, union_eq, getElem?_union] at hf ⊢
   cases hx : ((Int.toBytes n v).At a)[k]? with
-  | none => simp only [hx, Option.none_or]
+  | none => simp only [Option.none_or]
   | some b =>
     have := hf (by simp [hx])
-    simp [hx, this]
+    simp [this]
 
 
 /-- The instruction keeps exactly the mapped addresses of its input. -/
@@ -248,8 +248,8 @@ private theorem operation_frame {w} [Labels] [AddressSize]
     (h : (Operation.interp op p s n₁ j₁).All P) :
     (Operation.interp op p (frame s f) n₂ j₂).All Q := by
   cases op <;>
-    simp only [Operation.interp, Reg.interp, Effects.All, frame_regs, frame_zmms,
-      frame_status, shift_frame] at h ⊢ <;>
+    simp only [Operation.interp, Reg.interp, Effects.All, frame_regs,
+      frame_status] at h ⊢ <;>
     repeat' first
       | (apply hn _ _ h; exact hd)
       | (apply hj _ _ _ h; exact hd)
@@ -265,7 +265,7 @@ private theorem operation_frame {w} [Labels] [AddressSize]
           simp only [hcond, Bool.false_eq_true, ite_true, ite_false] at h ⊢)
       | (split at h <;> rename_i hcond <;>
           simp only [hcond, Bool.false_eq_true, ite_true, ite_false])
-      | simp only [Effects.All, frame_regs, frame_zmms, frame_status, shift_frame] at h ⊢
+      | simp only [frame_regs, frame_zmms, frame_status, shift_frame] at h ⊢
       | simp only [] at h ⊢
       | cases w
 
@@ -287,11 +287,11 @@ private theorem directive_frame [Labels] {d : Directive} {p : Std.Rco Int64}
       letI : AddressSize := .mk asz
       exact operation_frame hd hn hj h
     | avx asz osz aop =>
-      simp only [Instr.interp, Effects.All] at h ⊢
+      simp only [] at h ⊢
       generalize (AddressSize.mk asz : AddressSize) = A at h ⊢
       cases aop <;>
         simp only [AvxOperation.interp, All_avxRegOrMem, All_setAvx,
-          All_setAvxLegacy, Effects.All, frame_regs, frame_zmms, frame_status] at h ⊢ <;>
+          All_setAvxLegacy, frame_regs, frame_zmms, frame_status] at h ⊢ <;>
         repeat' first
           | (apply hn _ _ h; exact hd)
           | exact h.elim

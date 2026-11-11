@@ -32,11 +32,11 @@ instance : Iris.Std.LawfulPartialMap (fun V => ExtHashMap K V) K where
     simp [Iris.Std.get?, Iris.Std.insert]
   get?_insert_ne := by
     intro V m k k' v h
-    simp [Iris.Std.get?, Iris.Std.insert, ExtHashMap.getElem?_insert, h, Ne.symm h]
+    simp [Iris.Std.get?, Iris.Std.insert, ExtHashMap.getElem?_insert, h]
   get?_delete_eq := by simp [Iris.Std.get?, Iris.Std.delete]
   get?_delete_ne := by
     intro V m k k' h
-    simp [Iris.Std.get?, Iris.Std.delete, ExtHashMap.getElem?_erase, h, Ne.symm h]
+    simp [Iris.Std.get?, Iris.Std.delete, ExtHashMap.getElem?_erase, h]
   get?_bindAlter := by simp [Iris.Std.get?, Iris.Std.bindAlter]
   get?_merge := by
     intro V op a b k
@@ -57,7 +57,7 @@ private theorem list_exists {V : Type} (m : ExtHashMap K V) :
     let h : HashMap K V := ⟨m⟩
     refine ⟨h.toList, ?_, ?_⟩
     · apply List.pairwise_map.mpr
-      exact h.distinct_keys_toList.imp (fun hab heq => by simpa [heq] using hab)
+      exact h.distinct_keys_toList.imp (fun hab heq => by simp [heq] at hab)
     · intro k v
       exact h.mem_toList_iff_getElem?_eq_some
 
@@ -78,7 +78,7 @@ instance : Iris.Std.LawfulFiniteMap (fun V => ExtHashMap K V) K where
     apply List.eq_nil_iff_forall_not_mem.mpr
     intro ⟨k, v⟩ h
     have := (enumeration_spec (∅ : ExtHashMap K _)).2 k v |>.mp h
-    simpa using this
+    simp at this
   toList_noDupKeys := (enumeration_spec _).1
   toList_get := (enumeration_spec _).2 _ _
 

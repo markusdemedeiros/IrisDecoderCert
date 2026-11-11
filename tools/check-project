@@ -81,6 +81,7 @@ for path in upstream:
                             "compatibility_rename": relative in renamed})
 (OUT / "upstream-sources.json").write_text(json.dumps(source_evidence, indent=2) + "\n")
 run("source-excerpts", [sys.executable, "scripts/extract-public-calls.py"])
+run("reuse-metrics", [sys.executable, "scripts/reuse-metrics.py", "--check"])
 run("upstream-build", [sys.executable, "scripts/build-client-deps.py", "SbrClient.FFmpeg.UpstreamCalls"])
 
 sources = {".".join(p.relative_to(ROOT).with_suffix("").parts): p

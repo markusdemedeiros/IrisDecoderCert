@@ -42,13 +42,17 @@ theorem applyOwned_join (S : Setup) (che ac avctx : BitVec 64) (er ps : BitVec 3
   iframe
 
 def producerOnce (c : CPU) (lock slot : BitVec 64) (next : Host.Expr M) : Host.Expr M :=
-  .acquire lock (.claim slot (Host.Mailbox.code (some false)) (applyOnce c
-    (.bind (.store lock 0) (fun _ => .bind (.store slot (Host.Mailbox.code (some true))) (fun _ => next)))))
+  .acquire lock (
+    .claim slot (Host.Mailbox.code (some false)) (
+      applyOnce c (
+        .bind (.store lock 0) (fun _ =>
+          .bind (.store slot (Host.Mailbox.code (some true))) (fun _ => next)))))
 
 def consumerOnce (c : CPU) (slot : BitVec 64) (next : UInt8 → Host.Expr M) : Host.Expr M :=
-  .claim slot (Host.Mailbox.code (some true)) (.bind (consumeOutputs (c.pack ∅).1)
-    (fun v => match v with
-      | .byte checksum => .bind (.store slot (Host.Mailbox.code (some false))) (fun _ => next checksum)
+  .claim slot (Host.Mailbox.code (some true)) (
+    .bind (consumeOutputs (c.pack ∅).1) (fun v => match v with
+      | .byte checksum =>
+          .bind (.store slot (Host.Mailbox.code (some false))) (fun _ => next checksum)
       | _ => .fault))
 
 variable [TokenG GF]
@@ -88,6 +92,7 @@ theorem wp_producerOnce (S : Setup) (C : Calls S) (hcode : cenv = M.code)
   iapply Host.Mailbox.publish δ slot (fun _ => outputs (c.pack ∅).1) true
   iframe Hslot Hδ HO Hnext
 
+omit [CodeEnv] in
 theorem wp_consumerOnce (c : CPU) (δ : GName) (slot : BitVec 64)
     (next : UInt8 → Host.Expr M) {Φ : Host.Value → IProp GF} :
     letI := (Host.hostIrisGS (hlc := hlc) (GF := GF) (M := M)).invGS
@@ -144,6 +149,7 @@ theorem wp_producer (S : Setup) (C : Calls S) (hcode : cenv = M.code)
       iframe Hlock Hslot
       iapply ih $$ [$Hlock $Hslot]
 
+omit [CodeEnv] in
 theorem wp_consumer (c : CPU) (δ : GName) (slot : BitVec 64) (n : Nat) :
     letI := (Host.hostIrisGS (hlc := hlc) (GF := GF) (M := M)).invGS
     Host.Mailbox.isMailbox δ slot (fun _ => outputs (c.pack ∅).1) ⊢

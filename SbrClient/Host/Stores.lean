@@ -127,7 +127,7 @@ theorem wp_initializeBlock (a : BitVec 64) (bs : List UInt8)
   iframe Hp
   ipureintro
   have hs := Mem.storeBytes_sep a bs.length old bs Std.ExtHashMap.emp (old.At a)
-    ⟨by simpa only [Std.ExtHashMap.sep_emp], hlen, rfl⟩
+    ⟨by simp only [Std.ExtHashMap.sep_emp], hlen, rfl⟩
   simpa only [Std.ExtHashMap.sep_emp] using hs
 
 end SbrClient.Host

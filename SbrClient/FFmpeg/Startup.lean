@@ -13,6 +13,7 @@ open Iris Iris.ProgramLogic Iris.BI Iris.ProofMode Iris.Std
 variable {hlc : HasLC} {M : Model} {GF : BundledGFunctors} [MachineGS hlc M GF] [CodeEnv]
 local bi (IProp GF)
 
+omit [CodeEnv] in
 private theorem reserveZero (a : BitVec 64) :
     (⌜True⌝ : IProp GF) ⊢ ownsPred (Reserve 0 a) := by
   unfold ownsPred

@@ -1,0 +1,78 @@
+{
+  "counting_rule": "Physical Lean source lines including comments, blank lines, instruction texts and tables; unique files per transitive local import closure. Not C LOC or exact proof-term dependencies. External Lean/Iris packages excluded.",
+  "ffmpeg_classification": "Kraken/X64/Examples/Sbr/**.lean; all other Kraken/KrakenTactics dependencies are framework.",
+  "linked_native_theorem": {
+    "root_module": "Kraken.X64.Examples.Sbr.Link",
+    "ffmpeg_verification": {
+      "modules": 100,
+      "lines": 111962
+    },
+    "kraken_framework": {
+      "modules": 40,
+      "lines": 22202
+    },
+    "total_upstream": {
+      "modules": 140,
+      "lines": 134164
+    }
+  },
+  "session_apply_theorem": {
+    "root_module": "Kraken.X64.Examples.Sbr.SessionBin.SApply",
+    "ffmpeg_verification": {
+      "modules": 121,
+      "lines": 118615
+    },
+    "kraken_framework": {
+      "modules": 40,
+      "lines": 22202
+    },
+    "total_upstream": {
+      "modules": 161,
+      "lines": 140817
+    }
+  },
+  "public_provider": {
+    "root_module": "SbrClient.FFmpeg.UpstreamCalls",
+    "ffmpeg_verification": {
+      "modules": 125,
+      "lines": 119152
+    },
+    "kraken_framework": {
+      "modules": 40,
+      "lines": 22202
+    },
+    "total_upstream": {
+      "modules": 165,
+      "lines": 141354
+    }
+  },
+  "main_example": {
+    "root_module": "SbrClient.Client.VerifiedReadyService",
+    "new_glue_and_client": {
+      "modules": 26,
+      "lines": 3158
+    },
+    "breakdown": {
+      "generic_logic_machine_host": {
+        "modules": 16,
+        "lines": 2224
+      },
+      "ffmpeg_adapter": {
+        "modules": 6,
+        "lines": 415
+      },
+      "iris_application": {
+        "modules": 4,
+        "lines": 519
+      }
+    },
+    "copied_upstream_excerpts_excluded": {
+      "modules": 1,
+      "lines": 227
+    }
+  },
+  "whole_sbrclient_tree": {
+    "modules": 34,
+    "lines": 3661
+  }
+}

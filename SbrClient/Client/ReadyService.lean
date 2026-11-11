@@ -1,5 +1,4 @@
 import SbrClient.Client.Service
-import SbrClient.Client.StrongOutput
 
 /-! The main ready-state client does not switch SBR off. Two producers each
 perform `rounds + 1` calls on the supplied ready decoder. The consumer
@@ -36,6 +35,8 @@ def readyResult (S : Setup) (che ac avctx : BitVec 64) (er ps : BitVec 32)
 
 end Result
 
+/-- Keep the final buffer claim, then acquire the decoder. Returning the
+checksum leaves both resources held for the caller of the whole service. -/
 def takeFinal (c : CPU) (lock slot : BitVec 64) : Host.Expr M :=
   .claim slot (Host.Mailbox.code (some true))
     (.bind (consumeOutputs (c.pack ∅).1) (fun v => .acquire lock (.ret v)))
@@ -66,6 +67,8 @@ theorem wp_takeFinal (S : Setup) (c : CPU)
     unfold heldResult
     iframe Hlock Hslot Hγ Hδ HD Hsum
 
+/-- Each worker makes `rounds + 1` calls. Ordinary consumption acknowledges
+`2 * rounds + 1` publications; `takeFinal` retains the remaining publication. -/
 def readyService (c : CPU) (lock slot : BitVec 64) (rounds : Nat) : Host.Expr M :=
   .bind (.fork (producer c lock slot (rounds + 1))) (fun _ =>
     .bind (.fork (producer c lock slot (rounds + 1))) (fun _ =>

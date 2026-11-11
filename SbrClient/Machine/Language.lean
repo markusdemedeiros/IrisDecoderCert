@@ -11,15 +11,21 @@ structure Model where
   halt : Int64
   halt_empty : code.codeAt halt = []
 
+/-- Thread-local execution state, carried by `Expr.run`. The Iris language
+state contains only the shared byte heap; immutable code is supplied by `Model`. -/
 structure CPU where
   regs : Reg64s
   zmms : RegZmms
   status : StatusFlags
   pc : Int64
 
+/-- Combine the expression's CPU and the shared heap into Kraken's state.
+This is a semantic representation change, not a runtime memory copy. -/
 def CPU.pack (c : CPU) (m : Mem 64) : MachineState :=
   (⟨c.regs, c.zmms, c.status, m⟩, c.pc)
 
+/-- Recover the thread-local component after a native instruction. The step
+rule separately installs `s.1.dmem` as the new shared heap. -/
 def CPU.ofMachine (s : MachineState) : CPU :=
   ⟨s.1.regs, s.1.zmms, s.1.status, s.2⟩
 

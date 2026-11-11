@@ -20,14 +20,17 @@ def buffer (a : BitVec 64) : IProp GF := ownsPred (Block a 8192)
 def abiResources (d : Nat) (t : MachineData) : IProp GF :=
   iprop(ownsPred (8 ?@ (t.regs.get64 .rsp)) ∗ ownsPred (Reserve d (t.regs.get64 .rsp)))
 
+omit [CodeEnv] in
 theorem outputs_split (t : MachineData) :
     outputs (GF := GF) t ⊢ buffer (arg3 t) ∗ buffer (arg4 t) :=
   ownsPred_sep
 
+omit [CodeEnv] in
 theorem outputs_join (t : MachineData) :
     buffer (GF := GF) (arg3 t) ∗ buffer (arg4 t) ⊢ outputs t :=
   ownsPred_sep_intro
 
+omit [CodeEnv] in
 /-- Recover all resources from the original SysV postcondition. Register
 restoration stays a pure fact in `CallPost`; bytes become transferable Iris
 resources, with no semantic reinterpretation of the external predicate. -/

@@ -1,0 +1,7 @@
+Waiting for project build slot
+'BinaryCert.cwp_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BinaryCert.external_adequate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BinaryCert.cwp_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BinaryCert.cwp_eq_native' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BinaryCert.wp_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build exit=0; peak system unavailable RAM=10.10 GB

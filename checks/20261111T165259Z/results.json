@@ -1,0 +1,51 @@
+[
+  {
+    "check": "source-excerpts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.10063255112618208,
+    "log": "checks/20261111T165259Z/source-excerpts.log"
+  },
+  {
+    "check": "reuse-metrics",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.0767782391048968,
+    "log": "checks/20261111T165259Z/reuse-metrics.log"
+  },
+  {
+    "check": "upstream-build",
+    "exit": 0,
+    "clean": true,
+    "seconds": 55.53694440796971,
+    "log": "checks/20261111T165259Z/upstream-build.log"
+  },
+  {
+    "check": "SbrClient.Logic.CertifiedWP",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3104441086761653,
+    "log": "checks/20261111T165259Z/SbrClient.Logic.CertifiedWP.log"
+  },
+  {
+    "check": "SbrClient.Audit.Core",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.5526172551326454,
+    "log": "checks/20261111T165259Z/SbrClient.Audit.Core.log"
+  },
+  {
+    "check": "SbrClient.Machine.Execution",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.058510492090136,
+    "log": "checks/20261111T165259Z/SbrClient.Machine.Execution.log"
+  },
+  {
+    "check": "SbrClient.Machine.Frame",
+    "exit": 1,
+    "clean": false,
+    "seconds": 29.110330688767135,
+    "log": "checks/20261111T165259Z/SbrClient.Machine.Frame.log"
+  }
+]

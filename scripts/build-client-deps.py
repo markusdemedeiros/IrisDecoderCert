@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build a target's local imports one at a time through the experiment cap.
+"""Build the native provider's local imports through the project memory cap.
 
-The global lock is released between modules so the other experiment can
-continue testing. Each Lake call has at most one uncached local Lean module.
+The lock is released between modules. Each Lake call has at most one
+uncached local Lean module.
 """
 from pathlib import Path
 import re
@@ -12,7 +12,7 @@ import time
 
 root = Path(__file__).resolve().parents[1]
 cap = root / "tools" / "bounded-build"
-target = sys.argv[1] if len(sys.argv) > 1 else "Kraken.X64.Examples.Sbr.SessionBin.Top"
+target = sys.argv[1] if len(sys.argv) > 1 else "SbrClient.FFmpeg.UpstreamCalls"
 out = root / ".lake" / "client-build"
 out.mkdir(parents=True, exist_ok=True)
 seen, modules = set(), []
