@@ -1,0 +1,32 @@
+Building 166 modules for SbrClient.FFmpeg.UpstreamCalls
+1/166 Kraken.InfoOff: exit=0 elapsed=0.3s
+2/166 Kraken.ToBytes: exit=0 elapsed=0.3s
+3/166 Kraken.Mem: exit=0 elapsed=0.3s
+4/166 Kraken.Separation: exit=0 elapsed=0.3s
+5/166 Kraken.SeparationMem: exit=0 elapsed=0.3s
+6/166 Kraken.SepCells: exit=0 elapsed=0.3s
+7/166 Kraken.SepAC: exit=0 elapsed=0.3s
+8/166 Kraken.SeparationTactics: exit=0 elapsed=0.3s
+9/166 Kraken.Rules.SepStep: exit=0 elapsed=0.3s
+10/166 Kraken.Rules.HbOptApply: exit=0 elapsed=0.3s
+11/166 Kraken.Attribute: exit=0 elapsed=0.3s
+12/166 Kraken.Layout: exit=0 elapsed=0.3s
+13/166 Kraken.X64.Syntax: exit=0 elapsed=0.3s
+14/166 Kraken.X64.Parser: exit=0 elapsed=0.3s
+15/166 Kraken.OmniSemantics: exit=0 elapsed=0.3s
+16/166 Kraken.Float32Fma: exit=0 elapsed=0.3s
+17/166 Kraken.X64.Semantics: exit=0 elapsed=0.3s
+18/166 Kraken.X64.OmniSemantics: exit=0 elapsed=0.3s
+19/166 Kraken.GrindFold: exit=0 elapsed=0.3s
+20/166 Kraken.Specs: exit=0 elapsed=0.3s
+21/166 Kraken.Blocks: exit=0 elapsed=0.3s
+22/166 Kraken.SegmentExtract: exit=0 elapsed=0.3s
+23/166 Kraken.Step: exit=0 elapsed=0.3s
+24/166 Kraken.InterpSound: exit=0 elapsed=0.3s
+25/166 Kraken.MachineWP: exit=0 elapsed=0.3s
+26/166 Kraken.SysV: exit=0 elapsed=0.3s
+27/166 Kraken.X64.Examples.Sbr.ApplyText: exit=0 elapsed=0.3s
+28/166 Kraken.Rules.CfgList: exit=1 elapsed=0.1s
+Waiting for shared experiment build slot
+Insufficient memory headroom for both capped lanes; retry after checking other processes.
+

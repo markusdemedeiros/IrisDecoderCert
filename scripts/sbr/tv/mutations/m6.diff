@@ -1,0 +1,11 @@
+--- a/ff_sbr_sum_square_sse.txt
++++ b/ff_sbr_sum_square_sse.txt
+@@ -13,7 +13,7 @@
+     mulps xmm3, xmm3 ;; aw=w64 ow=w128
+     mulps xmm4, xmm4 ;; aw=w64 ow=w128
+     mulps xmm5, xmm5 ;; aw=w64 ow=w128
+-    addps xmm0, xmm2 ;; aw=w64 ow=w128
++    subps xmm0, xmm2 ;; aw=w64 ow=w128
+     addps xmm1, xmm3 ;; aw=w64 ow=w128
+     addps xmm0, xmm4 ;; aw=w64 ow=w128
+     addps xmm1, xmm5 ;; aw=w64 ow=w128

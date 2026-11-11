@@ -1,0 +1,18 @@
+binutils-x86-64-linux-gnu binary: package-name-doesnt-match-sonames
+binutils-x86-64-linux-gnu binary: non-standard-dir-in-usr
+
+# needed for kfreebsd and the hurd
+binutils-x86-64-linux-gnu binary: file-in-unusual-dir
+
+# internal libs, with the target name encoded
+binutils-x86-64-linux-gnu binary: no-shlibs-control-file
+
+# yes, intended
+binutils-x86-64-linux-gnu binary: shlib-in-multi-arch-foreign-package
+binutils-x86-64-linux-gnu binary: triplet-dir-and-architecture-mismatch
+
+# some triplets are long ...
+binutils-x86-64-linux-gnu binary: extended-description-line-too-long
+
+# yes, libctf libs intended here
+binutils-x86-64-linux-gnu binary: link-to-shared-library-in-wrong-package

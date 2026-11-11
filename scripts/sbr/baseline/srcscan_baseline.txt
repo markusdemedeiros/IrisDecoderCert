@@ -1,0 +1,19 @@
+Kraken/Specs.lean bv_decide
+Kraken/Specs.lean bv_decide
+Kraken/Specs.lean bv_decide
+Kraken/Sdyn.lean have h_addr3 : rsp.toBitVec - 1024 + 1016#64 = rsp.toBitVec - 8#64 := by bv_decide
+Kraken/Sdyn.lean have hA3 : rsp.toBitVec + 18446744073709551608#64 = rsp.toBitVec - 8#64 := by bv_decide
+Kraken/Sdyn.lean all_goals (first (finish (splits := 40)) (sorry))
+Kraken/MemBench.lean all_goals (simp_all <;> bv_decide)
+Kraken/MemBench.lean all_goals (simp_all <;> bv_decide)
+Kraken/X64/Examples/AluMem.lean all_goals (simp_all <;> bv_decide)
+Kraken/X64/Examples/SepCellsFrames.lean show r - 24 + BitVec.ofNat 64 16 = r - 8 by bv_decide]
+Kraken/X64/Examples/Examples.lean bv_decide
+Kraken/X64/Examples/Examples.lean sorry
+Kraken/X64/Examples/Examples.lean bv_decide
+Kraken/X64/Examples/Examples.lean bv_decide
+Kraken/X64/Examples/Examples.lean sorry
+Kraken/Rules/IntMisc.lean bv_decide
+Kraken/Rules/IntMisc.lean bv_decide
+Kraken/Rules/IntMisc.lean bv_decide
+Kraken/Eval.lean unsafe def elabEvalExpr : Elab.Term.TermElab :=

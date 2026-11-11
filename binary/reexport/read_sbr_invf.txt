@@ -1,0 +1,124 @@
+read_sbr_invf:
+    movzx eax, BYTE PTR [rdx+43] ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+48], al ;; aw=w64 ow=w8
+    mov eax, DWORD PTR [rdx+39] ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+44], eax ;; aw=w64 ow=w32
+    cmp DWORD PTR [rdi+311784], 0 ;; aw=w64 ow=w32
+    je read_sbr_invf.L578f ;; aw=w64 ow=w64
+read_sbr_invf.L564a:
+    lea rax, [rdx+39] ;; aw=w64 ow=w64
+    mov r8d, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r10d, r8d ;; aw=w64 ow=w32
+    shr r10d, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [rcx+r10*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+    shr r10d, 30 ;; aw=w64 ow=w32
+    add r8d, 2 ;; aw=w64 ow=w32
+    cmp r9d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r9d ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], r8d ;; aw=w64 ow=w32
+    mov BYTE PTR [rax+0], r10b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rdi+311784], 1 ;; aw=w64 ow=w32
+    jbe read_sbr_invf.L578f ;; aw=w64 ow=w64
+read_sbr_invf.L5693:
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r9d, eax ;; aw=w64 ow=w32
+    shr r9d, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [rcx+r9*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 30 ;; aw=w64 ow=w32
+    add eax, 2 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+40], r9b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rdi+311784], 3 ;; aw=w64 ow=w32
+    jb read_sbr_invf.L578f ;; aw=w64 ow=w64
+read_sbr_invf.L56d5:
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r9d, eax ;; aw=w64 ow=w32
+    shr r9d, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [rcx+r9*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 30 ;; aw=w64 ow=w32
+    add eax, 2 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+41], r9b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rdi+311784], 4 ;; aw=w64 ow=w32
+    jb read_sbr_invf.L578f ;; aw=w64 ow=w64
+read_sbr_invf.L5713:
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r9d, eax ;; aw=w64 ow=w32
+    shr r9d, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [rcx+r9*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 30 ;; aw=w64 ow=w32
+    add eax, 2 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+42], r9b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rdi+311784], 5 ;; aw=w64 ow=w32
+    jb read_sbr_invf.L578f ;; aw=w64 ow=w64
+read_sbr_invf.L5751:
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r9d, eax ;; aw=w64 ow=w32
+    shr r9d, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [rcx+r9*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 30 ;; aw=w64 ow=w32
+    add eax, 2 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+43], r9b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rdi+311784], 5 ;; aw=w64 ow=w32
+    ja read_sbr_invf.L5790 ;; aw=w64 ow=w64
+read_sbr_invf.L578f:
+read_sbr_invf.done:
+    ret ;; aw=w64 ow=w64
+read_sbr_invf.L5790:
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    add eax, 2 ;; aw=w64 ow=w32
+    cmp ecx, eax ;; aw=w64 ow=w32
+    cmovb eax, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

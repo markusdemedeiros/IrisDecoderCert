@@ -1,0 +1,11 @@
+--- a/read_sbr_grid.txt
++++ b/read_sbr_grid.txt
+@@ -40,7 +40,7 @@
+     ja read_sbr_grid.L4de0 ;; aw=w64 ow=w64
+ read_sbr_grid.L4478:
+     mov ecx, r15d ;; aw=w64 ow=w32
+-    lea r10, [rip+read_sbr_grid_jt] ;; aw=w64 ow=w64
++    lea r10, [rip+sbr_offset_0] ;; aw=w64 ow=w64
+     movsxd rcx, DWORD PTR [r10+rcx*4+0] ;; aw=w64 ow=w64
+     add rcx, r10 ;; aw=w64 ow=w64
+     jmp rcx ;; aw=w64 ow=w64

@@ -1,0 +1,992 @@
+[
+  {
+    "path": "Kraken/InfoOff.lean",
+    "sha256": "d62923cc8af043f063ab4e461835a918e3974e6c7936be5565009d61b04f5df7",
+    "lines": 23,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/ToBytes.lean",
+    "sha256": "6d13cc6aa2992b1acc0a42802de40541caa37e5051e5944885097736d131743b",
+    "lines": 360,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Mem.lean",
+    "sha256": "61f974290f43db9538148c6598f2e6683f2c3283dd0eb81ece9284b6a3146dd2",
+    "lines": 263,
+    "compatibility_rename": true
+  },
+  {
+    "path": "Kraken/Separation.lean",
+    "sha256": "02d12ed254a7d134bf42e80d15089af875938c4776b0d85f239fd9e28c691be8",
+    "lines": 115,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/SeparationMem.lean",
+    "sha256": "e34376e4e3be5372dd3502997381d5af0b0c7cbcb0e5933b968a5ca656f830b6",
+    "lines": 440,
+    "compatibility_rename": true
+  },
+  {
+    "path": "Kraken/SepCells.lean",
+    "sha256": "8cc777a8cd425edeaa1c0b00c77f9e6c7ddc8a80af1d7ade1a9f66587661beec",
+    "lines": 427,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/SepAC.lean",
+    "sha256": "3cfe9996a413d2f692c7f480b262f926f1a0869cab18609ce2a22760a14f1c7d",
+    "lines": 273,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/SeparationTactics.lean",
+    "sha256": "9b5cbbfdd5100cc42d2b9f8975f25235e4f85e6085e4894e982984c4ea19b976",
+    "lines": 318,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/SepStep.lean",
+    "sha256": "3c6e426433efb4a40061e18c88c6e0feaf85ec2be19c5bc6381ba4c992212c49",
+    "lines": 1526,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/HbOptApply.lean",
+    "sha256": "323e70a444b0c10819bda2dc935c800525186dc230b1a12e96d0309e9a0710fd",
+    "lines": 35,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Attribute.lean",
+    "sha256": "bd8f85778bcb714291611d6150287ec237c5dfb1e01d8687e9c1d4a1c202fb7f",
+    "lines": 36,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Layout.lean",
+    "sha256": "0f908ceb6b240cc71240f872a78972dbd499708e80abf6137d3367440b573b4e",
+    "lines": 73,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Syntax.lean",
+    "sha256": "6f24c025168e34ded03c60f56f2a3fc9e0d2413172f8a10ee918f5da201f5534",
+    "lines": 514,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Parser.lean",
+    "sha256": "ca244ce658539c4ae94cd16f4379c0a8d33b21e4db92a7b2c159b4fb8d872c6a",
+    "lines": 1558,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/OmniSemantics.lean",
+    "sha256": "82084c8f09df06bc7b376eee170c2956b2e9fe38af9f569a802df26226cf44c6",
+    "lines": 58,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Float32Fma.lean",
+    "sha256": "d33a579b012c3965e80358afaceee39c71113befe6a56ea3037898b49e1559e5",
+    "lines": 52,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Semantics.lean",
+    "sha256": "f5f1df05d6d67bd95ba6fc956c13f20f1f93a9069dda1235a68f4f984e6fb9e5",
+    "lines": 1465,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/OmniSemantics.lean",
+    "sha256": "d7f4502fd551a130dc595af5b52982f7cde24b65efd4c0d7855ab180a0ae878d",
+    "lines": 25,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/GrindFold.lean",
+    "sha256": "51758274ccf816ed88fe7c22e1673768c6c3db3fb52d49e8658a6f0357cb974c",
+    "lines": 59,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Specs.lean",
+    "sha256": "812ce3e9302dd94f10fa88345e7e4c3ace258e918823251ecc19fa08066adbd7",
+    "lines": 557,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Blocks.lean",
+    "sha256": "8db48fd423e86f341f1cecb07cf97b5013f40460bee56b3ea9d4bf0982d5b850",
+    "lines": 585,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/SegmentExtract.lean",
+    "sha256": "0d13e93e158f66e7457a180caf3e2e03bccba46387735cb0be9578a89b840b4b",
+    "lines": 417,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Step.lean",
+    "sha256": "ecf1bc6fb5fa2954d152518e1915fed3ca59919f796bcefbcf2fd5b6d81b8189",
+    "lines": 145,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/InterpSound.lean",
+    "sha256": "62d18bb71eb105c26cf2c09fc2592ea45297035c51810c14e7ed9414ebdb1f66",
+    "lines": 307,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/MachineWP.lean",
+    "sha256": "be9618384ba200da49709f1d9cda9b04b92f216c3b0f773f0394b9c67874081c",
+    "lines": 3144,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/SysV.lean",
+    "sha256": "3f6d14c20422d8005f24995a9cc23de3db33b609d385c0aee8e64e389f1c7955",
+    "lines": 157,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/ApplyText.lean",
+    "sha256": "1231a76b8aefdb73ac8606718ddcd583314f031b88368f0b3face6cb927316c7",
+    "lines": 5933,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/CfgList.lean",
+    "sha256": "facc843d98c9945eb1c4bc23a3999e02d86b86f44051fd0da7bad42a80d91be4",
+    "lines": 72,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/CfgTable.lean",
+    "sha256": "cdb74ff4af3636473c816321e13cd3255ca7b0692a6f8a5be772551e6aefaadf",
+    "lines": 116,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/CallFrame.lean",
+    "sha256": "e2d6db376084b70baed7480d2b7e11847a683db5e9f6bf316026409dbbf25e4b",
+    "lines": 131,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/FrameLemmas.lean",
+    "sha256": "9c60fc2a3caf6ac13d1f1c5546ce8053d8adfbc3c2516d839e4ba991e0fc7b34",
+    "lines": 333,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/GenericMem.lean",
+    "sha256": "862be4a821111d04be14f8a0e78299c67bc340fc810b2c8e54b538ded9063bd9",
+    "lines": 272,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/IndirectCall.lean",
+    "sha256": "2842deeb158ee5b243ca9d86ea081878fc33f0701b52d5e34a1f39cf3b892bec",
+    "lines": 168,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/IntMisc.lean",
+    "sha256": "b87f2d3b67dc10dcc2552d3d7472f0d007fbfe9d2e3ee9c50cbc440a0a34afc6",
+    "lines": 4935,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/PackedSse.lean",
+    "sha256": "4cca9312f5a810dcf26fe1f185d82353f098d3c24426a6da360fed39212a6545",
+    "lines": 1311,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/ScalarFloat.lean",
+    "sha256": "58777323b60cc36d1fd9e57e9a8632705ef9e11a598ee73c9bafe3617132ea36",
+    "lines": 677,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/LeafLemmas.lean",
+    "sha256": "ab245a227c099f60abb7109059c31665c99163a170feb92f8ee14863824a9522",
+    "lines": 372,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/HelperLemmas.lean",
+    "sha256": "38ff418e13e615e5d93f174d36f69a17e26924646e181b42c58af468f8984c37",
+    "lines": 497,
+    "compatibility_rename": true
+  },
+  {
+    "path": "Kraken/Rules/ViewLemmas.lean",
+    "sha256": "7f5e941ac1731878a706ccdb80c949bd8f6d2c811fb4554373d6e9b6a959b158",
+    "lines": 42,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/LexVar.lean",
+    "sha256": "712fcc47cacd2b92322c673da78c96b7d5b0b62853ac8240edeaabfc83c70476",
+    "lines": 195,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/AutocorrelateText.lean",
+    "sha256": "50dbe5c563d471cd892f011f72ad814c731b4ea35e177a3d5056e212af7799bb",
+    "lines": 208,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfApplyNoiseText.lean",
+    "sha256": "21ade3c5ff1044f0a1b72a46e89c81b6bf4a7005e8674c595a9d831c307be576",
+    "lines": 233,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfGenText.lean",
+    "sha256": "1a4b7dbfe91e8a59c628a23ddddf7059d0edf1c1942f84545763830b8f9ede2f",
+    "lines": 65,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfGFiltText.lean",
+    "sha256": "08a63f68bc19bc03deed226fb49968edc6b3d3c5ae89dd8ba59e7cfb2e757883",
+    "lines": 60,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/NegOdd64Text.lean",
+    "sha256": "928c871040010ebb7832d6dfdac83e4946c85c32f584ea707dc0717ff2c6a586",
+    "lines": 41,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfDeintBflyText.lean",
+    "sha256": "12a000dfd048bb197e00c10b634821d32ecc99c3cef2a031b3f094da9be1637a",
+    "lines": 47,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfDeintNegText.lean",
+    "sha256": "77053c05e8edaa05abce105eada8777dda0f51b9a1b11f4d5dc7188b1f8a66a8",
+    "lines": 41,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfPostShuffleText.lean",
+    "sha256": "c1abf359e728a845baf976174ae8b48d997c05dbab1e827414b1769d0b40b2f4",
+    "lines": 43,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfPreShuffleText.lean",
+    "sha256": "edd224fef506c746b72ca0a83fff0b0094c54a010a8072e0302b5c3755586ffe",
+    "lines": 54,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/Sum64x5Text.lean",
+    "sha256": "519d58b6465369b30f95e0238e61de4860214d234d6bbe278701e0c2b76b459e",
+    "lines": 43,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/SumSquareText.lean",
+    "sha256": "eec6d1e7f27794fd20a21eb77534ff02eb023ec68de6ca5b5b4078b237ee1d72",
+    "lines": 61,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmulAddText.lean",
+    "sha256": "d19a190b43cb411828a6125dc646358b1818a1e38ce8f6da057c8dccf465d502",
+    "lines": 78,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmulRevText.lean",
+    "sha256": "6984151ae28de57e65ea899eac2b5525e826818b660c27e8ef966d9f31d8dd6b",
+    "lines": 85,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmulText.lean",
+    "sha256": "6e213abbf095811ebb914d61c61cc4ecf87cb24e8aa39f409b505b5da797d35e",
+    "lines": 60,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssembleText.lean",
+    "sha256": "abdaf325ed04fa62f68d383bb44327e58a94d26ce7e27a87b8f62b42433cf344",
+    "lines": 1000,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfInverseFilterText.lean",
+    "sha256": "3ce75bf1bd5e69479a921f4a3153c14f4f6318bc0e2b1c04fab07dbdf093495b",
+    "lines": 153,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/LfGenText.lean",
+    "sha256": "6abdc12a51f5929d5c7bae50bd0041326476d4af0b7e50dca12a3721b564cd1b",
+    "lines": 264,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/DecExtText.lean",
+    "sha256": "e970fde821d01886e2b406569ce28858f2a86fcad302af68881bde1b6404fc38",
+    "lines": 978,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/DtdfText.lean",
+    "sha256": "b9bc808966583e679dc7d0ee8f7a2644d26d01491f1ef086b07ddad218db7656",
+    "lines": 410,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/EnvText.lean",
+    "sha256": "fa8e92ad1b9798f2ebd104b0592edaf5bbf8c1fe88fb2ac1ad15f3e575b7b62d",
+    "lines": 738,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/GridText.lean",
+    "sha256": "5cf8863bf0e04f068c3bd1efc5c7466b64bb1e23a8569a1477a843cd02e5c5e1",
+    "lines": 1094,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/HdrText.lean",
+    "sha256": "3278d4c2c826a2c8e7a34c3ac8f0953bc09dcbb85151c9a6587f3ea877cf3f99",
+    "lines": 341,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/InitText.lean",
+    "sha256": "c77e807ba906632244c8a1bb5cafe19512ee26794290ea9c2658d372ddcb1087",
+    "lines": 125,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/InvfText.lean",
+    "sha256": "b850b41d5c0546b2958efb8149f9ca764e378db6032aba1ae8ec6fc9b423d921",
+    "lines": 144,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/NoiseText.lean",
+    "sha256": "bb59f99431cf77f109570c12ea376896e68148400ebbd79a1d67cdba2f3badda",
+    "lines": 491,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/PsText.lean",
+    "sha256": "7d12fb7e447397b1a9df0c93bb681ff8f9649bf5312a74f1c54599ca9a406537",
+    "lines": 1770,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/ResetBlocks.lean",
+    "sha256": "62af2046e1a5ef6e38f7d504152716b9a91b26bd1af6aa2cb7a4a8ee9fd9dfb5",
+    "lines": 3373,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/TlimText.lean",
+    "sha256": "379a3784a490e735b2d565fe7658e4004177d867ab9fe62d25a059ad50d8109e",
+    "lines": 419,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/UsacText.lean",
+    "sha256": "c3914e3cc35a12c1a2c60ffd6b5458bba7f90956b9bc4f10d6248790a2ec7e74",
+    "lines": 938,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/QmfSynthesisText.lean",
+    "sha256": "db3602fba76b50f5956e36aaafd0263d24dfc44dee34969cfba4a3c025332524",
+    "lines": 340,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/XGenText.lean",
+    "sha256": "331309f61a8bb7833af6bb89ac5065aea51ad12769b1a1faa739bf04f47b75f1",
+    "lines": 414,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionSpecData.lean",
+    "sha256": "5f0ceb2200a32d36e061e4b94895551a0f37dbd5a50c21ca8a46b00e4bd3a581",
+    "lines": 158,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionSpec.lean",
+    "sha256": "dbcfccb79257bcdb40005b059a638c28d0e7d06c1736ae687fd25df45c8b35d2",
+    "lines": 2593,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Spec.lean",
+    "sha256": "9bfd84135bde7eb114071ac9f5c015ef3b658c5e1907234f607d7b86e869564e",
+    "lines": 869,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/DequantFloat.lean",
+    "sha256": "e4671100774459abc1877432519381f4b0e382b3b66855a5b4154f4dfc8712cc",
+    "lines": 197,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/ApplySpec.lean",
+    "sha256": "6b9a8f3b0d65f12a7da8b2f644468dae89aa7cf5394686052753b11b6489ca6d",
+    "lines": 188,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/ApplyTable.lean",
+    "sha256": "cf2612ee2c2f8f26addd66afb5d12ade4302d4ec4e3ce2d087735c3bb7eb2f2a",
+    "lines": 9815,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/Trap.lean",
+    "sha256": "8dc2f9a7103949c6f8e3e493cfd03e18adc6acc4c45b0300870a986d02512dfe",
+    "lines": 486,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EntrySyn.lean",
+    "sha256": "4b90021e37de35404c407505f7c35c23373d4bcfbc6d1a9bee0974d1faed564b",
+    "lines": 2312,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/DqCpl.lean",
+    "sha256": "315d60b9072ce703ba9fdcdf6fa0cbd9b4b796728cf059b0facf7b457e8a3ed1",
+    "lines": 4771,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/DqSce.lean",
+    "sha256": "84ad2ab2098f1b9fad448f4a3409365a7d03c1188a29d48dc6d85da852f19ca1",
+    "lines": 3356,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/AnaHf.lean",
+    "sha256": "178380490b9bc79f7a67a717fa70ce9592f910f7f5c19a1b14aba8f9384484ca",
+    "lines": 5469,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapALem.lean",
+    "sha256": "7a1e4bf78484bfbda99c332295428a52afd2ba63f8109339a04af19bc246f6ca",
+    "lines": 502,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapA1.lean",
+    "sha256": "cf9f7de0e99c3bd135dccf607ebe867c1aaeb691d1479355a53e13b44d0feb49",
+    "lines": 1340,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapA2.lean",
+    "sha256": "3c06db3247bdd23a490502f52c84f5dd6ce294f7c280f20a2c5d735831d7a554",
+    "lines": 1946,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapA3.lean",
+    "sha256": "6fdaccda2536e3e885cbd75b6c648dd727572f13cbc0659f4195366a2f3ca579",
+    "lines": 1305,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapA4.lean",
+    "sha256": "09d41c12be529c12c716a8074aedb775079bfc60dfeb2c340d5ffa723c3b41af",
+    "lines": 1187,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapA5.lean",
+    "sha256": "0b040d44095a8394425bb95e519d40d2659d0262a29dfac6315efe2c00ae2ce3",
+    "lines": 918,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapBLem.lean",
+    "sha256": "bc409b1aee3bbf5487865af851a338b25f89020701d7bede50ff8224e73ac933",
+    "lines": 392,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB1.lean",
+    "sha256": "f7d3fedce3cac16dd760ccc9258921f3c39271424726e35610e524a0938d47f1",
+    "lines": 1116,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB2.lean",
+    "sha256": "b568562c6655d321d06ff44efdc5d13363349278a2d3b48c7887adda03c92bc6",
+    "lines": 1178,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB3.lean",
+    "sha256": "bc4f43594f016e6a2da9549cb15952e15d5084dd16b2776b4c2be49cfd5a609b",
+    "lines": 1142,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB4.lean",
+    "sha256": "b2a4a8522f51016ccd94cdf52ec1c1a1d43bb958a6c40a227d3c2b8743d34ba9",
+    "lines": 843,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB5.lean",
+    "sha256": "8fbf11bb1bea0d67e7f2be4372f2aee3cbf50f44bcfc9b399e7c98e42bd6d1bb",
+    "lines": 1178,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB6.lean",
+    "sha256": "3025c0b7f26bec5fd10fc7db6f9144e183f61acfc652ffd9d7581b60b169f675",
+    "lines": 1108,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB7.lean",
+    "sha256": "ddbb4a9215d0b6c06116474a2ac5a3e6bf637cf184ea6a2146482c03afccc8ad",
+    "lines": 937,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB8.lean",
+    "sha256": "045c87a2619b4fafef43d61aa2845cf96acd1c435bf077edb9151e72d57cad19",
+    "lines": 1784,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB9.lean",
+    "sha256": "bb6267b897d0dd37b34db6e58d3a41601aa2117eeaa71b67a715bc2ffeb96de1",
+    "lines": 1902,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB10.lean",
+    "sha256": "64bf9bdee318abf61c948745de9424fb14dae5b493fba56291ca78c68784151e",
+    "lines": 1457,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB11.lean",
+    "sha256": "c72abb56b46ffedf74e2a1bdbd1ce914ce48e0a4a7af54d8b27cba7268e5cc24",
+    "lines": 1937,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB12.lean",
+    "sha256": "bf91c4f0b3f8c7e5ff8e03ca745514f244c0d7facc8acef9989f06224f78f666",
+    "lines": 1373,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/MapB13.lean",
+    "sha256": "4fe8956e69b572c5f79857506c0f1ccb630780ae623edb383eab1646e10d3690",
+    "lines": 205,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvALem.lean",
+    "sha256": "591d44069668543de44de3dbfc227bdf826fe7c877c9d6507ff718b246818a8a",
+    "lines": 538,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvA1.lean",
+    "sha256": "3239dc9f376c04455a2fc18797048ba78c68b41d16ecc076023dfa02bea6a438",
+    "lines": 1860,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvA2.lean",
+    "sha256": "9f3b6cc55b8cf6da5d22f51a1feee9e9f0e11fcad7c5b3b91e6eb20573221f13",
+    "lines": 2278,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvA3.lean",
+    "sha256": "eb5cc798c24039d6134eba3804d00cb8d57829c44062323fde51dda42d61f169",
+    "lines": 1820,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvBLem.lean",
+    "sha256": "72594485c6b72739feaf75f064782241e6f6c261bad3c38be28dde0f1249771b",
+    "lines": 389,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvB1.lean",
+    "sha256": "ec3b15f73ffdc63991382ba15459d8e4a385291419a540890330bae60233bead",
+    "lines": 1792,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvB2.lean",
+    "sha256": "4eaecc3b2673c703bad47b033ee41e441a7cd48e1710f3dd5245e5e47f5f4fc9",
+    "lines": 1802,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/EnvB3.lean",
+    "sha256": "c74c5f633f126f0b5889ff0b6d987a4ff77e3cdab650da686a0a439a30a3b285",
+    "lines": 1774,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply/GainAsm.lean",
+    "sha256": "ec85ce548fb8ac7996d3174c3bd50ae1eaada341f9d249a41bbc97b8ec008ce7",
+    "lines": 5101,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Apply.lean",
+    "sha256": "dda3b18b002234f88ac3124ea17ddec96a15f6bd141f3c6516343c0ff7c9fc89",
+    "lines": 540,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/NegOdd64.lean",
+    "sha256": "3b77a9a8566eb7e3c72043afd880f031d66079e10372ab894583f0e9ac51210a",
+    "lines": 113,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/Sum64x5.lean",
+    "sha256": "25fac9786110ff1c6a3aec228744693b7af9be698a67a54beab741e0517e5b66",
+    "lines": 125,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/SumSquare.lean",
+    "sha256": "28be433b3135278ef52c099f1b35dcf7c4bdfd79464f91d704248c8bced99622",
+    "lines": 153,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfPreShuffle.lean",
+    "sha256": "c3ca662e60de85899f195a79d70989043ae42d6fc1229b1b203aa54584d984d0",
+    "lines": 138,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfPostShuffle.lean",
+    "sha256": "f2261e240a7cf8ae71a1f7f64082a87144d650189e28674e7166f5ddfde26c98",
+    "lines": 245,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfDeintNeg.lean",
+    "sha256": "8d27013ffda800e6d406e625681b2b650436e6d0a3dd666114b87f2494787db6",
+    "lines": 128,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/QmfDeintBfly.lean",
+    "sha256": "ee1269bfb883481ba2a3968ce3375cc84e54d9b87237bba9d2011163471d4a90",
+    "lines": 126,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/Autocorrelate.lean",
+    "sha256": "f78fca3ca5799942c11e4ba4b3622de8762189c9d08573001ee7f061dc1c0da3",
+    "lines": 211,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfGen.lean",
+    "sha256": "e87ce393e9d3222044518efb2d3887e0c77263498c6ecc09a701bb74623ca7ed",
+    "lines": 239,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfGFilt.lean",
+    "sha256": "250b550035d807fd6229686b2f5613d91769610ce0412e3268770cd80d3ed534",
+    "lines": 197,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/HfApplyNoise.lean",
+    "sha256": "b20d2a819936c208a525a32d1b168e0f2716186c93fe16bac8254c47a94cfb51",
+    "lines": 421,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp.lean",
+    "sha256": "867e37b2f35542b11ef71286c96d6f0055b8f945a94a53df789eb3a282a4f800",
+    "lines": 36,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/Rules/AvxExtra.lean",
+    "sha256": "952312095e44b18e6fd7270024809d56ff2a59c20d9d07af84d33c6a30f23a34",
+    "lines": 149,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/FloatDspCommon.lean",
+    "sha256": "2f91a4596bb11ca3996bc8e626e23ec6c7930c44914cb3daa044b91cb695dc19",
+    "lines": 103,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmul.lean",
+    "sha256": "c40e77391d96058502ff806d28bb205616d35562a94ffe1b9df9aaf7193b9817",
+    "lines": 149,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmulAdd.lean",
+    "sha256": "7228c700f4b774e9e6eb505ceca400316d74e7d57ea727f625f7f7caf2b33292",
+    "lines": 166,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Dsp/VectorFmulRev.lean",
+    "sha256": "91f3f71c9946bb7a046ee0006aa875a9865c3b3dff1ce13d7dae4c85d6043a5d",
+    "lines": 197,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/FloatDsp.lean",
+    "sha256": "81953dd7389a2b7673984a749a8744d4bbe493ef4bbaec4707171563de5c9c2a",
+    "lines": 61,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/LfGen.lean",
+    "sha256": "df997ddd7e31b177261d7e6dbee858830494643ee6e96e338782cee09acdc23a",
+    "lines": 791,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/XGen.lean",
+    "sha256": "723d274a50bddee87e3ba5e9da4fd6de3d62e2c1cc04f19cfc423af0601c4bee",
+    "lines": 2487,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfInverseFilter.lean",
+    "sha256": "2629c96f8d2ab60df4f0a67836ba2a29cf76210fc9001be7964d230e4d79ddcb",
+    "lines": 829,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssemble/Cells.lean",
+    "sha256": "2404ae9b764027113bf978e4ab2f90544d639e9127989e8335d71995fda04669",
+    "lines": 307,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssemble/Base.lean",
+    "sha256": "20db236a59f7e4f14ffb557da527b87f07ac4495da548de1b657af967ce9f071",
+    "lines": 4883,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssemble/Part1.lean",
+    "sha256": "cc3e50ee146e3d457b664b1fc0a94101113bc08cca30c5bf34eaf6ad63aa7f18",
+    "lines": 2262,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssemble/Part2.lean",
+    "sha256": "7a8bec226969b481b6479d8f84372d672913590957659f6528376d3be30bc207",
+    "lines": 2121,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/HfAssemble.lean",
+    "sha256": "3b5751765a5fe03240afdf21fe6c595ef44288244785bcb145e27a339ec7e7fc",
+    "lines": 271,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/QmfSynthesis.lean",
+    "sha256": "93f410ec03cbce1d259c14c4f128aa9dae678bdefa200febabed23b82c9e0f23",
+    "lines": 3174,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Link.lean",
+    "sha256": "3bf5143c5570197751704fc949043647d11d2736caa3b8cbcdaf6a5be4a9d462",
+    "lines": 127,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Session.lean",
+    "sha256": "914d214110e3d38d86e7c29a7c30b0997fa5d45544aa7de7eea3ecde5567c03c",
+    "lines": 333,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/Lib.lean",
+    "sha256": "0133edb068973131ef8c4f9e020588105c5024278956e37d19e07bf141efd52e",
+    "lines": 377,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/LibAbort.lean",
+    "sha256": "713e140970b518a7240f8f90fdca98d25d74d1921f696147bdff5332fe1867d3",
+    "lines": 382,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/LibGb.lean",
+    "sha256": "6377585dda295dffbfc18898e259edaa3f804e2e464f594ecd502117b831a547",
+    "lines": 152,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/GridSpec.lean",
+    "sha256": "db6f84fa6c99786e75f3346a7338b1b00f4da3cebd139853331a49b8ded7c800",
+    "lines": 129,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/ParseModel.lean",
+    "sha256": "5fdc31d40671db87485c91a93d4d20b75fbef046b72a89d503d2d82d9837a2a9",
+    "lines": 2199,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/DecExtSpec.lean",
+    "sha256": "cdb93b100ac24b7944a46c5afa03865ac4fa97daf85c7bd7c134576285c10a19",
+    "lines": 289,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/UsacSpec.lean",
+    "sha256": "c357fcc25e006c225bba19d4e499ce2df2b998e3c546138066960ec81bd0d762",
+    "lines": 280,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/PsSpec.lean",
+    "sha256": "f07fd245d85795171da0545c5ffe9fd0af2b7a4cea4a8deada936b2d63de25ba",
+    "lines": 144,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/ResetText.lean",
+    "sha256": "7fa2934e146db5e467c918ede7ec1b33cf82d12c2b604fbbb2dd24ce78806fda",
+    "lines": 1083,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/LibCall.lean",
+    "sha256": "eb5e78924406cf572e1c4fbf596bb3578e2b5595ce1ed7194f323d7e3cea13f9",
+    "lines": 32,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/ResetSpec.lean",
+    "sha256": "ed7b31bc99fec543406a8dee48523592aceb7977c703b8e80177b73581aedac0",
+    "lines": 177,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/EnvVlc.lean",
+    "sha256": "254e26e748b40b423c58629b52f0efe11288cb621393caff925293fb4d59a85e",
+    "lines": 188,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/Defs.lean",
+    "sha256": "638a7b4fc02bac65bad5f5bd1c11f39b9e040c5e486f6cdd7eef26811344e54b",
+    "lines": 127,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/Inv.lean",
+    "sha256": "02b84ae634881af3e9b877ff2cb959f78537752f9133f62fcda79ecf4f50ccd5",
+    "lines": 182,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/Bridge.lean",
+    "sha256": "0f74e25986b772b3fdf848fc2934ed5524bb175c233cc82cb3a29bb8b23f0a1a",
+    "lines": 136,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/FApplyD.lean",
+    "sha256": "5e59f32e22798ff42bc9b40257eada3135dd5a447cbf7178aff53491f776c0b8",
+    "lines": 111,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/FApplyS.lean",
+    "sha256": "09c128680b7467144f4ea4d7f87906f927c02046e27d2d283e7f1bc94ae02160",
+    "lines": 79,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/FApply.lean",
+    "sha256": "dd89da566d97a412541eefbf385b755a9a9e321fbee616460faa97ccd4304d39",
+    "lines": 90,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/LeafDerive.lean",
+    "sha256": "cf28e96c51439ded3b0e1cb756442a3333174788f7a4c35a5a8c485bf082622e",
+    "lines": 88,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/SApply.lean",
+    "sha256": "2696f4a685165eb477e87afb7ed39736f9a6b89e860af369fe1a51d15fa5cbad",
+    "lines": 75,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/FCfgA.lean",
+    "sha256": "d668342e0e6df4c7086fc5ce3046fba1863acb1c8b07e8797e7196640d848398",
+    "lines": 186,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/FCfg.lean",
+    "sha256": "0f25de20de456776b69f76571eca8e9d0f00df04ec019ceca1c4e40bce8c5cca",
+    "lines": 137,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/Parse/UsacCfg.lean",
+    "sha256": "f91a48abb298e013debbdcf9090dec86e2553b6aa2af768a2da6c673ef93f41f",
+    "lines": 149,
+    "compatibility_rename": false
+  },
+  {
+    "path": "Kraken/X64/Examples/Sbr/SessionBin/SConfig.lean",
+    "sha256": "570a6a9ad88a61e05fd95a3360adaff4d76825d4a0bbf47aeb0bf15f714a889b",
+    "lines": 65,
+    "compatibility_rename": false
+  }
+]

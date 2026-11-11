@@ -1,0 +1,273 @@
+MachineWP.add_reg_reg_w8_spec: `addb %r, %r`: the sum and its flags.
+MachineWP.add_reg_reg_w16_spec: `addw %r, %r`: the sum and its flags.
+MachineWP.add_reg_reg_w32_spec: `addl %r, %r`: the sum and its flags.
+MachineWP.add_reg_reg_w64_spec: `addq %r, %r`: the sum and its flags.
+MachineWP.add_reg_imm_w8_spec: `addb $i, %r`: the sum and its flags.
+MachineWP.add_reg_imm_w16_spec: `addw $i, %r`: the sum and its flags.
+MachineWP.add_reg_imm_w32_spec: `addl $i, %r`: the sum and its flags.
+MachineWP.add_reg_imm_w64_spec: `addq $i, %r`: the sum and its flags.
+MachineWP.add_load_mem_w8_spec: `addb d(%rb,%idx), %r`: the sum and its flags.
+MachineWP.add_load_mem_w16_spec: `addw d(%rb,%idx), %r`: the sum and its flags.
+MachineWP.add_load_mem_w32_spec: `addl d(%rb,%idx), %r`: the sum and its flags.
+MachineWP.add_load_mem_w64_spec: `addq d(%rb,%idx), %r`: the sum and its flags.
+MachineWP.add_store_mem_w8_spec: `addb %r, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_store_mem_w16_spec: `addw %r, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_store_mem_w32_spec: `addl %r, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_store_mem_w64_spec: `addq %r, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_mem_imm_w8_spec: `addb $i, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_mem_imm_w16_spec: `addw $i, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_mem_imm_w32_spec: `addl $i, d(%rb,%idx)`: the sum and its flags.
+MachineWP.add_mem_imm_w64_spec: `addq $i, d(%rb,%idx)`: the sum and its flags.
+MachineWP.sub_reg_reg_w8_spec: `subb %r, %r`: the difference and its flags.
+MachineWP.sub_reg_reg_w16_spec: `subw %r, %r`: the difference and its flags.
+MachineWP.sub_reg_reg_w32_spec: `subl %r, %r`: the difference and its flags.
+MachineWP.sub_reg_reg_w64_spec: `subq %r, %r`: the difference and its flags.
+MachineWP.sub_reg_imm_w8_spec: `subb $i, %r`: the difference and its flags.
+MachineWP.sub_reg_imm_w16_spec: `subw $i, %r`: the difference and its flags.
+MachineWP.sub_reg_imm_w32_spec: `subl $i, %r`: the difference and its flags.
+MachineWP.sub_reg_imm_w64_spec: `subq $i, %r`: the difference and its flags.
+MachineWP.sub_load_mem_w8_spec: `subb d(%rb,%idx), %r`: the difference and its flags.
+MachineWP.sub_load_mem_w16_spec: `subw d(%rb,%idx), %r`: the difference and its flags.
+MachineWP.sub_load_mem_w32_spec: `subl d(%rb,%idx), %r`: the difference and its flags.
+MachineWP.sub_load_mem_w64_spec: `subq d(%rb,%idx), %r`: the difference and its flags.
+MachineWP.sub_store_mem_w8_spec: `subb %r, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_store_mem_w16_spec: `subw %r, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_store_mem_w32_spec: `subl %r, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_store_mem_w64_spec: `subq %r, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_mem_imm_w8_spec: `subb $i, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_mem_imm_w16_spec: `subw $i, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_mem_imm_w32_spec: `subl $i, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sub_mem_imm_w64_spec: `subq $i, d(%rb,%idx)`: the difference and its flags.
+MachineWP.sbb_reg_reg_w8_spec: `sbbb %r, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_reg_w16_spec: `sbbw %r, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_reg_w32_spec: `sbbl %r, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_reg_w64_spec: `sbbq %r, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_imm_w8_spec: `sbbb $i, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_imm_w16_spec: `sbbw $i, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_imm_w32_spec: `sbbl $i, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_reg_imm_w64_spec: `sbbq $i, %r`: the difference less the carry, and its flags.
+MachineWP.sbb_load_mem_w8_spec: `sbbb d(%rb,%idx), %r`: the difference less the carry, and its flags.
+MachineWP.sbb_load_mem_w16_spec: `sbbw d(%rb,%idx), %r`: the difference less the carry, and its flags.
+MachineWP.sbb_load_mem_w32_spec: `sbbl d(%rb,%idx), %r`: the difference less the carry, and its flags.
+MachineWP.sbb_load_mem_w64_spec: `sbbq d(%rb,%idx), %r`: the difference less the carry, and its flags.
+MachineWP.sbb_store_mem_w8_spec: `sbbb %r, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_store_mem_w16_spec: `sbbw %r, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_store_mem_w32_spec: `sbbl %r, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_store_mem_w64_spec: `sbbq %r, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_mem_imm_w8_spec: `sbbb $i, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_mem_imm_w16_spec: `sbbw $i, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_mem_imm_w32_spec: `sbbl $i, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.sbb_mem_imm_w64_spec: `sbbq $i, d(%rb,%idx)`: the difference less the carry, and its flags.
+MachineWP.cmp_reg_reg_w8_spec: `cmpb %r, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_reg_w16_spec: `cmpw %r, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_reg_w32_spec: `cmpl %r, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_reg_w64_spec: `cmpq %r, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_imm_w8_spec: `cmpb $i, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_imm_w16_spec: `cmpw $i, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_imm_w32_spec: `cmpl $i, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_imm_w64_spec: `cmpq $i, %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_mem_w8_spec: `cmpb d(%rb,%idx), %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_mem_w16_spec: `cmpw d(%rb,%idx), %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_mem_w32_spec: `cmpl d(%rb,%idx), %r`: no write; the flags of the difference.
+MachineWP.cmp_reg_mem_w64_spec: `cmpq d(%rb,%idx), %r`: no write; the flags of the difference.
+MachineWP.cmp_mem_reg_w8_spec: `cmpb %r, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_reg_w16_spec: `cmpw %r, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_reg_w32_spec: `cmpl %r, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_reg_w64_spec: `cmpq %r, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_imm_w8_spec: `cmpb $i, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_imm_w16_spec: `cmpw $i, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_imm_w32_spec: `cmpl $i, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.cmp_mem_imm_w64_spec: `cmpq $i, d(%rb,%idx)`: no write; the flags of the difference.
+MachineWP.and_reg_reg_w8_spec: `andb %r, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_reg_w16_spec: `andw %r, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_reg_w32_spec: `andl %r, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_reg_w64_spec: `andq %r, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_imm_w8_spec: `andb $i, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_imm_w16_spec: `andw $i, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_imm_w32_spec: `andl $i, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_reg_imm_w64_spec: `andq $i, %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_load_mem_w8_spec: `andb d(%rb,%idx), %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_load_mem_w16_spec: `andw d(%rb,%idx), %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_load_mem_w32_spec: `andl d(%rb,%idx), %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_load_mem_w64_spec: `andq d(%rb,%idx), %r`: the conjunction; `af` left arbitrary.
+MachineWP.and_store_mem_w8_spec: `andb %r, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_store_mem_w16_spec: `andw %r, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_store_mem_w32_spec: `andl %r, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_store_mem_w64_spec: `andq %r, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_mem_imm_w8_spec: `andb $i, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_mem_imm_w16_spec: `andw $i, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_mem_imm_w32_spec: `andl $i, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.and_mem_imm_w64_spec: `andq $i, d(%rb,%idx)`: the conjunction; `af` left arbitrary.
+MachineWP.or_reg_reg_w8_spec: `orb %r, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_reg_w16_spec: `orw %r, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_reg_w32_spec: `orl %r, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_reg_w64_spec: `orq %r, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_imm_w8_spec: `orb $i, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_imm_w16_spec: `orw $i, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_imm_w32_spec: `orl $i, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_reg_imm_w64_spec: `orq $i, %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_load_mem_w8_spec: `orb d(%rb,%idx), %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_load_mem_w16_spec: `orw d(%rb,%idx), %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_load_mem_w32_spec: `orl d(%rb,%idx), %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_load_mem_w64_spec: `orq d(%rb,%idx), %r`: the disjunction; `af` left arbitrary.
+MachineWP.or_store_mem_w8_spec: `orb %r, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_store_mem_w16_spec: `orw %r, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_store_mem_w32_spec: `orl %r, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_store_mem_w64_spec: `orq %r, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_mem_imm_w8_spec: `orb $i, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_mem_imm_w16_spec: `orw $i, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_mem_imm_w32_spec: `orl $i, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.or_mem_imm_w64_spec: `orq $i, d(%rb,%idx)`: the disjunction; `af` left arbitrary.
+MachineWP.xor_reg_reg_w8_spec: `xorb %r, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_reg_w16_spec: `xorw %r, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_reg_w32_spec: `xorl %r, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_reg_w64_spec: `xorq %r, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_imm_w8_spec: `xorb $i, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_imm_w16_spec: `xorw $i, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_imm_w32_spec: `xorl $i, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_reg_imm_w64_spec: `xorq $i, %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_load_mem_w8_spec: `xorb d(%rb,%idx), %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_load_mem_w16_spec: `xorw d(%rb,%idx), %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_load_mem_w32_spec: `xorl d(%rb,%idx), %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_load_mem_w64_spec: `xorq d(%rb,%idx), %r`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_store_mem_w8_spec: `xorb %r, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_store_mem_w16_spec: `xorw %r, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_store_mem_w32_spec: `xorl %r, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_store_mem_w64_spec: `xorq %r, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_mem_imm_w8_spec: `xorb $i, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_mem_imm_w16_spec: `xorw $i, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_mem_imm_w32_spec: `xorl $i, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.xor_mem_imm_w64_spec: `xorq $i, d(%rb,%idx)`: the exclusive or; `af` left arbitrary.
+MachineWP.test_reg_reg_w8_spec: `testb %r, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_reg_w16_spec: `testw %r, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_reg_w32_spec: `testl %r, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_reg_w64_spec: `testq %r, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_imm_w8_spec: `testb $i, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_imm_w16_spec: `testw $i, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_imm_w32_spec: `testl $i, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_imm_w64_spec: `testq $i, %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_mem_w8_spec: `testb d(%rb,%idx), %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_mem_w16_spec: `testw d(%rb,%idx), %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_mem_w32_spec: `testl d(%rb,%idx), %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_reg_mem_w64_spec: `testq d(%rb,%idx), %r`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_reg_w8_spec: `testb %r, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_reg_w16_spec: `testw %r, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_reg_w32_spec: `testl %r, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_reg_w64_spec: `testq %r, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_imm_w8_spec: `testb $i, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_imm_w16_spec: `testw $i, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_imm_w32_spec: `testl $i, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.test_mem_imm_w64_spec: `testq $i, d(%rb,%idx)`: no write; the flags of the conjunction, `af` left arbitrary.
+MachineWP.neg_reg_w8_spec: `negb %r`.
+MachineWP.neg_reg_w16_spec: `negw %r`.
+MachineWP.neg_reg_w32_spec: `negl %r`.
+MachineWP.neg_reg_w64_spec: `negq %r`.
+MachineWP.neg_mem_w8_spec: `negb d(%rb,%idx)`.
+MachineWP.neg_mem_w16_spec: `negw d(%rb,%idx)`.
+MachineWP.neg_mem_w32_spec: `negl d(%rb,%idx)`.
+MachineWP.neg_mem_w64_spec: `negq d(%rb,%idx)`.
+MachineWP.not_reg_w8_spec: `notb %r`.
+MachineWP.not_reg_w16_spec: `notw %r`.
+MachineWP.not_reg_w32_spec: `notl %r`.
+MachineWP.not_reg_w64_spec: `notq %r`.
+MachineWP.not_mem_w8_spec: `notb d(%rb,%idx)`.
+MachineWP.not_mem_w16_spec: `notw d(%rb,%idx)`.
+MachineWP.not_mem_w32_spec: `notl d(%rb,%idx)`.
+MachineWP.not_mem_w64_spec: `notq d(%rb,%idx)`.
+MachineWP.dec_reg_w8_spec: `decb %r`.
+MachineWP.dec_reg_w16_spec: `decw %r`.
+MachineWP.dec_reg_w32_spec: `decl %r`.
+MachineWP.dec_reg_w64_spec: `decq %r`.
+MachineWP.dec_mem_w8_spec: `decb d(%rb,%idx)`.
+MachineWP.dec_mem_w16_spec: `decw d(%rb,%idx)`.
+MachineWP.dec_mem_w32_spec: `decl d(%rb,%idx)`.
+MachineWP.dec_mem_w64_spec: `decq d(%rb,%idx)`.
+MachineWP.mov_reg_reg_w8_spec: `movb %rs, %rd`: the low bits replaced.
+MachineWP.mov_reg_reg_w16_spec: `movw %rs, %rd`: the low bits replaced.
+MachineWP.mov_reg_imm_w8_spec: `movb $i, %r`: the low bits replaced.
+MachineWP.mov_reg_imm_w16_spec: `movw $i, %r`: the low bits replaced.
+MachineWP.mov_load_mem_w8_spec: `movb d(%rb,%idx), %r`.
+MachineWP.mov_load_mem_w16_spec: `movw d(%rb,%idx), %r`.
+MachineWP.mov_store_mem_w8_spec: `movb %r, d(%rb,%idx)`.
+MachineWP.mov_store_mem_w16_spec: `movw %r, d(%rb,%idx)`.
+MachineWP.mov_store_mem_w64_spec: `movq %r, d(%rb,%idx)`.
+MachineWP.mov_mem_imm_w8_spec: `movb $i, d(%rb,%idx)`: the immediate truncated.
+MachineWP.mov_mem_imm_w16_spec: `movw $i, d(%rb,%idx)`: the immediate truncated.
+MachineWP.mov_mem_imm_w32_spec: `movl $i, d(%rb,%idx)`: the immediate truncated.
+MachineWP.mov_mem_imm_w64_spec: `movq $i, d(%rb,%idx)`: the immediate truncated.
+MachineWP.movzx_reg_reg_w32_8_spec: `movzx` from `%rs` (8 bits) into `%rd` (32 bits), zero-extended.
+MachineWP.movzx_load_mem_w32_8_spec: `movzx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (32 bits), zero-extended.
+MachineWP.movzx_reg_reg_w32_16_spec: `movzx` from `%rs` (16 bits) into `%rd` (32 bits), zero-extended.
+MachineWP.movzx_load_mem_w32_16_spec: `movzx` from the 2 bytes at `d(%rb,%idx)` into `%rd` (32 bits), zero-extended.
+MachineWP.movzx_reg_reg_w64_8_spec: `movzx` from `%rs` (8 bits) into `%rd` (64 bits), zero-extended.
+MachineWP.movzx_load_mem_w64_8_spec: `movzx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (64 bits), zero-extended.
+MachineWP.movzx_reg_reg_w64_16_spec: `movzx` from `%rs` (16 bits) into `%rd` (64 bits), zero-extended.
+MachineWP.movzx_load_mem_w64_16_spec: `movzx` from the 2 bytes at `d(%rb,%idx)` into `%rd` (64 bits), zero-extended.
+MachineWP.movzx_reg_reg_w16_8_spec: `movzx` from `%rs` (8 bits) into `%rd` (16 bits), zero-extended.
+MachineWP.movzx_load_mem_w16_8_spec: `movzx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (16 bits), zero-extended.
+MachineWP.movsx_reg_reg_w32_8_spec: `movsx` from `%rs` (8 bits) into `%rd` (32 bits), sign-extended.
+MachineWP.movsx_load_mem_w32_8_spec: `movsx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (32 bits), sign-extended.
+MachineWP.movsx_reg_reg_w32_16_spec: `movsx` from `%rs` (16 bits) into `%rd` (32 bits), sign-extended.
+MachineWP.movsx_load_mem_w32_16_spec: `movsx` from the 2 bytes at `d(%rb,%idx)` into `%rd` (32 bits), sign-extended.
+MachineWP.movsx_reg_reg_w64_8_spec: `movsx` from `%rs` (8 bits) into `%rd` (64 bits), sign-extended.
+MachineWP.movsx_load_mem_w64_8_spec: `movsx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (64 bits), sign-extended.
+MachineWP.movsx_reg_reg_w64_16_spec: `movsx` from `%rs` (16 bits) into `%rd` (64 bits), sign-extended.
+MachineWP.movsx_load_mem_w64_16_spec: `movsx` from the 2 bytes at `d(%rb,%idx)` into `%rd` (64 bits), sign-extended.
+MachineWP.movsx_reg_reg_w16_8_spec: `movsx` from `%rs` (8 bits) into `%rd` (16 bits), sign-extended.
+MachineWP.movsx_load_mem_w16_8_spec: `movsx` from the 1 bytes at `d(%rb,%idx)` into `%rd` (16 bits), sign-extended.
+MachineWP.movsx_reg_reg_w64_32_spec: `movsx` from `%rs` (32 bits) into `%rd` (64 bits), sign-extended.
+MachineWP.movsx_load_mem_w64_32_spec: `movsx` from the 4 bytes at `d(%rb,%idx)` into `%rd` (64 bits), sign-extended.
+MachineWP.cmovcc_reg_reg_w16_spec: `cmovccw %rs, %rd`: the destination is written either way (a 32-bit
+MachineWP.cmovcc_load_mem_w16_spec: `cmovccw d(%rb,%idx), %rd`: the bytes are read either way.
+MachineWP.cmovcc_reg_reg_w32_spec: `cmovccl %rs, %rd`: the destination is written either way (a 32-bit
+MachineWP.cmovcc_load_mem_w32_spec: `cmovccl d(%rb,%idx), %rd`: the bytes are read either way.
+MachineWP.cmovcc_reg_reg_w64_spec: `cmovccq %rs, %rd`: the destination is written either way (a 32-bit
+MachineWP.cmovcc_load_mem_w64_spec: `cmovccq d(%rb,%idx), %rd`: the bytes are read either way.
+MachineWP.setcc_reg_spec: `setcc %r8`: the low byte gets the condition as 0 or 1.
+MachineWP.setcc_mem_spec: `setcc d(%rb,%idx)`: the byte gets the condition as 0 or 1.
+MachineWP.imul_reg_reg_imm_w16_spec: `imulw $i, %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.imul_reg_reg_w16_spec: `imulw %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.imul_reg_reg_imm_w32_spec: `imull $i, %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.imul_reg_reg_w32_spec: `imull %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.imul_reg_reg_imm_w64_spec: `imulq $i, %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.imul_reg_reg_w64_spec: `imulq %rs, %rd`: the truncated product; `cf`/`of` say whether it
+MachineWP.lea_mem_w32_spec: `leal d(%rb,%idx), %r`: the address, truncated and zero-extended.
+MachineWP.lea_index_w32_spec: `leal d(,%i,c), %r` (no base, 64-bit address size): the index times the
+MachineWP.lea_mem_w64_spec: `leaq d(%rb,%idx), %r`: the address.
+MachineWP.lea_index_w64_spec: `leaq d(,%i,c), %r` (no base, 64-bit address size): the index times the
+MachineWP.shl_reg_imm_w8_spec: `shlb $i, %r`: shifted left by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_imm_w16_spec: `shlw $i, %r`: shifted left by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_imm_w32_spec: `shll $i, %r`: shifted left by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_imm_w64_spec: `shlq $i, %r`: shifted left by the immediate mod 64; `zf`, `sf`, `pf`
+MachineWP.shl_reg_cl_w8_spec: `shlb %cl, %r`: shifted left by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_cl_w16_spec: `shlw %cl, %r`: shifted left by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_cl_w32_spec: `shll %cl, %r`: shifted left by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shl_reg_cl_w64_spec: `shlq %cl, %r`: shifted left by `%cl` mod 64; `zf`, `sf`, `pf`
+MachineWP.shr_reg_imm_w8_spec: `shrb $i, %r`: shifted right logically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_imm_w16_spec: `shrw $i, %r`: shifted right logically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_imm_w32_spec: `shrl $i, %r`: shifted right logically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_imm_w64_spec: `shrq $i, %r`: shifted right logically by the immediate mod 64; `zf`, `sf`, `pf`
+MachineWP.shr_reg_cl_w8_spec: `shrb %cl, %r`: shifted right logically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_cl_w16_spec: `shrw %cl, %r`: shifted right logically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_cl_w32_spec: `shrl %cl, %r`: shifted right logically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.shr_reg_cl_w64_spec: `shrq %cl, %r`: shifted right logically by `%cl` mod 64; `zf`, `sf`, `pf`
+MachineWP.sar_reg_imm_w8_spec: `sarb $i, %r`: shifted right arithmetically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_imm_w16_spec: `sarw $i, %r`: shifted right arithmetically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_imm_w32_spec: `sarl $i, %r`: shifted right arithmetically by the immediate mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_imm_w64_spec: `sarq $i, %r`: shifted right arithmetically by the immediate mod 64; `zf`, `sf`, `pf`
+MachineWP.sar_reg_cl_w8_spec: `sarb %cl, %r`: shifted right arithmetically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_cl_w16_spec: `sarw %cl, %r`: shifted right arithmetically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_cl_w32_spec: `sarl %cl, %r`: shifted right arithmetically by `%cl` mod 32; `zf`, `sf`, `pf`
+MachineWP.sar_reg_cl_w64_spec: `sarq %cl, %r`: shifted right arithmetically by `%cl` mod 64; `zf`, `sf`, `pf`
+MachineWP.shl_reg_cl_w8_spec': `shlb %cl, %r`, flags forgotten, `shlCl8`
+MachineWP.shl_reg_cl_w16_spec': `shlw %cl, %r`, flags forgotten, `shlCl16`
+MachineWP.shl_reg_cl_w32_spec': `shll %cl, %r`, flags forgotten, `shlCl32`
+MachineWP.shl_reg_cl_w64_spec': `shlq %cl, %r`, flags forgotten, `shlCl64`
+MachineWP.shr_reg_cl_w8_spec': `shrb %cl, %r`, flags forgotten, `shrCl8`
+MachineWP.shr_reg_cl_w16_spec': `shrw %cl, %r`, flags forgotten, `shrCl16`
+MachineWP.shr_reg_cl_w32_spec': `shrl %cl, %r`, flags forgotten, `shrCl32`
+MachineWP.shr_reg_cl_w64_spec': `shrq %cl, %r`, flags forgotten, `shrCl64`
+MachineWP.sar_reg_cl_w8_spec': `sarb %cl, %r`, flags forgotten, `sarCl8`
+MachineWP.sar_reg_cl_w16_spec': `sarw %cl, %r`, flags forgotten, `sarCl16`
+MachineWP.sar_reg_cl_w32_spec': `sarl %cl, %r`, flags forgotten, `sarCl32`
+MachineWP.sar_reg_cl_w64_spec': `sarq %cl, %r`, flags forgotten, `sarCl64`

@@ -1,0 +1,8 @@
+Waiting for project build slot
+SbrClient/Host/Stores.lean:130:8: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp only [Std.ExtHashMap.sep_emp]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Build exit=0; peak system unavailable RAM=13.34 GB

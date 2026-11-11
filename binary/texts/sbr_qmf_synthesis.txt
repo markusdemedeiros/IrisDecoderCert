@@ -1,0 +1,316 @@
+sbr_qmf_synthesis:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 248 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e1:
+    mov rbx, r9 ;; aw=w64 ow=w64
+    mov r14, r8 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-280], rcx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-48], rdx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-64], rsi ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-56], rdi ;; aw=w64 ow=w64
+    lea rax, [rip+_GLOBAL_OFFSET_TABLE_] ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rbp+40] ;; aw=w64 ow=w32
+    mov rdx, (sbr_qmf_window_ds - _GLOBAL_OFFSET_TABLE_) ;; aw=w64 ow=w64
+    add rdx, rax ;; aw=w64 ow=w64
+    mov rsi, (sbr_qmf_window_us - _GLOBAL_OFFSET_TABLE_) ;; aw=w64 ow=w64
+    add rsi, rax ;; aw=w64 ow=w64
+    test ecx, ecx ;; aw=w64 ow=w32
+    cmovne rsi, rdx ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e2:
+    mov r13d, 128 ;; aw=w64 ow=w32
+    shr r13d, cl ;; aw=w64 ow=w32
+    mov eax, 1152 ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    mov edi, 2304 ;; aw=w64 ow=w32
+    sub edi, eax ;; aw=w64 ow=w32
+    shl eax, 2 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-96], rax ;; aw=w64 ow=w64
+    mov r8d, 64 ;; aw=w64 ow=w32
+    shr r8d, cl ;; aw=w64 ow=w32
+    mov r9d, 192 ;; aw=w64 ow=w32
+    shr r9d, cl ;; aw=w64 ow=w32
+    mov r10d, 256 ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    mov r11d, 448 ;; aw=w64 ow=w32
+    shr r11d, cl ;; aw=w64 ow=w32
+    mov r12d, 512 ;; aw=w64 ow=w32
+    shr r12d, cl ;; aw=w64 ow=w32
+sbr_qmf_synthesis.e3:
+    mov eax, 704 ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-216], rax ;; aw=w64 ow=w64
+    mov eax, 320 ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    lea rax, [rsi+rax*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-208], rax ;; aw=w64 ow=w64
+    mov eax, 768 ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-200], rax ;; aw=w64 ow=w64
+    mov eax, 384 ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    mov edx, 960 ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-192], rdx ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e4:
+    mov edx, 1024 ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-184], rdx ;; aw=w64 ow=w64
+    mov edx, 1216 ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-176], rdx ;; aw=w64 ow=w64
+    mov edx, 576 ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    lea rax, [rsi+rax*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-168], rax ;; aw=w64 ow=w64
+    lea rax, [rsi+rdx*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-160], rax ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e5:
+    mov rax, QWORD PTR [rbp+24] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+16] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-88], rdi ;; aw=w64 ow=w64
+    lea rax, [rax+rdi*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-80], rax ;; aw=w64 ow=w64
+    lea rax, [rcx+256] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-72], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-256], r8 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e6:
+    lea eax, [r8*4+0] ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-152], rax ;; aw=w64 ow=w64
+    lea rax, [rsi+rax*1+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-144], rax ;; aw=w64 ow=w64
+    lea rax, [rsi+r13*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-136], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-248], r9 ;; aw=w64 ow=w64
+    lea rax, [rsi+r9*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-128], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-240], r10 ;; aw=w64 ow=w64
+    lea rax, [rsi+r10*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-120], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-232], r11 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.e7:
+    lea rax, [rsi+r11*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-112], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-272], rsi ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-224], r12 ;; aw=w64 ow=w64
+    lea rax, [rsi+r12*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-104], rax ;; aw=w64 ow=w64
+    mov eax, 32 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-264], r13 ;; aw=w64 ow=w64
+    jmp sbr_qmf_synthesis.L9fd2 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.L9df0:
+    lea rdi, [rbx+9728] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    call QWORD PTR [rax+16] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.c1:
+    mov ecx, 4 ;; aw=w64 ow=w32
+    mov r12, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+16] ;; aw=w64 ow=w64
+    mov rdx, rbx ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    call r15 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.c2:
+    mov ecx, 4 ;; aw=w64 ow=w32
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov r12, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, r12 ;; aw=w64 ow=w64
+    lea rdx, [rbx+9728] ;; aw=w64 ow=w64
+    call r15 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.c3:
+    mov rdi, r13 ;; aw=w64 ow=w64
+    mov rsi, r12 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+16] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    call QWORD PTR [rax+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.L9e42:
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-272] ;; aw=w64 ow=w64
+    mov r12, QWORD PTR [rbp+-256] ;; aw=w64 ow=w64
+    mov ecx, r12d ;; aw=w64 ow=w32
+    mov r15, QWORD PTR [rbp+-280] ;; aw=w64 ow=w64
+    call QWORD PTR [r15+0] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f1:
+    mov rax, QWORD PTR [rbp+-248] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-144] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f2:
+    mov rax, QWORD PTR [rbp+-240] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-136] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f3:
+    mov rax, QWORD PTR [rbp+-232] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-128] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f4:
+    mov rax, QWORD PTR [rbp+-224] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f5:
+    mov rax, QWORD PTR [rbp+-216] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-208] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f6:
+    mov rax, QWORD PTR [rbp+-200] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-168] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f7:
+    mov rax, QWORD PTR [rbp+-192] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-112] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f8:
+    mov rax, QWORD PTR [rbp+-184] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-104] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.f9:
+    mov rax, QWORD PTR [rbp+-176] ;; aw=w64 ow=w64
+    lea rsi, [rax*4+0] ;; aw=w64 ow=w64
+    add rsi, r13 ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-160] ;; aw=w64 ow=w64
+    mov rcx, r14 ;; aw=w64 ow=w64
+    mov r8d, r12d ;; aw=w64 ow=w32
+    call QWORD PTR [r15+48] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.lend:
+    add rbx, 256 ;; aw=w64 ow=w64
+    add r14, QWORD PTR [rbp+-152] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-288] ;; aw=w64 ow=w64
+    dec rax ;; aw=w64 ow=w64
+    mov r13, QWORD PTR [rbp+-264] ;; aw=w64 ow=w64
+    je sbr_qmf_synthesis.La125 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.L9fd2:
+    mov QWORD PTR [rbp+-288], rax ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+32] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rax+0] ;; aw=w64 ow=w32
+    cmp eax, r13d ;; aw=w64 ow=w32
+    jge sbr_qmf_synthesis.L9ff9 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.mc:
+    mov rdi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+24] ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-96] ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_qmf_synthesis.mc1:
+    mov rax, QWORD PTR [rbp+-88] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.L9ff9:
+    sub eax, r13d ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rbp+32] ;; aw=w64 ow=w64
+    mov DWORD PTR [rcx+0], eax ;; aw=w64 ow=w32
+    cdqe ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+24] ;; aw=w64 ow=w64
+    lea r13, [rcx+rax*4+0] ;; aw=w64 ow=w64
+    cmp DWORD PTR [rbp+40], 0 ;; aw=w64 ow=w32
+    je sbr_qmf_synthesis.L9df0 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.ds:
+    vbroadcastss xmm1, DWORD PTR [rip+LCPI15_1] ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+0] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+0], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9840], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+128], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+16] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+16], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9824], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+144], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+32] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+32], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9808], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+160], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+48] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+48], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9792], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+176], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+64] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+64], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9776], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+192], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+80] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+80], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9760], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+208], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+96] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+96], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9744], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+224], xmm0 ;; aw=w64 ow=w128
+    vxorps xmm0, xmm1, XMMWORD PTR [rbx+112] ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+112], xmm0 ;; aw=w64 ow=w128
+    vpermilps xmm0, XMMWORD PTR [rbx+9728], 27 ;; aw=w64 ow=w128
+    vmovups XMMWORD PTR [rbx+240], xmm0 ;; aw=w64 ow=w128
+sbr_qmf_synthesis.ds1:
+    mov ecx, 4 ;; aw=w64 ow=w32
+    mov rdi, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov r12, QWORD PTR [rbp+16] ;; aw=w64 ow=w64
+    mov rsi, r12 ;; aw=w64 ow=w64
+    mov rdx, rbx ;; aw=w64 ow=w64
+    call QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.ds2:
+    mov rdi, r13 ;; aw=w64 ow=w64
+    mov rsi, r12 ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    call QWORD PTR [rax+40] ;; aw=w64 ow=w64
+sbr_qmf_synthesis.ds3:
+    jmp sbr_qmf_synthesis.L9e42 ;; aw=w64 ow=w64
+sbr_qmf_synthesis.La125:
+    add rsp, 248 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_qmf_synthesis.done:
+    ret ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

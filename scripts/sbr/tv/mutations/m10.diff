@@ -1,0 +1,11 @@
+--- a/ff_ps_read_data.txt
++++ b/ff_ps_read_data.txt
+@@ -193,7 +193,7 @@
+     cmp eax, 4294967291 ;; aw=w64 ow=w32
+     jb ff_ps_read_data.L179f ;; aw=w64 ow=w64
+     mov eax, ecx ;; aw=w64 ow=w32
+-    mov rcx, QWORD PTR [rip+ff_log2_tab_got] ;; aw=w64 ow=w64
++    mov rcx, QWORD PTR [rip+ff_log2_tab] ;; aw=w64 ow=w64
+     movzx ecx, BYTE PTR [rcx+rax*1+0] ;; aw=w64 ow=w32
+     mov edx, 1 ;; aw=w64 ow=w32
+     cmp r10b, 4 ;; aw=w64 ow=w8

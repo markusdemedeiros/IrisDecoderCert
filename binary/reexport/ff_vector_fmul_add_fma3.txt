@@ -1,0 +1,17 @@
+ff_vector_fmul_add_fma3:
+    lea r8, [r8d*4+-64] ;; aw=w32 ow=w64
+    .nops 7 ;; aw=w64 ow=w64
+ff_vector_fmul_add_fma3.loop:
+    vmovaps ymm0, YMMWORD PTR [rsi+r8*1+0] ;; aw=w64 ow=w256
+    vmovaps ymm1, YMMWORD PTR [rsi+r8*1+32] ;; aw=w64 ow=w256
+    vmovaps ymm2, YMMWORD PTR [rcx+r8*1+0] ;; aw=w64 ow=w256
+    vmovaps ymm3, YMMWORD PTR [rcx+r8*1+32] ;; aw=w64 ow=w256
+    vfmadd132ps ymm0, ymm2, YMMWORD PTR [rdx+r8*1+0] ;; aw=w64 ow=w256
+    vfmadd132ps ymm1, ymm3, YMMWORD PTR [rdx+r8*1+32] ;; aw=w64 ow=w256
+    vmovaps YMMWORD PTR [rdi+r8*1+0], ymm0 ;; aw=w64 ow=w256
+    vmovaps YMMWORD PTR [rdi+r8*1+32], ymm1 ;; aw=w64 ow=w256
+    sub r8, 64 ;; aw=w64 ow=w64
+    jge ff_vector_fmul_add_fma3.loop ;; aw=w64 ow=w64
+ff_vector_fmul_add_fma3.done:
+    vzeroupper ;; aw=w64 ow=w128
+    ret ;; aw=w64 ow=w64

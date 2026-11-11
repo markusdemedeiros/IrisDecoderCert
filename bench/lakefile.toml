@@ -1,0 +1,31 @@
+name = "krakenBench"
+version = "0.1.0"
+defaultTargets = ["Bench"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "Kraken"
+path = ".."
+
+# The `runBenchUsingTactic` harness: a recursive program of `n`, so a run
+# elaborates a fixed amount of source at any size and reports stepping, discharge
+# and kernel time separately.
+[[lean_lib]]
+name = "Driver"
+precompileModules = true
+srcDir = "lib"
+globs = ["Driver"]
+
+# One recursive family per module: add, dec, adc, multireg, mov.
+[[lean_lib]]
+name = "Cases"
+globs = ["Cases", "Cases.*"]
+
+# One openable benchmark per module; open a file to run its `#eval`.
+[[lean_lib]]
+name = "Bench"
+globs = ["add", "dec", "adc", "segadc", "multireg", "mov", "letspec"]
+moreLeanArgs = ["--tstack=102400"]

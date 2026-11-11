@@ -1,0 +1,44 @@
+theorem blk_L7044_1 (k : Nat) (hk : k ≤ 2 ^ 32) (e : Env) (hc : ApplyCallees k e)
+    (x : Args) (ra : Int64) (t₀ : MachineData) (hSt : applyNeed k ≤ (t₀.regs.get64 .rsp).toNat) :
+    BlockOb k e x ra t₀ "ff_aac_sbr_apply.L7044_1" ⟨"ff_aac_sbr_apply.L7044_1", B.L7044_1, some "ff_aac_sbr_apply.L7070"⟩ := by
+  clear hc
+  intro n
+  refine Triple.pin fun s₀ hs₀ => ?_
+  obtain ⟨hs, hn⟩ := hs₀
+  obtain ⟨hC, ⟨hrsp, hrbp⟩, h9, ch, nch, hch, hnch, hax, hm⟩ := T.L7044_1.mp hs
+  clear hs
+  have hw0 := dq_dwf (ch := 0) hC.1 (by decide)
+  have hw1 := dq_dwf (ch := 1) hC.1 (by decide)
+  simp only [Args.d, ite_true, ite_false, Nat.reduceEqDiff] at hw0 hw1
+  simp only [lex_var, hax] at hn
+  obtain rfl | rfl : ch = 0 ∨ ch = 1 := by omega
+  all_goals
+    simp only [Mm, ApplyF, TabW_push, FnW_push, AcW_push, OutW_push, DScW, FrDq, dA, sbrA, arg1, Nat.reduceMul, Nat.reduceAdd, BitVec.add_assoc,
+      BitVec.reduceAdd] at hm hax
+    dsimp only
+    simp only [B.L7044_1]
+    vcgen
+  all_goals try subst_vars
+  all_goals (revert hrbp h9 hax; dq_simp [] at *; intro hrbp h9 hax)
+  all_goals (have p1 : PLift _ := ⟨hrbp⟩; have p2 : PLift _ := ⟨h9⟩; have p3 : PLift _ := ⟨hax⟩)
+  all_goals try simp only [hrbp, h9, hax] at *
+  all_goals try dq_simp [Option.isSome_some] at *
+  all_goals try sep_vals hm
+  all_goals try simp only [BitVec.ofInt_ofBytes_toBytes 64 8 rfl, BitVec.add_assoc, BitVec.reduceAdd] at *
+  all_goals try sep_vals hm
+  all_goals try simp only [BitVec.ofInt_ofBytes_toBytes 64 8 rfl, BitVec.ofInt_ofBytes_toBytes_eq 32 4 rfl,
+    CondCode.interp, StatusFlags.from_result] at *
+  all_goals try sep_mem hm
+  all_goals try simp only [dq_z32, Nat.reducePow, decide_eq_true_eq, decide_eq_false_iff_not] at *
+  all_goals try (dq_has_str "ff_aac_sbr_apply.L71e0"; left; refine Table.ofLabels_at (l := "ff_aac_sbr_apply.L71e0") ?_; refine ⟨isSome_at L.L71e0, ?_, ?_⟩; rw [T.L71e0])
+  all_goals try (refine ⟨?_, ?_⟩; rw [T.L7070])
+  all_goals try simp only [lex_var]
+  all_goals try dq_simp [p1.down, p2.down, p3.down, BitVec.ofInt_ofBytes_toBytes 64 8 rfl, Args.d, ite_true, ite_false, BitVec.toNat_ofNat, Nat.reduceMod]
+  all_goals try dq_lex2
+  all_goals try (refine ⟨hC, ⟨?_, ?_⟩, ?_, _, nch, hch, hnch, ?_, ?_⟩)
+  all_goals try (refine ⟨_, rfl, ?_, ?_, ?_, ?_, ?_⟩)
+  all_goals try (dq_simp [p1.down, p2.down, p3.down, Args.d, ite_true, ite_false, BitVec.toNat_ofNat, Nat.reduceMod, dA, sbrA, arg1, BitVec.ofInt_ofBytes_toBytes 64 8 rfl]; done)
+  all_goals try (dq_simp [p1.down, p2.down, p3.down, Args.d, ite_true, ite_false, BitVec.toNat_ofNat, Nat.reduceMod, dA, sbrA, arg1, BitVec.ofInt_ofBytes_toBytes 64 8 rfl]; omega)
+  all_goals try (simp only [Mm, ApplyF, TabW_push, FnW_push, AcW_push, OutW_push, DScW, FrDq, dA, sbrA, arg1, Nat.reduceMul, Nat.reduceAdd,
+      BitVec.add_assoc, BitVec.reduceAdd]; sep_close hm)
+  all_goals done

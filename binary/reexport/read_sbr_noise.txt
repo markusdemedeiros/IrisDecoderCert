@@ -1,0 +1,467 @@
+read_sbr_noise:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 40 ;; aw=w64 ow=w64
+read_sbr_noise.L6111:
+    mov r9, rcx ;; aw=w64 ow=w64
+    test r8d, r8d ;; aw=w64 ow=w32
+    setne cl ;; aw=w64 ow=w8
+    mov eax, DWORD PTR [rsi+60] ;; aw=w64 ow=w32
+    cmp eax, 1 ;; aw=w64 ow=w32
+    sete r11b ;; aw=w64 ow=w8
+    test eax, eax ;; aw=w64 ow=w32
+    setne r10b ;; aw=w64 ow=w8
+    xor eax, eax ;; aw=w64 ow=w32
+    cmp DWORD PTR [r9+24], 0 ;; aw=w64 ow=w32
+    mov r8d, 0 ;; aw=w64 ow=w32
+    je read_sbr_noise.L6694 ;; aw=w64 ow=w64
+read_sbr_noise.L613d:
+    mov QWORD PTR [rbp+-64], rdi ;; aw=w64 ow=w64
+    and r11b, cl ;; aw=w64 ow=w8
+    and r10b, cl ;; aw=w64 ow=w8
+    lea rax, [rip+ff_aac_sbr_vlc] ;; aw=w64 ow=w64
+    movzx ecx, r10b ;; aw=w64 ow=w32
+    mov rdi, QWORD PTR [rax+rcx*8+64] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-56], rdi ;; aw=w64 ow=w64
+read_sbr_noise.L615b:
+    shl ecx, 4 ;; aw=w64 ow=w32
+    mov r15, QWORD PTR [rcx+rax*1+40] ;; aw=w64 ow=w64
+    lea rax, [r9+88656] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-72], rax ;; aw=w64 ow=w64
+    mov BYTE PTR [rbp+-41], r11b ;; aw=w64 ow=w8
+read_sbr_noise.L6172:
+    movzx eax, r11b ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-48], eax ;; aw=w64 ow=w32
+    lea r13, [r9+88662] ;; aw=w64 ow=w64
+    xor r12d, r12d ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-80], r9 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+read_sbr_noise.L6190:
+    cmp BYTE PTR [r9+r12*1+37], 0 ;; aw=w64 ow=w8
+    je read_sbr_noise.L64f0 ;; aw=w64 ow=w64
+    cmp DWORD PTR [rsi+311784], 0 ;; aw=w64 ow=w32
+    je read_sbr_noise.L6640 ;; aw=w64 ow=w64
+read_sbr_noise.L61a9:
+    lea rbx, [r12+r12*4+0] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    movzx edi, BYTE PTR [rax+rbx*1+0] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L61d7:
+    mov ecx, r9d ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [r14+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L6224 ;; aw=w64 ow=w64
+read_sbr_noise.L61ee:
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r9d, r9w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L6210:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    add r10d, r9d ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [r14+r10*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+r10*4+2] ;; aw=w64 ow=w32
+read_sbr_noise.L6224:
+    add eax, r11d ;; aw=w64 ow=w32
+    add rbx, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    add dil, r9b ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+5], dil ;; aw=w64 ow=w8
+    cmp dil, 31 ;; aw=w64 ow=w8
+    jae read_sbr_noise.L66c9 ;; aw=w64 ow=w64
+read_sbr_noise.L624c:
+    cmp DWORD PTR [rsi+311784], 2 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    movzx edi, BYTE PTR [rbx+1] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L627f:
+    mov ecx, r9d ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [r14+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L62cc ;; aw=w64 ow=w64
+read_sbr_noise.L6296:
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r9d, r9w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L62b8:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    add r10d, r9d ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [r14+r10*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+r10*4+2] ;; aw=w64 ow=w32
+read_sbr_noise.L62cc:
+    add eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    add dil, r9b ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+6], dil ;; aw=w64 ow=w8
+    cmp dil, 30 ;; aw=w64 ow=w8
+    ja read_sbr_noise.L66c9 ;; aw=w64 ow=w64
+read_sbr_noise.L62f0:
+    cmp DWORD PTR [rsi+311784], 3 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    movzx edi, BYTE PTR [rbx+2] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L6323:
+    mov ecx, r9d ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [r14+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L6370 ;; aw=w64 ow=w64
+read_sbr_noise.L633a:
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r9d, r9w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L635c:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    add r10d, r9d ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [r14+r10*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+r10*4+2] ;; aw=w64 ow=w32
+read_sbr_noise.L6370:
+    add eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    add dil, r9b ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+7], dil ;; aw=w64 ow=w8
+    cmp dil, 30 ;; aw=w64 ow=w8
+    ja read_sbr_noise.L66c9 ;; aw=w64 ow=w64
+read_sbr_noise.L6394:
+    cmp DWORD PTR [rsi+311784], 4 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    movzx edi, BYTE PTR [rbx+3] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L63c7:
+    mov ecx, r9d ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [r14+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L6414 ;; aw=w64 ow=w64
+read_sbr_noise.L63de:
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r9d, r9w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L6400:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    add r10d, r9d ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [r14+r10*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+r10*4+2] ;; aw=w64 ow=w32
+read_sbr_noise.L6414:
+    add eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    add dil, r9b ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+8], dil ;; aw=w64 ow=w8
+    cmp dil, 30 ;; aw=w64 ow=w8
+    ja read_sbr_noise.L66c9 ;; aw=w64 ow=w64
+read_sbr_noise.L6438:
+    cmp DWORD PTR [rsi+311784], 5 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    movzx edi, BYTE PTR [rbx+4] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L646b:
+    mov ecx, r9d ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [r14+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L64b8 ;; aw=w64 ow=w64
+read_sbr_noise.L6482:
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r9d, r9w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r10+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L64a4:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr r10d, cl ;; aw=w64 ow=w32
+    add r10d, r9d ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [r14+r10*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r14+r10*4+2] ;; aw=w64 ow=w32
+read_sbr_noise.L64b8:
+    add eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    add dil, r9b ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+9], dil ;; aw=w64 ow=w8
+    cmp dil, 30 ;; aw=w64 ow=w8
+    ja read_sbr_noise.L66c9 ;; aw=w64 ow=w64
+read_sbr_noise.L64dc:
+    cmp DWORD PTR [rsi+311784], 6 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    jmp read_sbr_noise.L66d9 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+read_sbr_noise.L64f0:
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov r8d, eax ;; aw=w64 ow=w32
+    shr r8d, 3 ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rcx+r8*1+0] ;; aw=w64 ow=w32
+    bswap r8d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r8d, cl ;; aw=w64 ow=w32
+    shr r8d, 27 ;; aw=w64 ow=w32
+    add eax, 5 ;; aw=w64 ow=w32
+    cmp edi, eax ;; aw=w64 ow=w32
+    cmovb eax, edi ;; aw=w64 ow=w32
+read_sbr_noise.L651b:
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [rbp+-41] ;; aw=w64 ow=w32
+    shl r8d, cl ;; aw=w64 ow=w32
+    lea rax, [r12+r12*4+0] ;; aw=w64 ow=w64
+    mov BYTE PTR [r9+rax*1+88661], r8b ;; aw=w64 ow=w8
+    cmp DWORD PTR [rsi+311784], 2 ;; aw=w64 ow=w32
+    jb read_sbr_noise.L6640 ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+read_sbr_noise.L6540:
+    movzx r9d, BYTE PTR [r13+rdi*1+-1] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rdx+8] ;; aw=w64 ow=w32
+    mov r8d, DWORD PTR [rdx+16] ;; aw=w64 ow=w32
+    mov r14, QWORD PTR [rdx+0] ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [r14+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r10d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r10d, cl ;; aw=w64 ow=w32
+    shr r10d, 23 ;; aw=w64 ow=w32
+read_sbr_noise.L6568:
+    mov ecx, r10d ;; aw=w64 ow=w32
+    movzx r10d, WORD PTR [r15+rcx*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r15+rcx*4+2] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    jns read_sbr_noise.L65f0 ;; aw=w64 ow=w64
+read_sbr_noise.L657b:
+    movsx r10d, r10w ;; aw=w64 ow=w32
+    add eax, 9 ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov ebx, DWORD PTR [r14+rcx*1+0] ;; aw=w64 ow=w32
+    bswap ebx ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl ebx, cl ;; aw=w64 ow=w32
+read_sbr_noise.L659b:
+    mov ecx, r11d ;; aw=w64 ow=w32
+    shr ebx, cl ;; aw=w64 ow=w32
+    add ebx, r10d ;; aw=w64 ow=w32
+    movzx r10d, WORD PTR [r15+rbx*4+0] ;; aw=w64 ow=w32
+    movsx ebx, WORD PTR [r15+rbx*4+2] ;; aw=w64 ow=w32
+    test ebx, ebx ;; aw=w64 ow=w32
+    js read_sbr_noise.L65b7 ;; aw=w64 ow=w64
+    mov r11d, ebx ;; aw=w64 ow=w32
+    jmp read_sbr_noise.L65f0 ;; aw=w64 ow=w64
+read_sbr_noise.L65b7:
+    sub eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    movsx r10d, r10w ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r11d, DWORD PTR [r14+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r11d ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r11d, cl ;; aw=w64 ow=w32
+read_sbr_noise.L65d9:
+    mov ecx, ebx ;; aw=w64 ow=w32
+    shr r11d, cl ;; aw=w64 ow=w32
+    add r11d, r10d ;; aw=w64 ow=w32
+    movzx r10d, WORD PTR [r15+r11*4+0] ;; aw=w64 ow=w32
+    movsx r11d, WORD PTR [r15+r11*4+2] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+read_sbr_noise.L65f0:
+    add eax, r11d ;; aw=w64 ow=w32
+    cmp r8d, eax ;; aw=w64 ow=w32
+    cmovb eax, r8d ;; aw=w64 ow=w32
+    mov DWORD PTR [rdx+8], eax ;; aw=w64 ow=w32
+    cmp rdi, 4 ;; aw=w64 ow=w64
+    je read_sbr_noise.L66cf ;; aw=w64 ow=w64
+read_sbr_noise.L6607:
+    mov ecx, DWORD PTR [rbp+-48] ;; aw=w64 ow=w32
+    shl r10d, cl ;; aw=w64 ow=w32
+    add r9b, r10b ;; aw=w64 ow=w8
+    mov BYTE PTR [r13+rdi*1+0], r9b ;; aw=w64 ow=w8
+    cmp r9b, 31 ;; aw=w64 ow=w8
+    jae read_sbr_noise.L6663 ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rsi+311784] ;; aw=w64 ow=w32
+    lea rcx, [rdi+1] ;; aw=w64 ow=w64
+    add rdi, 2 ;; aw=w64 ow=w64
+    cmp rdi, rax ;; aw=w64 ow=w64
+    mov rdi, rcx ;; aw=w64 ow=w64
+    jb read_sbr_noise.L6540 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+read_sbr_noise.L6640:
+    inc r12 ;; aw=w64 ow=w64
+    mov r9, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    mov r8d, DWORD PTR [r9+24] ;; aw=w64 ow=w32
+    cmp r12, r8 ;; aw=w64 ow=w64
+    jae read_sbr_noise.L6689 ;; aw=w64 ow=w64
+    add r13, 5 ;; aw=w64 ow=w64
+    cmp r12, 2 ;; aw=w64 ow=w64
+    jne read_sbr_noise.L6190 ;; aw=w64 ow=w64
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+read_sbr_noise.L6663:
+    movzx ecx, r9b ;; aw=w64 ow=w32
+read_sbr_noise.L6667:
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rax+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_31] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+    mov eax, 3199971767 ;; aw=w64 ow=w32
+    jmp read_sbr_noise.L66ba ;; aw=w64 ow=w64
+read_sbr_noise.L6689:
+    cmp r8d, 4 ;; aw=w64 ow=w32
+    mov eax, 0 ;; aw=w64 ow=w32
+    jae read_sbr_noise.L66d4 ;; aw=w64 ow=w64
+read_sbr_noise.L6694:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    lea rdx, [rcx+rcx*4+0] ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r9+rdx*1+88660] ;; aw=w64 ow=w32
+    mov BYTE PTR [r9+88660], cl ;; aw=w64 ow=w8
+    mov ecx, DWORD PTR [r9+rdx*1+88656] ;; aw=w64 ow=w32
+    mov DWORD PTR [r9+88656], ecx ;; aw=w64 ow=w32
+read_sbr_noise.L66ba:
+    add rsp, 40 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+read_sbr_noise.done:
+    ret ;; aw=w64 ow=w64
+read_sbr_noise.L66c9:
+    movzx ecx, dil ;; aw=w64 ow=w32
+    jmp read_sbr_noise.L6667 ;; aw=w64 ow=w64
+read_sbr_noise.L66cf:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+read_sbr_noise.L66d4:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+read_sbr_noise.L66d9:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

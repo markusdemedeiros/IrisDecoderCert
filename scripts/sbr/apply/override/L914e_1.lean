@@ -1,0 +1,50 @@
+theorem blk_L914e_1 (k : Nat) (hk : k ≤ 2 ^ 32) (e : Env) (hc : ApplyCallees k e)
+    (x : Args) (ra : Int64) (t₀ : MachineData) (hSt : applyNeed k ≤ (t₀.regs.get64 .rsp).toNat) :
+    BlockOb k e x ra t₀ "ff_aac_sbr_apply.L914e_1" ⟨"ff_aac_sbr_apply.L914e_1", B.L914e_1, some "ff_aac_sbr_apply.L914e_2"⟩ := by
+  clear hc
+  intro n
+  refine Triple.pin fun s₀ hs₀ => ?_
+  obtain ⟨hs, hn⟩ := hs₀
+  obtain ⟨hC, ⟨hrsp, hrbp⟩, y, ch, c0, hK, hCy, hc0, hst, hch, hrbx, hnl1, hm⟩ := T.L914e_1.mp hs
+  obtain ⟨hnl, hk1, hm1, hlg, hne, hne1, hfl, hlim, hlimm, hyp⟩ := ga_facts hCy hst ch (hK.2.live hst)
+  simp only [Mm, ApplyF, TabW, ScW, FrX, FrGa1, sbrA, arg1, BitVec.add_assoc, BitVec.reduceAdd] at hm
+  dsimp only
+  simp only [B.L914e_1]
+  have z : ∀ a : BitVec 64, a + 0 = a := fun a => BitVec.add_zero a
+  have l1 : some (Int.ofBytes (Int.toBytes 8 (t₀.regs.get64 Reg64.rsi).toInt)) = loadInt s₀.dmem (t₀.regs.get64 Reg64.rsp - 64#64) 8 := by
+    sep_mem hm; rfl
+  have l2 : some (Int.ofBytes (Int.toBytes 4 (y.kx1 : Int))) = loadInt s₀.dmem (t₀.regs.get64 Reg64.rsi + 166264#64) 4 := by
+    sep_mem hm; rfl
+  have hL0b : u16 y.ftLim 0 < 2 ^ 15 := by have := hlim 0 (by omega); omega
+  have l3 : some ((u16 y.ftLim 0 : Nat) : Int) = loadInt s₀.dmem (t₀.regs.get64 Reg64.rsi + 478226#64) 2 := by
+    sep_mem hm
+    all_goals simp only [BitVec.sub_self, BitVec.toNat_zero, Nat.zero_add, hfl, Nat.reducePow, List.drop_zero]
+    all_goals first | omega | (have := ga_u16 y.ftLim 0 (by omega); simp only [Nat.mul_zero, List.drop_zero] at this; rw [this])
+  generalize hL0 : u16 y.ftLim 0 = L0 at l3 hL0b ⊢
+  vcgen
+  all_goals try subst_vars
+  all_goals try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, AddrIndex.offset64_none, Int64.toBitVec_neg_ofNat_norm, Int64.toBitVec_ofNat_norm, z, hrsp, hrbp, hrbx, BitVec.ofInt64_ofBytes_toBytes8, BitVec.ofInt_toInt, arg1, BitVec.add_assoc, BitVec.reduceAdd]
+  all_goals try simp only [ga_fr, BitVec.reduceSub, BitVec.reduceAdd, Nat.reducePow, Nat.reduceSub, Nat.reduceMod, Nat.reduceAdd]
+  all_goals try (dq_revert_loads; (try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, AddrIndex.offset64_none, Int64.toBitVec_neg_ofNat_norm, Int64.toBitVec_ofNat_norm, z, hrsp, hrbp, hrbx, BitVec.ofInt64_ofBytes_toBytes8, BitVec.ofInt_toInt, arg1, BitVec.add_assoc, BitVec.reduceAdd]); (try simp only [ga_fr, BitVec.reduceSub, BitVec.reduceAdd, Nat.reducePow, Nat.reduceSub, Nat.reduceMod, Nat.reduceAdd]); simp only [← l1, ← l2, ← l3, Option.some.injEq]; intros; (try simp only [Option.some.injEq] at *); subst_vars)
+  all_goals try (dq_revert_loads; (try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, AddrIndex.offset64_none, Int64.toBitVec_neg_ofNat_norm, Int64.toBitVec_ofNat_norm, z, hrsp, hrbp, hrbx, BitVec.ofInt64_ofBytes_toBytes8, BitVec.ofInt_toInt, arg1, BitVec.add_assoc, BitVec.reduceAdd]); (try simp only [ga_fr, BitVec.reduceSub, BitVec.reduceAdd, Nat.reducePow, Nat.reduceSub, Nat.reduceMod, Nat.reduceAdd]); simp only [← l1, ← l2, ← l3, Option.some.injEq]; intros; (try simp only [Option.some.injEq] at *); subst_vars)
+  all_goals try (dq_revert_loads; (try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, AddrIndex.offset64_none, Int64.toBitVec_neg_ofNat_norm, Int64.toBitVec_ofNat_norm, z, hrsp, hrbp, hrbx, BitVec.ofInt64_ofBytes_toBytes8, BitVec.ofInt_toInt, arg1, BitVec.add_assoc, BitVec.reduceAdd]); (try simp only [ga_fr, BitVec.reduceSub, BitVec.reduceAdd, Nat.reducePow, Nat.reduceSub, Nat.reduceMod, Nat.reduceAdd]); simp only [← l1, ← l2, ← l3, Option.some.injEq]; intros; (try simp only [Option.some.injEq] at *); subst_vars)
+  all_goals try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, AddrIndex.offset64_none, Int64.toBitVec_neg_ofNat_norm, Int64.toBitVec_ofNat_norm, z, hrsp, hrbp, hrbx, BitVec.ofInt64_ofBytes_toBytes8, BitVec.ofInt_toInt, arg1, BitVec.add_assoc, BitVec.reduceAdd]
+  all_goals try simp only [ga_c4 _ (show y.kx1 < 2 ^ 32 by omega)]
+  all_goals try (sep_mem hm; done)
+  all_goals try simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, ga_c4 _ (show y.kx1 < 2 ^ 32 by omega),
+    CondCode.interp_z, CondCode.interp_nz, StatusFlags.zf_from_result, dq_zf, BitVec.and_self,
+    BitVec.toNat_ofNat, decide_eq_true_eq, decide_eq_false_iff_not, Bool.not_eq_true', Nat.reducePow] at *
+  all_goals try (exfalso; omega)
+  all_goals try (simp only [Nat.mod_eq_of_lt (show y.nlim < 2 ^ 64 by omega)] at *)
+  all_goals try (simp only [Option.isSome_some]; done)
+  all_goals try simp only [ga_w16 _ hL0b]
+  all_goals try (refine ⟨?_, ?_⟩; rw [T.L914e_2])
+  all_goals try edge_step
+  all_goals try (simp only [lex_var, slot64, Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, hrbp, BitVec.sub_sub_ofNat, Nat.reduceAdd]; simp (disch := omega) only [ga_ld_st])
+  all_goals try (left; ga_var)
+  all_goals try (right; constructor; ga_var; simp only [lex_var]; decide)
+  all_goals try var_step
+  all_goals try (refine ⟨hC, ⟨?_, ?_⟩, y, ch, c0, hK, hCy, hc0, hst, hch, ?_, hnl1, ?_, ?_, ?_⟩)
+  all_goals try (simp only [Reg64s.get64_set64, reduceCtorEq, ite_true, ite_false, hrbx, hrsp, hrbp, arg1]; done)
+  all_goals try ((try subst hL0); (try dsimp only); simp only [Mm, ApplyF, TabW, ScW, FrX, FrGa1, FrGa2, sbrA, arg1, BitVec.add_assoc, BitVec.reduceAdd]; (try sep_mem hm); all_goals sep_close hm)
+  all_goals ((try subst hL0); (try dsimp only); simp only [Mm, ApplyF, TabW, ScW, FrX, FrGa1, FrGa2, sbrA, arg1, BitVec.add_assoc, BitVec.reduceAdd]; (try sep_mem hm); all_goals sep_close hm)

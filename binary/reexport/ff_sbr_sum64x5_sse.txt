@@ -1,0 +1,22 @@
+ff_sbr_sum64x5_sse:
+    lea rsi, [rdi+256] ;; aw=w64 ow=w64
+ff_sbr_sum64x5_sse.loop:
+    movaps xmm0, XMMWORD PTR [rdi+0] ;; aw=w64 ow=w128
+    movaps xmm2, XMMWORD PTR [rdi+16] ;; aw=w64 ow=w128
+    movaps xmm1, XMMWORD PTR [rdi+256] ;; aw=w64 ow=w128
+    movaps xmm3, XMMWORD PTR [rdi+272] ;; aw=w64 ow=w128
+    addps xmm0, XMMWORD PTR [rdi+512] ;; aw=w64 ow=w128
+    addps xmm2, XMMWORD PTR [rdi+528] ;; aw=w64 ow=w128
+    addps xmm1, XMMWORD PTR [rdi+768] ;; aw=w64 ow=w128
+    addps xmm3, XMMWORD PTR [rdi+784] ;; aw=w64 ow=w128
+    addps xmm0, XMMWORD PTR [rdi+1024] ;; aw=w64 ow=w128
+    addps xmm2, XMMWORD PTR [rdi+1040] ;; aw=w64 ow=w128
+    addps xmm0, xmm1 ;; aw=w64 ow=w128
+    addps xmm2, xmm3 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+0], xmm0 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+16], xmm2 ;; aw=w64 ow=w128
+    add rdi, 32 ;; aw=w64 ow=w64
+    cmp rdi, rsi ;; aw=w64 ow=w64
+    jne ff_sbr_sum64x5_sse.loop ;; aw=w64 ow=w64
+ff_sbr_sum64x5_sse.done:
+    ret ;; aw=w64 ow=w64

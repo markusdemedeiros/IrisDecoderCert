@@ -1,0 +1,79 @@
+{
+  "status": "verified_compositional_client_with_inherited_library_contracts",
+  "main_theorems": [
+    "SbrClient.SbrAPI.wp_verifiedReadyService",
+    "SbrClient.SbrAPI.cwp_verifiedReadyService"
+  ],
+  "main_file": "SbrClient/Client/VerifiedReadyService.lean",
+  "program_file": "SbrClient/Client/ReadyService.lean",
+  "client": "Two forked workers each make rounds+1 native SBR apply calls. A consumer claims each publication and reads both 8192-byte output buffers. It keeps the final buffer claim and takes the decoder lock to return resources to its caller.",
+  "postcondition": [
+    "Exact XOR checksum of the two returned owned byte maps",
+    "Exclusive decoder, ABI/stack, AcFields, and caller Rc ownership",
+    "Both output buffer ownerships",
+    "Both exclusive protocol tokens and persistent lock/mailbox handles",
+    "Arbitrary unrelated caller frame preserved"
+  ],
+  "iris_reasoning": [
+    "Atomic CAS/store lock invariant",
+    "Free/busy/ready mailbox invariant and ownership transfer",
+    "Forked workers and separation of decoder/output resources",
+    "Byte-by-byte spatial reasoning for the checksum",
+    "Final ownership handoff to caller"
+  ],
+  "proof_reuse": {
+    "repository": "https://github.com/zrlk/kraken",
+    "commit": "b60a6f97373dbb537d0576fd40b8b7c2520b4de3",
+    "dependency_modules": 165,
+    "dependency_source_lines": 141354,
+    "public_provider": "SbrClient.SbrAPI.verifiedCalls",
+    "upstream_execution_theorems": [
+      "Kraken.Examples.Sbr.SessionBin.session_apply",
+      "Kraken.Examples.Sbr.SessionBin.session_config"
+    ],
+    "compatibility_change": "allSome helper renamed to krakenAllSome in 3 source files; all other upstream dependency sources match pinned commit",
+    "wrapper_identity_check": "scripts/extract-public-calls.py"
+  },
+  "certificate_chain": [
+    "FFmpeg/Calls.lean: wp_apply_owned/wp_apply obtains the original Eventually native execution proof",
+    "Host/Native.lean: wp_native_run invokes certificate_of_eventually",
+    "Host/Language.lean: wp_native_certificate lifts it to the host language",
+    "Logic/CertifiedWP.lean: wp_certificate invokes the built-in cwp_certificate branch",
+    "Machine/Frame.lean and Machine/Ownership.lean: instruction locality and genHeap ownership updates discharge the semantic/resource bridge"
+  ],
+  "validation": {
+    "file": "validation.json",
+    "local_modules": 35,
+    "audited_theorems": 40,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reproduce": "python3 tools/check-project"
+  },
+  "binary": {
+    "artifact": "binary/open-library/sbr.o",
+    "manifest": "binary/open-library/manifest.json",
+    "checks": "binary/open-library/validation.json",
+    "apply_cluster_routines": 26,
+    "apply_cluster_instruction_cells": 5267,
+    "scope": "Open relocatable assembly of the exported instruction texts; not the original FFmpeg executable or a closed linked image."
+  },
+  "retained_conditions": [
+    "Original SessPlaced, CodeEnv equality, empty-code return boundary, ABI/alignment/stack preconditions",
+    "Supplied Ready decoder ownership includes original EnvOK/SessionAssumed external-library contracts",
+    "No complete inhabited external environment supplied",
+    "Host controller is a mixed-language model; native instructions remain individual physical steps",
+    "No decoded-audio correctness or fairness/termination theorem",
+    "Main ready client does not invoke config_usac; older Live-to-config client retained separately"
+  ],
+  "source_layout": {
+    "Client": "Concurrent service, checksum result, public application theorems",
+    "FFmpeg": "SBR resources, ABI call setup, contracts and original-proof provider",
+    "Host": "Shared-memory host language, synchronization and generic native calls",
+    "Machine": "Kraken execution model, spatial locality and byte ownership",
+    "Logic": "Certificate-accepting WP and soundness",
+    "Audit": "Axiom audits"
+  }
+}

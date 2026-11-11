@@ -1,0 +1,8 @@
+'Kraken.Examples.Sbr.Real.rPlaced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.ff_aac_sbr_apply_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.rLab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.rCst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.real_hyps_sat_sce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.real_hyps_sat_ps' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.real_hyps_sat_cpe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Kraken.Examples.Sbr.Real.real_hyps_sat_a3' depends on axioms: [propext, Classical.choice, Quot.sound]

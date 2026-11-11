@@ -1,0 +1,19 @@
+ff_vector_fmul_reverse_avx2:
+    vmovaps ymm2, YMMWORD PTR [rip+pd_reverse] ;; aw=w64 ow=w256
+ff_vector_fmul_reverse_avx2.lea:
+    lea rcx, [ecx*4+-64] ;; aw=w32 ow=w64
+    .nops 8 ;; aw=w64 ow=w64
+    .nops 7 ;; aw=w64 ow=w64
+ff_vector_fmul_reverse_avx2.loop:
+    vpermps ymm0, ymm2, YMMWORD PTR [rdx+0] ;; aw=w64 ow=w256
+    vpermps ymm1, ymm2, YMMWORD PTR [rdx+32] ;; aw=w64 ow=w256
+    vmulps ymm0, ymm0, YMMWORD PTR [rsi+rcx*1+32] ;; aw=w64 ow=w256
+    vmulps ymm1, ymm1, YMMWORD PTR [rsi+rcx*1+0] ;; aw=w64 ow=w256
+    vmovaps YMMWORD PTR [rdi+rcx*1+32], ymm0 ;; aw=w64 ow=w256
+    vmovaps YMMWORD PTR [rdi+rcx*1+0], ymm1 ;; aw=w64 ow=w256
+    add rdx, 64 ;; aw=w64 ow=w64
+    sub rcx, 64 ;; aw=w64 ow=w64
+    jge ff_vector_fmul_reverse_avx2.loop ;; aw=w64 ow=w64
+ff_vector_fmul_reverse_avx2.done:
+    vzeroupper ;; aw=w64 ow=w128
+    ret ;; aw=w64 ow=w64

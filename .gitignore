@@ -1,0 +1,14 @@
+/.lake
+.vimsession
+# Build artifacts from test runs
+*.o
+asm-tests/test
+__pycache__/
+*.orig
+
+# Archived two-example experiment and local verification outputs.
+/attic.zip
+/.attic.zip.partial
+/.build.lock
+/.small-build.lock
+/build-audit.jsonl

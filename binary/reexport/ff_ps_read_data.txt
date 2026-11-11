@@ -1,0 +1,1747 @@
+ff_ps_read_data:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 120 ;; aw=w64 ow=w64
+ff_ps_read_data.L11:
+    mov DWORD PTR [rbp+-44], ecx ;; aw=w64 ow=w32
+    mov rbx, rdx ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov r13, QWORD PTR [rsi+0] ;; aw=w64 ow=w64
+    mov r12d, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov eax, ecx ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    movzx edx, BYTE PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+ff_ps_read_data.L2c:
+    xor eax, eax ;; aw=w64 ow=w32
+    cmp ecx, r12d ;; aw=w64 ow=w32
+    setl al ;; aw=w64 ow=w8
+    add eax, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-140], ecx ;; aw=w64 ow=w32
+ff_ps_read_data.L3c:
+    and cl, 7 ;; aw=w64 ow=w8
+    mov r8d, 128 ;; aw=w64 ow=w32
+    shr r8d, cl ;; aw=w64 ow=w32
+    and r8d, edx ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-136], r8d ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-152], rsi ;; aw=w64 ow=w64
+    je ff_ps_read_data.Lb6 ;; aw=w64 ow=w64
+ff_ps_read_data.L5b:
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    cmp eax, r12d ;; aw=w64 ow=w32
+    setl dl ;; aw=w64 ow=w8
+    add edx, eax ;; aw=w64 ow=w32
+    movzx r8d, BYTE PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+ff_ps_read_data.L70:
+    and al, 7 ;; aw=w64 ow=w8
+    mov ecx, eax ;; aw=w64 ow=w32
+    shl r8d, cl ;; aw=w64 ow=w32
+    shr r8d, 7 ;; aw=w64 ow=w32
+    and r8d, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+4], r8d ;; aw=w64 ow=w32
+    je ff_ps_read_data.Lf3 ;; aw=w64 ow=w64
+ff_ps_read_data.L85:
+    mov eax, edx ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, edx ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 29 ;; aw=w64 ow=w32
+    add edx, 3 ;; aw=w64 ow=w32
+    cmp r12d, edx ;; aw=w64 ow=w32
+    cmovb edx, r12d ;; aw=w64 ow=w32
+    cmp eax, 5 ;; aw=w64 ow=w32
+    jle ff_ps_read_data.Lbf ;; aw=w64 ow=w64
+ff_ps_read_data.Laa:
+    lea rdx, [rip+L_str] ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1464 ;; aw=w64 ow=w64
+ff_ps_read_data.Lb6:
+    mov QWORD PTR [rbp+-64], rdi ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L197 ;; aw=w64 ow=w64
+ff_ps_read_data.Lbf:
+    ja ff_ps_read_data.L17a9 ;; aw=w64 ow=w64
+    mov ecx, eax ;; aw=w64 ow=w32
+    lea r8, [rip+nr_iidicc_par_tab] ;; aw=w64 ow=w64
+    movsx r8d, BYTE PTR [rcx+r8*1+0] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+12], r8d ;; aw=w64 ow=w32
+ff_ps_read_data.Ld7:
+    xor r8d, r8d ;; aw=w64 ow=w32
+    cmp eax, 3 ;; aw=w64 ow=w32
+    setae r8b ;; aw=w64 ow=w8
+    mov DWORD PTR [rbx+8], r8d ;; aw=w64 ow=w32
+    lea rax, [rip+nr_iidopd_par_tab] ;; aw=w64 ow=w64
+    movsx eax, BYTE PTR [rcx+rax*1+0] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+16], eax ;; aw=w64 ow=w32
+ff_ps_read_data.Lf3:
+    mov eax, edx ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    xor r8d, r8d ;; aw=w64 ow=w32
+    cmp edx, r12d ;; aw=w64 ow=w32
+    setl r8b ;; aw=w64 ow=w8
+    add r8d, edx ;; aw=w64 ow=w32
+    movzx eax, BYTE PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+ff_ps_read_data.L10b:
+    and dl, 7 ;; aw=w64 ow=w8
+    mov ecx, edx ;; aw=w64 ow=w32
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 7 ;; aw=w64 ow=w32
+    and eax, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+20], eax ;; aw=w64 ow=w32
+    je ff_ps_read_data.L16a ;; aw=w64 ow=w64
+ff_ps_read_data.L11d:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 29 ;; aw=w64 ow=w32
+ff_ps_read_data.L135:
+    add r8d, 3 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+24], eax ;; aw=w64 ow=w32
+    cmp eax, 6 ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L154 ;; aw=w64 ow=w64
+ff_ps_read_data.L148:
+    lea rdx, [rip+L_str_1] ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1464 ;; aw=w64 ow=w64
+ff_ps_read_data.L154:
+    jae ff_ps_read_data.L17ae ;; aw=w64 ow=w64
+    mov eax, eax ;; aw=w64 ow=w32
+    lea rcx, [rip+nr_iidicc_par_tab] ;; aw=w64 ow=w64
+    movsx eax, BYTE PTR [rax+rcx*1+0] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+28], eax ;; aw=w64 ow=w32
+ff_ps_read_data.L16a:
+    mov QWORD PTR [rbp+-64], rdi ;; aw=w64 ow=w64
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    cmp r8d, r12d ;; aw=w64 ow=w32
+    setl al ;; aw=w64 ow=w8
+    add eax, r8d ;; aw=w64 ow=w32
+    movzx edx, BYTE PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+ff_ps_read_data.L185:
+    and r8b, 7 ;; aw=w64 ow=w8
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 7 ;; aw=w64 ow=w32
+    and edx, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+32], edx ;; aw=w64 ow=w32
+ff_ps_read_data.L197:
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    xor edi, edi ;; aw=w64 ow=w32
+    cmp eax, r12d ;; aw=w64 ow=w32
+    setl dil ;; aw=w64 ow=w8
+    lea edx, [rax+rdi*1+0] ;; aw=w64 ow=w32
+    movzx esi, BYTE PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+ff_ps_read_data.L1b0:
+    and cl, 7 ;; aw=w64 ow=w8
+    shl esi, cl ;; aw=w64 ow=w32
+    shr esi, 7 ;; aw=w64 ow=w32
+    and esi, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+36], esi ;; aw=w64 ow=w32
+ff_ps_read_data.L1be:
+    mov ecx, DWORD PTR [rbx+44] ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-104], rcx ;; aw=w64 ow=w64
+    mov DWORD PTR [rbx+40], ecx ;; aw=w64 ow=w32
+ff_ps_read_data.L1c8:
+    mov ecx, edx ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+    and dl, 7 ;; aw=w64 ow=w8
+    mov ecx, edx ;; aw=w64 ow=w32
+    shl r9d, cl ;; aw=w64 ow=w32
+    shr r9d, 30 ;; aw=w64 ow=w32
+ff_ps_read_data.L1e1:
+    lea r8d, [rax+rdi*1+0] ;; aw=w64 ow=w32
+    add r8d, 2 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp r9d, 4 ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L1795 ;; aw=w64 ow=w64
+ff_ps_read_data.L1fa:
+    mov eax, r9d ;; aw=w64 ow=w32
+    mov ecx, esi ;; aw=w64 ow=w32
+    lea rdx, [rip+num_env_tab] ;; aw=w64 ow=w64
+    lea rcx, [rdx+rcx*4+0] ;; aw=w64 ow=w64
+    movsx eax, BYTE PTR [rax+rcx*1+0] ;; aw=w64 ow=w32
+    movzx r10d, al ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-72], rax ;; aw=w64 ow=w64
+ff_ps_read_data.L216:
+    mov DWORD PTR [rbx+44], eax ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+52], 4294967295 ;; aw=w64 ow=w32
+    test esi, esi ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L26e ;; aw=w64 ow=w64
+    test r10b, r10b ;; aw=w64 ow=w8
+    jle ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L22d:
+    mov rcx, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    lea eax, [rcx+-6] ;; aw=w64 ow=w32
+    cmp eax, 4294967291 ;; aw=w64 ow=w32
+    jb ff_ps_read_data.L179f ;; aw=w64 ow=w64
+    mov eax, ecx ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rip+ff_log2_tab_got] ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [rcx+rax*1+0] ;; aw=w64 ow=w32
+    mov edx, 1 ;; aw=w64 ow=w32
+    cmp r10b, 4 ;; aw=w64 ow=w8
+    jb ff_ps_read_data.L6f5 ;; aw=w64 ow=w64
+ff_ps_read_data.L259:
+    vmovd xmm0, ecx ;; aw=w64 ow=w128
+    cmp BYTE PTR [rbp+-72], 16 ;; aw=w64 ow=w8
+    jae ff_ps_read_data.L3aa ;; aw=w64 ow=w64
+    xor eax, eax ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.L69c ;; aw=w64 ow=w64
+ff_ps_read_data.L26e:
+    test r10b, r10b ;; aw=w64 ow=w8
+    jle ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L277:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 27 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+56], edx ;; aw=w64 ow=w32
+    cmp edx, 4294967295 ;; aw=w64 ow=w32
+    jge ff_ps_read_data.L2b3 ;; aw=w64 ow=w64
+ff_ps_read_data.L297:
+    lea rdx, [rip+L_str_2] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1475 ;; aw=w64 ow=w64
+ff_ps_read_data.L2b3:
+    mov rax, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    inc eax ;; aw=w64 ow=w32
+    add r8d, 5 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp eax, 2 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L2cd:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov esi, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap esi ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl esi, cl ;; aw=w64 ow=w32
+    shr esi, 27 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+60], esi ;; aw=w64 ow=w32
+    cmp esi, edx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L297 ;; aw=w64 ow=w64
+ff_ps_read_data.L2ec:
+    add r8d, 5 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp eax, 3 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L300:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 27 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+64], edx ;; aw=w64 ow=w32
+    cmp edx, esi ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L297 ;; aw=w64 ow=w64
+ff_ps_read_data.L323:
+    add r8d, 5 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp eax, 4 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L337:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov esi, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap esi ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl esi, cl ;; aw=w64 ow=w32
+    shr esi, 27 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+68], esi ;; aw=w64 ow=w32
+    cmp esi, edx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L297 ;; aw=w64 ow=w64
+ff_ps_read_data.L35a:
+    add r8d, 5 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp eax, 5 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L36e:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 27 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+72], edx ;; aw=w64 ow=w32
+    cmp edx, esi ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L297 ;; aw=w64 ow=w64
+    add r8d, 5 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp eax, 6 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L3aa:
+    mov eax, r10d ;; aw=w64 ow=w32
+    vmovdqa xmm1, XMMWORD PTR [rip+LCPI0_0] ;; aw=w64 ow=w128
+    vpsrld xmm1, xmm1, xmm0 ;; aw=w64 ow=w128
+    and eax, 112 ;; aw=w64 ow=w32
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_1] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm2, xmm0 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_2] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm2, xmm0 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_3] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm2, xmm0 ;; aw=w64 ow=w128
+    vpcmpeqd xmm2, xmm2, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+56], xmm1 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+72], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+88], xmm4 ;; aw=w64 ow=w128
+    vpaddd xmm1, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+104], xmm1 ;; aw=w64 ow=w128
+    cmp rax, 16 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vpmovzxdq xmm1, xmm0 ;; aw=w64 ow=w128
+    vmovdqa xmm3, XMMWORD PTR [rip+LCPI0_4] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm3, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm4, XMMWORD PTR [rip+LCPI0_5] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm4, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm5, XMMWORD PTR [rip+LCPI0_6] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm5, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm6, XMMWORD PTR [rip+LCPI0_7] ;; aw=w64 ow=w128
+    vpsrld xmm6, xmm6, xmm1 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm5, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+120], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+136], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+152], xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm2, xmm6, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+168], xmm2 ;; aw=w64 ow=w128
+    cmp eax, 32 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_8] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_9] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_10] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_11] ;; aw=w64 ow=w128
+    vpsrld xmm6, xmm2, xmm1 ;; aw=w64 ow=w128
+    vpcmpeqd xmm2, xmm2, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm5, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+184], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+200], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+216], xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm6, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+232], xmm3 ;; aw=w64 ow=w128
+    cmp eax, 48 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vmovdqa xmm3, XMMWORD PTR [rip+LCPI0_12] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm3, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm4, XMMWORD PTR [rip+LCPI0_13] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm4, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm5, XMMWORD PTR [rip+LCPI0_14] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm5, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm6, XMMWORD PTR [rip+LCPI0_15] ;; aw=w64 ow=w128
+    vpsrld xmm6, xmm6, xmm1 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm5, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+248], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+264], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+280], xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm2, xmm6, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+296], xmm2 ;; aw=w64 ow=w128
+    cmp eax, 64 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_16] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_17] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_18] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_19] ;; aw=w64 ow=w128
+    vpsrld xmm6, xmm2, xmm1 ;; aw=w64 ow=w128
+    vpcmpeqd xmm2, xmm2, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm5, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+312], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+328], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+344], xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm6, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+360], xmm3 ;; aw=w64 ow=w128
+    cmp eax, 80 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vmovdqa xmm3, XMMWORD PTR [rip+LCPI0_20] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm3, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm4, XMMWORD PTR [rip+LCPI0_21] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm4, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm5, XMMWORD PTR [rip+LCPI0_22] ;; aw=w64 ow=w128
+    vpsrld xmm5, xmm5, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm6, XMMWORD PTR [rip+LCPI0_23] ;; aw=w64 ow=w128
+    vpsrld xmm6, xmm6, xmm1 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vpaddd xmm5, xmm5, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+376], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+392], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+408], xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm2, xmm6, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+424], xmm2 ;; aw=w64 ow=w128
+    cmp eax, 96 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L689 ;; aw=w64 ow=w64
+    vmovdqa xmm2, XMMWORD PTR [rip+LCPI0_24] ;; aw=w64 ow=w128
+    vpsrld xmm2, xmm2, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm3, XMMWORD PTR [rip+LCPI0_25] ;; aw=w64 ow=w128
+    vpsrld xmm3, xmm3, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm4, XMMWORD PTR [rip+LCPI0_26] ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm4, xmm1 ;; aw=w64 ow=w128
+    vmovdqa xmm5, XMMWORD PTR [rip+LCPI0_27] ;; aw=w64 ow=w128
+    vpsrld xmm1, xmm5, xmm1 ;; aw=w64 ow=w128
+    vpcmpeqd xmm5, xmm5, xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm2, xmm2, xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm3, xmm3, xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm5 ;; aw=w64 ow=w128
+    vpaddd xmm1, xmm1, xmm5 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+440], xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+456], xmm3 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+472], xmm4 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+488], xmm1 ;; aw=w64 ow=w128
+ff_ps_read_data.L689:
+    cmp eax, r10d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+    lea rdx, [rax+1] ;; aw=w64 ow=w64
+    test r10b, 12 ;; aw=w64 ow=w8
+    je ff_ps_read_data.L6f5 ;; aw=w64 ow=w64
+ff_ps_read_data.L69c:
+    mov esi, r10d ;; aw=w64 ow=w32
+    and esi, 124 ;; aw=w64 ow=w32
+    vmovd xmm1, edx ;; aw=w64 ow=w128
+    vpshufd xmm1, xmm1, 0 ;; aw=w64 ow=w128
+    vpaddd xmm1, xmm1, XMMWORD PTR [rip+LCPI0_28] ;; aw=w64 ow=w128
+    lea rdx, [rsi+1] ;; aw=w64 ow=w64
+    vpmovzxdq xmm0, xmm0 ;; aw=w64 ow=w128
+    vpcmpeqd xmm2, xmm2, xmm2 ;; aw=w64 ow=w128
+    vbroadcastss xmm3, DWORD PTR [rip+LCPI0_30] ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L6d0:
+    vpslld xmm4, xmm1, 5 ;; aw=w64 ow=w128
+    vpsrld xmm4, xmm4, xmm0 ;; aw=w64 ow=w128
+    vpaddd xmm4, xmm4, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [rbx+rax*4+56], xmm4 ;; aw=w64 ow=w128
+    add rax, 4 ;; aw=w64 ow=w64
+    vpaddd xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    cmp rsi, rax ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L6d0 ;; aw=w64 ow=w64
+    cmp esi, r10d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L715 ;; aw=w64 ow=w64
+ff_ps_read_data.L6f5:
+    lea rax, [r10+1] ;; aw=w64 ow=w64
+    mov esi, edx ;; aw=w64 ow=w32
+    shl esi, 5 ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L700:
+    mov edi, esi ;; aw=w64 ow=w32
+    shr edi, cl ;; aw=w64 ow=w32
+    dec edi ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+rdx*4+52], edi ;; aw=w64 ow=w32
+    inc rdx ;; aw=w64 ow=w64
+    add esi, 32 ;; aw=w64 ow=w32
+    cmp rax, rdx ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L700 ;; aw=w64 ow=w64
+ff_ps_read_data.L715:
+    mov eax, DWORD PTR [rbx+4] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-108], eax ;; aw=w64 ow=w32
+ff_ps_read_data.L71b:
+    test eax, eax ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-56], rbx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-96], r10 ;; aw=w64 ow=w64
+    je ff_ps_read_data.La1e ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    test al, al ;; aw=w64 ow=w8
+    jle ff_ps_read_data.La4c ;; aw=w64 ow=w64
+ff_ps_read_data.L737:
+    mov ecx, DWORD PTR [rbx+8] ;; aw=w64 ow=w32
+    lea r14, [rbx+76] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-80], rcx ;; aw=w64 ow=w64
+    lea r9d, [rcx*8+7] ;; aw=w64 ow=w32
+ff_ps_read_data.L74a:
+    mov eax, eax ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-120], rax ;; aw=w64 ow=w64
+    xor ebx, ebx ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-128], r14 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L775 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L760:
+    inc rbx ;; aw=w64 ow=w64
+    add r14, 34 ;; aw=w64 ow=w64
+    cmp rbx, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov r10, QWORD PTR [rbp+-96] ;; aw=w64 ow=w64
+    je ff_ps_read_data.La4c ;; aw=w64 ow=w64
+ff_ps_read_data.L775:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    cmp r8d, r12d ;; aw=w64 ow=w32
+    setl sil ;; aw=w64 ow=w8
+    movzx eax, BYTE PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 7 ;; aw=w64 ow=w32
+    and eax, 1 ;; aw=w64 ow=w32
+ff_ps_read_data.L798:
+    mov rcx, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    lea ecx, [rcx+rax*2+0] ;; aw=w64 ow=w32
+    cmp ecx, 4 ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L179a ;; aw=w64 ow=w64
+ff_ps_read_data.L7a8:
+    mov dl, sil ;; aw=w64 ow=w8
+    add r8d, edx ;; aw=w64 ow=w32
+    mov rdx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov r11d, DWORD PTR [rdx+12] ;; aw=w64 ow=w32
+    mov ecx, ecx ;; aw=w64 ow=w32
+    lea rdx, [rip+huff_iid] ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rdx+rcx*4+0] ;; aw=w64 ow=w32
+    lea rdx, [rip+vlc_ps] ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rdx+rcx*8+0] ;; aw=w64 ow=w64
+    test eax, eax ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L8d0 ;; aw=w64 ow=w64
+ff_ps_read_data.L7d5:
+    test r11d, r11d ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L760 ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L7e0:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 23 ;; aw=w64 ow=w32
+ff_ps_read_data.L7f8:
+    mov eax, eax ;; aw=w64 ow=w32
+    movsx esi, WORD PTR [r15+rax*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r15+rax*4+2] ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    jns ff_ps_read_data.L880 ;; aw=w64 ow=w64
+ff_ps_read_data.L809:
+    add r8d, 9 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+ff_ps_read_data.L829:
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    add edx, esi ;; aw=w64 ow=w32
+    movsx esi, WORD PTR [r15+rdx*4+0] ;; aw=w64 ow=w32
+    movsx edx, WORD PTR [r15+rdx*4+2] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    js ff_ps_read_data.L842 ;; aw=w64 ow=w64
+    mov eax, edx ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.L880 ;; aw=w64 ow=w64
+ff_ps_read_data.L842:
+    sub r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+ff_ps_read_data.L861:
+    mov ecx, edx ;; aw=w64 ow=w32
+    shr eax, cl ;; aw=w64 ow=w32
+    add eax, esi ;; aw=w64 ow=w32
+    movzx esi, WORD PTR [r15+rax*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r15+rax*4+2] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L880:
+    add r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp r10, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1777 ;; aw=w64 ow=w64
+    add edi, esi ;; aw=w64 ow=w32
+    mov BYTE PTR [r14+r10*1+0], dil ;; aw=w64 ow=w8
+    cmp rbx, 5 ;; aw=w64 ow=w64
+    jae ff_ps_read_data.L177c ;; aw=w64 ow=w64
+ff_ps_read_data.L8a4:
+    mov eax, edi ;; aw=w64 ow=w32
+    sar al, 7 ;; aw=w64 ow=w8
+    mov ecx, edi ;; aw=w64 ow=w32
+    xor cl, al ;; aw=w64 ow=w8
+    sub cl, al ;; aw=w64 ow=w8
+    movzx eax, cl ;; aw=w64 ow=w32
+    cmp r9d, eax ;; aw=w64 ow=w32
+    jl ff_ps_read_data.Lc7a ;; aw=w64 ow=w64
+ff_ps_read_data.L8bb:
+    inc r10 ;; aw=w64 ow=w64
+    cmp r11, r10 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L7e0 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L760 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L8d0:
+    test r11d, r11d ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L760 ;; aw=w64 ow=w64
+    test rbx, rbx ;; aw=w64 ow=w64
+    mov eax, ebx ;; aw=w64 ow=w32
+    cmove eax, DWORD PTR [rbp+-104] ;; aw=w64 ow=w32
+    cmp eax, 2 ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    cmovl eax, ecx ;; aw=w64 ow=w32
+ff_ps_read_data.L8ed:
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 5 ;; aw=w64 ow=w64
+    lea rdx, [rcx+rax*2+0] ;; aw=w64 ow=w64
+    add rdx, QWORD PTR [rbp+-128] ;; aw=w64 ow=w64
+    xor r10d, r10d ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-88], r14 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L910:
+    cmp r10, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L176d ;; aw=w64 ow=w64
+    movzx esi, BYTE PTR [rdx+r10*1+-34] ;; aw=w64 ow=w32
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 23 ;; aw=w64 ow=w32
+ff_ps_read_data.L938:
+    mov eax, eax ;; aw=w64 ow=w32
+    movzx ecx, WORD PTR [r15+rax*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r15+rax*4+2] ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    jns ff_ps_read_data.L9da ;; aw=w64 ow=w64
+ff_ps_read_data.L94d:
+    mov r14, rdx ;; aw=w64 ow=w64
+    mov rdi, r11 ;; aw=w64 ow=w64
+    mov r11d, r9d ;; aw=w64 ow=w32
+    movsx edx, cx ;; aw=w64 ow=w32
+    add r8d, 9 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+ff_ps_read_data.L96f:
+    bswap r9d ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr r9d, cl ;; aw=w64 ow=w32
+    add r9d, edx ;; aw=w64 ow=w32
+ff_ps_read_data.L983:
+    movzx ecx, WORD PTR [r15+r9*4+0] ;; aw=w64 ow=w32
+    movsx edx, WORD PTR [r15+r9*4+2] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    js ff_ps_read_data.L996 ;; aw=w64 ow=w64
+    mov eax, edx ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.L9cd ;; aw=w64 ow=w64
+ff_ps_read_data.L996:
+    sub r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    movsx eax, cx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov r9d, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap r9d ;; aw=w64 ow=w32
+ff_ps_read_data.L9b1:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl r9d, cl ;; aw=w64 ow=w32
+    mov ecx, edx ;; aw=w64 ow=w32
+    shr r9d, cl ;; aw=w64 ow=w32
+    add r9d, eax ;; aw=w64 ow=w32
+    movzx ecx, WORD PTR [r15+r9*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r15+r9*4+2] ;; aw=w64 ow=w32
+ff_ps_read_data.L9cd:
+    mov r9d, r11d ;; aw=w64 ow=w32
+    mov r11, rdi ;; aw=w64 ow=w64
+    mov rdx, r14 ;; aw=w64 ow=w64
+    mov r14, QWORD PTR [rbp+-88] ;; aw=w64 ow=w64
+ff_ps_read_data.L9da:
+    add r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    add sil, cl ;; aw=w64 ow=w8
+    mov BYTE PTR [r14+r10*1+0], sil ;; aw=w64 ow=w8
+    cmp rbx, 5 ;; aw=w64 ow=w64
+    jae ff_ps_read_data.L1772 ;; aw=w64 ow=w64
+ff_ps_read_data.L9f5:
+    mov eax, esi ;; aw=w64 ow=w32
+    sar al, 7 ;; aw=w64 ow=w8
+    xor sil, al ;; aw=w64 ow=w8
+    sub sil, al ;; aw=w64 ow=w8
+    movzx eax, sil ;; aw=w64 ow=w32
+    cmp r9d, eax ;; aw=w64 ow=w32
+    jl ff_ps_read_data.Lc7a ;; aw=w64 ow=w64
+    inc r10 ;; aw=w64 ow=w64
+    cmp r11, r10 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L910 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L760 ;; aw=w64 ow=w64
+ff_ps_read_data.La1e:
+    vpxor xmm0, xmm0, xmm0 ;; aw=w64 ow=w128
+    vmovdqu YMMWORD PTR [rbx+214], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+204], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.La32:
+    vmovdqu YMMWORD PTR [rbx+172], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+140], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.La42:
+    vmovdqu YMMWORD PTR [rbx+108], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+76], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.La4c:
+    mov rax, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rax+20] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-132], ecx ;; aw=w64 ow=w32
+    test ecx, ecx ;; aw=w64 ow=w32
+    je ff_ps_read_data.Lc86 ;; aw=w64 ow=w64
+    test r10b, r10b ;; aw=w64 ow=w8
+    jle ff_ps_read_data.Lcba ;; aw=w64 ow=w64
+ff_ps_read_data.La6a:
+    lea rbx, [rax+246] ;; aw=w64 ow=w64
+    mov esi, DWORD PTR [rax+28] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rbp+-72] ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-88], rax ;; aw=w64 ow=w64
+    xor r9d, r9d ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-80], rbx ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.Laa5 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.La90:
+    inc r9 ;; aw=w64 ow=w64
+    add rbx, 34 ;; aw=w64 ow=w64
+    cmp r9, QWORD PTR [rbp+-88] ;; aw=w64 ow=w64
+    mov r10, QWORD PTR [rbp+-96] ;; aw=w64 ow=w64
+    je ff_ps_read_data.Lcba ;; aw=w64 ow=w64
+ff_ps_read_data.Laa5:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    xor r8d, r8d ;; aw=w64 ow=w32
+    cmp ecx, r12d ;; aw=w64 ow=w32
+    setl r8b ;; aw=w64 ow=w8
+    add r8d, ecx ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    mov edx, 128 ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+ff_ps_read_data.Lac5:
+    movzx eax, BYTE PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    xor ecx, ecx ;; aw=w64 ow=w32
+    test edx, eax ;; aw=w64 ow=w32
+    sete cl ;; aw=w64 ow=w8
+    xor ecx, 5 ;; aw=w64 ow=w32
+    lea rdi, [rip+vlc_ps] ;; aw=w64 ow=w64
+    mov r14, QWORD PTR [rdi+rcx*8+0] ;; aw=w64 ow=w64
+    test edx, eax ;; aw=w64 ow=w32
+    je ff_ps_read_data.Lbc3 ;; aw=w64 ow=w64
+    test esi, esi ;; aw=w64 ow=w32
+    jle ff_ps_read_data.La90 ;; aw=w64 ow=w64
+ff_ps_read_data.Laec:
+    test r9, r9 ;; aw=w64 ow=w64
+    mov eax, r9d ;; aw=w64 ow=w32
+    cmove eax, DWORD PTR [rbp+-104] ;; aw=w64 ow=w32
+    cmp eax, 2 ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    cmovl eax, ecx ;; aw=w64 ow=w32
+ff_ps_read_data.Lb01:
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 5 ;; aw=w64 ow=w64
+    lea r15, [rcx+rax*2+0] ;; aw=w64 ow=w64
+    add r15, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    xor r11d, r11d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Lb20:
+    cmp r11, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1781 ;; aw=w64 ow=w64
+    movzx edx, BYTE PTR [r15+r11*1+-34] ;; aw=w64 ow=w32
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 23 ;; aw=w64 ow=w32
+ff_ps_read_data.Lb48:
+    mov eax, eax ;; aw=w64 ow=w32
+    movzx ecx, WORD PTR [r14+rax*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r14+rax*4+2] ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    jns ff_ps_read_data.Lb8f ;; aw=w64 ow=w64
+ff_ps_read_data.Lb59:
+    add r8d, 9 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    movsx r10d, cx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edi ;; aw=w64 ow=w32
+ff_ps_read_data.Lb75:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edi, cl ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr edi, cl ;; aw=w64 ow=w32
+    add edi, r10d ;; aw=w64 ow=w32
+    movzx ecx, WORD PTR [r14+rdi*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r14+rdi*4+2] ;; aw=w64 ow=w32
+ff_ps_read_data.Lb8f:
+    add r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    add dl, cl ;; aw=w64 ow=w8
+    mov BYTE PTR [rbx+r11*1+0], dl ;; aw=w64 ow=w8
+    cmp r9, 5 ;; aw=w64 ow=w64
+    jae ff_ps_read_data.L1786 ;; aw=w64 ow=w64
+ff_ps_read_data.Lba9:
+    cmp dl, 8 ;; aw=w64 ow=w8
+    jae ff_ps_read_data.L10cf ;; aw=w64 ow=w64
+    inc r11 ;; aw=w64 ow=w64
+    cmp rsi, r11 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.Lb20 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.La90 ;; aw=w64 ow=w64
+ff_ps_read_data.Lbc3:
+    test esi, esi ;; aw=w64 ow=w32
+    jle ff_ps_read_data.La90 ;; aw=w64 ow=w64
+    xor r15d, r15d ;; aw=w64 ow=w32
+    xor r11d, r11d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Lbe0:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap eax ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl eax, cl ;; aw=w64 ow=w32
+    shr eax, 23 ;; aw=w64 ow=w32
+ff_ps_read_data.Lbf8:
+    mov eax, eax ;; aw=w64 ow=w32
+    movsx edx, WORD PTR [r14+rax*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r14+rax*4+2] ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    jns ff_ps_read_data.Lc3a ;; aw=w64 ow=w64
+ff_ps_read_data.Lc09:
+    add r8d, 9 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edi ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edi, cl ;; aw=w64 ow=w32
+ff_ps_read_data.Lc29:
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr edi, cl ;; aw=w64 ow=w32
+    add edi, edx ;; aw=w64 ow=w32
+    movzx edx, WORD PTR [r14+rdi*4+0] ;; aw=w64 ow=w32
+    movsx eax, WORD PTR [r14+rdi*4+2] ;; aw=w64 ow=w32
+ff_ps_read_data.Lc3a:
+    add r8d, eax ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp r11, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1790 ;; aw=w64 ow=w64
+    add r15d, edx ;; aw=w64 ow=w32
+    mov BYTE PTR [rbx+r11*1+0], r15b ;; aw=w64 ow=w8
+    cmp r9, 5 ;; aw=w64 ow=w64
+    jae ff_ps_read_data.L178b ;; aw=w64 ow=w64
+ff_ps_read_data.Lc5f:
+    cmp r15b, 8 ;; aw=w64 ow=w8
+    jae ff_ps_read_data.L10cf ;; aw=w64 ow=w64
+    inc r11 ;; aw=w64 ow=w64
+    cmp rsi, r11 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.Lbe0 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.La90 ;; aw=w64 ow=w64
+ff_ps_read_data.Lc7a:
+    lea rdx, [rip+L_str_7] ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L10d6 ;; aw=w64 ow=w64
+ff_ps_read_data.Lc86:
+    vpxor xmm0, xmm0, xmm0 ;; aw=w64 ow=w128
+    vmovdqu YMMWORD PTR [rax+384], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rax+374], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.Lc9a:
+    vmovdqu YMMWORD PTR [rax+342], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rax+310], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.Lcaa:
+    vmovdqu YMMWORD PTR [rax+278], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rax+246], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.Lcba:
+    mov rbx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    cmp DWORD PTR [rbx+32], 0 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1063 ;; aw=w64 ow=w64
+ff_ps_read_data.Lcc8:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 28 ;; aw=w64 ow=w32
+ff_ps_read_data.Lce0:
+    add r8d, 4 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    cmp edx, 15 ;; aw=w64 ow=w32
+    jne ff_ps_read_data.Ld16 ;; aw=w64 ow=w64
+ff_ps_read_data.Lcf0:
+    mov eax, r8d ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 24 ;; aw=w64 ow=w32
+ff_ps_read_data.Ld08:
+    add r8d, 8 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    add edx, 15 ;; aw=w64 ow=w32
+ff_ps_read_data.Ld16:
+    lea eax, [rdx*8+0] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L104e ;; aw=w64 ow=w64
+ff_ps_read_data.Ld25:
+    lea rcx, [rbx+416] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-80], rcx ;; aw=w64 ow=w64
+    lea rcx, [rbx+586] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-120], rcx ;; aw=w64 ow=w64
+ff_ps_read_data.Ld3b:
+    mov ecx, DWORD PTR [rbp+-72] ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-88], rcx ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.Ld7b ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Ld50:
+    inc edx ;; aw=w64 ow=w32
+    cmp r12d, edx ;; aw=w64 ow=w32
+    cmovb edx, r12d ;; aw=w64 ow=w32
+    sub r8d, edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    add ecx, 4294967294 ;; aw=w64 ow=w32
+    mov r8d, edx ;; aw=w64 ow=w32
+    mov rbx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov r10, QWORD PTR [rbp+-96] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rbp+-128] ;; aw=w64 ow=w32
+ff_ps_read_data.Ld70:
+    add eax, ecx ;; aw=w64 ow=w32
+    cmp eax, 7 ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L104e ;; aw=w64 ow=w64
+ff_ps_read_data.Ld7b:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 30 ;; aw=w64 ow=w32
+ff_ps_read_data.Ld93:
+    add r8d, 2 ;; aw=w64 ow=w32
+    cmp r12d, r8d ;; aw=w64 ow=w32
+    cmovb r8d, r12d ;; aw=w64 ow=w32
+    mov ecx, 4294967294 ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    jne ff_ps_read_data.Ld70 ;; aw=w64 ow=w64
+ff_ps_read_data.Lda7:
+    mov ecx, r8d ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    cmp r8d, r12d ;; aw=w64 ow=w32
+    setl dl ;; aw=w64 ow=w8
+    movzx esi, BYTE PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl esi, cl ;; aw=w64 ow=w32
+    add edx, r8d ;; aw=w64 ow=w32
+ff_ps_read_data.Ldc6:
+    shr esi, 7 ;; aw=w64 ow=w32
+    and esi, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+48], esi ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-128], eax ;; aw=w64 ow=w32
+    je ff_ps_read_data.Ld50 ;; aw=w64 ow=w64
+ff_ps_read_data.Ldd8:
+    test r10b, r10b ;; aw=w64 ow=w8
+    jle ff_ps_read_data.Ld50 ;; aw=w64 ow=w64
+    mov ebx, DWORD PTR [rbx+16] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov r11, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    xor r15d, r15d ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.Le15 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Le00:
+    inc r15 ;; aw=w64 ow=w64
+    add r11, 34 ;; aw=w64 ow=w64
+    add r9, 34 ;; aw=w64 ow=w64
+    cmp r15, QWORD PTR [rbp+-88] ;; aw=w64 ow=w64
+    je ff_ps_read_data.Ld50 ;; aw=w64 ow=w64
+ff_ps_read_data.Le15:
+    mov ecx, edx ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    xor esi, esi ;; aw=w64 ow=w32
+    cmp edx, r12d ;; aw=w64 ow=w32
+    setl sil ;; aw=w64 ow=w8
+    add esi, edx ;; aw=w64 ow=w32
+    movzx edi, BYTE PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    and dl, 7 ;; aw=w64 ow=w8
+    mov ecx, edx ;; aw=w64 ow=w32
+    shl edi, cl ;; aw=w64 ow=w32
+ff_ps_read_data.Le32:
+    mov ecx, edi ;; aw=w64 ow=w32
+    shr ecx, 4 ;; aw=w64 ow=w32
+    and ecx, 8 ;; aw=w64 ow=w32
+    lea rax, [rip+vlc_ps] ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rcx+rax*1+48] ;; aw=w64 ow=w64
+    test dil, 128 ;; aw=w64 ow=w8
+    jne ff_ps_read_data.Leb0 ;; aw=w64 ow=w64
+ff_ps_read_data.Le4c:
+    test ebx, ebx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.Lf29 ;; aw=w64 ow=w64
+    xor r14d, r14d ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Le60:
+    mov eax, esi ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap edi ;; aw=w64 ow=w32
+    mov ecx, esi ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edi, cl ;; aw=w64 ow=w32
+    shr edi, 27 ;; aw=w64 ow=w32
+    cmp r14, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L175e ;; aw=w64 ow=w64
+ff_ps_read_data.Le80:
+    mov eax, edi ;; aw=w64 ow=w32
+    movsx ecx, WORD PTR [rdx+rax*4+2] ;; aw=w64 ow=w32
+    add esi, ecx ;; aw=w64 ow=w32
+    cmp r12d, esi ;; aw=w64 ow=w32
+    cmovb esi, r12d ;; aw=w64 ow=w32
+    add r10b, BYTE PTR [rdx+rax*4+0] ;; aw=w64 ow=w8
+    and r10b, 7 ;; aw=w64 ow=w8
+    mov BYTE PTR [r11+r14*1+0], r10b ;; aw=w64 ow=w8
+    inc r14 ;; aw=w64 ow=w64
+    cmp rbx, r14 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.Le60 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.Lf29 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Leb0:
+    test ebx, ebx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.Lf29 ;; aw=w64 ow=w64
+    test r15, r15 ;; aw=w64 ow=w64
+    mov ecx, r15d ;; aw=w64 ow=w32
+    cmove ecx, DWORD PTR [rbp+-104] ;; aw=w64 ow=w32
+    cmp ecx, 2 ;; aw=w64 ow=w32
+    mov eax, 1 ;; aw=w64 ow=w32
+    cmovl ecx, eax ;; aw=w64 ow=w32
+ff_ps_read_data.Lec9:
+    mov rdi, rcx ;; aw=w64 ow=w64
+    shl rdi, 5 ;; aw=w64 ow=w64
+    lea r14, [rdi+rcx*2+0] ;; aw=w64 ow=w64
+    add r14, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    mov edi, esi ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Lee0:
+    cmp r10, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1759 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r14+r10*1+-34] ;; aw=w64 ow=w32
+    mov ecx, edi ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov esi, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap esi ;; aw=w64 ow=w32
+    mov ecx, edi ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl esi, cl ;; aw=w64 ow=w32
+    shr esi, 27 ;; aw=w64 ow=w32
+ff_ps_read_data.Lf06:
+    mov ecx, esi ;; aw=w64 ow=w32
+    movsx esi, WORD PTR [rdx+rcx*4+2] ;; aw=w64 ow=w32
+    add esi, edi ;; aw=w64 ow=w32
+    cmp r12d, esi ;; aw=w64 ow=w32
+    cmovb esi, r12d ;; aw=w64 ow=w32
+    add al, BYTE PTR [rdx+rcx*4+0] ;; aw=w64 ow=w8
+    and al, 7 ;; aw=w64 ow=w8
+    mov BYTE PTR [r11+r10*1+0], al ;; aw=w64 ow=w8
+    inc r10 ;; aw=w64 ow=w64
+    mov edi, esi ;; aw=w64 ow=w32
+    cmp rbx, r10 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.Lee0 ;; aw=w64 ow=w64
+ff_ps_read_data.Lf29:
+    mov eax, esi ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    cmp esi, r12d ;; aw=w64 ow=w32
+    setl dl ;; aw=w64 ow=w8
+    add edx, esi ;; aw=w64 ow=w32
+    movzx eax, BYTE PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    and sil, 7 ;; aw=w64 ow=w8
+    mov ecx, esi ;; aw=w64 ow=w32
+    shl eax, cl ;; aw=w64 ow=w32
+ff_ps_read_data.Lf46:
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr ecx, 4 ;; aw=w64 ow=w32
+    and ecx, 8 ;; aw=w64 ow=w32
+    lea rsi, [rip+vlc_ps] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rcx+rsi*1+64] ;; aw=w64 ow=w64
+    test al, 128 ;; aw=w64 ow=w8
+    jne ff_ps_read_data.Lfc0 ;; aw=w64 ow=w64
+ff_ps_read_data.Lf5e:
+    test ebx, ebx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.Le00 ;; aw=w64 ow=w64
+    xor r14d, r14d ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Lf70:
+    mov eax, edx ;; aw=w64 ow=w32
+    shr eax, 3 ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [r13+rax*1+0] ;; aw=w64 ow=w32
+    bswap edi ;; aw=w64 ow=w32
+    mov ecx, edx ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edi, cl ;; aw=w64 ow=w32
+    shr edi, 27 ;; aw=w64 ow=w32
+    cmp r14, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1768 ;; aw=w64 ow=w64
+ff_ps_read_data.Lf90:
+    mov eax, edi ;; aw=w64 ow=w32
+    movsx ecx, WORD PTR [rsi+rax*4+2] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    cmp r12d, edx ;; aw=w64 ow=w32
+    cmovb edx, r12d ;; aw=w64 ow=w32
+    add r10b, BYTE PTR [rsi+rax*4+0] ;; aw=w64 ow=w8
+    and r10b, 7 ;; aw=w64 ow=w8
+    mov BYTE PTR [r9+r14*1+0], r10b ;; aw=w64 ow=w8
+    inc r14 ;; aw=w64 ow=w64
+    cmp rbx, r14 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.Lf70 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.Le00 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.Lfc0:
+    test ebx, ebx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.Le00 ;; aw=w64 ow=w64
+    test r15, r15 ;; aw=w64 ow=w64
+    mov eax, r15d ;; aw=w64 ow=w32
+    cmove eax, DWORD PTR [rbp+-104] ;; aw=w64 ow=w32
+    cmp eax, 2 ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    cmovl eax, ecx ;; aw=w64 ow=w32
+ff_ps_read_data.Lfdd:
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 5 ;; aw=w64 ow=w64
+    lea r14, [rcx+rax*2+0] ;; aw=w64 ow=w64
+    add r14, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov edi, edx ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+ff_ps_read_data.L1000:
+    cmp r10, 34 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1763 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r14+r10*1+-34] ;; aw=w64 ow=w32
+    mov ecx, edi ;; aw=w64 ow=w32
+    shr ecx, 3 ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [r13+rcx*1+0] ;; aw=w64 ow=w32
+    bswap edx ;; aw=w64 ow=w32
+    mov ecx, edi ;; aw=w64 ow=w32
+    and cl, 7 ;; aw=w64 ow=w8
+    shl edx, cl ;; aw=w64 ow=w32
+    shr edx, 27 ;; aw=w64 ow=w32
+ff_ps_read_data.L1026:
+    mov ecx, edx ;; aw=w64 ow=w32
+    movsx edx, WORD PTR [rsi+rcx*4+2] ;; aw=w64 ow=w32
+    add edx, edi ;; aw=w64 ow=w32
+    cmp r12d, edx ;; aw=w64 ow=w32
+    cmovb edx, r12d ;; aw=w64 ow=w32
+    add al, BYTE PTR [rsi+rcx*4+0] ;; aw=w64 ow=w8
+    and al, 7 ;; aw=w64 ow=w8
+    mov BYTE PTR [r9+r10*1+0], al ;; aw=w64 ow=w8
+    inc r10 ;; aw=w64 ow=w64
+    mov edi, edx ;; aw=w64 ow=w32
+    cmp rbx, r10 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L1000 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.Le00 ;; aw=w64 ow=w64
+ff_ps_read_data.L104e:
+    test eax, eax ;; aw=w64 ow=w32
+    js ff_ps_read_data.L1459 ;; aw=w64 ow=w64
+    add eax, r8d ;; aw=w64 ow=w32
+    cmp r12d, eax ;; aw=w64 ow=w32
+    cmovb eax, r12d ;; aw=w64 ow=w32
+    mov r8d, eax ;; aw=w64 ow=w32
+ff_ps_read_data.L1063:
+    mov r15d, DWORD PTR [rbp+-44] ;; aw=w64 ow=w32
+    mov eax, DWORD PTR [rbx+48] ;; aw=w64 ow=w32
+    and eax, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+48], eax ;; aw=w64 ow=w32
+    test r10, r10 ;; aw=w64 ow=w64
+    mov r12, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov r9, QWORD PTR [rbp+-104] ;; aw=w64 ow=w64
+    mov r13d, DWORD PTR [rbp+-132] ;; aw=w64 ow=w32
+    je ff_ps_read_data.L10f6 ;; aw=w64 ow=w64
+ff_ps_read_data.L1084:
+    cmp r12b, 6 ;; aw=w64 ow=w8
+    mov r10d, DWORD PTR [rbp+-108] ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L17b3 ;; aw=w64 ow=w64
+    mov ecx, r12d ;; aw=w64 ow=w32
+    cmp DWORD PTR [rbx+rcx*4+52], 31 ;; aw=w64 ow=w32
+    mov r9d, r12d ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L1104 ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rbx+756] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+760], ecx ;; aw=w64 ow=w32
+    test r10d, r10d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1380 ;; aw=w64 ow=w64
+ff_ps_read_data.L10b4:
+    cmp DWORD PTR [rbx+12], 34 ;; aw=w64 ow=w32
+    sete cl ;; aw=w64 ow=w8
+    je ff_ps_read_data.L138c ;; aw=w64 ow=w64
+    test r13d, r13d ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L1385 ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L138c ;; aw=w64 ow=w64
+ff_ps_read_data.L10cf:
+    lea rdx, [rip+L_str_8] ;; aw=w64 ow=w64
+ff_ps_read_data.L10d6:
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    vzeroupper ;; aw=w64 ow=w128
+    call av_log ;; aw=w64 ow=w64
+    mov r15d, DWORD PTR [rbp+-44] ;; aw=w64 ow=w32
+    mov rbx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1479 ;; aw=w64 ow=w64
+ff_ps_read_data.L10f6:
+    cmp r9d, 2 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [rbp+-108] ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L11fd ;; aw=w64 ow=w64
+ff_ps_read_data.L1104:
+    lea ecx, [r9+-1] ;; aw=w64 ow=w32
+    mov ecx, ecx ;; aw=w64 ow=w32
+    test r10d, r10d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1148 ;; aw=w64 ow=w64
+    cmp r9d, 7 ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L17bd ;; aw=w64 ow=w64
+ff_ps_read_data.L1119:
+    mov edx, r12d ;; aw=w64 ow=w32
+    mov rsi, rdx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rdx, [rsi+rdx*2+0] ;; aw=w64 ow=w64
+    mov rsi, rcx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rsi, [rsi+rcx*2+0] ;; aw=w64 ow=w64
+    movzx edi, WORD PTR [rbx+rsi*1+108] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+rdx*1+108], di ;; aw=w64 ow=w16
+    vmovdqu ymm0, YMMWORD PTR [rbx+rsi*1+76] ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+rdx*1+76], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L1148:
+    test r13d, r13d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1192 ;; aw=w64 ow=w64
+    cmp r9d, 7 ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L17c2 ;; aw=w64 ow=w64
+ff_ps_read_data.L1157:
+    mov edx, r12d ;; aw=w64 ow=w32
+    mov rsi, rdx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rdx, [rsi+rdx*2+0] ;; aw=w64 ow=w64
+    mov rsi, rcx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rsi, [rsi+rcx*2+0] ;; aw=w64 ow=w64
+    movzx edi, WORD PTR [rbx+rsi*1+278] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+rdx*1+278], di ;; aw=w64 ow=w16
+    vmovdqu ymm0, YMMWORD PTR [rbx+rsi*1+246] ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+rdx*1+246], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L1192:
+    test eax, eax ;; aw=w64 ow=w32
+    je ff_ps_read_data.L11fd ;; aw=w64 ow=w64
+    cmp r9d, 7 ;; aw=w64 ow=w32
+    jae ff_ps_read_data.L17cc ;; aw=w64 ow=w64
+ff_ps_read_data.L11a0:
+    mov edx, r12d ;; aw=w64 ow=w32
+    mov rsi, rdx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rdx, [rsi+rdx*2+0] ;; aw=w64 ow=w64
+    mov rsi, rcx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rcx, [rsi+rcx*2+0] ;; aw=w64 ow=w64
+    movzx esi, WORD PTR [rbx+rcx*1+448] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+rdx*1+448], si ;; aw=w64 ow=w16
+    vmovups ymm0, YMMWORD PTR [rbx+rcx*1+416] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rbx+rdx*1+416], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L11db:
+    movzx esi, WORD PTR [rbx+rcx*1+618] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+rdx*1+618], si ;; aw=w64 ow=w16
+    vmovdqu ymm0, YMMWORD PTR [rbx+rcx*1+586] ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+rdx*1+586], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L11fd:
+    test r10d, r10d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L12ef ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rcx+12] ;; aw=w64 ow=w32
+    test ecx, ecx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L12ef ;; aw=w64 ow=w64
+    cmp BYTE PTR [rbp+-96], 4 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L17c7 ;; aw=w64 ow=w64
+ff_ps_read_data.L121f:
+    mov edi, r12d ;; aw=w64 ow=w32
+    mov r10, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov edx, DWORD PTR [r10+8] ;; aw=w64 ow=w32
+    lea edx, [rdx*8+7] ;; aw=w64 ow=w32
+    lea rsi, [rcx+-3] ;; aw=w64 ow=w64
+    mov r9, rdi ;; aw=w64 ow=w64
+ff_ps_read_data.L1238:
+    shl r9, 5 ;; aw=w64 ow=w64
+    lea rdi, [r9+rdi*2+0] ;; aw=w64 ow=w64
+    add rdi, r10 ;; aw=w64 ow=w64
+    add rdi, 79 ;; aw=w64 ow=w64
+    lea r9, [rcx+-2] ;; aw=w64 ow=w64
+    lea r10, [rcx+-1] ;; aw=w64 ow=w64
+    xor r11d, r11d ;; aw=w64 ow=w32
+ff_ps_read_data.L1252:
+    movzx ebx, BYTE PTR [rdi+r11*1+-3] ;; aw=w64 ow=w32
+    mov r14d, ebx ;; aw=w64 ow=w32
+    sar r14b, 7 ;; aw=w64 ow=w8
+    xor bl, r14b ;; aw=w64 ow=w8
+    sub bl, r14b ;; aw=w64 ow=w8
+    movzx ebx, bl ;; aw=w64 ow=w32
+    cmp edx, ebx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L14cc ;; aw=w64 ow=w64
+    cmp r10, r11 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L12ef ;; aw=w64 ow=w64
+ff_ps_read_data.L1275:
+    movzx ebx, BYTE PTR [rdi+r11*1+-2] ;; aw=w64 ow=w32
+    mov r14d, ebx ;; aw=w64 ow=w32
+    sar r14b, 7 ;; aw=w64 ow=w8
+    xor bl, r14b ;; aw=w64 ow=w8
+    sub bl, r14b ;; aw=w64 ow=w8
+    movzx ebx, bl ;; aw=w64 ow=w32
+    cmp edx, ebx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L14cc ;; aw=w64 ow=w64
+    cmp r9, r11 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L12ef ;; aw=w64 ow=w64
+ff_ps_read_data.L1298:
+    cmp r11, 32 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L17a4 ;; aw=w64 ow=w64
+    movzx ebx, BYTE PTR [rdi+r11*1+-1] ;; aw=w64 ow=w32
+    mov r14d, ebx ;; aw=w64 ow=w32
+    sar r14b, 7 ;; aw=w64 ow=w8
+    xor bl, r14b ;; aw=w64 ow=w8
+    sub bl, r14b ;; aw=w64 ow=w8
+    movzx ebx, bl ;; aw=w64 ow=w32
+    cmp edx, ebx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L14cc ;; aw=w64 ow=w64
+    cmp rsi, r11 ;; aw=w64 ow=w64
+    je ff_ps_read_data.L12ef ;; aw=w64 ow=w64
+ff_ps_read_data.L12c5:
+    movzx ebx, BYTE PTR [rdi+r11*1+0] ;; aw=w64 ow=w32
+    mov r14d, ebx ;; aw=w64 ow=w32
+    sar r14b, 7 ;; aw=w64 ow=w8
+    xor bl, r14b ;; aw=w64 ow=w8
+    sub bl, r14b ;; aw=w64 ow=w8
+    movzx ebx, bl ;; aw=w64 ow=w32
+    cmp edx, ebx ;; aw=w64 ow=w32
+    jl ff_ps_read_data.L14cc ;; aw=w64 ow=w64
+    add r11, 4 ;; aw=w64 ow=w64
+    cmp rcx, r11 ;; aw=w64 ow=w64
+    jne ff_ps_read_data.L1252 ;; aw=w64 ow=w64
+ff_ps_read_data.L12ef:
+    test r13d, r13d ;; aw=w64 ow=w32
+    mov rbx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    je ff_ps_read_data.L1349 ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rbx+12] ;; aw=w64 ow=w32
+    test ecx, ecx ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L1349 ;; aw=w64 ow=w64
+ff_ps_read_data.L12ff:
+    cmp BYTE PTR [rbp+-96], 4 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L17d1 ;; aw=w64 ow=w64
+    mov edx, r12d ;; aw=w64 ow=w32
+    mov rsi, rdx ;; aw=w64 ow=w64
+    shl rsi, 5 ;; aw=w64 ow=w64
+    lea rdx, [rsi+rdx*2+0] ;; aw=w64 ow=w64
+    add rdx, rbx ;; aw=w64 ow=w64
+    add rdx, 246 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+0], 7 ;; aw=w64 ow=w8
+    jbe ff_ps_read_data.L14ec ;; aw=w64 ow=w64
+ff_ps_read_data.L132a:
+    lea rdx, [rip+L_str_5] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    vzeroupper ;; aw=w64 ow=w128
+    call av_log ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1479 ;; aw=w64 ow=w64
+ff_ps_read_data.L1349:
+    mov ecx, r12d ;; aw=w64 ow=w32
+    inc r12d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+44], r12d ;; aw=w64 ow=w32
+    cmp cl, 5 ;; aw=w64 ow=w8
+    jae ff_ps_read_data.L17b8 ;; aw=w64 ow=w64
+ff_ps_read_data.L135c:
+    mov ecx, r12d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+rcx*4+52], 31 ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [rbx+4] ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rbx+756] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+760], ecx ;; aw=w64 ow=w32
+    test r10d, r10d ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L10b4 ;; aw=w64 ow=w64
+ff_ps_read_data.L1380:
+    test r13d, r13d ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1395 ;; aw=w64 ow=w64
+ff_ps_read_data.L1385:
+    cmp DWORD PTR [rbx+28], 34 ;; aw=w64 ow=w32
+    sete cl ;; aw=w64 ow=w8
+ff_ps_read_data.L138c:
+    movzx ecx, cl ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+756], ecx ;; aw=w64 ow=w32
+ff_ps_read_data.L1395:
+    test eax, eax ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L13f5 ;; aw=w64 ow=w64
+    vpxor xmm0, xmm0, xmm0 ;; aw=w64 ow=w128
+    vmovdqu YMMWORD PTR [rbx+724], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+704], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13ad:
+    vmovdqu YMMWORD PTR [rbx+672], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+640], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13bd:
+    vmovdqu YMMWORD PTR [rbx+608], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+576], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13cd:
+    vmovdqu YMMWORD PTR [rbx+544], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+512], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13dd:
+    vmovdqu YMMWORD PTR [rbx+480], ymm0 ;; aw=w64 ow=w256
+    vmovdqu YMMWORD PTR [rbx+448], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13ed:
+    vmovdqu YMMWORD PTR [rbx+416], ymm0 ;; aw=w64 ow=w256
+ff_ps_read_data.L13f5:
+    cmp DWORD PTR [rbp+-136], 0 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L1404 ;; aw=w64 ow=w64
+    mov DWORD PTR [rbx+0], 1 ;; aw=w64 ow=w32
+ff_ps_read_data.L1404:
+    sub r8d, DWORD PTR [rbp+-140] ;; aw=w64 ow=w32
+    cmp r8d, r15d ;; aw=w64 ow=w32
+    jle ff_ps_read_data.L142f ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_6] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, r15d ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    vzeroupper ;; aw=w64 ow=w128
+    call av_log ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1479 ;; aw=w64 ow=w64
+ff_ps_read_data.L142f:
+    mov rsi, QWORD PTR [rbp+-152] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov edx, eax ;; aw=w64 ow=w32
+    neg edx ;; aw=w64 ow=w32
+    sub ecx, eax ;; aw=w64 ow=w32
+    cmp r8d, ecx ;; aw=w64 ow=w32
+    cmovl ecx, r8d ;; aw=w64 ow=w32
+ff_ps_read_data.L1449:
+    cmp r8d, edx ;; aw=w64 ow=w32
+    cmovl ecx, edx ;; aw=w64 ow=w32
+    add ecx, eax ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], ecx ;; aw=w64 ow=w32
+    mov r15d, r8d ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.L14b7 ;; aw=w64 ow=w64
+ff_ps_read_data.L1459:
+    lea rdx, [rip+L_str_3] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+ff_ps_read_data.L1464:
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    vzeroupper ;; aw=w64 ow=w128
+    call av_log ;; aw=w64 ow=w64
+ff_ps_read_data.L1475:
+    mov r15d, DWORD PTR [rbp+-44] ;; aw=w64 ow=w32
+ff_ps_read_data.L1479:
+    mov DWORD PTR [rbx+0], 0 ;; aw=w64 ow=w32
+    mov rsi, QWORD PTR [rbp+-152] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rsi+8] ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [rsi+16] ;; aw=w64 ow=w32
+    mov edx, eax ;; aw=w64 ow=w32
+    neg edx ;; aw=w64 ow=w32
+    sub ecx, eax ;; aw=w64 ow=w32
+    cmp r15d, ecx ;; aw=w64 ow=w32
+    cmovl ecx, r15d ;; aw=w64 ow=w32
+ff_ps_read_data.L1499:
+    cmp r15d, edx ;; aw=w64 ow=w32
+    cmovl ecx, edx ;; aw=w64 ow=w32
+    add ecx, eax ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+8], ecx ;; aw=w64 ow=w32
+    add rbx, 76 ;; aw=w64 ow=w64
+    mov edx, 680 ;; aw=w64 ow=w32
+    mov rdi, rbx ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    call memset ;; aw=w64 ow=w64
+ff_ps_read_data.L14b7:
+    mov eax, r15d ;; aw=w64 ow=w32
+    add rsp, 120 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+ff_ps_read_data.done:
+    ret ;; aw=w64 ow=w64
+ff_ps_read_data.L14cc:
+    lea rdx, [rip+L_str_4] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    vzeroupper ;; aw=w64 ow=w128
+    call av_log ;; aw=w64 ow=w64
+    mov rbx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    jmp ff_ps_read_data.L1479 ;; aw=w64 ow=w64
+ff_ps_read_data.L14ec:
+    cmp ecx, 1 ;; aw=w64 ow=w32
+    jne ff_ps_read_data.L14fd ;; aw=w64 ow=w64
+ff_ps_read_data.L14f1:
+    inc r12d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+44], r12d ;; aw=w64 ow=w32
+    jmp ff_ps_read_data.L135c ;; aw=w64 ow=w64
+ff_ps_read_data.L14fd:
+    cmp BYTE PTR [rdx+1], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 2 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+2], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 3 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+3], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 4 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L152a:
+    cmp BYTE PTR [rdx+4], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 5 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+5], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 6 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+6], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 7 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L1557:
+    cmp BYTE PTR [rdx+7], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 8 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+8], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 9 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+9], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 10 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L158c:
+    cmp BYTE PTR [rdx+10], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 11 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+11], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 12 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+12], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 13 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L15c5:
+    cmp BYTE PTR [rdx+13], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 14 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+14], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 15 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+15], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 16 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L15fe:
+    cmp BYTE PTR [rdx+16], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 17 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+17], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 18 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+18], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 19 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L1637:
+    cmp BYTE PTR [rdx+19], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 20 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+20], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 21 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+21], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 22 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L1670:
+    cmp BYTE PTR [rdx+22], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 23 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+23], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 24 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+24], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 25 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L16a9:
+    cmp BYTE PTR [rdx+25], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 26 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+26], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 27 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+27], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 28 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L16e2:
+    cmp BYTE PTR [rdx+28], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 29 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+29], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 30 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+30], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 31 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+ff_ps_read_data.L171b:
+    cmp BYTE PTR [rdx+31], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 32 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+32], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 33 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    cmp BYTE PTR [rdx+33], 7 ;; aw=w64 ow=w8
+    ja ff_ps_read_data.L132a ;; aw=w64 ow=w64
+    cmp ecx, 34 ;; aw=w64 ow=w32
+    je ff_ps_read_data.L14f1 ;; aw=w64 ow=w64
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1759:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L175e:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1763:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1768:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L176d:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1772:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1777:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L177c:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1781:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1786:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L178b:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1790:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L1795:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L179a:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L179f:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17a4:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17a9:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17ae:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17b3:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17b8:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17bd:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17c2:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17c7:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17cc:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+ff_ps_read_data.L17d1:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32

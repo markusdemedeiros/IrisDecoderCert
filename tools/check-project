@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Reproduce the upstream-provider and Iris-client checks, with capped builds.
+
+Run from the repository root: python3 tools/check-project
+The script applies tools/bounded-build to each Lean invocation itself.
+"""
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[1]
+CAP = ROOT / "tools/bounded-build"
+PIN = "b60a6f97373dbb537d0576fd40b8b7c2520b4de3"
+STAMP = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+OUT = ROOT / "checks" / STAMP
+OUT.mkdir(parents=True, exist_ok=True)
+results = []
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def imports(path):
+    return re.findall(r"^\s*(?:public\s+)?(?:meta\s+)?import\s+(?:all\s+)?([\w.]+)",
+                      path.read_text(), re.M)
+
+
+def run(label, command):
+    print(label, flush=True)
+    log = OUT / (label + ".log")
+    start = time.monotonic()
+    with log.open("w") as stream:
+        result = subprocess.run([str(x) for x in command], cwd=ROOT,
+                                stdout=stream, stderr=subprocess.STDOUT)
+    output = log.read_text()
+    clean = result.returncode == 0 and not re.search(r"sorryAx|declaration uses[^\n]*sorry", output)
+    results.append({"check": label, "exit": result.returncode, "clean": clean,
+                    "seconds": time.monotonic() - start, "log": str(log.relative_to(ROOT))})
+    (OUT / "results.json").write_text(json.dumps(results, indent=2) + "\n")
+    if not clean:
+        print(output[-14000:])
+        sys.exit(f"Failed {label}; see {log}")
+    return output
+
+
+# Require the reused proof sources to be the originals, modulo the disclosed
+# helper-name collision with Lean4.35. No instruction proof may silently drift.
+visited = set()
+upstream = []
+
+
+def visit_upstream(module):
+    if module in visited:
+        return
+    visited.add(module)
+    path = ROOT / (module.replace(".", "/") + ".lean")
+    if not path.exists():
+        return
+    for dep in imports(path):
+        visit_upstream(dep)
+    if module.startswith(("Kraken.", "KrakenTactics.")):
+        upstream.append(path)
+
+
+visit_upstream("SbrClient.FFmpeg.UpstreamCalls")
+renamed = {"Kraken/Mem.lean", "Kraken/SeparationMem.lean", "Kraken/Rules/HelperLemmas.lean"}
+source_evidence = []
+for path in upstream:
+    relative = path.relative_to(ROOT).as_posix()
+    original = subprocess.check_output(["git", "show", f"{PIN}:{relative}"], cwd=ROOT, text=True)
+    expected = original.replace("allSome", "krakenAllSome") if relative in renamed else original
+    if path.read_text() != expected:
+        sys.exit(f"Unexpected change to reused upstream source: {relative}")
+    source_evidence.append({"path": relative, "sha256": digest(path),
+                            "lines": len(path.read_text().splitlines()),
+                            "compatibility_rename": relative in renamed})
+(OUT / "upstream-sources.json").write_text(json.dumps(source_evidence, indent=2) + "\n")
+run("source-excerpts", [sys.executable, "scripts/extract-public-calls.py"])
+run("upstream-build", [sys.executable, "scripts/build-client-deps.py", "SbrClient.FFmpeg.UpstreamCalls"])
+
+sources = {".".join(p.relative_to(ROOT).with_suffix("").parts): p
+           for p in (ROOT / "SbrClient").rglob("*.lean")}
+initial_hashes = {name: digest(path) for name, path in sources.items()}
+ordered, visiting, done = [], set(), set()
+
+
+def visit_local(name):
+    if name in done:
+        return
+    if name in visiting:
+        raise RuntimeError("Local import cycle: " + name)
+    visiting.add(name)
+    for dep in imports(sources[name]):
+        if dep in sources:
+            visit_local(dep)
+    visiting.remove(name)
+    done.add(name)
+    ordered.append(name)
+
+
+for name in sorted(sources):
+    visit_local(name)
+outputs = []
+for name in ordered:
+    outputs.append(run(name, [CAP, "tools/check-iris", sources[name].relative_to(ROOT)]))
+
+policy = json.loads((ROOT / "tools/axiom-policy.json").read_text())
+records = dict(re.findall(r"'([^']+)' depends on axioms:\s*\[([^\]]*)\]", "\n".join(outputs), re.S))
+for name in policy["required"]:
+    if name not in records:
+        sys.exit("Missing axiom audit: " + name)
+for name, raw in records.items():
+    actual = {x.strip() for x in raw.split(",") if x.strip()}
+    unexpected = actual - set(policy["allowed"])
+    if unexpected:
+        sys.exit(f"Unexpected axioms for {name}: {sorted(unexpected)}")
+run("export-texts", [CAP, "env", "SBR_TV_LEANDIR=" + str(ROOT / "binary/reexport"),
+                     "tools/check-iris", "scripts/sbr/tv/Export.lean"])
+run("assemble-open-object", [sys.executable, "binary/build-object.py"])
+run("check-open-object", [sys.executable, "binary/check-object.py"])
+if initial_hashes != {name: digest(path) for name, path in sources.items()}:
+    sys.exit("Local source changed during the gate; rerun after edits finish")
+summary = {"status": "passed", "upstream_commit": PIN, "upstream_modules": len(upstream),
+           "upstream_lines": sum(p["lines"] for p in source_evidence),
+           "local_modules": len(ordered), "local_source_sha256": initial_hashes,
+           "audited_theorems": sorted(records), "allowed_axioms": policy["allowed"],
+           "evidence": str(OUT.relative_to(ROOT)),
+           "binary_scope": "Open relocatable text artifact; placement and external contracts retained."}
+(OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+(ROOT / "validation.json").write_text(json.dumps(summary, indent=2) + "\n")
+print(json.dumps(summary, indent=2))

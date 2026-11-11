@@ -1,0 +1,85 @@
+import Kraken.X64.Parser
+import Kraken.MachineWP
+import Kraken.Rules.IndirectCall
+import Kraken.Rules.IntMisc
+import Kraken.Rules.PackedSse
+import Kraken.Rules.ScalarFloat
+import Kraken.Rules.CallFrame
+import Kraken.Rules.CfgList
+import Kraken.Rules.LeafLemmas
+import Kraken.Rules.FrameLemmas
+import Kraken.Rules.HelperLemmas
+import Kraken.X64.Examples.Sbr.Spec
+import Kraken.X64.Examples.Sbr.HfAssemble.Cells
+import Kraken.X64.Examples.Sbr.HfAssembleText
+import Kraken.InfoOff
+
+/-!
+# `sbr_hf_assemble` as a `ProcSpec`
+
+Memory safety of `sbr_hf_assemble(Y1, X_high, sbr, ch_data, e_a)` (FFmpeg
+`aacsbr_template.c`, `-c opt` object). The proof is per block: a label table (`table`),
+a variant (`var`), and one theorem `blk_<label>` per block; `spec` dispatches on labels.
+The specification (`HfAssembleSpec k fs`: footprint `HfF`/`HfFPost`, side conditions
+`HfC`, callees `HfCallees k fs`) is in `Spec.lean`.
+
+Notes:
+* The function is memory safe under the `SbrWF` clauses in `HfC`: `1 ≤ m[1] ≤ 48`,
+  `kx[1] + m[1] ≤ 64`, `bs_num_env ≤ 8`, `t_env[e] ≤ 19` for `e ≤ bs_num_env` and
+  `t_env_num_env_old ≤ 19`, `f_indexnoise ≤ 515`, `f_indexsine < 4`, the stack 16-aligned
+  at the call, `sbr`/`ch_data` 16-aligned (aligned `vmovaps` spills, `hf_apply_noise`
+  operands), the `ps_noise*` constants aligned, `Y1 = Y[ypos]` with `ypos ≤ 1`.
+* Note A1: the envelope borders reach `numTimeSlots + 3 = 19`, not 16. With `t_env ≤ 19`
+  the time-slot index `i < 2·t_env[e+1]` reaches 37: `Y1` row 37 (of 38), `X_high` row
+  `i + 2 ≤ 39` (of 40), `g_temp`/`q_temp` row `h_SL + i ≤ 41` (of 42); every access stays
+  in its array.
+* Five `ud1` traps (compiler-inserted bounds checks: `kx ≥ 65`, `kx == 64` in the sine
+  add, `f_indexsine ≥ 4`, the envelope loop reaching `e == 8`, the unrolled `s_m` copy
+  ending with count ≠ 8) are not reached under `HfC`; the table excludes them.
+* The `hf_apply_noise` window (`32 * ⌈m/4⌉` bytes from `Y1[i] + kx`, see `a2_row_spill`)
+  is carved (`Lb1a0_carve`) from `Y1` and the second block of `HfData`.
+  For `ypos = 1` that block lies in `g_temp`, which the footprint owns anyway, so there the
+  24-byte bound rests on `Lb1a0_carve` citing `a2_row_spill` and on the row-crossing
+  discipline: this file crosses a row of `Y` only through `a2_row_spill`
+  (`scripts/sbr/tv/a2_discipline.py`), not on the footprint. Every other access to `Y1` stays inside one row (`Lb01d_carve`,
+  `hf_inY*`: column `kx + j` with `j < m`, `kx + m ≤ 64`).
+* The callees are assumed through their `LeafSpec`s (`HfGFiltSpec`,
+  `HfApplyNoise{0,1,2,3}Spec`, `memcpy`), passed as `HfCallees k fs`.
+* The noise call `call *0x60230(%r10,%rax,8)` indexes `sbr->dsp.hf_apply_noise` by
+  `f_indexsine`; the proof abstracts the entry over the index (`hfNoiseFn fs q`,
+  `hfNoiseK q`) so one symbolic execution covers all four callees.
+* The `ud1` after `cmp $8,%rdi` in `Lb400` is discharged by a `False`-precondition rule
+  for `ud1` (`MachineWP.ud1_spec`; the edge is unreachable: `rdi < bs_num_env ≤ 8`).
+* Library (`Kraken.Rules.HelperLemmas`), first written here: the `ud1` and `inc` rules, the
+  variable-index cell-array load (`Mem.CellArr.loadInt`), two stores into a view
+  (`Mem.Block.storeInt_val2`), loads past a stack store (`Mem.loadInt_storeInt_sub_lo`/`_hi`),
+  `Mem.loadInt_isSome_storeInt`, `Mem.Val.loadInt_lo4`, `Int.toBytes_add`, the `jl`/`jae`
+  readings `CondCode.interp_l_sub32`/`64`, `CondCode.interp_nc_sub8`/`64`.
+
+Costs (`measure_hb`, thousands of heartbeats; each block's `maxHeartbeats` is about twice
+its measure). Blocks above one million, clean-up candidates:
+* `Lb08f` (2.27M): about 20 goals, each running the generic `simp … at *` over the 45-cell
+  frame view, plus per-load simps and the `.LCPI17_*` reads unfolding `DataW`.
+* `La8f6` (1.75M): `grind` on about 28 register/value goals with the whole memory context
+  in scope (no single unfolding hotspot; clearing the memory hypothesis for non-memory
+  goals would help).
+* `p1` (1.61M): the prologue spills, the generic closer over the full frame per cell goal.
+* `Lb01d` (1.48M), `Lb1a0` (1.23M): the call blocks; symbolic execution over the frame
+  view plus the callee frame, then `grind` for the footprint carve and the post.
+* `m1` (1.96M): the `.LCPI17_12` load after three stores needs the store peel plus a full
+  `DataW` unfold (about 0.6M); a variant of `hf_lcpi4` that finds `DataW` anywhere
+  in the frame would remove it.
+* `r0` (1.81M): three stores into the frame split at `s38`, closed by `grind`; a closed
+  frame lemma would replace it.
+* `a1` (1.21M): five `.LCPI17_*` loads, each unfolding `DataW`.
+* `r8` (1.03M, was 0.83M before M4b; not profiled): the `Lb820` entry it jumps to now has `HfC` (for `Post'`
+  to turn `DataW` back into `HfData x.ypos`); the rest as `r0`.
+(M4b: measures after the `HfData`/`ypos` change and `t_env ≤ 19`; full check 783 s, peak 11.0 GB.)
+Deviation from the proof-shape rules: `bv_omega` runs inside block proofs in the overrides
+of `c4`–`c7`, `Labf0`, `Lac90`, `Lad30`, `Ladcc`, `Lb140`, `Lb16c` (proved and left as is;
+the clean-up is closed address lemmas as in `hf_rsp_*`).
+-/
+
+open Kraken
+open Kraken.SysV
+open Mem

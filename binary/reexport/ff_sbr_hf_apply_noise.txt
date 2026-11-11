@@ -1,0 +1,70 @@
+ff_sbr_hf_apply_noise_0_sse2:
+    movdqa xmm0, XMMWORD PTR [rip+ps_noise0] ;; aw=w64 ow=w128
+    jmp apply_noise_main ;; aw=w64 ow=w64
+    .nops 6 ;; aw=w64 ow=w64
+ff_sbr_hf_apply_noise_1_sse2:
+    and r8, 1 ;; aw=w64 ow=w64
+    shl r8, 4 ;; aw=w64 ow=w64
+    lea rax, [rip+ps_noise13] ;; aw=w64 ow=w64
+    movdqa xmm0, XMMWORD PTR [r8+rax*1+0] ;; aw=w64 ow=w128
+    jmp apply_noise_main ;; aw=w64 ow=w64
+    .nops 8 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_sbr_hf_apply_noise_2_sse2:
+    movdqa xmm0, XMMWORD PTR [rip+ps_noise2] ;; aw=w64 ow=w128
+    jmp apply_noise_main ;; aw=w64 ow=w64
+    .nops 6 ;; aw=w64 ow=w64
+ff_sbr_hf_apply_noise_3_sse2:
+    and r8, 1 ;; aw=w64 ow=w64
+    shl r8, 4 ;; aw=w64 ow=w64
+    lea rax, [rip+(ps_noise13 + 16)] ;; aw=w64 ow=w64
+    movdqa xmm0, XMMWORD PTR [r8+rax*1+0] ;; aw=w64 ow=w128
+apply_noise_main:
+    movsxd rcx, ecx ;; aw=w64 ow=w64
+    dec rcx ;; aw=w64 ow=w64
+    shl r9d, 2 ;; aw=w64 ow=w32
+    lea rax, [rip+ff_sbr_noise_table] ;; aw=w64 ow=w64
+    lea rdi, [rdi+r9*2+0] ;; aw=w64 ow=w64
+    add rsi, r9 ;; aw=w64 ow=w64
+    add rdx, r9 ;; aw=w64 ow=w64
+    shl rcx, 3 ;; aw=w64 ow=w64
+    pxor xmm5, xmm5 ;; aw=w64 ow=w128
+    neg r9 ;; aw=w64 ow=w64
+apply_noise_main.loop:
+    movdqa xmm1, XMMWORD PTR [rdx+r9*1+0] ;; aw=w64 ow=w128
+    movdqu xmm3, XMMWORD PTR [rcx+rax*1+16] ;; aw=w64 ow=w128
+    movdqu xmm4, XMMWORD PTR [rcx+rax*1+32] ;; aw=w64 ow=w128
+    add rcx, 32 ;; aw=w64 ow=w64
+    and rcx, 4088 ;; aw=w64 ow=w64
+apply_noise_main.b:
+    movdqa xmm2, xmm1 ;; aw=w64 ow=w128
+    punpckhdq xmm2, xmm1 ;; aw=w64 ow=w128
+    punpckldq xmm1, xmm1 ;; aw=w64 ow=w128
+    mulps xmm1, xmm3 ;; aw=w64 ow=w128
+    mulps xmm2, xmm4 ;; aw=w64 ow=w128
+    movdqa xmm3, XMMWORD PTR [rsi+r9*1+0] ;; aw=w64 ow=w128
+    movdqa xmm4, xmm3 ;; aw=w64 ow=w128
+    punpckhdq xmm4, xmm3 ;; aw=w64 ow=w128
+    punpckldq xmm3, xmm3 ;; aw=w64 ow=w128
+    movdqa xmm6, xmm3 ;; aw=w64 ow=w128
+    pcmpeqd xmm6, xmm5 ;; aw=w64 ow=w128
+    movdqa xmm7, xmm4 ;; aw=w64 ow=w128
+    pcmpeqd xmm7, xmm5 ;; aw=w64 ow=w128
+    mulps xmm3, xmm0 ;; aw=w64 ow=w128
+    mulps xmm4, xmm0 ;; aw=w64 ow=w128
+    pand xmm1, xmm6 ;; aw=w64 ow=w128
+    pand xmm2, xmm7 ;; aw=w64 ow=w128
+apply_noise_main.c:
+    movdqu xmm6, XMMWORD PTR [rdi+r9*2+0] ;; aw=w64 ow=w128
+    movdqu xmm7, XMMWORD PTR [rdi+r9*2+16] ;; aw=w64 ow=w128
+    addps xmm3, xmm1 ;; aw=w64 ow=w128
+    addps xmm4, xmm2 ;; aw=w64 ow=w128
+    addps xmm6, xmm3 ;; aw=w64 ow=w128
+    addps xmm7, xmm4 ;; aw=w64 ow=w128
+    movdqu XMMWORD PTR [rdi+r9*2+0], xmm6 ;; aw=w64 ow=w128
+    movdqu XMMWORD PTR [rdi+r9*2+16], xmm7 ;; aw=w64 ow=w128
+apply_noise_main.d:
+    add r9, 16 ;; aw=w64 ow=w64
+    jl apply_noise_main.loop ;; aw=w64 ow=w64
+apply_noise_main.done:
+    ret ;; aw=w64 ow=w64

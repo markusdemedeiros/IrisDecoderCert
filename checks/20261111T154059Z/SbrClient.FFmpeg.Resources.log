@@ -1,0 +1,20 @@
+Waiting for project build slot
+SbrClient/FFmpeg/Resources.lean:23:0: warning: automatically included section variable(s) unused in theorem `SbrClient.SbrAPI.outputs_split`:
+  [CodeEnv]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CodeEnv] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+SbrClient/FFmpeg/Resources.lean:27:0: warning: automatically included section variable(s) unused in theorem `SbrClient.SbrAPI.outputs_join`:
+  [CodeEnv]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CodeEnv] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+SbrClient/FFmpeg/Resources.lean:34:0: warning: automatically included section variable(s) unused in theorem `SbrClient.SbrAPI.callPost_resources`:
+  [CodeEnv]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CodeEnv] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Build exit=0; peak system unavailable RAM=12.78 GB

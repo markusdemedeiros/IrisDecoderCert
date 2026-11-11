@@ -1,0 +1,10 @@
+--- a/sbr_x_gen.txt
++++ b/sbr_x_gen.txt
+@@ -80,7 +80,6 @@
+     mov r15d, DWORD PTR [rbx+84] ;; aw=w64 ow=w32
+     cmp rsi, r15 ;; aw=w64 ow=w64
+     jae sbr_x_gen.Lb9cc ;; aw=w64 ow=w64
+-    add rcx, 4 ;; aw=w64 ow=w64
+     add rdx, 320 ;; aw=w64 ow=w64
+     cmp rsi, 64 ;; aw=w64 ow=w64
+     jne sbr_x_gen.Lb910 ;; aw=w64 ow=w64

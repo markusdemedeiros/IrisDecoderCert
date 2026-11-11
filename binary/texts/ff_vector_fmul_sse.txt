@@ -1,0 +1,21 @@
+ff_vector_fmul_sse:
+    lea rcx, [ecx*4+-64] ;; aw=w32 ow=w64
+    .nops 7 ;; aw=w64 ow=w64
+ff_vector_fmul_sse.loop:
+    movaps xmm0, XMMWORD PTR [rsi+rcx*1+0] ;; aw=w64 ow=w128
+    movaps xmm1, XMMWORD PTR [rcx+rsi*1+16] ;; aw=w64 ow=w128
+    mulps xmm0, XMMWORD PTR [rdx+rcx*1+0] ;; aw=w64 ow=w128
+    mulps xmm1, XMMWORD PTR [rcx+rdx*1+16] ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+rcx*1+0], xmm0 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rcx+rdi*1+16], xmm1 ;; aw=w64 ow=w128
+ff_vector_fmul_sse.loop2:
+    movaps xmm0, XMMWORD PTR [rcx+rsi*1+32] ;; aw=w64 ow=w128
+    movaps xmm1, XMMWORD PTR [rcx+rsi*1+48] ;; aw=w64 ow=w128
+    mulps xmm0, XMMWORD PTR [rcx+rdx*1+32] ;; aw=w64 ow=w128
+    mulps xmm1, XMMWORD PTR [rcx+rdx*1+48] ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rcx+rdi*1+32], xmm0 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rcx+rdi*1+48], xmm1 ;; aw=w64 ow=w128
+    sub rcx, 64 ;; aw=w64 ow=w64
+    jge ff_vector_fmul_sse.loop ;; aw=w64 ow=w64
+ff_vector_fmul_sse.done:
+    ret ;; aw=w64 ow=w64

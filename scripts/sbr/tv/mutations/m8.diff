@@ -1,0 +1,11 @@
+--- a/ff_sbr_hf_apply_noise.txt
++++ b/ff_sbr_hf_apply_noise.txt
+@@ -1,7 +1,7 @@
+ ff_sbr_hf_apply_noise_0_sse2:
+     movdqa xmm0, XMMWORD PTR [rip+ps_noise0] ;; aw=w64 ow=w128
+     jmp apply_noise_main ;; aw=w64 ow=w64
+-    .nops 6 ;; aw=w64 ow=w64
++    .nops 5 ;; aw=w64 ow=w64
+ ff_sbr_hf_apply_noise_1_sse2:
+     and r8, 1 ;; aw=w64 ow=w64
+     shl r8, 4 ;; aw=w64 ow=w64

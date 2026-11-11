@@ -1,0 +1,268 @@
+import Kraken.Rules.GenericMem
+
+/-!
+# Integer rules at every operand width
+
+`MachineWP.lean` states its integer rules per shape, mostly at 64 bits, with a
+few 32- and 8-bit forms. Compiled C uses every width and, with memory operands,
+every addressing shape. This file gives the integer instructions their rules at
+the widths 8, 16, 32 and 64 (named `…_w8_spec` … `…_w64_spec`):
+
+* register forms `op %rs, %rd` and `op $i, %r`;
+* memory forms over the operand `⟨some (.reg rb), idx, .int64 d⟩`, any index
+  or none, as in `GenericMem.lean`: loads `op d(…), %r`, read-modify-writes
+  `op %r, d(…)` and `op $i, d(…)`, and stores. A memory operand of `n` bytes
+  reads `Mem.loadInt s.dmem addr n`; the precondition asks for those bytes to be
+  readable, which, as everywhere in `MachineWP`, also makes them writable.
+
+The operations are `add`, `sub`, `sbb`, `cmp`, `and`, `or`, `xor`, `test`,
+`neg`, `not`, `dec`, `mov`, `movzx`/`movsx`, `cmovcc`, `setcc`, `imul` (two- and
+three-operand register forms), `lea` (base and any index, or index without
+base), and `shl`/`shr`/`sar` by an immediate or by `%cl`.
+
+Each rule is one instance of a pattern per operand form; the instances differ
+only in the width. They are stated per width, not once over `w : Width`, so
+that a sub-register is read and written on the 64-bit register file, as the
+32- and 8-bit rules of `MachineWP.lean` do: a 32-bit read is
+`(s.regs.get64 r).setWidth 32`, a 32-bit write `s.regs.set64 r (v.setWidth 64)`,
+an 8- or 16-bit write `s.regs.set64 r ((s.regs.get64 r).replaceLow v)`. A rule
+over `w` would leave `s.regs.set (.low r .W32) v` in the verification
+condition, which neither the state simplification nor `grind` reduces well.
+
+All rules are `@[spec low]`, so the shape-specific rules of `MachineWP.lean`
+and `GenericMem.lean` win where they fit.
+
+Flags that the semantics leaves undefined are universally quantified in the
+precondition (`∀ af : Bool`). A shift leaves its flags arbitrary (`∀ st`), and a
+shift by a masked count of zero changes nothing, as the semantics says.
+-/
+
+open Kraken MachineWP Std.WP Lean.Order
+
+/-- A 16-bit read is the low half-word of the 64-bit register. A `grind` rule
+only, like `Reg64s.get_low32`. -/
+theorem Reg64s.get_low16 (s : Reg64s) (r : Reg64) :
+    s.get (.low r .W16) = (s.get64 r).setWidth 16 := by
+  simp only [Reg64s.get, Reg.base, Reg.offset, BitVec.take, BitVec.drop]
+  apply BitVec.eq_of_toNat_eq
+  simp [BitVec.extractLsb'_toNat, BitVec.toNat_setWidth]
+
+/-- A 16-bit write replaces the low half-word and keeps the rest. -/
+@[simp] theorem Reg64s.set_low16 (s : Reg64s) (r : Reg64) (v : BitVec 16) :
+    Reg64s.set s (.low r .W16) v = s.set64 r ((s.get64 r).replaceLow v) := rfl
+
+/-- The low half-word after a 16-bit write is the half-word written. -/
+theorem BitVec.toNat_replaceLow16_mod (old : BitVec 64) (new : BitVec 16) :
+    (old.replaceLow new).toNat % 65536 = new.toNat := by
+  have h : (old.replaceLow new).setWidth 16 = new := by
+    simp only [BitVec.replaceLow, BitVec.drop]
+    bv_decide
+  have := congrArg BitVec.toNat h
+  simpa [BitVec.toNat_setWidth] using this
+
+/-- The high bytes after a 16-bit write are the old ones. -/
+theorem BitVec.toNat_replaceLow16_div (old : BitVec 64) (new : BitVec 16) :
+    (old.replaceLow new).toNat / 65536 = old.toNat / 65536 := by
+  have h : (old.replaceLow new) >>> 16 = old >>> 16 := by
+    simp only [BitVec.replaceLow, BitVec.drop]
+    bv_decide
+  have := congrArg BitVec.toNat h
+  simpa [BitVec.toNat_ushiftRight, Nat.shiftRight_eq_div_pow] using this
+
+/-- The whole register after a 16-bit write, as a number: the old high bytes
+and the new half-word. With it `grind` decides equalities about the full
+64-bit register after a 16-bit write (e.g. `(5#64).replaceLow 4#16 = 4#64`),
+which the `_mod`/`_div` forms alone do not give it. -/
+theorem BitVec.toNat_replaceLow16 (old : BitVec 64) (new : BitVec 16) :
+    (old.replaceLow new).toNat = old.toNat / 65536 * 65536 + new.toNat := by
+  have h1 := BitVec.toNat_replaceLow16_mod old new
+  have h2 := BitVec.toNat_replaceLow16_div old new
+  omega
+
+/-- The whole register after an 8-bit write, as a number (see
+`BitVec.toNat_replaceLow16`). -/
+theorem BitVec.toNat_replaceLow8 (old : BitVec 64) (new : BitVec 8) :
+    (old.replaceLow new).toNat = old.toNat / 256 * 256 + new.toNat := by
+  have h1 := BitVec.toNat_replaceLow8_mod old new
+  have h2 := BitVec.toNat_replaceLow8_div old new
+  omega
+
+/- The low byte (half-word) after an 8-bit (16-bit) write is resolved while
+`grind` normalises, as `Reg64s.get64_set64` is (see `GenericMem.lean`): a
+shift count set by `mov $3,%cl` is `(rcx.replaceLow 3#8).toNat % 256 % 32`,
+which then becomes the literal 3. (The scoped `grind norm` attribute is set
+below, in `Kraken.Rules.IntMisc.SubReg`, after the `grind =` ones.) -/
+
+/-- A 16-bit read after a 16-bit write is the half-word written. -/
+@[simp] theorem BitVec.setWidth_replaceLow16 (old : BitVec 64) (new : BitVec 16) :
+    (old.replaceLow new).setWidth 16 = new := by
+  simp only [BitVec.replaceLow, BitVec.drop]
+  bv_decide
+
+/-! The `grind` attributes of the sub-register lemmas above are scoped (`open
+scoped Kraken.Rules.IntMisc.SubReg`), so that importing this file does not change
+`grind` behaviour elsewhere. -/
+namespace Kraken.Rules.IntMisc.SubReg
+attribute [scoped grind =] Reg64s.get_low16 Reg64s.set_low16 BitVec.toNat_replaceLow16_mod
+  BitVec.toNat_replaceLow16_div BitVec.toNat_replaceLow16 BitVec.toNat_replaceLow8
+  BitVec.setWidth_replaceLow16
+attribute [scoped grind norm] BitVec.toNat_replaceLow8_mod BitVec.toNat_replaceLow16_mod
+end Kraken.Rules.IntMisc.SubReg
+
+open scoped Kraken.Rules.IntMisc.SubReg
+
+/-- The masked count of a shift by `%cl`, at an operand width below 64 bits. -/
+theorem ShiftCountExpr.interpMasked_cl_lt64 [Labels] (s : MachineData) (rng : Std.Rco Int64)
+    (w : Width) (hw : w ≠ .W64) :
+    ShiftCountExpr.cl.interpMasked s rng w = (s.regs.get64 .rcx).toNat % 256 % 32 := by
+  cases w <;> first
+    | exact absurd rfl hw
+    | simp [ShiftCountExpr.interpMasked, ShiftCountExpr.interp, BitVec.take,
+        BitVec.extractLsb'_toNat, Nat.and_two_pow_sub_one_eq_mod (n := 5)] <;> try rfl
+
+/-- The masked count of a shift by `%cl`, at 64 bits. -/
+theorem ShiftCountExpr.interpMasked_cl_64 [Labels] (s : MachineData) (rng : Std.Rco Int64) :
+    ShiftCountExpr.cl.interpMasked s rng .W64 = (s.regs.get64 .rcx).toNat % 256 % 64 := by
+  simp [ShiftCountExpr.interpMasked, ShiftCountExpr.interp, BitVec.take,
+    BitVec.extractLsb'_toNat, Nat.and_two_pow_sub_one_eq_mod (n := 6)]
+
+/-- The masked count of a shift by an immediate, at an operand width below 64
+bits. -/
+theorem ShiftCountExpr.interpMasked_imm8_lt64 [Labels] (i : Int64) (s : MachineData)
+    (rng : Std.Rco Int64) (w : Width) (hw : w ≠ .W64) :
+    (ShiftCountExpr.imm8 (.int64 i)).interpMasked s rng w = i.toBitVec.toNat % 256 % 32 := by
+  cases w <;> first
+    | exact absurd rfl hw
+    | simp [ShiftCountExpr.interpMasked, ShiftCountExpr.interp, ConstExpr.interp, BitVec.take,
+        BitVec.extractLsb'_toNat, Nat.and_two_pow_sub_one_eq_mod (n := 5)] <;> try rfl
+
+/-- The masked count of a shift by an immediate, at 64 bits. -/
+theorem ShiftCountExpr.interpMasked_imm8_64 [Labels] (i : Int64) (s : MachineData)
+    (rng : Std.Rco Int64) :
+    (ShiftCountExpr.imm8 (.int64 i)).interpMasked s rng .W64 = i.toBitVec.toNat % 256 % 64 := by
+  simp [ShiftCountExpr.interpMasked, ShiftCountExpr.interp, ConstExpr.interp, BitVec.take,
+    BitVec.extractLsb'_toNat, Nat.and_two_pow_sub_one_eq_mod (n := 6)]
+
+/-- The 64-bit address of a `disp(base,index,scale)` operand, before any
+extension: what `lea` reads. -/
+theorem AddrExpr.interp_base_idx_disp64 [Labels] (b : Reg64) (idx : Option AddrIndex)
+    (d : Int64) (regs : Reg64s) (rng : Std.Rco Int64) :
+    (AddrExpr.interp (address_size := .mk .W64)
+        (a := ⟨some (.reg b), idx, .int64 d⟩) regs rng : BitVec 64)
+      = regs.get64 b + AddrIndex.offset64 idx regs + d.toBitVec := by
+  rw [← AddrExpr.zeroExtend_interp_base_idx_disp b idx d regs rng]
+  exact (BitVec.setWidth_eq _).symm
+
+/-- The 64-bit address of a `disp(,index,scale)` operand (no base register) at
+64-bit address size. -/
+theorem AddrExpr.interp_index_disp64 [Labels] (i : Reg64) (c : Width) (d : Int64)
+    (regs : Reg64s) (rng : Std.Rco Int64) :
+    (AddrExpr.interp (address_size := .mk .W64)
+        (a := ⟨none, some ⟨i, c⟩, .int64 d⟩) regs rng : BitVec 64)
+      = AddrIndex.offset64 (some ⟨i, c⟩) regs + d.toBitVec := by
+  have htake : ∀ x : BitVec 64, x.take Width.W64.bits = x := by
+    intro x
+    simp [BitVec.take, BitVec.extractLsb']
+  have hsigned : ∀ x : BitVec 64, x.signed = x.toInt := fun _ => rfl
+  simp only [AddrExpr.interp, ConstExpr.interp, BitVec.toAddressSize, AddrIndex.offset64]
+  rw [htake, hsigned]
+  show BitVec.ofInt 64 _ = _
+  simp [BitVec.ofInt_add, BitVec.ofInt_mul, BitVec.ofInt_toInt]
+
+section Specs
+
+variable [CodeEnv] {Q : Unit → MachineData → Prop} {E : Int64 → MachineData → Prop}
+  {p : Program}
+
+local macro "wp_step" : tactic =>
+  `(tactic| simp only [Executable.stepAt, Directive.interp, Instr.interp,
+      Operation.interp, AvxOperation.interp, Operand.interp, RegOrMem.interp,
+      AvxRegOrMem.interp, RelRegOrMem.interp, ConstExpr.interp,
+      MachineData.set, MachineData.setReg, MachineData.setAvxLegacy, MachineData.setAvxLegacyReg,
+      MachineData.setAvx, MachineData.setAvxReg,
+      Reg64s.get_low64, Reg64s.set_low64, Effects.All, or_false, false_or])
+
+/-- Sub-register reads and writes, on the 64-bit register file. -/
+local macro "sub_regs" : tactic =>
+  `(tactic| simp only [Reg64s.get_low32, Reg64s.set_low32, Reg64s.get_low16, Reg64s.set_low16,
+      Reg64s.get_low8, Reg64s.set_low8])
+
+/-- The proof of a register rule. -/
+local macro "reg_rule" : term =>
+  `(fallthrough_spec (fun s rng P hP => by wp_step; (try sub_regs); exact hP))
+
+/-- The proof of a register rule that leaves `af` undefined. -/
+local macro "reg_nondet_rule" : term =>
+  `(fallthrough_nondet_spec (fun s rng P hP => by wp_step; (try sub_regs); exact hP))
+
+/-- The proof of a rule with one memory operand: the bytes are readable, so the
+load (and the store, if any) takes the `some` branch. -/
+local macro "mem_rule" : term => `(Triple.intro fun s h => by
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨hsome, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    simp only [MachineData.load, MachineData.store, AddrExpr.zeroExtend_interp_base_idx_disp,
+      Width.bytes, hv, Effects.All]
+    (try sub_regs)
+    first
+      | exact hk v hv _ hpl'
+      | exact fun af => hk v hv af _ hpl'
+      | exact hk _ hpl')
+
+/-- The proof of a register rule that leaves four flags undefined (`imul`). -/
+local macro "nondet4_rule" : term => `(Triple.intro fun s h => by
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    (try sub_regs)
+    try simp only [Effects.All]
+    intro sf zf af pf
+    exact h sf zf af pf _ hpl')
+
+/-- The proof of a `lea` rule. -/
+local macro "lea_rule" : term =>
+  `(fallthrough_spec (fun s rng P hP => by
+      wp_step
+      simp only [AddrExpr.interp_base_idx_disp64, AddrExpr.interp_index_disp64]
+      (try sub_regs)
+      exact hP))
+
+/-- The proof of a shift rule: a zero count changes nothing; otherwise the
+undefined `af`, `cf`, `of` are chosen in up to three steps;
+`zf`, `sf`, `pf` come from the result. -/
+local macro "shift_rule" : term => `(Triple.intro fun s h => by
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    simp only [ShiftCountExpr.interpMasked_cl_64, ShiftCountExpr.interpMasked_imm8_64,
+      ShiftCountExpr.interpMasked_cl_lt64, ShiftCountExpr.interpMasked_imm8_lt64, ne_eq,
+      reduceCtorEq, not_false_eq_true]
+    (try sub_regs)
+    split
+    · next h0 =>
+      try simp only [beq_iff_eq] at h0
+      simp only [h0, ite_true] at h
+      exact h false false false _ hpl'
+    · next h0 =>
+      try simp only [beq_iff_eq] at h0
+      simp only [h0, ite_false] at h
+      simp only [Effects.All]
+      intro af
+      split
+      · split
+        · exact h _ _ _ _ hpl'
+        · intro of; exact h _ _ _ _ hpl'
+      · intro cf
+        split
+        · exact h _ _ _ _ hpl'
+        · intro of; exact h _ _ _ _ hpl')
+

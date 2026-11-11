@@ -1,0 +1,23 @@
+import Kraken.X64.Parser
+import Kraken.Blocks
+import Kraken.MachineWP
+import Kraken.SysV
+
+/-!
+# `ff_aac_sbr_apply`: the program text
+
+`libavcodec/aacsbr_template.c` (FFmpeg n8.1), `ff_aac_sbr_apply(ac, che, id_aac, L, R)`
+from the `-c opt` object (`aacsbr.o`). The text is cut into 434 blocks (a label at
+every jump target, after every call, and inside long runs); each block's body is a
+separate definition `B.<id>` and the text `body` is their concatenation, so the control-flow
+rule reads the block list without reducing the text (`Kraken/Rules/CfgTable.lean`).
+
+This module holds the text only and imports only the parser and the machine model; the
+translation validation (`scripts/sbr/tv`) compares it with the object. The control-flow
+lemmas, the footprint and the table are in `ApplyTable.lean`.
+-/
+
+open Kraken Kraken.X64.Parser Std.WP MachineWP Kraken.SysV Mem
+
+namespace Kraken.Examples.Sbr.Apply
+

@@ -1,0 +1,20 @@
+ff_sbr_qmf_deint_neg_sse:
+    mov rcx, -128 ;; aw=w64 ow=w64
+    lea rdx, [rdi+256] ;; aw=w64 ow=w64
+    add rdi, 112 ;; aw=w64 ow=w64
+    add rsi, 256 ;; aw=w64 ow=w64
+    movaps xmm3, XMMWORD PTR [rip+ff_ps_neg] ;; aw=w64 ow=w128
+ff_sbr_qmf_deint_neg_sse.loop:
+    movaps xmm0, XMMWORD PTR [rsi+rcx*2+0] ;; aw=w64 ow=w128
+    movaps xmm1, XMMWORD PTR [rsi+rcx*2+16] ;; aw=w64 ow=w128
+    movaps xmm2, xmm0 ;; aw=w64 ow=w128
+    shufps xmm2, xmm1, 136 ;; aw=w64 ow=w128
+    shufps xmm1, xmm0, 119 ;; aw=w64 ow=w128
+    xorps xmm2, xmm3 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+0], xmm1 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdx+rcx*1+0], xmm2 ;; aw=w64 ow=w128
+    sub rdi, 16 ;; aw=w64 ow=w64
+    add rcx, 16 ;; aw=w64 ow=w64
+    jl ff_sbr_qmf_deint_neg_sse.loop ;; aw=w64 ow=w64
+ff_sbr_qmf_deint_neg_sse.done:
+    ret ;; aw=w64 ow=w64

@@ -1,0 +1,50 @@
+
+/-! ## The frame and the invariant -/
+
+
+/-- The memory at every label: the callees' area below the frame (`0x298 + k` bytes:
+a return-address slot, the stack arguments of `sbr_qmf_synthesis`, the callee's
+need), the footprint groups, the frame `FR`, the return address and `R`. -/
+abbrev Mm (k : Nat) (e : Env) (x : Args) (ra : Int64) (t₀ : MachineData) (FR : (Mem 64 → Prop) → Mem 64 → Prop) :
+    Mem 64 → Prop :=
+  let r := t₀.regs.get64 .rsp
+  Reserve (0x298 + k) (r - 0x1c8#64) ⋆ (ApplyF e x t₀ ⋆ FR (RetCell ra r ⋆ x.R))
+
+/-- The four stack arguments of `sbr_qmf_synthesis` for channel `ch` as pushed (`mdct_buf =
+sbr->qmf_filter_scratch`, `v0`, `v_off`, then `div` — the `ds` register, its low 4 bytes read). -/
+abbrev SynArgs (x : Args) (t₀ : MachineData) (ch : Nat) : Mem 64 → Prop :=
+  let r := t₀.regs.get64 .rsp
+  c8 (r - 0x1e8#64) (sbrA t₀ + 0x5fcc0#64) ⋆ (c8 (r - 0x1e0#64) (dA t₀ ch + 0x80#64)
+    ⋆ (c8 (r - 0x1d8#64) (dA t₀ ch + 0x3900#64) ⋆ c8 (r - 0x1d0#64) (BitVec.ofNat 64 (dsN x))))
+
+/-- `Mm` with the top 0x20 bytes of the callees' area as `A` (the pushed stack arguments of
+`sbr_qmf_synthesis`, or raw after the call). -/
+abbrev MmS (k : Nat) (e : Env) (x : Args) (ra : Int64) (t₀ : MachineData) (A : Mem 64 → Prop)
+    (FR : (Mem 64 → Prop) → Mem 64 → Prop) : Mem 64 → Prop :=
+  let r := t₀.regs.get64 .rsp
+  Reserve (0x278 + k) (r - 0x1e8#64) ⋆ (A ⋆ (ApplyF e x t₀ ⋆ FR (RetCell ra r ⋆ x.R)))
+
+/-- `rsp`/`rbp` inside the body. -/
+abbrev Base (t₀ s : MachineData) : Prop :=
+  s.regs.get64 .rsp = t₀.regs.get64 .rsp - 0x1c8#64 ∧ s.regs.get64 .rbp = t₀.regs.get64 .rsp - 8#64
+
+/-- `Base` and `r14 = 0`: from `start_1`'s `xor %r14d,%r14d` to `L74e9_1`'s `mov %cl,%r14b`
+(the `ds` slot is `r14` with its low byte replaced, and `sbr_qmf_synthesis` reads its low
+4 bytes as `div`); the dequantisation clobbers `r14` and zeroes it on every path to `L74de`.
+The `rbp`/`r14` facts are one conjunct, so `⟨hrsp, hrbp⟩` patterns of `Base` still bind. -/
+abbrev BaseZ (t₀ s : MachineData) : Prop :=
+  s.regs.get64 .rsp = t₀.regs.get64 .rsp - 0x1c8#64
+    ∧ (s.regs.get64 .rbp = t₀.regs.get64 .rsp - 8#64 ∧ s.regs.get64 .r14 = 0#64)
+
+theorem BaseZ.base {t₀ s : MachineData} (h : BaseZ t₀ s) : Base t₀ s := ⟨h.1, h.2.1⟩
+
+/-- The argument registers as at entry. -/
+abbrev ArgRegs (t₀ s : MachineData) : Prop :=
+  s.regs.get64 .rdi = arg0 t₀ ∧ s.regs.get64 .rsi = arg1 t₀ ∧ s.regs.get64 .rdx = arg2 t₀
+    ∧ s.regs.get64 .rcx = arg3 t₀ ∧ s.regs.get64 .r8 = arg4 t₀
+
+/-- The default entry of a label inside the body: the conditions, `rsp`/`rbp`, the
+callee-saved registers in the frame, the memory with a raw frame. Phase spec files
+refine it (register facts, frame views with values). -/
+abbrev Inv (k : Nat) (e : Env) (x : Args) (ra : Int64) (t₀ s : MachineData) : Prop :=
+  ApplyC x t₀ ∧ Base t₀ s ∧ (s.dmem =⋆ Mm k e x ra t₀ (FrRaw t₀))

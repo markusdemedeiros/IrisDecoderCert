@@ -1,0 +1,13 @@
+Waiting for shared experiment build slot
+'SbrClient.Host.wp_native_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.wp_load' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.wp_store' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.wp_cas' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Lock.init' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Lock.acquire' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Lock.release' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Mailbox.init' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Mailbox.claim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.Mailbox.publish' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SbrClient.Host.wp_fork' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build exit=0; peak system unavailable RAM=9.44 GB

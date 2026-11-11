@@ -1,0 +1,28 @@
+Waiting for project build slot
+SbrClient/Machine/MapInstances.lean:35:73: warning: This simp argument is unused:
+  Ne.symm h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Iris.Std.get?, Iris.Std.insert, ExtHashMap.getElem?_insert, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Machine/MapInstances.lean:39:72: warning: This simp argument is unused:
+  Ne.symm h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Iris.Std.get?, Iris.Std.delete, ExtHashMap.getElem?_erase, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Machine/MapInstances.lean:60:58: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [heq] at hab
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+SbrClient/Machine/MapInstances.lean:81:4: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp at this
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Build exit=0; peak system unavailable RAM=12.36 GB

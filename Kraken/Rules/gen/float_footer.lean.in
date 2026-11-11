@@ -1,0 +1,6 @@
+/-! ### vxorpd
+
+The register form is `MachineWP.vxorpd_reg_spec` in PackedSse.lean
+(`vxorpd %x, %x, %x` zeroes `x`, by `BitVec.xor_self`). -/
+
+end Specs

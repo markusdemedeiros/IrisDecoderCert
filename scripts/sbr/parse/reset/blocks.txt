@@ -1,0 +1,339 @@
+start      r=137      n=  3 -> L1086
+L1086      r=136      n=  2 -> L108a
+L108a      r=135      n= 12 -> L10d9 L10fe L17fc L10b8
+L10b8      r=133      n=  6 -> L1814 L1820 L114a
+L10d9      r=134      n=  9 -> L1127 L111e L1143 L1143 L1820
+L10fe      r=133      n=  6 -> L1808 L111e L1820 L111e
+L111e      r=132      n=  2 -> L114a
+L1127      r=133      n=  6 -> L1143 L1143 L1820 L1143
+L1143      r=132      n=  1 -> L114a
+L114a      r=131      n= 12 -> L1179
+L1179      r=130      n=  2 -> L117d
+L117d      r=129      n=  4 -> L118e
+L118e      r=128      n=  6 -> L150a L11a7
+L11a7      r=127      n=  3 -> L11ad
+L11ad      r=126      n=  4 -> L11bd
+L11bd      r=125      n=  5 -> L11db
+L11db      r=124      n= 12 -> L1211
+L1211      r=123      n= 12 -> L1249
+L1249      r=122      n= 12 -> L126b
+L126b      r=121      n=  4 -> L1278
+L1278      r=120      n=  2 -> L1280
+L1280      r=119      n=  2 -> L1288
+L1288      r=118      n=  2 -> L1292
+L1292      r=117      n=  2 -> L129c
+L129c      r=116      n=  3 -> L12aa
+L12aa      r=115      n=  3 -> L12ba
+L12ba      r=114      n=  4 -> L12d8 L12d0
+L12d0      r=113 loop n=  2 -> L1523 L12d8
+L12d8      r=113 loop n=  8 -> L3257 L1300
+L1300      r=113 loop n= 12 -> L12d0 L14f0 L132d
+L132d      r=113 loop n=  8 -> L1350 L135c L1360 L1350
+L1350      r=113 loop n=  3 -> L136f L135c
+L135c      r=113 loop n=  1 -> L1360
+L1360      r=113 loop n=  4 -> L136f
+L136f      r=113 loop n= 10 -> L1390 L13a0 L12d0 L1390
+L1390      r=113 loop n=  4 -> L12d0 L13a0
+L13a0      r=113 loop n=  8 -> L13d9 L1424 L13c0
+L13c0      r=113 loop n=  5 -> L13d4
+L13d4      r=113 loop n=  2 -> L1420 L13d9
+L13d9      r=113 loop n=  2 -> L13e0
+L13e0      r=113 loop n=  7 -> L1404 L13e0 L1404 L1400
+L1400      r=113 loop n=  1 -> L1404
+L1404      r=113 loop n=  7 -> L13d4 L1400 L13c0 L1420
+L1420      r=113 loop n=  1 -> L1424
+L1424      r=113 loop n= 10 -> L1470 L1442 L1470 L1442
+L1442      r=113 loop n=  2 -> L1450
+L1450      r=113 loop n=  7 -> L1467 L1450 L1467
+L1467      r=113 loop n=  2 -> L12d0 L1470
+L1470      r=113 loop n= 12 -> L14c0 L324d L14a2
+L14a2      r=113 loop n=  5 -> L1300 L14c0
+L14c0      r=113 loop n= 10 -> L3252 L1300
+L14f0      r=113 loop n=  7 -> L12d0 L12d0
+L150a      r=107      n=  6 -> L161f L1762 L1622
+L1523      r=112      n= 12 -> L1618 L1622 L1555
+L1555      r=111      n= 10 -> L1622 L1622 L157b
+L157b      r=110      n= 10 -> L1622 L1622 L15a1
+L15a1      r=109      n= 10 -> L1622 L1622 L15bf
+L15bf      r=108      n= 10 -> L1622 L1622 L15dd
+L15dd      r=107      n= 10 -> L1622 L1622 L15fb
+L15fb      r=106      n=  9 -> L1622 L1622
+L1618      r=106      n=  2 -> L1622
+L161f      r=106      n=  1 -> L1622
+L1622      r=105      n= 12 -> L1661 L1661 L1655
+L1655      r=104      n=  2 -> L328e L1661
+L1661      r=103      n=  7 -> L1684 L167a
+L167a      r=  9      n=  2 -> L1d2a
+L1684      r=102      n= 12 -> L1779 L16b7
+L16b7      r=101      n=  7 -> L16d6
+L16d6      r=100      n=  1 -> L16db
+L16db      r= 99      n=  7 -> L17e7 L16f8
+L16f8      r= 98      n=  6 -> L171d
+L171d      r= 97      n=  5 -> L1736
+L1736      r= 96      n=  1 -> L173b
+L173b      r= 95      n= 10 -> L1830 L1908
+L1762      r=  9      n=  5 -> L1d2a
+L1779      r= 69      n= 12 -> L1d0d L17a0
+L17a0      r= 68      n= 13 -> L1d1b L32d2 L1ea8 L17d6
+L17d6      r= 67      n=  4 -> L1e09 L1e6b
+L17e7      r=  9      n=  4 -> L1d2a
+L17fc      r=132      n=  2 -> L114a
+L1808      r=132      n=  2 -> L114a
+L1814      r=132      n=  2 -> L114a
+L1820      r= 10      n=  3 -> L167a
+L1830      r= 94      n=  5 -> L1850
+L1850      r= 93 loop n= 12 -> L1886
+L1886      r= 93 loop n= 12 -> L18b8
+L18b8      r= 93 loop n=  2 -> L18ca
+L18ca      r= 93 loop n=  2 -> L18db
+L18db      r= 93 loop n=  9 -> L1850 L1908
+L1908      r= 92      n=  5 -> L1920
+L1920      r= 91 loop n= 11 -> L1920 L194b
+L194b      r= 90      n= 10 -> L1988 L1980
+L1980      r= 89 loop n=  2 -> L1bbd L1988
+L1988      r= 89 loop n=  8 -> L3266 L19b0
+L19b0      r= 89 loop n= 12 -> L1980 L1ba0 L19dd
+L19dd      r= 89 loop n=  8 -> L1a00 L1a0c L1a10 L1a00
+L1a00      r= 89 loop n=  3 -> L1a1f L1a0c
+L1a0c      r= 89 loop n=  1 -> L1a10
+L1a10      r= 89 loop n=  4 -> L1a1f
+L1a1f      r= 89 loop n= 10 -> L1a40 L1a50 L1980 L1a40
+L1a40      r= 89 loop n=  4 -> L1980 L1a50
+L1a50      r= 89 loop n=  8 -> L1a89 L1ad4 L1a70
+L1a70      r= 89 loop n=  5 -> L1a84
+L1a84      r= 89 loop n=  2 -> L1ad0 L1a89
+L1a89      r= 89 loop n=  2 -> L1a90
+L1a90      r= 89 loop n=  7 -> L1ab4 L1a90 L1ab4 L1ab0
+L1ab0      r= 89 loop n=  1 -> L1ab4
+L1ab4      r= 89 loop n=  7 -> L1a84 L1ab0 L1a70 L1ad0
+L1ad0      r= 89 loop n=  1 -> L1ad4
+L1ad4      r= 89 loop n= 10 -> L1b20 L1af3 L1b20 L1af3
+L1af3      r= 89 loop n=  2 -> L1b00
+L1b00      r= 89 loop n=  7 -> L1b17 L1b00 L1b17
+L1b17      r= 89 loop n=  2 -> L1980 L1b20
+L1b20      r= 89 loop n= 12 -> L1b70 L325c L1b52
+L1b52      r= 89 loop n=  5 -> L19b0 L1b70
+L1b70      r= 89 loop n= 10 -> L3261 L19b0
+L1ba0      r= 89 loop n=  7 -> L1980 L1980
+L1bbd      r= 88      n= 11 -> L32be L1bf0
+L1bf0      r= 87 loop n= 13 -> L1cf4 L1bf0 L1da7 L1c33
+L1c33      r= 86      n=  8 -> L1c59
+L1c59      r= 85      n=  6 -> L1c76
+L1c76      r= 84      n=  1 -> L1c7b
+L1c7b      r= 83      n= 11 -> L1cb4
+L1cb4      r= 82      n=  1 -> L1cb9
+L1cb9      r= 81      n= 12 -> L1de3 L2112 L1cea
+L1cea      r= 79      n=  2 -> L21e6
+L1cf4      r= 10      n=  2 -> L1cff
+L1cff      r=  9      n=  3 -> L1d0b
+L1d0b      r=  8      n=  1 -> L1d31
+L1d0d      r=  9      n=  3 -> L1d2a
+L1d1b      r=  9      n=  3 -> L1d2a
+L1d2a      r=  8      n=  2 -> L1d31
+L1d31      r=  7      n=  5 -> L1d48
+L1d48      r=  6      n=  1 -> L1d4d
+L1d4d      r=  5      n=  2 -> L1d5f
+L1d5f      r=  4      n=  2 -> L1d71
+L1d71      r=  3      n=  2 -> L1d89
+L1d89      r=  2      n=  2 -> L1d95
+L1d95      r=  1      n=  7 -> done
+done       r=  0      n=  1 -> 
+L1da7      r= 56      n= 11 -> L1e00 L1dd9
+L1dd9      r= 55      n=  1 -> L1dde
+L1dde      r= 54      n=  1 -> L2012
+L1de3      r= 69      n=  6 -> L2357
+L1e00      r= 11      n=  2 -> L29ad
+L1e09      r= 66      n=  7 -> L1e30
+L1e30      r= 65 loop n=  2 -> L1e44
+L1e44      r= 65 loop n=  9 -> L1e30 L1ec1 L1ea8 L1e6b
+L1e6b      r= 64      n=  6 -> L1e90
+L1e90      r= 63 loop n=  6 -> L1e90 L1ec1 L1ea8
+L1ea8      r= 62      n=  2 -> L1eb0
+L1eb0      r= 61 loop n=  4 -> L1eb0 L1ec1
+L1ec1      r= 60      n=  7 -> L1ed8 L1f08 L1f08
+L1ed8      r= 59      n=  9 -> L1f08
+L1f08      r= 58      n=  8 -> L1fd5 L1f30
+L1f30      r= 57 loop n=  5 -> L1f5d
+L1f5d      r= 57 loop n=  4 -> L1f81
+L1f81      r= 57 loop n=  4 -> L1fa5
+L1fa5      r= 57 loop n=  9 -> L1f30 L2003 L1fd5
+L1fd5      r= 56      n=  6 -> L1ff0
+L1ff0      r= 55 loop n=  5 -> L1ff0 L2003
+L2003      r= 54      n=  3 -> L2012
+L2012      r= 53      n=  8 -> L2032
+L2032      r= 52      n=  8 -> L32c8 L2059
+L2059      r= 51      n=  1 -> L205e
+L205e      r= 50      n= 10 -> L32cd L208b
+L208b      r= 49      n=  8 -> L20aa L20c8
+L20aa      r= 48      n=  7 -> L20d8 L20c8
+L20c8      r=  9      n=  2 -> L20cf
+L20cf      r=  8      n=  2 -> L1d31
+L20d8      r= 47      n= 12 -> L2b30 L2aef L29f4 L2a85
+L2112      r= 80      n=  5 -> L2130
+L2130      r= 79 loop n= 12 -> L2166
+L2166      r= 79 loop n= 12 -> L2197
+L2197      r= 79 loop n=  2 -> L21a9
+L21a9      r= 79 loop n=  2 -> L21ba
+L21ba      r= 79 loop n=  9 -> L2130 L21e6
+L21e6      r= 78      n=  4 -> L2200
+L2200      r= 77 loop n= 12 -> L2200 L2230
+L2230      r= 76      n=  8 -> L2252 L2340
+L2252      r= 75      n=  6 -> L2267 L22fa
+L2267      r= 74      n=  9 -> L2289
+L2289      r= 73 loop n= 12 -> L2289 L22d3
+L22d3      r= 72      n=  9 -> L2340 L22fa
+L22fa      r= 71      n=  5 -> L2310
+L2310      r= 70 loop n= 10 -> L2310 L2340
+L2340      r= 69 loop n=  7 -> L2340 L2357
+L2357      r= 68      n=  8 -> L25ca L237d
+L237d      r= 67      n=  4 -> L2398 L2390
+L2390      r= 66 loop n=  2 -> L25cf L2398
+L2398      r= 66 loop n=  8 -> L3289 L23c0
+L23c0      r= 66 loop n= 12 -> L2390 L25b0 L23ed
+L23ed      r= 66 loop n=  8 -> L2410 L241c L2420 L2410
+L2410      r= 66 loop n=  3 -> L242f L241c
+L241c      r= 66 loop n=  1 -> L2420
+L2420      r= 66 loop n=  4 -> L242f
+L242f      r= 66 loop n= 10 -> L2450 L2460 L2390 L2450
+L2450      r= 66 loop n=  4 -> L2390 L2460
+L2460      r= 66 loop n=  8 -> L2499 L24e4 L2480
+L2480      r= 66 loop n=  5 -> L2494
+L2494      r= 66 loop n=  2 -> L24e0 L2499
+L2499      r= 66 loop n=  2 -> L24a0
+L24a0      r= 66 loop n=  7 -> L24c4 L24a0 L24c4 L24c0
+L24c0      r= 66 loop n=  1 -> L24c4
+L24c4      r= 66 loop n=  7 -> L2494 L24c0 L2480 L24e0
+L24e0      r= 66 loop n=  1 -> L24e4
+L24e4      r= 66 loop n= 10 -> L2530 L2502 L2530 L2502
+L2502      r= 66 loop n=  2 -> L2510
+L2510      r= 66 loop n=  7 -> L2527 L2510 L2527
+L2527      r= 66 loop n=  2 -> L2390 L2530
+L2530      r= 66 loop n= 12 -> L2580 L327a L2562
+L2562      r= 66 loop n=  5 -> L23c0 L2580
+L2580      r= 66 loop n= 10 -> L327f L23c0
+L25b0      r= 66 loop n=  7 -> L2390 L2390
+L25ca      r= 64      n=  2 -> L2619
+L25cf      r= 65      n= 12 -> L32d7 L25fc
+L25fc      r= 64      n=  6 -> L2619
+L2619      r= 63      n=  4 -> L262c
+L262c      r= 62      n=  4 -> L2648 L2640
+L2640      r= 61 loop n=  2 -> L287a L2648
+L2648      r= 61 loop n=  8 -> L3284 L2670
+L2670      r= 61 loop n= 12 -> L2640 L2860 L269d
+L269d      r= 61 loop n=  8 -> L26c0 L26cc L26d0 L26c0
+L26c0      r= 61 loop n=  3 -> L26df L26cc
+L26cc      r= 61 loop n=  1 -> L26d0
+L26d0      r= 61 loop n=  4 -> L26df
+L26df      r= 61 loop n= 10 -> L2700 L2710 L2640 L2700
+L2700      r= 61 loop n=  4 -> L2640 L2710
+L2710      r= 61 loop n=  8 -> L2749 L2794 L2730
+L2730      r= 61 loop n=  5 -> L2744
+L2744      r= 61 loop n=  2 -> L2790 L2749
+L2749      r= 61 loop n=  2 -> L2750
+L2750      r= 61 loop n=  7 -> L2774 L2750 L2774 L2770
+L2770      r= 61 loop n=  1 -> L2774
+L2774      r= 61 loop n=  7 -> L2744 L2770 L2730 L2790
+L2790      r= 61 loop n=  1 -> L2794
+L2794      r= 61 loop n= 10 -> L27e0 L27b2 L27e0 L27b2
+L27b2      r= 61 loop n=  2 -> L27c0
+L27c0      r= 61 loop n=  7 -> L27d7 L27c0 L27d7
+L27d7      r= 61 loop n=  2 -> L2640 L27e0
+L27e0      r= 61 loop n= 12 -> L2830 L3270 L2812
+L2812      r= 61 loop n=  5 -> L2670 L2830
+L2830      r= 61 loop n= 10 -> L3275 L2670
+L2860      r= 61 loop n=  7 -> L2640 L2640
+L287a      r= 60      n=  7 -> L2949 L289b
+L289b      r= 59 loop n= 12 -> L32c3 L29cd L29d3 L28e7
+L28e7      r= 59 loop n= 12 -> L2949 L29d9 L29dc L292b
+L292b      r= 59 loop n=  6 -> L289b L2949
+L2949      r= 58      n= 12 -> L29b9 L29ad L297e
+L297e      r= 57      n=  2 -> L298a
+L298a      r= 56      n=  5 -> L29a3
+L29a3      r= 55      n=  1 -> L29a8
+L29a8      r= 54      n=  1 -> L2012
+L29ad      r= 10      n=  2 -> L167a
+L29b9      r=  9      n=  4 -> L1d2a
+L29cd      r= 11      n=  2 -> L29dc
+L29d3      r= 11      n=  2 -> L29dc
+L29d9      r= 11      n=  1 -> L29dc
+L29dc      r= 10      n=  5 -> L1cff
+L29f4      r= 46      n= 12 -> L2a26
+L2a26      r= 45      n=  2 -> L2a30
+L2a30      r= 44 loop n= 12 -> L2a77
+L2a77      r= 44 loop n=  5 -> L2a30 L2aef L2a85
+L2a85      r= 43      n= 12 -> L2aaf
+L2aaf      r= 42      n=  7 -> L2ad6
+L2ad6      r= 41 loop n=  6 -> L2ad6 L2aef
+L2aef      r= 40      n= 12 -> L2b20
+L2b20      r= 39 loop n=  5 -> L2b20 L2b30
+L2b30      r= 38      n=  5 -> L2b45
+L2b45      r= 37      n=  6 -> L2b60
+L2b60      r= 36      n=  1 -> L2b65
+L2b65      r= 35      n= 12 -> L2bb5 L2b9d
+L2b9d      r=  9      n=  2 -> L2ba4
+L2ba4      r=  8      n=  2 -> L1d31
+L2bb5      r= 34      n= 11 -> L2c89 L2bde L2c5b
+L2bde      r= 33      n=  5 -> L2bed
+L2bed      r= 32 loop n= 12 -> L32b9 L2c1b
+L2c1b      r= 32 loop n= 12 -> L32b9 L2c4a
+L2c4a      r= 32 loop n=  6 -> L2bed L2c89 L2c5b
+L2c5b      r= 31      n= 12 -> L32b9 L2c89
+L2c89      r= 30      n= 13 -> L30df L2cc2
+L2cc2      r= 29      n= 13 -> L30df L30df L30df L2d03
+L2d03      r= 28      n= 12 -> L30df L30df L30df L2d45
+L2d45      r= 27      n= 12 -> L30df L30df L30df L2d87
+L2d87      r= 26      n= 12 -> L30df L30df L30df L2dc9
+L2dc9      r= 25      n= 12 -> L30df L30df L30df L2e0b
+L2e0b      r= 24      n= 12 -> L30df L30df L30df L2e4d
+L2e4d      r= 23      n= 12 -> L30df L30df L30df L2e8f
+L2e8f      r= 22      n= 12 -> L30df L30df L30df L2ed1
+L2ed1      r= 21      n= 12 -> L30df L30df L30df L2f13
+L2f13      r= 20      n= 12 -> L30df L30df L30df L2f55
+L2f55      r= 19      n= 12 -> L30df L30df L30df L2f97
+L2f97      r= 18      n= 12 -> L30df L30df L30df L2fd9
+L2fd9      r= 17      n= 12 -> L30df L30df L30df L301b
+L301b      r= 16      n= 12 -> L30df L30df L30df L305d
+L305d      r= 15      n= 12 -> L30df L30df L30df L3093
+L3093      r= 14      n= 12 -> L30df L30df L30df L30c9
+L30c9      r= 13      n=  4 -> L32dc L30df
+L30df      r= 12      n=  7 -> L312e
+L30f8      r= 11 loop n=  4 -> L3108
+L3108      r= 11 loop n= 10 -> L320e L312e
+L312e      r= 11 loop n=  6 -> L3141 L31d5 L3141
+L3141      r= 11 loop n=  8 -> L326b L3160
+L3160      r= 11 loop n= 12 -> L318c L3160 L3187
+L3187      r=  1      n=  1 -> L326b
+L318c      r= 11 loop n= 12 -> L31f5 L31b5
+L31b5      r= 11 loop n=  7 -> L30f8 L3108
+L31d5      r= 10      n=  5 -> L31eb
+L31eb      r=  9      n=  1 -> L31f0
+L31f0      r=  8      n=  1 -> L1d31
+L31f5      r= 10      n=  5 -> L20c8
+L320e      r=  4      n=  6 -> L3228 L3228 L3228
+L3228      r=  3      n=  2 -> L3230
+L3230      r=  2      n=  3 -> L1d95
+L324d      r=  0      n=  1 -> 
+L3252      r=  0      n=  1 -> 
+L3257      r=  0      n=  1 -> 
+L325c      r=  0      n=  1 -> 
+L3261      r=  0      n=  1 -> 
+L3266      r=  0      n=  1 -> 
+L326b      r=  0      n=  1 -> 
+L3270      r=  0      n=  1 -> 
+L3275      r=  0      n=  1 -> 
+L327a      r=  0      n=  1 -> 
+L327f      r=  0      n=  1 -> 
+L3284      r=  0      n=  1 -> 
+L3289      r=  0      n=  1 -> 
+L328e      r=  2      n=  7 -> L32af
+L32af      r=  1      n=  1 -> L32b4
+L32b4      r=  0      n=  1 -> 
+L32b9      r=  0      n=  1 -> 
+L32be      r=  0      n=  1 -> 
+L32c3      r=  0      n=  1 -> 
+L32c8      r=  0      n=  1 -> 
+L32cd      r=  0      n=  1 -> 
+L32d2      r=  0      n=  1 -> 
+L32d7      r=  0      n=  1 -> 
+L32dc      r=  1      n= 12 -> L32ec
+L32ec      r=  0      n=  4 -> 

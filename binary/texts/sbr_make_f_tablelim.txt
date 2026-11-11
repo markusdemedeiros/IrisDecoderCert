@@ -1,0 +1,396 @@
+sbr_make_f_tablelim:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 1056 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f22:
+    mov rbx, rdi ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rdi+44] ;; aw=w64 ow=w32
+    test rax, rax ;; aw=w64 ow=w64
+    je sbr_make_f_tablelim.L438a ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f31:
+    cmp eax, 4 ;; aw=w64 ow=w32
+    jae sbr_make_f_tablelim.L43dc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f3a:
+    lea rcx, [rip+sbr_make_f_tablelim_bw] ;; aw=w64 ow=w64
+    vmovss xmm0, DWORD PTR [rcx+rax*4+-4] ;; aw=w64 ow=w128
+    movzx eax, WORD PTR [rbx+88] ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-46], ax ;; aw=w64 ow=w16
+    mov ecx, DWORD PTR [rbx+312112] ;; aw=w64 ow=w32
+    test ecx, ecx ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f59:
+    lea edx, [rcx+-7] ;; aw=w64 ow=w32
+    cmp edx, 4294967290 ;; aw=w64 ow=w32
+    jb sbr_make_f_tablelim.L43e6 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f65:
+    movzx edx, BYTE PTR [rbx+312116] ;; aw=w64 ow=w32
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-44], ax ;; aw=w64 ow=w16
+    cmp ecx, 1 ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f77:
+    movzx edx, BYTE PTR [rbx+312117] ;; aw=w64 ow=w32
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-42], ax ;; aw=w64 ow=w16
+    cmp ecx, 2 ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f89:
+    movzx edx, BYTE PTR [rbx+312118] ;; aw=w64 ow=w32
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-40], ax ;; aw=w64 ow=w16
+    cmp ecx, 3 ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3f9b:
+    movzx edx, BYTE PTR [rbx+312119] ;; aw=w64 ow=w32
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-38], ax ;; aw=w64 ow=w16
+    cmp ecx, 4 ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3fad:
+    movzx edx, BYTE PTR [rbx+312120] ;; aw=w64 ow=w32
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-36], ax ;; aw=w64 ow=w16
+    cmp ecx, 5 ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L3fcc ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3fbf:
+    movzx ecx, BYTE PTR [rbx+312121] ;; aw=w64 ow=w32
+    add eax, ecx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-34], ax ;; aw=w64 ow=w16
+sbr_make_f_tablelim.L3fcc:
+    vmovss DWORD PTR [rbp+-52], xmm0 ;; aw=w64 ow=w128
+    lea r14, [rbx+312050] ;; aw=w64 ow=w64
+    lea rsi, [rbx+311890] ;; aw=w64 ow=w64
+    mov r15d, DWORD PTR [rbx+311776] ;; aw=w64 ow=w32
+    lea edx, [r15+1] ;; aw=w64 ow=w32
+    add rdx, rdx ;; aw=w64 ow=w64
+    mov rdi, r14 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L3ff5:
+    mov edx, DWORD PTR [rbx+312112] ;; aw=w64 ow=w32
+    cmp edx, 2 ;; aw=w64 ow=w32
+    jb sbr_make_f_tablelim.L4026 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4000:
+    cmp r15d, 31 ;; aw=w64 ow=w32
+    jae sbr_make_f_tablelim.L43f0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L400a:
+    lea rdi, [r14+r15*2+0] ;; aw=w64 ow=w64
+    add rdi, 2 ;; aw=w64 ow=w64
+    lea rsi, [rbp+-44] ;; aw=w64 ow=w64
+    dec edx ;; aw=w64 ow=w32
+    add rdx, rdx ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4020:
+    mov edx, DWORD PTR [rbx+312112] ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L4026:
+    mov QWORD PTR [rbp+-1088], r14 ;; aw=w64 ow=w64
+    add r15d, edx ;; aw=w64 ow=w32
+    cmp r15d, 31 ;; aw=w64 ow=w32
+    vmovss xmm2, DWORD PTR [rbp+-52] ;; aw=w64 ow=w128
+    jae sbr_make_f_tablelim.L43e1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L403f:
+    lea rax, [rbx+312052] ;; aw=w64 ow=w64
+    mov ecx, r15d ;; aw=w64 ow=w32
+    lea rcx, [r14+rcx*2+0] ;; aw=w64 ow=w64
+    add rcx, -2 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-1080], rcx ;; aw=w64 ow=w64
+    mov ecx, 1 ;; aw=w64 ow=w32
+    jmp sbr_make_f_tablelim.L4068 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4060:
+    test ecx, ecx ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L429d ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4068:
+    cmp ecx, 65 ;; aw=w64 ow=w32
+    jae sbr_make_f_tablelim.L43d7 ;; aw=w64 ow=w64
+    dec ecx ;; aw=w64 ow=w32
+    mov rdx, rcx ;; aw=w64 ow=w64
+    shl rdx, 4 ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+rdx*1+-1088] ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+rdx*1+-1080] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4090:
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+    lea r8, [rdx+-2] ;; aw=w64 ow=w64
+    cmp rsi, r8 ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L4280 ;; aw=w64 ow=w64
+    mov r9, rdx ;; aw=w64 ow=w64
+    sub r9, rsi ;; aw=w64 ow=w64
+    sar r9, 2 ;; aw=w64 ow=w64
+    lea rdi, [rsi+r9*2+0] ;; aw=w64 ow=w64
+    movzx r10d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [rsi+r9*2+0] ;; aw=w64 ow=w32
+    cmp r10w, r11w ;; aw=w64 ow=w16
+    jle sbr_make_f_tablelim.L40e0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L40c3:
+    cmp r11w, r9w ;; aw=w64 ow=w16
+    jg sbr_make_f_tablelim.L40ec ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L40c9:
+    mov WORD PTR [rdx+0], r10w ;; aw=w64 ow=w16
+    mov r9d, r11d ;; aw=w64 ow=w32
+    jmp sbr_make_f_tablelim.L40f0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L40e0:
+    mov r11d, 1 ;; aw=w64 ow=w32
+    cmp r10w, r9w ;; aw=w64 ow=w16
+    jle sbr_make_f_tablelim.L40f7 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L40ec:
+    mov WORD PTR [rdi+0], r10w ;; aw=w64 ow=w16
+sbr_make_f_tablelim.L40f0:
+    mov WORD PTR [rsi+0], r9w ;; aw=w64 ow=w16
+    xor r11d, r11d ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L40f7:
+    movzx r9d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    movzx r15d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    cmp r9w, r15w ;; aw=w64 ow=w16
+    jle sbr_make_f_tablelim.L4120 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4105:
+    mov WORD PTR [rdx+0], r9w ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], r15w ;; aw=w64 ow=w16
+    xor r11d, r11d ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L4110:
+    lea r9, [rdx+-4] ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    jne sbr_make_f_tablelim.L4130 ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4120:
+    mov r15d, r9d ;; aw=w64 ow=w32
+    lea r9, [rdx+-4] ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    je sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4130:
+    lea r10, [rsi+2] ;; aw=w64 ow=w64
+    movzx r12d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rdi+0], r12w ;; aw=w64 ow=w16
+    mov WORD PTR [r8+0], r15w ;; aw=w64 ow=w16
+    cmp r10, r9 ;; aw=w64 ow=w64
+    jbe sbr_make_f_tablelim.L4169 ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L41b4 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4150:
+    movzx r15d, WORD PTR [r10+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r9+0], r15w ;; aw=w64 ow=w16
+    mov WORD PTR [r10+0], r12w ;; aw=w64 ow=w16
+    add r10, 2 ;; aw=w64 ow=w64
+    add r9, -2 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4164:
+    cmp r10, r9 ;; aw=w64 ow=w64
+    ja sbr_make_f_tablelim.L41b0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4169:
+    movzx r15d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4170:
+    cmp WORD PTR [r10+0], r15w ;; aw=w64 ow=w16
+    jge sbr_make_f_tablelim.L4194 ;; aw=w64 ow=w64
+    add r10, 2 ;; aw=w64 ow=w64
+    cmp r10, r9 ;; aw=w64 ow=w64
+    jbe sbr_make_f_tablelim.L4170 ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L4194 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4190:
+    add r9, -2 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4194:
+    cmp r10, r9 ;; aw=w64 ow=w64
+    ja sbr_make_f_tablelim.L4164 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4199:
+    movzx r12d, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    cmp r12w, r15w ;; aw=w64 ow=w16
+    jg sbr_make_f_tablelim.L4190 ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L4150 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L41b0:
+    movzx r15d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L41b4:
+    movzx r12d, WORD PTR [r10+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r10+0], r15w ;; aw=w64 ow=w16
+    mov WORD PTR [r8+0], r12w ;; aw=w64 ow=w16
+    test r11d, r11d ;; aw=w64 ow=w32
+    je sbr_make_f_tablelim.L4200 ;; aw=w64 ow=w64
+    cmp rdi, r10 ;; aw=w64 ow=w64
+    je sbr_make_f_tablelim.L41d3 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L41ca:
+    lea r8, [r10+-2] ;; aw=w64 ow=w64
+    cmp rdi, r8 ;; aw=w64 ow=w64
+    jne sbr_make_f_tablelim.L4200 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L41d3:
+    mov r8, rsi ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L41e0:
+    mov rdi, r8 ;; aw=w64 ow=w64
+    cmp r8, rdx ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L41f7 ;; aw=w64 ow=w64
+    lea r8, [rdi+2] ;; aw=w64 ow=w64
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    cmp r11w, WORD PTR [rdi+2] ;; aw=w64 ow=w16
+    jle sbr_make_f_tablelim.L41e0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L41f7:
+    cmp rdi, rdx ;; aw=w64 ow=w64
+    je sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4200:
+    mov rdi, rdx ;; aw=w64 ow=w64
+    sub rdi, r10 ;; aw=w64 ow=w64
+    mov r8, r10 ;; aw=w64 ow=w64
+    sub r8, rsi ;; aw=w64 ow=w64
+    cmp rdi, r8 ;; aw=w64 ow=w64
+    jge sbr_make_f_tablelim.L4250 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4211:
+    cmp rcx, 64 ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L43cd ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L421b:
+    mov rdi, rcx ;; aw=w64 ow=w64
+    shl rdi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1088], rsi ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1080], r9 ;; aw=w64 ow=w64
+    add r10, 2 ;; aw=w64 ow=w64
+    mov rsi, r10 ;; aw=w64 ow=w64
+    inc rcx ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L4090 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4250:
+    cmp rcx, 64 ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L43d2 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L425a:
+    add r10, 2 ;; aw=w64 ow=w64
+    mov rdi, rcx ;; aw=w64 ow=w64
+    shl rdi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1088], r10 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1080], rdx ;; aw=w64 ow=w64
+    mov rdx, r9 ;; aw=w64 ow=w64
+    inc rcx ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L4090 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4280:
+    movzx edi, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r8d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    cmp di, r8w ;; aw=w64 ow=w16
+    jle sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+    mov WORD PTR [rdx+0], di ;; aw=w64 ow=w16
+    mov WORD PTR [rsi+0], r8w ;; aw=w64 ow=w16
+    jmp sbr_make_f_tablelim.L4060 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L429d:
+    mov ecx, DWORD PTR [rbx+311776] ;; aw=w64 ow=w32
+    mov edx, DWORD PTR [rbx+312112] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    dec edx ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+311788], edx ;; aw=w64 ow=w32
+    cmp edx, 30 ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L42b6:
+    ja sbr_make_f_tablelim.L4385 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L42bc:
+    mov rcx, r14 ;; aw=w64 ow=w64
+    jmp sbr_make_f_tablelim.L42eb ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L42d0:
+    mov WORD PTR [rcx+2], si ;; aw=w64 ow=w16
+    add rcx, 2 ;; aw=w64 ow=w64
+    mov edx, DWORD PTR [rbx+311788] ;; aw=w64 ow=w32
+    add rax, 2 ;; aw=w64 ow=w64
+    cmp edx, 31 ;; aw=w64 ow=w32
+    jae sbr_make_f_tablelim.L4385 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L42eb:
+    mov esi, edx ;; aw=w64 ow=w32
+    lea rsi, [r14+rsi*2+0] ;; aw=w64 ow=w64
+    cmp rcx, rsi ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L43bd ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L42fa:
+    movzx esi, WORD PTR [rax+0] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, esi ;; aw=w64 ow=w128
+    movzx edi, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm1, xmm15, edi ;; aw=w64 ow=w128
+    vmulss xmm1, xmm2, xmm1 ;; aw=w64 ow=w128
+    vucomiss xmm0, xmm1 ;; aw=w64 ow=w128
+    jae sbr_make_f_tablelim.L42d0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4312:
+    cmp si, di ;; aw=w64 ow=w16
+    je sbr_make_f_tablelim.L4370 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4317:
+    mov r8d, DWORD PTR [rbx+312112] ;; aw=w64 ow=w32
+    test r8d, r8d ;; aw=w64 ow=w32
+    js sbr_make_f_tablelim.L4370 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4323:
+    inc r8 ;; aw=w64 ow=w64
+    xor r9d, r9d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4330:
+    cmp WORD PTR [rbp+r9*2+-46], si ;; aw=w64 ow=w16
+    je sbr_make_f_tablelim.L4342 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4338:
+    inc r9 ;; aw=w64 ow=w64
+    cmp r8, r9 ;; aw=w64 ow=w64
+    jne sbr_make_f_tablelim.L4330 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4340:
+    jmp sbr_make_f_tablelim.L4370 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4342:
+    xor edx, edx ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4350:
+    cmp WORD PTR [rbp+rdx*2+-46], di ;; aw=w64 ow=w16
+    je sbr_make_f_tablelim.L42d0 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L435b:
+    inc rdx ;; aw=w64 ow=w64
+    cmp r8, rdx ;; aw=w64 ow=w64
+    jne sbr_make_f_tablelim.L4350 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4363:
+    mov WORD PTR [rcx+0], si ;; aw=w64 ow=w16
+    mov edx, DWORD PTR [rbx+311788] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4370:
+    dec edx ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+311788], edx ;; aw=w64 ow=w32
+    add rax, 2 ;; aw=w64 ow=w64
+    cmp edx, 31 ;; aw=w64 ow=w32
+    jb sbr_make_f_tablelim.L42eb ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L4385:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L438a:
+    movzx eax, WORD PTR [rbx+311890] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+312050], ax ;; aw=w64 ow=w16
+sbr_make_f_tablelim.L4398:
+    mov eax, DWORD PTR [rbx+311776] ;; aw=w64 ow=w32
+    cmp rax, 25 ;; aw=w64 ow=w64
+    jae sbr_make_f_tablelim.L43eb ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L43a4:
+    movzx eax, WORD PTR [rbx+rax*2+311890] ;; aw=w64 ow=w32
+    mov WORD PTR [rbx+312052], ax ;; aw=w64 ow=w16
+    mov DWORD PTR [rbx+311788], 1 ;; aw=w64 ow=w32
+sbr_make_f_tablelim.L43bd:
+    add rsp, 1056 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_make_f_tablelim.done:
+    ret ;; aw=w64 ow=w64
+sbr_make_f_tablelim.L43cd:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43d2:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43d7:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43dc:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43e1:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43e6:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43eb:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_make_f_tablelim.L43f0:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

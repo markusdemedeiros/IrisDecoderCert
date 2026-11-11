@@ -1,0 +1,55 @@
+set_option maxRecDepth 8000 in
+theorem blk_L7370 (k : Nat) (hk : k ≤ 2 ^ 32) (e : Env) (hc : ApplyCallees k e)
+    (x : Args) (ra : Int64) (t₀ : MachineData) (hSt : applyNeed k ≤ (t₀.regs.get64 .rsp).toNat) :
+    BlockOb k e x ra t₀ "ff_aac_sbr_apply.L7370" ⟨"ff_aac_sbr_apply.L7370", B.L7370, some "ff_aac_sbr_apply.L73a1"⟩ := by
+  clear hc
+  intro n
+  refine Triple.pin fun s₀ hs₀ => ?_
+  obtain ⟨hs, hn⟩ := hs₀
+  obtain ⟨hC, ⟨hrsp, hrbp⟩, h9, ch, nch, hch, hnch, hd, hnn, hax, hdx, hq0, hm⟩ := T.L7370.mp hs
+  clear hs
+  simp only [lex_var, hd, h9] at hn
+  obtain ⟨-, -, -, hnn0⟩ := dq_dwf (ch := 0) hC.1 (by decide)
+  obtain ⟨-, -, -, hnn1⟩ := dq_dwf (ch := 1) hC.1 (by decide)
+  obtain ⟨-, -, hnq⟩ := dq_wf hC.1
+  simp only [Args.d, ite_true, ite_false, Nat.reduceEqDiff] at hnn0 hnn1
+  obtain hq | hq : (x.d ch).nnoise = 1 ∨ (x.d ch).nnoise = 2 := by
+    have := (dq_dwf (ch := ch) hC.1 (by omega)).2.2.2; omega
+  all_goals obtain rfl | rfl : ch = 0 ∨ ch = 1 := by omega
+  all_goals simp only [Args.d, ite_true, ite_false, Nat.reduceEqDiff] at hq
+  all_goals
+    simp only [Mm, ApplyF, TabW_push, FnW_push, AcW_push, OutW_push, DScW, TabW, DArrW, FrDq, dA, sbrA, arg1, Args.d, ite_true, ite_false,
+      Nat.reduceEqDiff, Nat.reduceMul, Nat.reduceAdd, BitVec.add_assoc, BitVec.reduceAdd] at hm hd hn hnn hax
+    simp only [hq] at hax
+    try dsimp only
+    simp only [B.L7370]
+    vcgen
+  all_goals try subst_vars
+  all_goals (revert hrbp h9 hd hax hdx; dq_simp [] at *; intro hrbp h9 hd hax hdx)
+  all_goals (have p1 : PLift _ := ⟨hrbp⟩; have p2 : PLift _ := ⟨h9⟩; have p3 : PLift _ := ⟨hd⟩; have p4 : PLift _ := ⟨hax⟩; have p5 : PLift _ := ⟨hdx⟩)
+  all_goals try simp only [hrbp, h9, hd, hax, hdx] at *
+  all_goals try dq_simp [] at *
+  all_goals try sep_vals hm
+  all_goals try simp only [BitVec.ofInt_ofBytes_toBytes 64 8 rfl, BitVec.add_assoc, BitVec.reduceAdd] at *
+  all_goals try sep_vals hm
+  all_goals try simp only [BitVec.ofInt_ofBytes_toBytes 64 8 rfl, BitVec.ofInt_ofBytes_toBytes_eq 32 4 rfl,
+    CondCode.interp, StatusFlags.from_result, BitVec.reduceSetWidth, BitVec.reduceSub, BitVec.reduceAdd,
+    dq_bvzero, BitVec.reduceBEq, beq_self_eq_true, Bool.false_eq_true, Bool.true_eq_false,
+    Bool.not_true, Bool.not_false] at *
+  all_goals try (simp (config := {decide := true}) only [] at *)
+  all_goals try sep_mem hm
+  all_goals try (dq_has_str "ff_aac_sbr_apply.L7020"; left; refine Table.ofLabels_at (l := "ff_aac_sbr_apply.L7020") ?_; refine ⟨isSome_at L.L7020, ?_, ?_⟩; rw [T.L7020]; refine ⟨hC, ⟨?_, ?_⟩, ?_, _, nch, hch, hnch, ?_, ?_⟩)
+  all_goals try (dq_has_str "ff_aac_sbr_apply.L73a1"; left; refine Table.ofLabels_at (l := "ff_aac_sbr_apply.L73a1") ?_; refine ⟨isSome_at L.L73a1, ?_, ?_⟩; rw [T.L73a1]; refine ⟨hC, ⟨?_, ?_⟩, ?_, _, nch, hch, hnch, ?_, ?_, ?_, ?_, ?_, ?_⟩)
+  all_goals try (dq_has_str "ff_aac_sbr_apply.L73b7"; left; refine Table.ofLabels_at (l := "ff_aac_sbr_apply.L73b7") ?_; refine ⟨isSome_at L.L73b7, ?_, ?_⟩; rw [T.L73b7]; refine ⟨hC, ⟨?_, ?_⟩, ?_, _, nch, hch, hnch, ?_, ?_, ?_, ?_, ?_, ?_⟩)
+  all_goals try simp only [lex_var]
+  all_goals try dq_simp [p1.down, p2.down, p3.down, p4.down, p5.down, Args.d, BitVec.toNat_ofNat]
+  all_goals try dq_lex2
+  all_goals try (dq_simp [p1.down, p2.down, p3.down, p4.down, p5.down, Args.d, BitVec.toNat_ofNat, dA,
+    sbrA, arg1]; done)
+  all_goals try (dq_simp [p1.down, p2.down, p3.down, p4.down, p5.down, Args.d, BitVec.toNat_ofNat, dA,
+    sbrA, arg1]; omega)
+  all_goals try omega
+  all_goals try decide
+  all_goals try ((try dq_simp [] at hm ⊢); simp only [Mm, ApplyF, TabW_push, FnW_push, AcW_push, OutW_push, DScW, TabW, DArrW, FrDq, dA, sbrA, arg1,
+      Nat.reduceMul, Nat.reduceAdd, BitVec.add_assoc, BitVec.reduceAdd]; sep_close hm)
+  all_goals done

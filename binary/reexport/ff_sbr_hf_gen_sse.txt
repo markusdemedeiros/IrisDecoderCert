@@ -1,0 +1,43 @@
+ff_sbr_hf_gen_sse:
+    movlps xmm2, QWORD PTR [rcx+0] ;; aw=w64 ow=w128
+    movlps xmm1, QWORD PTR [rdx+0] ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 0 ;; aw=w64 ow=w128
+    mulps xmm2, xmm0 ;; aw=w64 ow=w128
+    mulps xmm1, xmm0 ;; aw=w64 ow=w128
+    mulps xmm2, xmm0 ;; aw=w64 ow=w128
+    movaps xmm3, xmm1 ;; aw=w64 ow=w128
+    movaps xmm4, xmm2 ;; aw=w64 ow=w128
+    movsxd r8, r8d ;; aw=w64 ow=w64
+    movsxd r9, r9d ;; aw=w64 ow=w64
+    sub r8, r9 ;; aw=w64 ow=w64
+    lea rdi, [rdi+r9*8+0] ;; aw=w64 ow=w64
+    lea rsi, [rsi+r9*8+-16] ;; aw=w64 ow=w64
+    shl r8, 3 ;; aw=w64 ow=w64
+ff_sbr_hf_gen_sse.pre:
+    movaps xmm0, XMMWORD PTR [rsi+r8*1+0] ;; aw=w64 ow=w128
+    shufps xmm3, xmm3, 85 ;; aw=w64 ow=w128
+    shufps xmm4, xmm4, 85 ;; aw=w64 ow=w128
+    xorps xmm3, XMMWORD PTR [rip+ps_mask] ;; aw=w64 ow=w128
+    shufps xmm1, xmm1, 0 ;; aw=w64 ow=w128
+    shufps xmm2, xmm2, 0 ;; aw=w64 ow=w128
+    xorps xmm4, XMMWORD PTR [rip+ps_mask] ;; aw=w64 ow=w128
+ff_sbr_hf_gen_sse.loop2:
+    movups xmm7, XMMWORD PTR [rsi+r8*1+8] ;; aw=w64 ow=w128
+    movaps xmm6, xmm0 ;; aw=w64 ow=w128
+    movaps xmm5, xmm7 ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 177 ;; aw=w64 ow=w128
+    shufps xmm7, xmm7, 177 ;; aw=w64 ow=w128
+    mulps xmm0, xmm4 ;; aw=w64 ow=w128
+    mulps xmm7, xmm3 ;; aw=w64 ow=w128
+    mulps xmm6, xmm2 ;; aw=w64 ow=w128
+    mulps xmm5, xmm1 ;; aw=w64 ow=w128
+    addps xmm7, xmm0 ;; aw=w64 ow=w128
+    movaps xmm0, XMMWORD PTR [rsi+r8*1+16] ;; aw=w64 ow=w128
+    addps xmm7, xmm0 ;; aw=w64 ow=w128
+    addps xmm6, xmm5 ;; aw=w64 ow=w128
+    addps xmm7, xmm6 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+r8*1+0], xmm7 ;; aw=w64 ow=w128
+    add r8, 16 ;; aw=w64 ow=w64
+    jne ff_sbr_hf_gen_sse.loop2 ;; aw=w64 ow=w64
+ff_sbr_hf_gen_sse.done:
+    ret ;; aw=w64 ow=w64

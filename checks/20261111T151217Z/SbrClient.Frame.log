@@ -1,0 +1,59 @@
+Waiting for shared experiment build slot
+SbrClient/Frame.lean:89:23: warning: This simp argument is unused:
+  hx
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Option.none_or]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:92:10: warning: This simp argument is unused:
+  hx
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [this]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:251:70: warning: This simp argument is unused:
+  frame_zmms
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Operation.interp, Reg.interp, Effects.All, frame_regs, frame_status, shift_frame] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:252:20: warning: This simp argument is unused:
+  shift_frame
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Operation.interp, Reg.interp, Effects.All, frame_regs, frame_zmms, frame_status] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:268:19: warning: This simp argument is unused:
+  Effects.All
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [frame_regs, frame_zmms, frame_status, shift_frame] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:290:17: warning: This simp argument is unused:
+  Instr.interp
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Effects.All] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:290:31: warning: This simp argument is unused:
+  Effects.All
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Instr.interp] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SbrClient/Frame.lean:294:28: warning: This simp argument is unused:
+  Effects.All
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [AvxOperation.interp, All_avxRegOrMem, All_setAvx, All_setAvxLegacy, frame_regs, frame_zmms,
+    frame_status] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build exit=0; peak system unavailable RAM=9.65 GB

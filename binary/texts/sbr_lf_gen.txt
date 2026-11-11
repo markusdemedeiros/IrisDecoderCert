@@ -1,0 +1,245 @@
+sbr_lf_gen:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    mov r12d, ecx ;; aw=w64 ow=w32
+    mov rbx, rdx ;; aw=w64 ow=w64
+    mov r14, rsi ;; aw=w64 ow=w64
+    mov r15, rdi ;; aw=w64 ow=w64
+sbr_lf_gen.c:
+    mov edx, 10240 ;; aw=w64 ow=w32
+    mov rdi, rsi ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    call memset ;; aw=w64 ow=w64
+sbr_lf_gen.m1:
+    cmp DWORD PTR [r15+88], 0 ;; aw=w64 ow=w32
+    movsxd rax, r12d ;; aw=w64 ow=w64
+    je sbr_lf_gen.La588 ;; aw=w64 ow=w64
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 13 ;; aw=w64 ow=w64
+    add rcx, rbx ;; aw=w64 ow=w64
+    lea rdx, [r14+316] ;; aw=w64 ow=w64
+    mov esi, 1 ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_lf_gen.La190:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+-8] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-252], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-248], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+248] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-244], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+252] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-240], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+504] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-236], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+508] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-232], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+760] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-228], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+764] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-224], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a1:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1016] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-220], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1020] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-216], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1272] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-212], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1276] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-208], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1528] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-204], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1532] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-200], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1784] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-196], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+1788] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-192], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a2:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2040] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-188], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2044] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-184], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2296] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-180], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2300] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-176], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2552] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-172], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2556] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-168], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2808] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-164], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+2812] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-160], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a3:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3064] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-156], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3068] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-152], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3320] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-148], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3324] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-144], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3576] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-140], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3580] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-136], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3832] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-132], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+3836] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-128], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a4:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4088] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-124], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4092] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-120], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4344] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-116], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4348] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-112], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4600] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-108], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4604] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-104], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4856] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-100], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+4860] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-96], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a5:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5112] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-92], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5116] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-88], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5368] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-84], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5372] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-80], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5624] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-76], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5628] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-72], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5880] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-68], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+5884] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-64], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a6:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6136] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-60], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6140] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-56], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6392] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-52], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6396] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-48], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6648] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-44], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6652] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-40], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6904] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-36], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+6908] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-32], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a7:
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7160] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-28], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7164] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-24], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7416] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-20], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7420] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-16], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7672] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-12], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7676] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-8], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7928] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+-4], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rcx+rsi*8+7932] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+0], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.a8:
+    mov edi, DWORD PTR [r15+88] ;; aw=w64 ow=w32
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jae sbr_lf_gen.La588 ;; aw=w64 ow=w64
+    inc rsi ;; aw=w64 ow=w64
+    add rdx, 320 ;; aw=w64 ow=w64
+    cmp rsi, 33 ;; aw=w64 ow=w64
+    jne sbr_lf_gen.La190 ;; aw=w64 ow=w64
+sbr_lf_gen.t1:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_lf_gen.La588:
+    cmp DWORD PTR [r15+84], 0 ;; aw=w64 ow=w32
+    je sbr_lf_gen.La6ba ;; aw=w64 ow=w64
+    add r14, 60 ;; aw=w64 ow=w64
+    shl rax, 13 ;; aw=w64 ow=w64
+    sub rbx, rax ;; aw=w64 ow=w64
+    add rbx, 16132 ;; aw=w64 ow=w64
+    mov rax, -32 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_lf_gen.La5b0:
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1540] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-60], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1536] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-56], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1284] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-52], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1280] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-48], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1028] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-44], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-1024] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-40], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-772] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-36], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-768] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-32], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.b1:
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-516] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-28], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-512] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-24], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-260] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-20], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-256] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-16], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-12], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-8], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+252] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+-4], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbx+rax*8+256] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+0], xmm0 ;; aw=w64 ow=w128
+sbr_lf_gen.b2:
+    lea rcx, [rax+33] ;; aw=w64 ow=w64
+    mov edx, DWORD PTR [r15+84] ;; aw=w64 ow=w32
+    cmp rcx, rdx ;; aw=w64 ow=w64
+    jae sbr_lf_gen.La6ba ;; aw=w64 ow=w64
+    add r14, 320 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jne sbr_lf_gen.La5b0 ;; aw=w64 ow=w64
+sbr_lf_gen.t2:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_lf_gen.La6ba:
+    xor eax, eax ;; aw=w64 ow=w32
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_lf_gen.done:
+    ret ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

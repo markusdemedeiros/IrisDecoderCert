@@ -1,0 +1,11 @@
+--- a/sbr_hf_inverse_filter.txt
++++ b/sbr_hf_inverse_filter.txt
+@@ -45,7 +45,7 @@
+     vmulps xmm4, xmm2, xmm2 ;; aw=w64 ow=w128
+     vmovshdup xmm5, xmm4 ;; aw=w64 ow=w128
+     vaddss xmm4, xmm4, xmm5 ;; aw=w64 ow=w128
+-    vdivss xmm4, xmm4, DWORD PTR [rip+LCPI19_0] ;; aw=w64 ow=w128
++    vdivss xmm4, xmm4, DWORD PTR [rip+LCPI19_1] ;; aw=w64 ow=w128
+     vaddss xmm3, xmm3, xmm4 ;; aw=w64 ow=w128
+     vucomiss xmm3, xmm7 ;; aw=w64 ow=w128
+     jne sbr_hf_inverse_filter.Lbfb5 ;; aw=w64 ow=w64

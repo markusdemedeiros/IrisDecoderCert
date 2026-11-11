@@ -1,0 +1,210 @@
+import Kraken.MachineWP
+import Kraken.Specs
+import Kraken.Rules.GenericMem
+import Kraken.Rules.PackedSse
+
+/-!
+# VEX scalar-float rules
+
+`@[spec low]` rules for the VEX scalar single/double forms, the conversions
+and the `vmovd`/`vmovq` moves between general-purpose and xmm registers.
+
+Each instruction whose source is a register or memory gets a register rule and
+a memory rule. The memory rule is stated once over the operand
+`⟨some (.reg b), idx, .int64 d⟩`, as in `GenericMem.lean`; the forms that
+compiled code applies to constants also get a `sym(%rip)` rule, and a
+`sym+o(%rip)` twin (`_rip_off_spec`).
+
+A scalar `m32`/`m64` operand goes through the general-purpose
+`MachineData.load`/`store` at 32 or 64 bits (`AvxRegOrMem.interpLow`): there
+is no alignment check. The memory side condition is that the 4 or 8 bytes at
+the address be present in the data memory (`Mem.loadInt … = some _`), for a
+load and for a store alike.
+
+Results are stated exactly. A register destination gets the operation's
+low element, the rest of bits 127..0 from `src1`, and the bits above 127
+cleared, which is what `RegZmms.set` does. `vucomiss`/`vucomisd` set the flags
+`StatusFlags.ofFCmp`; the field lemmas below and `CondCode.interp_p`/`_np`
+let a following `jcc` reduce to the three comparison outcomes.
+`RegZmms.get_set_xmm_same`/`_ne` read an xmm register back over a write.
+-/
+
+open Kraken MachineWP Std.WP Lean.Order
+
+/-! ## Flags of a floating-point compare -/
+
+@[simp] theorem StatusFlags.zf_ofFCmp (c : Bool × Bool × Bool) :
+    (StatusFlags.ofFCmp c).zf = (c.1 || c.2.2) := rfl
+@[simp] theorem StatusFlags.pf_ofFCmp (c : Bool × Bool × Bool) :
+    (StatusFlags.ofFCmp c).pf = c.1 := rfl
+@[simp] theorem StatusFlags.cf_ofFCmp (c : Bool × Bool × Bool) :
+    (StatusFlags.ofFCmp c).cf = (c.1 || c.2.1) := rfl
+@[simp] theorem StatusFlags.sf_ofFCmp (c : Bool × Bool × Bool) :
+    (StatusFlags.ofFCmp c).sf = false := rfl
+@[simp] theorem StatusFlags.of_ofFCmp (c : Bool × Bool × Bool) :
+    (StatusFlags.ofFCmp c).of = false := rfl
+
+@[simp] theorem CondCode.interp_p (s : StatusFlags) :
+    CondCode.p.interp s = s.pf := rfl
+@[simp] theorem CondCode.interp_np (s : StatusFlags) :
+    CondCode.np.interp s = !s.pf := rfl
+
+/-! The `grind` attributes of this file are scoped: `open scoped
+Kraken.Rules.ScalarFloat.FCmp` (the flags of a float compare, `jp`/`jnp`) and
+`Kraken.Rules.ScalarFloat.Xmm` (xmm reads over VEX writes). -/
+namespace Kraken.Rules.ScalarFloat.FCmp
+attribute [scoped grind =] StatusFlags.zf_ofFCmp StatusFlags.pf_ofFCmp StatusFlags.cf_ofFCmp
+  StatusFlags.sf_ofFCmp StatusFlags.of_ofFCmp CondCode.interp_p CondCode.interp_np
+end Kraken.Rules.ScalarFloat.FCmp
+
+/-! ## Reads of xmm registers over VEX writes -/
+
+theorem RegZmms.get512_set512_same (s : RegZmms) (r : RegMm) (v : AvxWidth.W512.type) :
+    (s.set512 r v).get512 r = v := by
+  cases r <;> rfl
+
+theorem RegZmms.get512_set512_ne (s : RegZmms) (r r' : RegMm) (v : AvxWidth.W512.type)
+    (h : r ≠ r') : (s.set512 r v).get512 r' = s.get512 r' := by
+  cases r <;> cases r' <;> first | rfl | exact absurd rfl h
+
+set_option exponentiation.threshold 512 in
+/-- A VEX write to an xmm register reads back as written. -/
+@[simp] theorem RegZmms.get_set_xmm_same (s : RegZmms) (x : RegMm) (v : BitVec 128) :
+    (s.set (.xmm x) v).get (.xmm x) = v := by
+  simp only [RegZmms.get, RegZmms.set, AvxReg.base]
+  rw [RegZmms.get512_set512_same]
+  apply BitVec.eq_of_toNat_eq
+  simp [BitVec.take, BitVec.extractLsb'_toNat, AvxWidth.bits]
+  exact v.isLt
+
+/-- A write to one xmm register leaves the others. -/
+@[simp] theorem RegZmms.get_set_xmm_ne (s : RegZmms) (x y : RegMm) (v : BitVec 128)
+    (h : x ≠ y) : (s.set (.xmm x) v).get (.xmm y) = s.get (.xmm y) := by
+  simp only [RegZmms.get, RegZmms.set, AvxReg.base]
+  rw [RegZmms.get512_set512_ne _ _ _ _ h]
+
+namespace Kraken.Rules.ScalarFloat.Xmm
+attribute [scoped grind =] RegZmms.get_set_xmm_same RegZmms.get_set_xmm_ne
+end Kraken.Rules.ScalarFloat.Xmm
+
+open scoped Kraken.Rules.ScalarFloat.FCmp Kraken.Rules.ScalarFloat.Xmm
+
+section Specs
+
+variable [CodeEnv] {Q : Unit → MachineData → Prop} {E : Int64 → MachineData → Prop}
+  {p : Program}
+
+local macro "wp_step" : tactic =>
+  `(tactic| simp only [Executable.stepAt, Directive.interp, Instr.interp,
+      Operation.interp, AvxOperation.interp, Operand.interp, RegOrMem.interp,
+      AvxRegOrMem.interp, RelRegOrMem.interp, ConstExpr.interp,
+      MachineData.set, MachineData.setReg, MachineData.setAvxLegacy, MachineData.setAvxLegacyReg,
+      MachineData.setAvx, MachineData.setAvxReg,
+      Reg64s.get_low64, Reg64s.set_low64, Effects.All, or_false, false_or])
+
+/-- The proof of a register rule: one cell, reduced. -/
+local macro "reg_rule" : tactic =>
+  `(tactic| exact fallthrough_spec (fun s rng P hP => by
+      wp_step
+      try simp only [AvxRegOrMem.interpLow, Reg64s.get_low32, Reg64s.set_low32]
+      exact hP))
+
+/-- The proof of a memory rule (load or store): the bytes are present, so the
+access takes its `some` branch. -/
+local macro "mem_rule" : tactic =>
+  `(tactic| (
+    refine Triple.intro fun s h => ?_
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨hsome, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    simp only [AvxRegOrMem.interpLow, MachineData.load, MachineData.store,
+      AddrExpr.zeroExtend_interp_base_idx_disp, AddrExpr.zeroExtend_interp_rip_label,
+      AddrExpr.zeroExtend_interp_rip_label_add,
+      Width.bytes, hv, Effects.All]
+    first
+      | exact hk v hv _ hpl'
+      | exact hk _ hpl'))
+
+/-- The address of a label in the ambient code. -/
+local macro "L" : term => `((_root_.Executable.labels cenv).label)
+
+/-! ## vmovss / vmovsd -/
+
+/-- `vmovss d(%b,%i,s), %xmm`: the 4 bytes must be present; the register gets
+them zero-extended. -/
+@[spec low] theorem MachineWP.vmovss_load_mem_spec (x : AvxReg .W128) (b : Reg64)
+    (idx : Option AddrIndex) (d : Int64) :
+    ⦃ fun s =>
+        let a := s.regs.get64 b + AddrIndex.offset64 idx s.regs + d.toBitVec
+        ((Mem.loadInt s.dmem a 4).isSome = true)
+          ⊓ (∀ v, Mem.loadInt s.dmem a 4 = some v →
+            WP.wp p Q E { s with zmms := s.zmms.set x ((BitVec.ofInt 32 v).zeroExtend 128) }) ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovssMem (.avx x) (.mem ⟨some (.reg b), idx, .int64 d⟩))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+
+/-- `vmovss sym(%rip), %xmm`. -/
+@[spec low] theorem MachineWP.vmovss_load_rip_spec (x : AvxReg .W128) (l : Label) :
+    ⦃ fun s =>
+        let a := (L l).toBitVec
+        ((Mem.loadInt s.dmem a 4).isSome = true)
+          ⊓ (∀ v, Mem.loadInt s.dmem a 4 = some v →
+            WP.wp p Q E { s with zmms := s.zmms.set x ((BitVec.ofInt 32 v).zeroExtend 128) }) ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovssMem (.avx x) (.mem ⟨some .rip, none, .sub (.label l) .after_current_instruction⟩))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+
+/-- `vmovss %xmm, d(%b,%i,s)`: the 4 bytes must be present; they get the low
+float of the register. -/
+@[spec low] theorem MachineWP.vmovss_store_mem_spec (b : Reg64) (idx : Option AddrIndex)
+    (d : Int64) (x : AvxReg .W128) :
+    ⦃ fun s =>
+        let a := s.regs.get64 b + AddrIndex.offset64 idx s.regs + d.toBitVec
+        ((Mem.loadInt s.dmem a 4).isSome = true)
+          ⊓ WP.wp p Q E { s with
+              dmem := Mem.storeInt s.dmem a 4 ((s.zmms.get x).setWidth 32).toInt } ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovssMem (.mem ⟨some (.reg b), idx, .int64 d⟩) (.avx x))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+
+/-- `vmovsd d(%b,%i,s), %xmm`: the 8 bytes must be present; the register gets
+them zero-extended. -/
+@[spec low] theorem MachineWP.vmovsd_load_mem_spec (x : AvxReg .W128) (b : Reg64)
+    (idx : Option AddrIndex) (d : Int64) :
+    ⦃ fun s =>
+        let a := s.regs.get64 b + AddrIndex.offset64 idx s.regs + d.toBitVec
+        ((Mem.loadInt s.dmem a 8).isSome = true)
+          ⊓ (∀ v, Mem.loadInt s.dmem a 8 = some v →
+            WP.wp p Q E { s with zmms := s.zmms.set x ((BitVec.ofInt 64 v).zeroExtend 128) }) ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovsdMem (.avx x) (.mem ⟨some (.reg b), idx, .int64 d⟩))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+
+/-- `vmovsd sym(%rip), %xmm`. -/
+@[spec low] theorem MachineWP.vmovsd_load_rip_spec (x : AvxReg .W128) (l : Label) :
+    ⦃ fun s =>
+        let a := (L l).toBitVec
+        ((Mem.loadInt s.dmem a 8).isSome = true)
+          ⊓ (∀ v, Mem.loadInt s.dmem a 8 = some v →
+            WP.wp p Q E { s with zmms := s.zmms.set x ((BitVec.ofInt 64 v).zeroExtend 128) }) ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovsdMem (.avx x) (.mem ⟨some .rip, none, .sub (.label l) .after_current_instruction⟩))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+
+/-- `vmovsd %xmm, d(%b,%i,s)`: the 8 bytes must be present. -/
+@[spec low] theorem MachineWP.vmovsd_store_mem_spec (b : Reg64) (idx : Option AddrIndex)
+    (d : Int64) (x : AvxReg .W128) :
+    ⦃ fun s =>
+        let a := s.regs.get64 b + AddrIndex.offset64 idx s.regs + d.toBitVec
+        ((Mem.loadInt s.dmem a 8).isSome = true)
+          ⊓ WP.wp p Q E { s with
+              dmem := Mem.storeInt s.dmem a 8 ((s.zmms.get x).setWidth 64).toInt } ⦄
+      (Directive.instr (.avx .W64 .W128
+          (.vmovsdMem (.mem ⟨some (.reg b), idx, .int64 d⟩) (.avx x))) :: p)
+    ⦃ Q; E ⦄ := by mem_rule
+

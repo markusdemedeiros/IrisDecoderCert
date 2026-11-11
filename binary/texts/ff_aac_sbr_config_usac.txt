@@ -1,0 +1,25 @@
+ff_aac_sbr_config_usac:
+    mov QWORD PTR [rsi+166180], 0 ;; aw=w64 ow=w64
+    mov DWORD PTR [rsi+166192], 0 ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+166264], 32 ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+166272], 0 ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+269672], 4294967295 ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+180904], 4294967295 ;; aw=w64 ow=w32
+    mov DWORD PTR [rsi+166204], 4294967295 ;; aw=w64 ow=w32
+    mov WORD PTR [rsi+166208], 65535 ;; aw=w64 ow=w16
+    xor eax, eax ;; aw=w64 ow=w32
+ff_aac_sbr_config_usac.done:
+    ret ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

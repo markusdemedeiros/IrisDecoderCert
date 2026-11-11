@@ -1,0 +1,11 @@
+--- a/ff_aac_sbr_apply.txt
++++ b/ff_aac_sbr_apply.txt
+@@ -1313,7 +1313,7 @@
+     shl rax, 6 ;; aw=w64 ow=w64
+     lea rdx, [rax+rax*4+0] ;; aw=w64 ow=w64
+     xor esi, esi ;; aw=w64 ow=w32
+-    call memset ;; aw=w64 ow=w64
++    call memcpy ;; aw=w64 ow=w64
+ ff_aac_sbr_apply.L7ce0:
+     mov r8, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+ ff_aac_sbr_apply.L7ce4:

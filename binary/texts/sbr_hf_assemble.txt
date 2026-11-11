@@ -1,0 +1,976 @@
+sbr_hf_assemble:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 600 ;; aw=w64 ow=w64
+sbr_hf_assemble.p1:
+    mov QWORD PTR [rbp+-144], r8 ;; aw=w64 ow=w64
+    mov r8, rcx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-192], rsi ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-128], rdi ;; aw=w64 ow=w64
+    mov r14d, DWORD PTR [rdx+56] ;; aw=w64 ow=w32
+    xor r9d, r9d ;; aw=w64 ow=w32
+    test r14d, r14d ;; aw=w64 ow=w32
+    sete r10b ;; aw=w64 ow=w8
+    movsxd rax, DWORD PTR [rdx+88] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-136], rax ;; aw=w64 ow=w64
+    movsxd rax, DWORD PTR [rdx+96] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-120], rax ;; aw=w64 ow=w64
+sbr_hf_assemble.p2:
+    lea rax, [rcx+69936] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-152], rax ;; aw=w64 ow=w64
+    lea rax, [rcx+78000] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-176], rax ;; aw=w64 ow=w64
+    vmovq xmm4, QWORD PTR [rcx+88748] ;; aw=w64 ow=w128
+    mov QWORD PTR [rbp+-64], rdx ;; aw=w64 ow=w64
+    cmp DWORD PTR [rdx+24], 0 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-48], rcx ;; aw=w64 ow=w64
+    je sbr_hf_assemble.La8e1 ;; aw=w64 ow=w64
+    test r14d, r14d ;; aw=w64 ow=w32
+    jne sbr_hf_assemble.La8ea ;; aw=w64 ow=w64
+sbr_hf_assemble.r0:
+    mov DWORD PTR [rbp+-84], r14d ;; aw=w64 ow=w32
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea r13, [rax+387776] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    lea r12, [rcx*4+0] ;; aw=w64 ow=w64
+    lea r14, [rax+390848] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rdi, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl edi, 7 ;; aw=w64 ow=w32
+    mov rbx, QWORD PTR [rbp+-152] ;; aw=w64 ow=w64
+    add rdi, rbx ;; aw=w64 ow=w64
+    mov rsi, r14 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+    vmovdqa XMMWORD PTR [rbp+-112], xmm4 ;; aw=w64 ow=w128
+    mov BYTE PTR [rbp+-56], r10b ;; aw=w64 ow=w8
+sbr_hf_assemble.r0c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r1:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rdi, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl edi, 7 ;; aw=w64 ow=w32
+    mov r15, QWORD PTR [rbp+-176] ;; aw=w64 ow=w64
+    add rdi, r15 ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r1c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r2:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [rbx+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 192 ;; aw=w64 ow=w64
+    mov rsi, r14 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r2c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r3:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [r15+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 192 ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r3c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r4:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [rbx+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 384 ;; aw=w64 ow=w64
+    mov rsi, r14 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r4c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r5:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [r15+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 384 ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r5c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r6:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [rbx+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 576 ;; aw=w64 ow=w64
+    mov rsi, r14 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r6c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r7:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rax+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rdi, [r15+rax*1+0] ;; aw=w64 ow=w64
+    add rdi, 576 ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, r12 ;; aw=w64 ow=w64
+sbr_hf_assemble.r7c:
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.r8:
+    movzx r10d, BYTE PTR [rbp+-56] ;; aw=w64 ow=w32
+    xor r9d, r9d ;; aw=w64 ow=w32
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov r14d, DWORD PTR [rbp+-84] ;; aw=w64 ow=w32
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov edx, DWORD PTR [r8+8] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    jne sbr_hf_assemble.La8f6 ;; aw=w64 ow=w64
+    jmp sbr_hf_assemble.Lb820 ;; aw=w64 ow=w64
+sbr_hf_assemble.La8e1:
+    test r14d, r14d ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lb426 ;; aw=w64 ow=w64
+sbr_hf_assemble.La8ea:
+    mov edx, DWORD PTR [r8+8] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lb820 ;; aw=w64 ow=w64
+sbr_hf_assemble.La8f6:
+    mov DWORD PTR [rbp+-84], r14d ;; aw=w64 ow=w32
+    mov r9b, r10b ;; aw=w64 ow=w8
+    shl r9d, 2 ;; aw=w64 ow=w32
+    mov rax, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    lea r13, [rax*4+0] ;; aw=w64 ow=w64
+    mov esi, r9d ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    movzx eax, BYTE PTR [r8+88733] ;; aw=w64 ow=w32
+    cmp cl, al ;; aw=w64 ow=w8
+    vmovdqa XMMWORD PTR [rbp+-112], xmm4 ;; aw=w64 ow=w128
+    mov DWORD PTR [rbp+-56], edx ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-72], r9 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-80], rsi ;; aw=w64 ow=w64
+    jae sbr_hf_assemble.La9c2 ;; aw=w64 ow=w64
+sbr_hf_assemble.s0:
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rax+390848] ;; aw=w64 ow=w64
+    lea r15, [rax+387776] ;; aw=w64 ow=w64
+    lea r14d, [rcx+rcx*1+0] ;; aw=w64 ow=w32
+    lea rax, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.La970:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c0:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d0:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88733] ;; aw=w64 ow=w32
+    lea ecx, [rax+rax*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rcx ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.La970 ;; aw=w64 ow=w64
+sbr_hf_assemble.x0:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.La9c2:
+    cmp edx, 1 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88734] ;; aw=w64 ow=w32
+    cmp al, cl ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Laa62 ;; aw=w64 ow=w64
+sbr_hf_assemble.s1:
+    mov rcx, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rcx+391040] ;; aw=w64 ow=w64
+    lea r15, [rcx+387968] ;; aw=w64 ow=w64
+    movzx r14d, al ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Laa10:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c1:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d1:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88734] ;; aw=w64 ow=w32
+    lea eax, [rcx+rcx*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rax ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Laa10 ;; aw=w64 ow=w64
+sbr_hf_assemble.x1:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Laa62:
+    cmp edx, 2 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88735] ;; aw=w64 ow=w32
+    cmp cl, al ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lab02 ;; aw=w64 ow=w64
+sbr_hf_assemble.s2:
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rax+391232] ;; aw=w64 ow=w64
+    lea r15, [rax+388160] ;; aw=w64 ow=w64
+    movzx r14d, cl ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Laab0:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c2:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d2:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88735] ;; aw=w64 ow=w32
+    lea ecx, [rax+rax*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rcx ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Laab0 ;; aw=w64 ow=w64
+sbr_hf_assemble.x2:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Lab02:
+    cmp edx, 3 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88736] ;; aw=w64 ow=w32
+    cmp al, cl ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Laba2 ;; aw=w64 ow=w64
+sbr_hf_assemble.s3:
+    mov rcx, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rcx+391424] ;; aw=w64 ow=w64
+    lea r15, [rcx+388352] ;; aw=w64 ow=w64
+    movzx r14d, al ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lab50:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c3:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d3:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88736] ;; aw=w64 ow=w32
+    lea eax, [rcx+rcx*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rax ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Lab50 ;; aw=w64 ow=w64
+sbr_hf_assemble.x3:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Laba2:
+    cmp edx, 4 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88737] ;; aw=w64 ow=w32
+    cmp cl, al ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lac42 ;; aw=w64 ow=w64
+sbr_hf_assemble.s4:
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rax+391616] ;; aw=w64 ow=w64
+    lea r15, [rax+388544] ;; aw=w64 ow=w64
+    movzx r14d, cl ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Labf0:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c4:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d4:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88737] ;; aw=w64 ow=w32
+    lea ecx, [rax+rax*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rcx ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Labf0 ;; aw=w64 ow=w64
+sbr_hf_assemble.x4:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Lac42:
+    cmp edx, 5 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88738] ;; aw=w64 ow=w32
+    cmp al, cl ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lace2 ;; aw=w64 ow=w64
+sbr_hf_assemble.s5:
+    mov rcx, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rcx+391808] ;; aw=w64 ow=w64
+    lea r15, [rcx+388736] ;; aw=w64 ow=w64
+    movzx r14d, al ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lac90:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c5:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d5:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88738] ;; aw=w64 ow=w32
+    lea eax, [rcx+rcx*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rax ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Lac90 ;; aw=w64 ow=w64
+sbr_hf_assemble.x5:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Lace2:
+    cmp edx, 6 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88739] ;; aw=w64 ow=w32
+    cmp cl, al ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lad82 ;; aw=w64 ow=w64
+sbr_hf_assemble.s6:
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rbx, [rax+392000] ;; aw=w64 ow=w64
+    lea r15, [rax+388928] ;; aw=w64 ow=w64
+    movzx r14d, cl ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lad30:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, rbx ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c6:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d6:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88739] ;; aw=w64 ow=w32
+    lea ecx, [rax+rax*1+0] ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rcx ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Lad30 ;; aw=w64 ow=w64
+sbr_hf_assemble.x6:
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov edx, DWORD PTR [rbp+-56] ;; aw=w64 ow=w32
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+sbr_hf_assemble.Lad82:
+    cmp edx, 7 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lae20 ;; aw=w64 ow=w64
+    cmp al, BYTE PTR [r8+88740] ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lae0d ;; aw=w64 ow=w64
+sbr_hf_assemble.s7:
+    mov rbx, r13 ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea r13, [rcx+392192] ;; aw=w64 ow=w64
+    lea r15, [rcx+389120] ;; aw=w64 ow=w64
+    movzx r14d, al ;; aw=w64 ow=w32
+    lea rax, [r14+r14*2+0] ;; aw=w64 ow=w64
+    add r14d, r14d ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rcx, [rsi+rsi*2+0] ;; aw=w64 ow=w64
+    shl ecx, 6 ;; aw=w64 ow=w32
+    add rcx, rax ;; aw=w64 ow=w64
+    lea r12, [r8+rcx*1+0] ;; aw=w64 ow=w64
+    add r12, 78000 ;; aw=w64 ow=w64
+sbr_hf_assemble.Ladcc:
+    lea rdi, [r12+-8064] ;; aw=w64 ow=w64
+    mov rsi, r13 ;; aw=w64 ow=w64
+    mov rdx, rbx ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.c7:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    mov rsi, r15 ;; aw=w64 ow=w64
+    mov rdx, rbx ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_hf_assemble.d7:
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    inc r14 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+88740] ;; aw=w64 ow=w32
+    add eax, eax ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    cmp r14, rax ;; aw=w64 ow=w64
+    jb sbr_hf_assemble.Ladcc ;; aw=w64 ow=w64
+sbr_hf_assemble.Lae0d:
+    cmp DWORD PTR [rbp+-56], 8 ;; aw=w64 ow=w32
+    vmovdqa xmm4, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov r9, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Lb84d ;; aw=w64 ow=w64
+sbr_hf_assemble.Lae20:
+    mov rsi, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov ecx, esi ;; aw=w64 ow=w32
+    mov rdx, QWORD PTR [rbp+-136] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-128] ;; aw=w64 ow=w64
+    lea rax, [rdi+rdx*8+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-80], rax ;; aw=w64 ow=w64
+    lea rax, [rdx+rdx*4+0] ;; aw=w64 ow=w64
+    shl rax, 6 ;; aw=w64 ow=w64
+    add QWORD PTR [rbp+-192], rax ;; aw=w64 ow=w64
+sbr_hf_assemble.m1:
+    mov r10, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    lea rax, [r10+389312] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-232], rax ;; aw=w64 ow=w64
+    mov eax, edx ;; aw=w64 ow=w32
+    and eax, 1 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-156], eax ;; aw=w64 ow=w32
+    shl r9d, 6 ;; aw=w64 ow=w32
+    lea rax, [r9+r9*2+0] ;; aw=w64 ow=w64
+    add QWORD PTR [rbp+-152], rax ;; aw=w64 ow=w64
+    lea r9, [rcx+-1] ;; aw=w64 ow=w64
+    vbroadcastss xmm0, DWORD PTR [rip+LCPI17_12] ;; aw=w64 ow=w128
+    vpinsrd xmm0, xmm0, esi, 0 ;; aw=w64 ow=w128
+    vmovdqa XMMWORD PTR [rbp+-256], xmm0 ;; aw=w64 ow=w128
+sbr_hf_assemble.m2:
+    mov esi, ecx ;; aw=w64 ow=w32
+    and esi, 2147483644 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-208], rsi ;; aw=w64 ow=w64
+    mov esi, ecx ;; aw=w64 ow=w32
+    shr esi, 2 ;; aw=w64 ow=w32
+    and esi, 536870911 ;; aw=w64 ow=w32
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-200], rsi ;; aw=w64 ow=w64
+    add rax, r8 ;; aw=w64 ow=w64
+    add rax, 78000 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-224], rax ;; aw=w64 ow=w64
+    lea rax, [rdi+rdx*8+0] ;; aw=w64 ow=w64
+    add rax, 8 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-216], rax ;; aw=w64 ow=w64
+    lea r14, [r10+389316] ;; aw=w64 ow=w64
+    xor r10d, r10d ;; aw=w64 ow=w32
+sbr_hf_assemble.m3:
+    vmovss xmm5, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vmovss xmm6, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vmovss xmm7, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vmovss xmm8, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vmovss xmm9, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    vbroadcastss xmm10, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vbroadcastss xmm11, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vbroadcastss xmm12, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vbroadcastss xmm13, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vbroadcastss xmm14, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    mov QWORD PTR [rbp+-184], rcx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-240], r9 ;; aw=w64 ow=w64
+sbr_hf_assemble.Laf40:
+    movzx r11d, BYTE PTR [r8+r10*1+88732] ;; aw=w64 ow=w32
+    lea rdi, [r10+1] ;; aw=w64 ow=w64
+    cmp r11b, BYTE PTR [r8+r10*1+88733] ;; aw=w64 ow=w8
+    jae sbr_hf_assemble.Lb400 ;; aw=w64 ow=w64
+    lea rax, [r10+r10*2+0] ;; aw=w64 ow=w64
+    shl rax, 6 ;; aw=w64 ow=w64
+    add rax, QWORD PTR [rbp+-232] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-168], rax ;; aw=w64 ow=w64
+    lea r15d, [r11+r11*1+0] ;; aw=w64 ow=w32
+    lea r12, [r11+r11*2+0] ;; aw=w64 ow=w64
+    shl r12d, 7 ;; aw=w64 ow=w32
+    add r12, QWORD PTR [rbp+-224] ;; aw=w64 ow=w64
+    shl r11d, 10 ;; aw=w64 ow=w32
+    add r11, QWORD PTR [rbp+-216] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-72], rdi ;; aw=w64 ow=w64
+    jmp sbr_hf_assemble.Lafd9 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lafa0:
+    vpaddd xmm0, xmm3, XMMWORD PTR [rbp+-256] ;; aw=w64 ow=w128
+    vpand xmm4, xmm0, XMMWORD PTR [rip+LCPI17_11] ;; aw=w64 ow=w128
+    inc r15 ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r8+rdi*1+88732] ;; aw=w64 ow=w32
+    add eax, eax ;; aw=w64 ow=w32
+    add r12, 192 ;; aw=w64 ow=w64
+    add r11, 512 ;; aw=w64 ow=w64
+    cmp r15, rax ;; aw=w64 ow=w64
+    jae sbr_hf_assemble.Lb400 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lafd9:
+    cmp DWORD PTR [rbp+-84], 0 ;; aw=w64 ow=w32
+    jne sbr_hf_assemble.Lb000 ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-144] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rax+0] ;; aw=w64 ow=w32
+    cmp r10, rax ;; aw=w64 ow=w64
+    je sbr_hf_assemble.Lb000 ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-144] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rax+4] ;; aw=w64 ow=w32
+    cmp r10, rax ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Lb248 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb000:
+    mov rax, r15 ;; aw=w64 ow=w64
+    shl rax, 6 ;; aw=w64 ow=w64
+    lea r13, [rax+rax*2+0] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-152] ;; aw=w64 ow=w64
+    lea rdx, [rax+r13*1+0] ;; aw=w64 ow=w64
+    add r13, QWORD PTR [rbp+-176] ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb01d:
+    cmp DWORD PTR [rbp+-136], 65 ;; aw=w64 ow=w32
+    jae sbr_hf_assemble.Lb83e ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-128], r11 ;; aw=w64 ow=w64
+    mov rbx, r15 ;; aw=w64 ow=w64
+    shl rbx, 9 ;; aw=w64 ow=w64
+    add rbx, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-56], r15 ;; aw=w64 ow=w64
+    lea r8, [r15+2] ;; aw=w64 ow=w64
+    mov rdi, rbx ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-192] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    vmovdqa XMMWORD PTR [rbp+-112], xmm4 ;; aw=w64 ow=w128
+    mov r15, r10 ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+    call QWORD PTR [rax+393768] ;; aw=w64 ow=w64
+sbr_hf_assemble.g1:
+    mov r10, r15 ;; aw=w64 ow=w64
+    vmovdqa xmm3, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov rax, QWORD PTR [rbp+-144] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rax+0] ;; aw=w64 ow=w32
+    vpextrd ecx, xmm3, 1 ;; aw=w64 ow=w128
+    cmp r15, rax ;; aw=w64 ow=w64
+    je sbr_hf_assemble.Lb08f ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-144] ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rax+4] ;; aw=w64 ow=w32
+    cmp r10, rax ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Lb1a0 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb08f:
+    cmp DWORD PTR [rbp+-136], 64 ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lb843 ;; aw=w64 ow=w64
+    mov esi, ecx ;; aw=w64 ow=w32
+    and esi, 1 ;; aw=w64 ow=w32
+    add ecx, DWORD PTR [rbp+-156] ;; aw=w64 ow=w32
+    and ecx, 2 ;; aw=w64 ow=w32
+    mov eax, 1 ;; aw=w64 ow=w32
+    sub eax, ecx ;; aw=w64 ow=w32
+    xor edi, edi ;; aw=w64 ow=w32
+    mov edx, esi ;; aw=w64 ow=w32
+    mov rcx, QWORD PTR [rbp+-184] ;; aw=w64 ow=w64
+    cmp ecx, 2 ;; aw=w64 ow=w32
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov r9, QWORD PTR [rbp+-240] ;; aw=w64 ow=w64
+    vmovss xmm5, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vmovss xmm6, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vmovss xmm7, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vmovss xmm8, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vmovss xmm9, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    vbroadcastss xmm10, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vbroadcastss xmm11, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vbroadcastss xmm12, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vbroadcastss xmm13, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vbroadcastss xmm14, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    mov r11, QWORD PTR [rbp+-128] ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    jl sbr_hf_assemble.Lb16c ;; aw=w64 ow=w64
+sbr_hf_assemble.n2:
+    mov edi, esi ;; aw=w64 ow=w32
+    neg edi ;; aw=w64 ow=w32
+    xor edi, eax ;; aw=w64 ow=w32
+    add edi, esi ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, eax ;; aw=w64 ow=w128
+    vcvtsi2ss xmm1, xmm15, edi ;; aw=w64 ow=w128
+    lea rsi, [r11+rdx*4+0] ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb140:
+    vmulss xmm2, xmm0, DWORD PTR [r14+rdi*4+-4] ;; aw=w64 ow=w128
+    vaddss xmm2, xmm2, DWORD PTR [rsi+rdi*8+-8] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rsi+rdi*8+-8], xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm1, DWORD PTR [r14+rdi*4+0] ;; aw=w64 ow=w128
+    vaddss xmm2, xmm2, DWORD PTR [rsi+rdi*8+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rsi+rdi*8+0], xmm2 ;; aw=w64 ow=w128
+    add rdi, 2 ;; aw=w64 ow=w64
+    cmp rdi, r9 ;; aw=w64 ow=w64
+    jl sbr_hf_assemble.Lb140 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb16c:
+    test cl, 1 ;; aw=w64 ow=w8
+    je sbr_hf_assemble.Lafa0 ;; aw=w64 ow=w64
+    lea rdx, [rbx+rdx*4+0] ;; aw=w64 ow=w64
+    vcvtsi2ss xmm0, xmm15, eax ;; aw=w64 ow=w128
+    mov eax, edi ;; aw=w64 ow=w32
+    mov rsi, QWORD PTR [rbp+-168] ;; aw=w64 ow=w64
+    vmulss xmm0, xmm0, DWORD PTR [rsi+rax*4+0] ;; aw=w64 ow=w128
+    add edi, edi ;; aw=w64 ow=w32
+    vaddss xmm0, xmm0, DWORD PTR [rdx+rdi*4+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdx+rdi*4+0], xmm0 ;; aw=w64 ow=w128
+    jmp sbr_hf_assemble.Lafa0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb1a0:
+    cmp ecx, 4 ;; aw=w64 ow=w32
+    jae sbr_hf_assemble.Lb848 ;; aw=w64 ow=w64
+    mov eax, ecx ;; aw=w64 ow=w32
+    vmovd ecx, xmm3 ;; aw=w64 ow=w128
+    mov rdi, rbx ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-168] ;; aw=w64 ow=w64
+    mov rdx, r13 ;; aw=w64 ow=w64
+    mov r8, QWORD PTR [rbp+-136] ;; aw=w64 ow=w64
+    mov r9, QWORD PTR [rbp+-120] ;; aw=w64 ow=w64
+    mov r10, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    call QWORD PTR [r10+rax*8+393776] ;; aw=w64 ow=w64
+sbr_hf_assemble.a1:
+    vmovdqa xmm3, XMMWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+-184] ;; aw=w64 ow=w64
+    vmovss xmm5, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vmovss xmm6, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vmovss xmm7, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vmovss xmm8, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vmovss xmm9, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    vbroadcastss xmm10, DWORD PTR [rip+LCPI17_6] ;; aw=w64 ow=w128
+    vbroadcastss xmm11, DWORD PTR [rip+LCPI17_7] ;; aw=w64 ow=w128
+    vbroadcastss xmm12, DWORD PTR [rip+LCPI17_8] ;; aw=w64 ow=w128
+    vbroadcastss xmm13, DWORD PTR [rip+LCPI17_9] ;; aw=w64 ow=w128
+    vbroadcastss xmm14, DWORD PTR [rip+LCPI17_10] ;; aw=w64 ow=w128
+    mov r10, r15 ;; aw=w64 ow=w64
+    mov r11, QWORD PTR [rbp+-128] ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    jmp sbr_hf_assemble.Lafa0 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb248:
+    lea rdx, [rbp+-640] ;; aw=w64 ow=w64
+    lea r13, [rbp+-448] ;; aw=w64 ow=w64
+    test ecx, ecx ;; aw=w64 ow=w32
+    jle sbr_hf_assemble.Lb01d ;; aw=w64 ow=w64
+    cmp DWORD PTR [rbp+-120], 4 ;; aw=w64 ow=w32
+    jae sbr_hf_assemble.Lb26b ;; aw=w64 ow=w64
+    xor eax, eax ;; aw=w64 ow=w32
+    jmp sbr_hf_assemble.Lb340 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb26b:
+    xor eax, eax ;; aw=w64 ow=w32
+    mov rdx, QWORD PTR [rbp+-200] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb280:
+    vmulps xmm0, xmm10, XMMWORD PTR [r12+rax*1+0] ;; aw=w64 ow=w128
+    vmulps xmm1, xmm11, XMMWORD PTR [r12+rax*1+-192] ;; aw=w64 ow=w128
+    vmulps xmm2, xmm12, XMMWORD PTR [r12+rax*1+-384] ;; aw=w64 ow=w128
+    vaddps xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vaddps xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vmulps xmm1, xmm10, XMMWORD PTR [r12+rax*1+-8064] ;; aw=w64 ow=w128
+    vmulps xmm2, xmm11, XMMWORD PTR [r12+rax*1+-8256] ;; aw=w64 ow=w128
+    vmulps xmm3, xmm12, XMMWORD PTR [r12+rax*1+-8448] ;; aw=w64 ow=w128
+    vaddps xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vaddps xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vmulps xmm2, xmm13, XMMWORD PTR [r12+rax*1+-8640] ;; aw=w64 ow=w128
+    vaddps xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+sbr_hf_assemble.v1:
+    vmulps xmm2, xmm13, XMMWORD PTR [r12+rax*1+-576] ;; aw=w64 ow=w128
+    vaddps xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vmulps xmm2, xmm14, XMMWORD PTR [r12+rax*1+-768] ;; aw=w64 ow=w128
+    vmulps xmm3, xmm14, XMMWORD PTR [r12+rax*1+-8832] ;; aw=w64 ow=w128
+    vaddps xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vaddps xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vmovaps XMMWORD PTR [rbp+rax*1+-640], xmm1 ;; aw=w64 ow=w128
+    vmovaps XMMWORD PTR [rbp+rax*1+-448], xmm0 ;; aw=w64 ow=w128
+    add rax, 16 ;; aw=w64 ow=w64
+    cmp rdx, rax ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Lb280 ;; aw=w64 ow=w64
+sbr_hf_assemble.v2:
+    mov rsi, QWORD PTR [rbp+-208] ;; aw=w64 ow=w64
+    mov rax, rsi ;; aw=w64 ow=w64
+    lea rdx, [rbp+-640] ;; aw=w64 ow=w64
+    lea r13, [rbp+-448] ;; aw=w64 ow=w64
+    cmp esi, ecx ;; aw=w64 ow=w32
+    je sbr_hf_assemble.Lb01d ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb340:
+    vmulss xmm0, xmm5, DWORD PTR [r12+rax*4+0] ;; aw=w64 ow=w128
+    vmulss xmm1, xmm6, DWORD PTR [r12+rax*4+-192] ;; aw=w64 ow=w128
+    vmulss xmm2, xmm7, DWORD PTR [r12+rax*4+-384] ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm5, DWORD PTR [r12+rax*4+-8064] ;; aw=w64 ow=w128
+    vmulss xmm2, xmm6, DWORD PTR [r12+rax*4+-8256] ;; aw=w64 ow=w128
+    vmulss xmm3, xmm7, DWORD PTR [r12+rax*4+-8448] ;; aw=w64 ow=w128
+    vaddss xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vaddss xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm8, DWORD PTR [r12+rax*4+-8640] ;; aw=w64 ow=w128
+sbr_hf_assemble.w1:
+    vaddss xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm8, DWORD PTR [r12+rax*4+-576] ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm9, DWORD PTR [r12+rax*4+-768] ;; aw=w64 ow=w128
+    vmulss xmm3, xmm9, DWORD PTR [r12+rax*4+-8832] ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vaddss xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rbp+rax*4+-640], xmm1 ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rbp+rax*4+-448], xmm0 ;; aw=w64 ow=w128
+    inc rax ;; aw=w64 ow=w64
+    cmp rcx, rax ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Lb340 ;; aw=w64 ow=w64
+sbr_hf_assemble.w2:
+    lea rdx, [rbp+-640] ;; aw=w64 ow=w64
+    lea r13, [rbp+-448] ;; aw=w64 ow=w64
+    jmp sbr_hf_assemble.Lb01d ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb400:
+    mov eax, DWORD PTR [r8+8] ;; aw=w64 ow=w32
+    cmp rdi, rax ;; aw=w64 ow=w64
+    jae sbr_hf_assemble.Lb820 ;; aw=w64 ow=w64
+    add r14, 192 ;; aw=w64 ow=w64
+    mov r10, rdi ;; aw=w64 ow=w64
+    cmp rdi, 8 ;; aw=w64 ow=w64
+    jne sbr_hf_assemble.Laf40 ;; aw=w64 ow=w64
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_hf_assemble.Lb426:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    shl ecx, 7 ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    lea rsi, [r8+69936] ;; aw=w64 ow=w64
+sbr_hf_assemble.y1:
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+160] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+160], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+128] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+128], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+0] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rsi+rcx*1+32] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rsi+rcx*1+64] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rsi+rcx*1+96] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+96], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+64], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+32], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+0], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y2:
+    lea rdi, [r8+78000] ;; aw=w64 ow=w64
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+160] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+160], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+128] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+128], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+0] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rdi+rcx*1+32] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rdi+rcx*1+64] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rdi+rcx*1+96] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+96], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+64], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+32], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+0], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y3:
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+352] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+352], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+320] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+320], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+192] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rsi+rcx*1+224] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rsi+rcx*1+256] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rsi+rcx*1+288] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+288], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+256], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+224], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+192], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y4:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl ecx, 7 ;; aw=w64 ow=w32
+sbr_hf_assemble.y5:
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+352] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+352], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+320] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+320], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+192] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rdi+rcx*1+224] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rdi+rcx*1+256] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rdi+rcx*1+288] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+288], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+256], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+224], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+192], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y6:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl ecx, 7 ;; aw=w64 ow=w32
+sbr_hf_assemble.y7:
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+544] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+544], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+512] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+512], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+384] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rsi+rcx*1+416] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rsi+rcx*1+448] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rsi+rcx*1+480] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+480], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+448], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+416], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+384], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y8:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl ecx, 7 ;; aw=w64 ow=w32
+sbr_hf_assemble.y9:
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+544] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+544], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+512] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+512], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+384] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rdi+rcx*1+416] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rdi+rcx*1+448] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rdi+rcx*1+480] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+480], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+448], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+416], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+384], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y10:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl ecx, 7 ;; aw=w64 ow=w32
+sbr_hf_assemble.y11:
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+736] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+736], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+704] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+704], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rsi+rcx*1+576] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rsi+rcx*1+608] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rsi+rcx*1+640] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rsi+rcx*1+672] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+672], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+640], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+608], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rsi+rax*1+576], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y12:
+    movzx eax, BYTE PTR [r8+88732] ;; aw=w64 ow=w32
+    lea rax, [rax+rax*2+0] ;; aw=w64 ow=w64
+    shl eax, 7 ;; aw=w64 ow=w32
+    movzx ecx, BYTE PTR [r8+88741] ;; aw=w64 ow=w32
+    lea rcx, [rcx+rcx*2+0] ;; aw=w64 ow=w64
+    shl ecx, 7 ;; aw=w64 ow=w32
+sbr_hf_assemble.y13:
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+736] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+736], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+704] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+704], ymm0 ;; aw=w64 ow=w256
+    vmovups ymm0, YMMWORD PTR [rdi+rcx*1+576] ;; aw=w64 ow=w256
+    vmovups ymm1, YMMWORD PTR [rdi+rcx*1+608] ;; aw=w64 ow=w256
+    vmovups ymm2, YMMWORD PTR [rdi+rcx*1+640] ;; aw=w64 ow=w256
+    vmovups ymm3, YMMWORD PTR [rdi+rcx*1+672] ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+672], ymm3 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+640], ymm2 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+608], ymm1 ;; aw=w64 ow=w256
+    vmovups YMMWORD PTR [rdi+rax*1+576], ymm0 ;; aw=w64 ow=w256
+sbr_hf_assemble.y14:
+    mov edx, DWORD PTR [r8+8] ;; aw=w64 ow=w32
+    test edx, edx ;; aw=w64 ow=w32
+    jne sbr_hf_assemble.La8f6 ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb820:
+    vmovq QWORD PTR [r8+88748], xmm4 ;; aw=w64 ow=w128
+    add rsp, 600 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+    vzeroupper ;; aw=w64 ow=w128
+sbr_hf_assemble.done:
+    ret ;; aw=w64 ow=w64
+sbr_hf_assemble.Lb83e:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_hf_assemble.Lb843:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_hf_assemble.Lb848:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_hf_assemble.Lb84d:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32

@@ -1,0 +1,11 @@
+--- a/sbr_reset.txt
++++ b/sbr_reset.txt
+@@ -555,7 +555,7 @@
+     lea rdi, [rip+sbr_offset_3] ;; aw=w64 ow=w64
+     jmp sbr_reset.L114a ;; aw=w64 ow=w64
+ sbr_reset.L1814:
+-    lea rdi, [rip+sbr_offset_1] ;; aw=w64 ow=w64
++    lea rdi, [rip+sbr_offset_2] ;; aw=w64 ow=w64
+     jmp sbr_reset.L114a ;; aw=w64 ow=w64
+ sbr_reset.L1820:
+     mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64

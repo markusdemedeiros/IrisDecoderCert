@@ -1,0 +1,976 @@
+sbr_hf_assemble:
+    push %rbp
+    mov %rsp,%rbp
+    push %r15
+    push %r14
+    push %r13
+    push %r12
+    push %rbx
+    sub $0x258,%rsp
+sbr_hf_assemble.p1:
+    mov %r8,-0x90(%rbp)
+    mov %rcx,%r8
+    mov %rsi,-0xc0(%rbp)
+    mov %rdi,-0x80(%rbp)
+    mov 0x38(%rdx),%r14d
+    xor %r9d,%r9d
+    test %r14d,%r14d
+    sete %r10b
+    movslq 0x58(%rdx),%rax
+    mov %rax,-0x88(%rbp)
+    movslq 0x60(%rdx),%rax
+    mov %rax,-0x78(%rbp)
+sbr_hf_assemble.p2:
+    lea 0x11130(%rcx),%rax
+    mov %rax,-0x98(%rbp)
+    lea 0x130b0(%rcx),%rax
+    mov %rax,-0xb0(%rbp)
+    vmovq 0x15aac(%rcx),%xmm4
+    mov %rdx,-0x40(%rbp)
+    cmpl $0x0,0x18(%rdx)
+    mov %rcx,-0x30(%rbp)
+    je sbr_hf_assemble.La8e1
+    test %r14d,%r14d
+    jne sbr_hf_assemble.La8ea
+sbr_hf_assemble.r0:
+    mov %r14d,-0x54(%rbp)
+    mov -0x40(%rbp),%rax
+    lea 0x5eac0(%rax),%r13
+    mov -0x78(%rbp),%rcx
+    lea 0x0(,%rcx,4),%r12
+    lea 0x5f6c0(%rax),%r14
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rdi
+    shl $0x7,%edi
+    mov -0x98(%rbp),%rbx
+    add %rbx,%rdi
+    mov %r14,%rsi
+    mov %r12,%rdx
+    vmovdqa %xmm4,-0x70(%rbp)
+    mov %r10b,-0x38(%rbp)
+sbr_hf_assemble.r0c:
+    call memcpy
+sbr_hf_assemble.r1:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rdi
+    shl $0x7,%edi
+    mov -0xb0(%rbp),%r15
+    add %r15,%rdi
+    mov %r13,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r1c:
+    call memcpy
+sbr_hf_assemble.r2:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%rbx,%rax,1),%rdi
+    add $0xc0,%rdi
+    mov %r14,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r2c:
+    call memcpy
+sbr_hf_assemble.r3:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%r15,%rax,1),%rdi
+    add $0xc0,%rdi
+    mov %r13,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r3c:
+    call memcpy
+sbr_hf_assemble.r4:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%rbx,%rax,1),%rdi
+    add $0x180,%rdi
+    mov %r14,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r4c:
+    call memcpy
+sbr_hf_assemble.r5:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%r15,%rax,1),%rdi
+    add $0x180,%rdi
+    mov %r13,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r5c:
+    call memcpy
+sbr_hf_assemble.r6:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%rbx,%rax,1),%rdi
+    add $0x240,%rdi
+    mov %r14,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r6c:
+    call memcpy
+sbr_hf_assemble.r7:
+    mov -0x30(%rbp),%rax
+    movzbl 0x15a9c(%rax),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    lea (%r15,%rax,1),%rdi
+    add $0x240,%rdi
+    mov %r13,%rsi
+    mov %r12,%rdx
+sbr_hf_assemble.r7c:
+    call memcpy
+sbr_hf_assemble.r8:
+    movzbl -0x38(%rbp),%r10d
+    xor %r9d,%r9d
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x54(%rbp),%r14d
+    mov -0x30(%rbp),%r8
+    mov 0x8(%r8),%edx
+    test %edx,%edx
+    jne sbr_hf_assemble.La8f6
+    jmp sbr_hf_assemble.Lb820
+sbr_hf_assemble.La8e1:
+    test %r14d,%r14d
+    je sbr_hf_assemble.Lb426
+sbr_hf_assemble.La8ea:
+    mov 0x8(%r8),%edx
+    test %edx,%edx
+    je sbr_hf_assemble.Lb820
+sbr_hf_assemble.La8f6:
+    mov %r14d,-0x54(%rbp)
+    mov %r10b,%r9b
+    shl $0x2,%r9d
+    mov -0x78(%rbp),%rax
+    lea 0x0(,%rax,4),%r13
+    mov %r9d,%esi
+    movzbl 0x15a9c(%r8),%ecx
+    movzbl 0x15a9d(%r8),%eax
+    cmp %al,%cl
+    vmovdqa %xmm4,-0x70(%rbp)
+    mov %edx,-0x38(%rbp)
+    mov %r9,-0x48(%rbp)
+    mov %rsi,-0x50(%rbp)
+    jae sbr_hf_assemble.La9c2
+sbr_hf_assemble.s0:
+    mov -0x40(%rbp),%rax
+    lea 0x5f6c0(%rax),%rbx
+    lea 0x5eac0(%rax),%r15
+    lea (%rcx,%rcx,1),%r14d
+    lea (%rcx,%rcx,2),%rax
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+    nop
+sbr_hf_assemble.La970:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c0:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d0:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15a9d(%r8),%eax
+    lea (%rax,%rax,1),%ecx
+    add $0xc0,%r12
+    cmp %rcx,%r14
+    jb sbr_hf_assemble.La970
+sbr_hf_assemble.x0:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.La9c2:
+    cmp $0x1,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15a9e(%r8),%ecx
+    cmp %cl,%al
+    jae sbr_hf_assemble.Laa62
+sbr_hf_assemble.s1:
+    mov -0x40(%rbp),%rcx
+    lea 0x5f780(%rcx),%rbx
+    lea 0x5eb80(%rcx),%r15
+    movzbl %al,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Laa10:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c1:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d1:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15a9e(%r8),%ecx
+    lea (%rcx,%rcx,1),%eax
+    add $0xc0,%r12
+    cmp %rax,%r14
+    jb sbr_hf_assemble.Laa10
+sbr_hf_assemble.x1:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Laa62:
+    cmp $0x2,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15a9f(%r8),%eax
+    cmp %al,%cl
+    jae sbr_hf_assemble.Lab02
+sbr_hf_assemble.s2:
+    mov -0x40(%rbp),%rax
+    lea 0x5f840(%rax),%rbx
+    lea 0x5ec40(%rax),%r15
+    movzbl %cl,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Laab0:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c2:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d2:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15a9f(%r8),%eax
+    lea (%rax,%rax,1),%ecx
+    add $0xc0,%r12
+    cmp %rcx,%r14
+    jb sbr_hf_assemble.Laab0
+sbr_hf_assemble.x2:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Lab02:
+    cmp $0x3,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15aa0(%r8),%ecx
+    cmp %cl,%al
+    jae sbr_hf_assemble.Laba2
+sbr_hf_assemble.s3:
+    mov -0x40(%rbp),%rcx
+    lea 0x5f900(%rcx),%rbx
+    lea 0x5ed00(%rcx),%r15
+    movzbl %al,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Lab50:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c3:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d3:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15aa0(%r8),%ecx
+    lea (%rcx,%rcx,1),%eax
+    add $0xc0,%r12
+    cmp %rax,%r14
+    jb sbr_hf_assemble.Lab50
+sbr_hf_assemble.x3:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Laba2:
+    cmp $0x4,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15aa1(%r8),%eax
+    cmp %al,%cl
+    jae sbr_hf_assemble.Lac42
+sbr_hf_assemble.s4:
+    mov -0x40(%rbp),%rax
+    lea 0x5f9c0(%rax),%rbx
+    lea 0x5edc0(%rax),%r15
+    movzbl %cl,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Labf0:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c4:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d4:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15aa1(%r8),%eax
+    lea (%rax,%rax,1),%ecx
+    add $0xc0,%r12
+    cmp %rcx,%r14
+    jb sbr_hf_assemble.Labf0
+sbr_hf_assemble.x4:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Lac42:
+    cmp $0x5,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15aa2(%r8),%ecx
+    cmp %cl,%al
+    jae sbr_hf_assemble.Lace2
+sbr_hf_assemble.s5:
+    mov -0x40(%rbp),%rcx
+    lea 0x5fa80(%rcx),%rbx
+    lea 0x5ee80(%rcx),%r15
+    movzbl %al,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Lac90:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c5:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d5:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15aa2(%r8),%ecx
+    lea (%rcx,%rcx,1),%eax
+    add $0xc0,%r12
+    cmp %rax,%r14
+    jb sbr_hf_assemble.Lac90
+sbr_hf_assemble.x5:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Lace2:
+    cmp $0x6,%edx
+    je sbr_hf_assemble.Lae20
+    movzbl 0x15aa3(%r8),%eax
+    cmp %al,%cl
+    jae sbr_hf_assemble.Lad82
+sbr_hf_assemble.s6:
+    mov -0x40(%rbp),%rax
+    lea 0x5fb40(%rax),%rbx
+    lea 0x5ef40(%rax),%r15
+    movzbl %cl,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Lad30:
+    lea -0x1f80(%r12),%rdi
+    mov %rbx,%rsi
+    mov %r13,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c6:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %r13,%rdx
+    call memcpy
+sbr_hf_assemble.d6:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15aa3(%r8),%eax
+    lea (%rax,%rax,1),%ecx
+    add $0xc0,%r12
+    cmp %rcx,%r14
+    jb sbr_hf_assemble.Lad30
+sbr_hf_assemble.x6:
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x38(%rbp),%edx
+    mov -0x48(%rbp),%r9
+    mov -0x50(%rbp),%rsi
+sbr_hf_assemble.Lad82:
+    cmp $0x7,%edx
+    je sbr_hf_assemble.Lae20
+    cmp 0x15aa4(%r8),%al
+    jae sbr_hf_assemble.Lae0d
+sbr_hf_assemble.s7:
+    mov %r13,%rbx
+    mov -0x40(%rbp),%rcx
+    lea 0x5fc00(%rcx),%r13
+    lea 0x5f000(%rcx),%r15
+    movzbl %al,%r14d
+    lea (%r14,%r14,2),%rax
+    add %r14d,%r14d
+    shl $0x7,%eax
+    lea (%rsi,%rsi,2),%rcx
+    shl $0x6,%ecx
+    add %rax,%rcx
+    lea (%r8,%rcx,1),%r12
+    add $0x130b0,%r12
+sbr_hf_assemble.Ladcc:
+    lea -0x1f80(%r12),%rdi
+    mov %r13,%rsi
+    mov %rbx,%rdx
+    vzeroupper
+    call memcpy
+sbr_hf_assemble.c7:
+    mov %r12,%rdi
+    mov %r15,%rsi
+    mov %rbx,%rdx
+    call memcpy
+sbr_hf_assemble.d7:
+    mov -0x30(%rbp),%r8
+    inc %r14
+    movzbl 0x15aa4(%r8),%eax
+    add %eax,%eax
+    add $0xc0,%r12
+    cmp %rax,%r14
+    jb sbr_hf_assemble.Ladcc
+sbr_hf_assemble.Lae0d:
+    cmpl $0x8,-0x38(%rbp)
+    vmovdqa -0x70(%rbp),%xmm4
+    mov -0x48(%rbp),%r9
+    jne sbr_hf_assemble.Lb84d
+sbr_hf_assemble.Lae20:
+    mov -0x78(%rbp),%rsi
+    mov %esi,%ecx
+    mov -0x88(%rbp),%rdx
+    mov -0x80(%rbp),%rdi
+    lea (%rdi,%rdx,8),%rax
+    mov %rax,-0x50(%rbp)
+    lea (%rdx,%rdx,4),%rax
+    shl $0x6,%rax
+    add %rax,-0xc0(%rbp)
+sbr_hf_assemble.m1:
+    mov -0x40(%rbp),%r10
+    lea 0x5f0c0(%r10),%rax
+    mov %rax,-0xe8(%rbp)
+    mov %edx,%eax
+    and $0x1,%eax
+    mov %eax,-0x9c(%rbp)
+    shl $0x6,%r9d
+    lea (%r9,%r9,2),%rax
+    add %rax,-0x98(%rbp)
+    lea -0x1(%rcx),%r9
+    vbroadcastss LCPI17_12(%rip),%xmm0
+    vpinsrd $0x0,%esi,%xmm0,%xmm0
+    vmovdqa %xmm0,-0x100(%rbp)
+sbr_hf_assemble.m2:
+    mov %ecx,%esi
+    and $0x7ffffffc,%esi
+    mov %rsi,-0xd0(%rbp)
+    mov %ecx,%esi
+    shr $0x2,%esi
+    and $0x1fffffff,%esi
+    shl $0x4,%rsi
+    mov %rsi,-0xc8(%rbp)
+    add %r8,%rax
+    add $0x130b0,%rax
+    mov %rax,-0xe0(%rbp)
+    lea (%rdi,%rdx,8),%rax
+    add $0x8,%rax
+    mov %rax,-0xd8(%rbp)
+    lea 0x5f0c4(%r10),%r14
+    xor %r10d,%r10d
+sbr_hf_assemble.m3:
+    vmovss LCPI17_6(%rip),%xmm5
+    vmovss LCPI17_7(%rip),%xmm6
+    vmovss LCPI17_8(%rip),%xmm7
+    vmovss LCPI17_9(%rip),%xmm8
+    vmovss LCPI17_10(%rip),%xmm9
+    vbroadcastss LCPI17_6(%rip),%xmm10
+    vbroadcastss LCPI17_7(%rip),%xmm11
+    vbroadcastss LCPI17_8(%rip),%xmm12
+    vbroadcastss LCPI17_9(%rip),%xmm13
+    vbroadcastss LCPI17_10(%rip),%xmm14
+    mov %rcx,-0xb8(%rbp)
+    mov %r9,-0xf0(%rbp)
+sbr_hf_assemble.Laf40:
+    movzbl 0x15a9c(%r8,%r10,1),%r11d
+    lea 0x1(%r10),%rdi
+    cmp 0x15a9d(%r8,%r10,1),%r11b
+    jae sbr_hf_assemble.Lb400
+    lea (%r10,%r10,2),%rax
+    shl $0x6,%rax
+    add -0xe8(%rbp),%rax
+    mov %rax,-0xa8(%rbp)
+    lea (%r11,%r11,1),%r15d
+    lea (%r11,%r11,2),%r12
+    shl $0x7,%r12d
+    add -0xe0(%rbp),%r12
+    shl $0xa,%r11d
+    add -0xd8(%rbp),%r11
+    mov %rdi,-0x48(%rbp)
+    jmp sbr_hf_assemble.Lafd9
+    nop
+sbr_hf_assemble.Lafa0:
+    vpaddd -0x100(%rbp),%xmm3,%xmm0
+    vpand LCPI17_11(%rip),%xmm0,%xmm4
+    inc %r15
+    mov -0x48(%rbp),%rdi
+    movzbl 0x15a9c(%r8,%rdi,1),%eax
+    add %eax,%eax
+    add $0xc0,%r12
+    add $0x200,%r11
+    cmp %rax,%r15
+    jae sbr_hf_assemble.Lb400
+sbr_hf_assemble.Lafd9:
+    cmpl $0x0,-0x54(%rbp)
+    jne sbr_hf_assemble.Lb000
+    mov -0x90(%rbp),%rax
+    mov (%rax),%eax
+    cmp %rax,%r10
+    je sbr_hf_assemble.Lb000
+    mov -0x90(%rbp),%rax
+    mov 0x4(%rax),%eax
+    cmp %rax,%r10
+    jne sbr_hf_assemble.Lb248
+sbr_hf_assemble.Lb000:
+    mov %r15,%rax
+    shl $0x6,%rax
+    lea (%rax,%rax,2),%r13
+    mov -0x98(%rbp),%rax
+    lea (%rax,%r13,1),%rdx
+    add -0xb0(%rbp),%r13
+sbr_hf_assemble.Lb01d:
+    cmpl $0x41,-0x88(%rbp)
+    jae sbr_hf_assemble.Lb83e
+    mov %r11,-0x80(%rbp)
+    mov %r15,%rbx
+    shl $0x9,%rbx
+    add -0x50(%rbp),%rbx
+    mov %r15,-0x38(%rbp)
+    lea 0x2(%r15),%r8
+    mov %rbx,%rdi
+    mov -0xc0(%rbp),%rsi
+    mov -0x40(%rbp),%rax
+    vmovdqa %xmm4,-0x70(%rbp)
+    mov %r10,%r15
+    vzeroupper
+    call *0x60228(%rax)
+sbr_hf_assemble.g1:
+    mov %r15,%r10
+    vmovdqa -0x70(%rbp),%xmm3
+    mov -0x90(%rbp),%rax
+    mov (%rax),%eax
+    vpextrd $0x1,%xmm3,%ecx
+    cmp %rax,%r15
+    je sbr_hf_assemble.Lb08f
+    mov -0x90(%rbp),%rax
+    mov 0x4(%rax),%eax
+    cmp %rax,%r10
+    jne sbr_hf_assemble.Lb1a0
+sbr_hf_assemble.Lb08f:
+    cmpl $0x40,-0x88(%rbp)
+    je sbr_hf_assemble.Lb843
+    mov %ecx,%esi
+    and $0x1,%esi
+    add -0x9c(%rbp),%ecx
+    and $0x2,%ecx
+    mov $0x1,%eax
+    sub %ecx,%eax
+    xor %edi,%edi
+    mov %esi,%edx
+    mov -0xb8(%rbp),%rcx
+    cmp $0x2,%ecx
+    mov -0x30(%rbp),%r8
+    mov -0xf0(%rbp),%r9
+    vmovss LCPI17_6(%rip),%xmm5
+    vmovss LCPI17_7(%rip),%xmm6
+    vmovss LCPI17_8(%rip),%xmm7
+    vmovss LCPI17_9(%rip),%xmm8
+    vmovss LCPI17_10(%rip),%xmm9
+    vbroadcastss LCPI17_6(%rip),%xmm10
+    vbroadcastss LCPI17_7(%rip),%xmm11
+    vbroadcastss LCPI17_8(%rip),%xmm12
+    vbroadcastss LCPI17_9(%rip),%xmm13
+    vbroadcastss LCPI17_10(%rip),%xmm14
+    mov -0x80(%rbp),%r11
+    mov -0x38(%rbp),%r15
+    jl sbr_hf_assemble.Lb16c
+sbr_hf_assemble.n2:
+    mov %esi,%edi
+    neg %edi
+    xor %eax,%edi
+    add %esi,%edi
+    vcvtsi2ss %eax,%xmm15,%xmm0
+    vcvtsi2ss %edi,%xmm15,%xmm1
+    lea (%r11,%rdx,4),%rsi
+    xor %edi,%edi
+    nop
+sbr_hf_assemble.Lb140:
+    vmulss -0x4(%r14,%rdi,4),%xmm0,%xmm2
+    vaddss -0x8(%rsi,%rdi,8),%xmm2,%xmm2
+    vmovss %xmm2,-0x8(%rsi,%rdi,8)
+    vmulss (%r14,%rdi,4),%xmm1,%xmm2
+    vaddss (%rsi,%rdi,8),%xmm2,%xmm2
+    vmovss %xmm2,(%rsi,%rdi,8)
+    add $0x2,%rdi
+    cmp %r9,%rdi
+    jl sbr_hf_assemble.Lb140
+sbr_hf_assemble.Lb16c:
+    test $0x1,%cl
+    je sbr_hf_assemble.Lafa0
+    lea (%rbx,%rdx,4),%rdx
+    vcvtsi2ss %eax,%xmm15,%xmm0
+    mov %edi,%eax
+    mov -0xa8(%rbp),%rsi
+    vmulss (%rsi,%rax,4),%xmm0,%xmm0
+    add %edi,%edi
+    vaddss (%rdx,%rdi,4),%xmm0,%xmm0
+    vmovss %xmm0,(%rdx,%rdi,4)
+    jmp sbr_hf_assemble.Lafa0
+    nop
+sbr_hf_assemble.Lb1a0:
+    cmp $0x4,%ecx
+    jae sbr_hf_assemble.Lb848
+    mov %ecx,%eax
+    vmovd %xmm3,%ecx
+    mov %rbx,%rdi
+    mov -0xa8(%rbp),%rsi
+    mov %r13,%rdx
+    mov -0x88(%rbp),%r8
+    mov -0x78(%rbp),%r9
+    mov -0x40(%rbp),%r10
+    call *0x60230(%r10,%rax,8)
+sbr_hf_assemble.a1:
+    vmovdqa -0x70(%rbp),%xmm3
+    mov -0x30(%rbp),%r8
+    mov -0xb8(%rbp),%rcx
+    vmovss LCPI17_6(%rip),%xmm5
+    vmovss LCPI17_7(%rip),%xmm6
+    vmovss LCPI17_8(%rip),%xmm7
+    vmovss LCPI17_9(%rip),%xmm8
+    vmovss LCPI17_10(%rip),%xmm9
+    vbroadcastss LCPI17_6(%rip),%xmm10
+    vbroadcastss LCPI17_7(%rip),%xmm11
+    vbroadcastss LCPI17_8(%rip),%xmm12
+    vbroadcastss LCPI17_9(%rip),%xmm13
+    vbroadcastss LCPI17_10(%rip),%xmm14
+    mov %r15,%r10
+    mov -0x80(%rbp),%r11
+    mov -0x38(%rbp),%r15
+    jmp sbr_hf_assemble.Lafa0
+sbr_hf_assemble.Lb248:
+    lea -0x280(%rbp),%rdx
+    lea -0x1c0(%rbp),%r13
+    test %ecx,%ecx
+    jle sbr_hf_assemble.Lb01d
+    cmpl $0x4,-0x78(%rbp)
+    jae sbr_hf_assemble.Lb26b
+    xor %eax,%eax
+    jmp sbr_hf_assemble.Lb340
+sbr_hf_assemble.Lb26b:
+    xor %eax,%eax
+    mov -0xc8(%rbp),%rdx
+    nop
+sbr_hf_assemble.Lb280:
+    vmulps (%r12,%rax,1),%xmm10,%xmm0
+    vmulps -0xc0(%r12,%rax,1),%xmm11,%xmm1
+    vmulps -0x180(%r12,%rax,1),%xmm12,%xmm2
+    vaddps %xmm1,%xmm0,%xmm0
+    vaddps %xmm2,%xmm0,%xmm0
+    vmulps -0x1f80(%r12,%rax,1),%xmm10,%xmm1
+    vmulps -0x2040(%r12,%rax,1),%xmm11,%xmm2
+    vmulps -0x2100(%r12,%rax,1),%xmm12,%xmm3
+    vaddps %xmm2,%xmm1,%xmm1
+    vaddps %xmm3,%xmm1,%xmm1
+    vmulps -0x21c0(%r12,%rax,1),%xmm13,%xmm2
+    vaddps %xmm2,%xmm1,%xmm1
+sbr_hf_assemble.v1:
+    vmulps -0x240(%r12,%rax,1),%xmm13,%xmm2
+    vaddps %xmm2,%xmm0,%xmm0
+    vmulps -0x300(%r12,%rax,1),%xmm14,%xmm2
+    vmulps -0x2280(%r12,%rax,1),%xmm14,%xmm3
+    vaddps %xmm2,%xmm0,%xmm0
+    vaddps %xmm3,%xmm1,%xmm1
+    vmovaps %xmm1,-0x280(%rbp,%rax,1)
+    vmovaps %xmm0,-0x1c0(%rbp,%rax,1)
+    add $0x10,%rax
+    cmp %rax,%rdx
+    jne sbr_hf_assemble.Lb280
+sbr_hf_assemble.v2:
+    mov -0xd0(%rbp),%rsi
+    mov %rsi,%rax
+    lea -0x280(%rbp),%rdx
+    lea -0x1c0(%rbp),%r13
+    cmp %ecx,%esi
+    je sbr_hf_assemble.Lb01d
+    nop
+sbr_hf_assemble.Lb340:
+    vmulss (%r12,%rax,4),%xmm5,%xmm0
+    vmulss -0xc0(%r12,%rax,4),%xmm6,%xmm1
+    vmulss -0x180(%r12,%rax,4),%xmm7,%xmm2
+    vaddss %xmm1,%xmm0,%xmm0
+    vaddss %xmm2,%xmm0,%xmm0
+    vmulss -0x1f80(%r12,%rax,4),%xmm5,%xmm1
+    vmulss -0x2040(%r12,%rax,4),%xmm6,%xmm2
+    vmulss -0x2100(%r12,%rax,4),%xmm7,%xmm3
+    vaddss %xmm2,%xmm1,%xmm1
+    vaddss %xmm3,%xmm1,%xmm1
+    vmulss -0x21c0(%r12,%rax,4),%xmm8,%xmm2
+sbr_hf_assemble.w1:
+    vaddss %xmm2,%xmm1,%xmm1
+    vmulss -0x240(%r12,%rax,4),%xmm8,%xmm2
+    vaddss %xmm2,%xmm0,%xmm0
+    vmulss -0x300(%r12,%rax,4),%xmm9,%xmm2
+    vmulss -0x2280(%r12,%rax,4),%xmm9,%xmm3
+    vaddss %xmm2,%xmm0,%xmm0
+    vaddss %xmm3,%xmm1,%xmm1
+    vmovss %xmm1,-0x280(%rbp,%rax,4)
+    vmovss %xmm0,-0x1c0(%rbp,%rax,4)
+    inc %rax
+    cmp %rax,%rcx
+    jne sbr_hf_assemble.Lb340
+sbr_hf_assemble.w2:
+    lea -0x280(%rbp),%rdx
+    lea -0x1c0(%rbp),%r13
+    jmp sbr_hf_assemble.Lb01d
+    nop
+sbr_hf_assemble.Lb400:
+    mov 0x8(%r8),%eax
+    cmp %rax,%rdi
+    jae sbr_hf_assemble.Lb820
+    add $0xc0,%r14
+    mov %rdi,%r10
+    cmp $0x8,%rdi
+    jne sbr_hf_assemble.Laf40
+    ud1 0x12(%eax),%eax
+sbr_hf_assemble.Lb426:
+    movzbl 0x15a9c(%r8),%eax
+    shl $0x7,%eax
+    lea (%rax,%rax,2),%rax
+    movzbl 0x15aa5(%r8),%ecx
+    shl $0x7,%ecx
+    lea (%rcx,%rcx,2),%rcx
+    lea 0x11130(%r8),%rsi
+sbr_hf_assemble.y1:
+    vmovups 0xa0(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0xa0(%rsi,%rax,1)
+    vmovups 0x80(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x80(%rsi,%rax,1)
+    vmovups (%rsi,%rcx,1),%ymm0
+    vmovups 0x20(%rsi,%rcx,1),%ymm1
+    vmovups 0x40(%rsi,%rcx,1),%ymm2
+    vmovups 0x60(%rsi,%rcx,1),%ymm3
+    vmovups %ymm3,0x60(%rsi,%rax,1)
+    vmovups %ymm2,0x40(%rsi,%rax,1)
+    vmovups %ymm1,0x20(%rsi,%rax,1)
+    vmovups %ymm0,(%rsi,%rax,1)
+sbr_hf_assemble.y2:
+    lea 0x130b0(%r8),%rdi
+    vmovups 0xa0(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0xa0(%rdi,%rax,1)
+    vmovups 0x80(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x80(%rdi,%rax,1)
+    vmovups (%rdi,%rcx,1),%ymm0
+    vmovups 0x20(%rdi,%rcx,1),%ymm1
+    vmovups 0x40(%rdi,%rcx,1),%ymm2
+    vmovups 0x60(%rdi,%rcx,1),%ymm3
+    vmovups %ymm3,0x60(%rdi,%rax,1)
+    vmovups %ymm2,0x40(%rdi,%rax,1)
+    vmovups %ymm1,0x20(%rdi,%rax,1)
+    vmovups %ymm0,(%rdi,%rax,1)
+sbr_hf_assemble.y3:
+    vmovups 0x160(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x160(%rsi,%rax,1)
+    vmovups 0x140(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x140(%rsi,%rax,1)
+    vmovups 0xc0(%rsi,%rcx,1),%ymm0
+    vmovups 0xe0(%rsi,%rcx,1),%ymm1
+    vmovups 0x100(%rsi,%rcx,1),%ymm2
+    vmovups 0x120(%rsi,%rcx,1),%ymm3
+    vmovups %ymm3,0x120(%rsi,%rax,1)
+    vmovups %ymm2,0x100(%rsi,%rax,1)
+    vmovups %ymm1,0xe0(%rsi,%rax,1)
+    vmovups %ymm0,0xc0(%rsi,%rax,1)
+sbr_hf_assemble.y4:
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    movzbl 0x15aa5(%r8),%ecx
+    lea (%rcx,%rcx,2),%rcx
+    shl $0x7,%ecx
+sbr_hf_assemble.y5:
+    vmovups 0x160(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x160(%rdi,%rax,1)
+    vmovups 0x140(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x140(%rdi,%rax,1)
+    vmovups 0xc0(%rdi,%rcx,1),%ymm0
+    vmovups 0xe0(%rdi,%rcx,1),%ymm1
+    vmovups 0x100(%rdi,%rcx,1),%ymm2
+    vmovups 0x120(%rdi,%rcx,1),%ymm3
+    vmovups %ymm3,0x120(%rdi,%rax,1)
+    vmovups %ymm2,0x100(%rdi,%rax,1)
+    vmovups %ymm1,0xe0(%rdi,%rax,1)
+    vmovups %ymm0,0xc0(%rdi,%rax,1)
+sbr_hf_assemble.y6:
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    movzbl 0x15aa5(%r8),%ecx
+    lea (%rcx,%rcx,2),%rcx
+    shl $0x7,%ecx
+sbr_hf_assemble.y7:
+    vmovups 0x220(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x220(%rsi,%rax,1)
+    vmovups 0x200(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x200(%rsi,%rax,1)
+    vmovups 0x180(%rsi,%rcx,1),%ymm0
+    vmovups 0x1a0(%rsi,%rcx,1),%ymm1
+    vmovups 0x1c0(%rsi,%rcx,1),%ymm2
+    vmovups 0x1e0(%rsi,%rcx,1),%ymm3
+    vmovups %ymm3,0x1e0(%rsi,%rax,1)
+    vmovups %ymm2,0x1c0(%rsi,%rax,1)
+    vmovups %ymm1,0x1a0(%rsi,%rax,1)
+    vmovups %ymm0,0x180(%rsi,%rax,1)
+sbr_hf_assemble.y8:
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    movzbl 0x15aa5(%r8),%ecx
+    lea (%rcx,%rcx,2),%rcx
+    shl $0x7,%ecx
+sbr_hf_assemble.y9:
+    vmovups 0x220(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x220(%rdi,%rax,1)
+    vmovups 0x200(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x200(%rdi,%rax,1)
+    vmovups 0x180(%rdi,%rcx,1),%ymm0
+    vmovups 0x1a0(%rdi,%rcx,1),%ymm1
+    vmovups 0x1c0(%rdi,%rcx,1),%ymm2
+    vmovups 0x1e0(%rdi,%rcx,1),%ymm3
+    vmovups %ymm3,0x1e0(%rdi,%rax,1)
+    vmovups %ymm2,0x1c0(%rdi,%rax,1)
+    vmovups %ymm1,0x1a0(%rdi,%rax,1)
+    vmovups %ymm0,0x180(%rdi,%rax,1)
+sbr_hf_assemble.y10:
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    movzbl 0x15aa5(%r8),%ecx
+    lea (%rcx,%rcx,2),%rcx
+    shl $0x7,%ecx
+sbr_hf_assemble.y11:
+    vmovups 0x2e0(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x2e0(%rsi,%rax,1)
+    vmovups 0x2c0(%rsi,%rcx,1),%ymm0
+    vmovups %ymm0,0x2c0(%rsi,%rax,1)
+    vmovups 0x240(%rsi,%rcx,1),%ymm0
+    vmovups 0x260(%rsi,%rcx,1),%ymm1
+    vmovups 0x280(%rsi,%rcx,1),%ymm2
+    vmovups 0x2a0(%rsi,%rcx,1),%ymm3
+    vmovups %ymm3,0x2a0(%rsi,%rax,1)
+    vmovups %ymm2,0x280(%rsi,%rax,1)
+    vmovups %ymm1,0x260(%rsi,%rax,1)
+    vmovups %ymm0,0x240(%rsi,%rax,1)
+sbr_hf_assemble.y12:
+    movzbl 0x15a9c(%r8),%eax
+    lea (%rax,%rax,2),%rax
+    shl $0x7,%eax
+    movzbl 0x15aa5(%r8),%ecx
+    lea (%rcx,%rcx,2),%rcx
+    shl $0x7,%ecx
+sbr_hf_assemble.y13:
+    vmovups 0x2e0(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x2e0(%rdi,%rax,1)
+    vmovups 0x2c0(%rdi,%rcx,1),%ymm0
+    vmovups %ymm0,0x2c0(%rdi,%rax,1)
+    vmovups 0x240(%rdi,%rcx,1),%ymm0
+    vmovups 0x260(%rdi,%rcx,1),%ymm1
+    vmovups 0x280(%rdi,%rcx,1),%ymm2
+    vmovups 0x2a0(%rdi,%rcx,1),%ymm3
+    vmovups %ymm3,0x2a0(%rdi,%rax,1)
+    vmovups %ymm2,0x280(%rdi,%rax,1)
+    vmovups %ymm1,0x260(%rdi,%rax,1)
+    vmovups %ymm0,0x240(%rdi,%rax,1)
+sbr_hf_assemble.y14:
+    mov 0x8(%r8),%edx
+    test %edx,%edx
+    jne sbr_hf_assemble.La8f6
+sbr_hf_assemble.Lb820:
+    vmovq %xmm4,0x15aac(%r8)
+    add $0x258,%rsp
+    pop %rbx
+    pop %r12
+    pop %r13
+    pop %r14
+    pop %r15
+    pop %rbp
+    vzeroupper
+sbr_hf_assemble.done:
+    ret
+sbr_hf_assemble.Lb83e:
+    ud1 0x12(%eax),%eax
+sbr_hf_assemble.Lb843:
+    ud1 0x12(%eax),%eax
+sbr_hf_assemble.Lb848:
+    ud1 0x12(%eax),%eax
+sbr_hf_assemble.Lb84d:
+    ud1 0x12(%eax),%eax

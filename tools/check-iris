@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -eu
+cd "$(dirname "$0")/.."
+iris_cache="${IRIS_PACKAGE_CACHE:-/home/agent/iris-intrinsic-complete/.lake/packages}"
+export LEAN_PATH="$PWD/.lake/build/lib/lean:$iris_cache/iris/Iris/.lake/build/lib/lean:$iris_cache/batteries/.lake/build/lib/lean:$iris_cache/Qq/.lake/build/lib/lean"
+source_file="$1"
+shift
+output_file=".lake/build/lib/lean/${source_file%.lean}.olean"
+mkdir -p "$(dirname "$output_file")"
+exec lean "$source_file" -o "$output_file" "$@"

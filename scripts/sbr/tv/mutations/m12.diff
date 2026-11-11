@@ -1,0 +1,11 @@
+--- a/read_sbr_header.txt
++++ b/read_sbr_header.txt
+@@ -27,7 +27,7 @@
+     and cl, 7 ;; aw=w64 ow=w8
+     shl r9d, cl ;; aw=w64 ow=w32
+     shr r9d, 28 ;; aw=w64 ow=w32
+-    add eax, 4 ;; aw=w64 ow=w32
++    sub eax, 4 ;; aw=w64 ow=w32
+     cmp edx, eax ;; aw=w64 ow=w32
+     cmovb eax, edx ;; aw=w64 ow=w32
+     mov DWORD PTR [rsi+8], eax ;; aw=w64 ow=w32

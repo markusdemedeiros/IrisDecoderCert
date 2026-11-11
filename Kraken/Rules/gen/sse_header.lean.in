@@ -1,0 +1,138 @@
+import Kraken.Rules.GenericMem
+
+/-!
+# Rules for packed SSE and AVX instructions
+
+`MachineWP` rules for the packed vector forms that compiled C (VEX-encoded,
+`-mavx`) and hand-written SSE (`libavcodec/x86/sbrdsp.asm`) use: moves,
+lanewise arithmetic and logic, shuffles, blends, inserts and extracts.
+
+Each memory rule is stated once over the operand `⟨some (.reg b), idx, .int64 d⟩`
+(any index and scale, or none), whose address is
+`regs.get64 b + AddrIndex.offset64 idx regs + d.toBitVec`, as in
+`GenericMem.lean`. A few forms that compiled C uses with constants also get a
+`sym(%rip)` rule (`_rip_spec`) and a `sym+o(%rip)` rule (`_rip_off_spec`).
+
+The memory side conditions are the ones the semantics checks:
+
+* every access needs its bytes readable (`Mem.loadInt … = some _`); stores need
+  them owned, which is the same condition;
+* `isAligned n a` appears exactly where `AvxOperation.interp` passes
+  `checkAlign := true`: the VEX aligned moves (`vmovaps`, `vmovapd`, `vmovdqa`,
+  16 bytes at `.W128` and 32 at `.W256`), and every legacy 128-bit memory
+  operand except those of `movups` and `movdqu`;
+* `m32`/`m64` operands (`vbroadcastss`, `vinsertps`, `vmovlps`, `movss`,
+  `movsd`, `movq`, `movlps`, `movhps`, `addss`, `movddup`) go through the
+  general-purpose 4- or 8-byte access and are never alignment-checked.
+
+The register values are stated exactly, as `AvxOperation.interp` computes them.
+
+The rules are per constructor: `vcgen` picks a rule by the shape of the
+instruction, so one rule with a variable operation would match every vector
+instruction. The proofs are shared instead: `mem_load`/`mem_store` (and their
+aligned variants) run the proof of `GenericMem.lean` for any form whose
+interpretation is one memory access followed by a fall-through, and register
+forms use `fallthrough_spec`.
+
+All rules are `@[spec low]`, so the shape-specific rules of `MachineWP.lean`
+and `GenericMem.lean` keep priority where both fit. Forms those files already
+cover (`movaps`/`addps`/`subps` register forms, the generic `movaps` load,
+`vxorps`/`vaddps`/`vshufps` register forms) are not repeated.
+-/
+
+open Kraken MachineWP Std.WP Lean.Order
+
+set_option linter.unusedSimpArgs false
+
+section Specs
+
+variable [CodeEnv] {Q : Unit → MachineData → Prop} {E : Int64 → MachineData → Prop}
+  {p : Program}
+
+local macro "wp_step" : tactic =>
+  `(tactic| simp only [Executable.stepAt, Directive.interp, Instr.interp,
+      Operation.interp, AvxOperation.interp, Operand.interp, RegOrMem.interp,
+      AvxRegOrMem.interp, AvxRegOrMem.interpLow, RelRegOrMem.interp, ConstExpr.interp,
+      MachineData.set, MachineData.setReg, MachineData.setAvxLegacy, MachineData.setAvxLegacyReg,
+      MachineData.setAvx, MachineData.setAvxReg,
+      Reg64s.get_low64, Reg64s.set_low64, Effects.All, or_false, false_or])
+
+/-- After `wp_step`: unfold the one memory access and discharge its checks. -/
+local macro "mem_access" hal:ident hv:ident : tactic =>
+  `(tactic| simp only [MachineData.loadAvx, MachineData.storeAvx, MachineData.load,
+      MachineData.store, AddrExpr.zeroExtend_interp_base_idx_disp,
+      AddrExpr.zeroExtend_interp_rip_label, AddrExpr.zeroExtend_interp_rip_label_add,
+      $hal:ident, $hv:ident, AvxWidth.bytes, Width.bytes,
+      Bool.not_true, Bool.and_false, Bool.false_and, Bool.false_eq_true, ite_false,
+      Effects.All])
+
+/-- Proof of a load rule with precondition
+`isSome ⊓ (∀ v, load = some v → wp …)`. -/
+local macro "mem_load" : tactic =>
+  `(tactic| (
+    refine Triple.intro fun s h => ?_
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨hsome, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    mem_access hv hv
+    exact hk v hv _ hpl'))
+
+/-- Proof of a load rule with precondition
+`aligned ⊓ isSome ⊓ (∀ v, load = some v → wp …)`. -/
+local macro "mem_load_al" : tactic =>
+  `(tactic| (
+    refine Triple.intro fun s h => ?_
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨⟨hal, hsome⟩, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    mem_access hal hv
+    exact hk v hv _ hpl'))
+
+/-- Proof of a store rule with precondition `isSome ⊓ wp …`. -/
+local macro "mem_store" : tactic =>
+  `(tactic| (
+    refine Triple.intro fun s h => ?_
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨hsome, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    mem_access hv hv
+    exact hk _ hpl'))
+
+/-- Proof of a store rule with precondition `aligned ⊓ isSome ⊓ wp …`. -/
+local macro "mem_store_al" : tactic =>
+  `(tactic| (
+    refine Triple.intro fun s h => ?_
+    simp only [meet_prop_eq_and] at h
+    obtain ⟨⟨hal, hsome⟩, hk⟩ := h
+    obtain ⟨v, hv⟩ := Option.isSome_iff_exists.mp hsome
+    intro pc hpl
+    obtain ⟨z, rest, hseg, hpl'⟩ := hpl
+    rw [after_instr hseg]
+    refine step_here hseg (Or.inl ?_)
+    wp_step
+    mem_access hal hv
+    exact hk _ hpl'))
+
+/-- Proof of a register rule: the cell computes the stated state and falls
+through. -/
+local macro "reg_proof" : term =>
+  `(fallthrough_spec (fun _ _ _ hP => by
+      wp_step
+      (try simp only [Reg64s.get_low32, Reg64s.set_low32])
+      exact hP))
+

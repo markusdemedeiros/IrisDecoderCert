@@ -1,0 +1,22 @@
+ff_sbr_qmf_post_shuffle_sse:
+    lea rdx, [rsi+240] ;; aw=w64 ow=w64
+    movaps xmm3, XMMWORD PTR [rip+ff_ps_neg] ;; aw=w64 ow=w128
+ff_sbr_qmf_post_shuffle_sse.loop:
+    movaps xmm1, XMMWORD PTR [rsi+0] ;; aw=w64 ow=w128
+    movaps xmm0, XMMWORD PTR [rdx+0] ;; aw=w64 ow=w128
+    xorps xmm0, xmm3 ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 27 ;; aw=w64 ow=w128
+    movaps xmm2, xmm0 ;; aw=w64 ow=w128
+    unpcklps xmm2, xmm1 ;; aw=w64 ow=w128
+    unpckhps xmm0, xmm1 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+0], xmm2 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+16], xmm0 ;; aw=w64 ow=w128
+ff_sbr_qmf_post_shuffle_sse.step:
+    add rdi, 32 ;; aw=w64 ow=w64
+    sub rdx, 16 ;; aw=w64 ow=w64
+    add rsi, 16 ;; aw=w64 ow=w64
+ff_sbr_qmf_post_shuffle_sse.cmp:
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jl ff_sbr_qmf_post_shuffle_sse.loop ;; aw=w64 ow=w64
+ff_sbr_qmf_post_shuffle_sse.done:
+    ret ;; aw=w64 ow=w64

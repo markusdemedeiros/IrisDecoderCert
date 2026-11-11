@@ -1,0 +1,97 @@
+ff_sbr_autocorrelate_sse:
+    sub rsp, 40 ;; aw=w64 ow=w64
+    mov edx, 296 ;; aw=w64 ow=w32
+    add rdi, rdx ;; aw=w64 ow=w64
+    neg rdx ;; aw=w64 ow=w64
+    movlps xmm5, QWORD PTR [rdi+rdx*1+0] ;; aw=w64 ow=w128
+    movlhps xmm5, xmm5 ;; aw=w64 ow=w128
+    movlps xmm7, QWORD PTR [rdi+rdx*1+8] ;; aw=w64 ow=w128
+    movlps xmm1, QWORD PTR [rdi+rdx*1+16] ;; aw=w64 ow=w128
+    shufps xmm7, xmm7, 20 ;; aw=w64 ow=w128
+    shufps xmm1, xmm1, 20 ;; aw=w64 ow=w128
+    movaps xmm3, xmm5 ;; aw=w64 ow=w128
+    mulps xmm3, xmm7 ;; aw=w64 ow=w128
+    movaps xmm4, xmm5 ;; aw=w64 ow=w128
+    mulps xmm4, xmm5 ;; aw=w64 ow=w128
+    mulps xmm5, xmm1 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rsp+0], xmm3 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rsp+16], xmm4 ;; aw=w64 ow=w128
+    add rdx, 8 ;; aw=w64 ow=w64
+    movlps xmm2, QWORD PTR [rdi+rdx*1+16] ;; aw=w64 ow=w128
+    movlhps xmm7, xmm7 ;; aw=w64 ow=w128
+    shufps xmm2, xmm2, 20 ;; aw=w64 ow=w128
+    movaps xmm6, xmm7 ;; aw=w64 ow=w128
+    mulps xmm6, xmm1 ;; aw=w64 ow=w128
+    movaps xmm4, xmm7 ;; aw=w64 ow=w128
+    mulps xmm4, xmm2 ;; aw=w64 ow=w128
+    mulps xmm7, xmm7 ;; aw=w64 ow=w128
+    addps xmm5, xmm4 ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+ff_sbr_autocorrelate_sse.loop:
+    add rdx, 8 ;; aw=w64 ow=w64
+    movlps xmm0, QWORD PTR [rdi+rdx*1+16] ;; aw=w64 ow=w128
+    movlhps xmm1, xmm1 ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 20 ;; aw=w64 ow=w128
+    movaps xmm3, xmm1 ;; aw=w64 ow=w128
+    mulps xmm3, xmm2 ;; aw=w64 ow=w128
+    movaps xmm4, xmm1 ;; aw=w64 ow=w128
+    mulps xmm4, xmm0 ;; aw=w64 ow=w128
+    mulps xmm1, xmm1 ;; aw=w64 ow=w128
+    addps xmm6, xmm3 ;; aw=w64 ow=w128
+    addps xmm5, xmm4 ;; aw=w64 ow=w128
+    addps xmm7, xmm1 ;; aw=w64 ow=w128
+    add rdx, 8 ;; aw=w64 ow=w64
+    movlps xmm1, QWORD PTR [rdi+rdx*1+16] ;; aw=w64 ow=w128
+    movlhps xmm2, xmm2 ;; aw=w64 ow=w128
+    shufps xmm1, xmm1, 20 ;; aw=w64 ow=w128
+    movaps xmm3, xmm2 ;; aw=w64 ow=w128
+    mulps xmm3, xmm0 ;; aw=w64 ow=w128
+    movaps xmm4, xmm2 ;; aw=w64 ow=w128
+    mulps xmm4, xmm1 ;; aw=w64 ow=w128
+    mulps xmm2, xmm2 ;; aw=w64 ow=w128
+    addps xmm6, xmm3 ;; aw=w64 ow=w128
+    addps xmm5, xmm4 ;; aw=w64 ow=w128
+    addps xmm7, xmm2 ;; aw=w64 ow=w128
+    add rdx, 8 ;; aw=w64 ow=w64
+    movlps xmm2, QWORD PTR [rdi+rdx*1+16] ;; aw=w64 ow=w128
+    movlhps xmm0, xmm0 ;; aw=w64 ow=w128
+    shufps xmm2, xmm2, 20 ;; aw=w64 ow=w128
+    movaps xmm3, xmm0 ;; aw=w64 ow=w128
+    mulps xmm3, xmm1 ;; aw=w64 ow=w128
+    movaps xmm4, xmm0 ;; aw=w64 ow=w128
+    mulps xmm4, xmm2 ;; aw=w64 ow=w128
+    mulps xmm0, xmm0 ;; aw=w64 ow=w128
+    addps xmm6, xmm3 ;; aw=w64 ow=w128
+    addps xmm5, xmm4 ;; aw=w64 ow=w128
+    addps xmm7, xmm0 ;; aw=w64 ow=w128
+    jl ff_sbr_autocorrelate_sse.loop ;; aw=w64 ow=w64
+ff_sbr_autocorrelate_sse.tail:
+    movlhps xmm1, xmm1 ;; aw=w64 ow=w128
+    mulps xmm2, xmm1 ;; aw=w64 ow=w128
+    mulps xmm1, xmm1 ;; aw=w64 ow=w128
+    addps xmm2, xmm6 ;; aw=w64 ow=w128
+    addps xmm1, xmm7 ;; aw=w64 ow=w128
+    addps xmm6, XMMWORD PTR [rsp+0] ;; aw=w64 ow=w128
+    addps xmm7, XMMWORD PTR [rsp+16] ;; aw=w64 ow=w128
+    xorps xmm2, XMMWORD PTR [rip+ps_mask3] ;; aw=w64 ow=w128
+    xorps xmm5, XMMWORD PTR [rip+ps_mask3] ;; aw=w64 ow=w128
+    xorps xmm6, XMMWORD PTR [rip+ps_mask3] ;; aw=w64 ow=w128
+    movaps xmm3, xmm2 ;; aw=w64 ow=w128
+    shufps xmm2, xmm5, 136 ;; aw=w64 ow=w128
+    shufps xmm3, xmm5, 221 ;; aw=w64 ow=w128
+    addps xmm2, xmm3 ;; aw=w64 ow=w128
+    movaps xmm4, xmm7 ;; aw=w64 ow=w128
+    shufps xmm7, xmm6, 136 ;; aw=w64 ow=w128
+    shufps xmm4, xmm6, 221 ;; aw=w64 ow=w128
+    addps xmm7, xmm4 ;; aw=w64 ow=w128
+    movss xmm0, xmm1 ;; aw=w64 ow=w128
+    shufps xmm1, xmm1, 1 ;; aw=w64 ow=w128
+    addss xmm1, xmm0 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rsi+0], xmm2 ;; aw=w64 ow=w128
+    movhps QWORD PTR [rsi+24], xmm7 ;; aw=w64 ow=w128
+    movss DWORD PTR [rsi+40], xmm7 ;; aw=w64 ow=w128
+    movss DWORD PTR [rsi+16], xmm1 ;; aw=w64 ow=w128
+    add rsp, 40 ;; aw=w64 ow=w64
+ff_sbr_autocorrelate_sse.done:
+    ret ;; aw=w64 ow=w64

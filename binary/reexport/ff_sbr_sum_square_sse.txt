@@ -1,0 +1,42 @@
+ff_sbr_sum_square_sse:
+    mov edx, esi ;; aw=w64 ow=w32
+    xorps xmm0, xmm0 ;; aw=w64 ow=w128
+    xorps xmm1, xmm1 ;; aw=w64 ow=w128
+    sar rdx, 3 ;; aw=w64 ow=w64
+    je ff_sbr_sum_square_sse.prepare ;; aw=w64 ow=w64
+ff_sbr_sum_square_sse.loop:
+    movups xmm2, XMMWORD PTR [rdi+0] ;; aw=w64 ow=w128
+    movups xmm3, XMMWORD PTR [rdi+16] ;; aw=w64 ow=w128
+    movups xmm4, XMMWORD PTR [rdi+32] ;; aw=w64 ow=w128
+    movups xmm5, XMMWORD PTR [rdi+48] ;; aw=w64 ow=w128
+    mulps xmm2, xmm2 ;; aw=w64 ow=w128
+    mulps xmm3, xmm3 ;; aw=w64 ow=w128
+    mulps xmm4, xmm4 ;; aw=w64 ow=w128
+    mulps xmm5, xmm5 ;; aw=w64 ow=w128
+    addps xmm0, xmm2 ;; aw=w64 ow=w128
+    addps xmm1, xmm3 ;; aw=w64 ow=w128
+    addps xmm0, xmm4 ;; aw=w64 ow=w128
+    addps xmm1, xmm5 ;; aw=w64 ow=w128
+    add rdi, 64 ;; aw=w64 ow=w64
+    dec rdx ;; aw=w64 ow=w64
+    jne ff_sbr_sum_square_sse.loop ;; aw=w64 ow=w64
+ff_sbr_sum_square_sse.prepare:
+    and rsi, 7 ;; aw=w64 ow=w64
+    sar rsi, 1 ;; aw=w64 ow=w64
+    je ff_sbr_sum_square_sse.end ;; aw=w64 ow=w64
+ff_sbr_sum_square_sse.endloop:
+    movups xmm2, XMMWORD PTR [rdi+0] ;; aw=w64 ow=w128
+    add rdi, 16 ;; aw=w64 ow=w64
+    mulps xmm2, xmm2 ;; aw=w64 ow=w128
+    dec rsi ;; aw=w64 ow=w64
+    addps xmm0, xmm2 ;; aw=w64 ow=w128
+    jne ff_sbr_sum_square_sse.endloop ;; aw=w64 ow=w64
+ff_sbr_sum_square_sse.end:
+    addps xmm0, xmm1 ;; aw=w64 ow=w128
+    movhlps xmm2, xmm0 ;; aw=w64 ow=w128
+    addps xmm0, xmm2 ;; aw=w64 ow=w128
+    movss xmm1, xmm0 ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 1 ;; aw=w64 ow=w128
+    addss xmm0, xmm1 ;; aw=w64 ow=w128
+ff_sbr_sum_square_sse.done:
+    ret ;; aw=w64 ow=w64

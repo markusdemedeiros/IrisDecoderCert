@@ -1,0 +1,99 @@
+ff_aac_sbr_ctx_alloc_init:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 24 ;; aw=w64 ow=w64
+    mov r14d, edx ;; aw=w64 ow=w32
+    mov r15, rsi ;; aw=w64 ow=w64
+    mov edi, 560032 ;; aw=w64 ow=w32
+    call av_mallocz ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L22:
+    test rax, rax ;; aw=w64 ow=w64
+    je ff_aac_sbr_ctx_alloc_init.L17a ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L2b:
+    mov rbx, rax ;; aw=w64 ow=w64
+    mov QWORD PTR [r15+0], rax ;; aw=w64 ow=w64
+    add rax, 123168 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+40512], rax ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L3e:
+    lea rax, [rbx+144672] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+80896], rax ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rbx+166264] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+166260], eax ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L58:
+    mov DWORD PTR [rbx+166188], r14d ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+166192], eax ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L67:
+    mov QWORD PTR [rbx+166180], rax ;; aw=w64 ow=w64
+    mov DWORD PTR [rbx+166264], 32 ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L78:
+    mov DWORD PTR [rbx+166272], eax ;; aw=w64 ow=w32
+    mov ecx, 4294967295 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+269672], ecx ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L89:
+    mov DWORD PTR [rbx+180904], ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+166204], ecx ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L95:
+    mov WORD PTR [rbx+166208], 65535 ;; aw=w64 ow=w16
+    mov ecx, 1152 ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+180896], ecx ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.La9:
+    mov DWORD PTR [rbx+269664], ecx ;; aw=w64 ow=w32
+    lea r9, [rbp+-28] ;; aw=w64 ow=w64
+    mov DWORD PTR [r9+0], 889192448 ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.Lba:
+    lea rdi, [rbx+559856] ;; aw=w64 ow=w64
+    lea rsi, [rbx+559864] ;; aw=w64 ow=w64
+    mov QWORD PTR [rsp+0], rax ;; aw=w64 ow=w64
+    mov edx, 1 ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    mov r8d, 64 ;; aw=w64 ow=w32
+    call av_tx_init ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.Le1:
+    test eax, eax ;; aw=w64 ow=w32
+    js ff_aac_sbr_ctx_alloc_init.L17f ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.Le9:
+    lea r9, [rbp+-28] ;; aw=w64 ow=w64
+    mov DWORD PTR [r9+0], 3347054592 ;; aw=w64 ow=w32
+    lea rdi, [rbx+559840] ;; aw=w64 ow=w64
+    lea rsi, [rbx+559848] ;; aw=w64 ow=w64
+    mov QWORD PTR [rsp+0], 0 ;; aw=w64 ow=w64
+    mov edx, 1 ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    mov r8d, 64 ;; aw=w64 ow=w32
+    call av_tx_init ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L11f:
+    test eax, eax ;; aw=w64 ow=w32
+    js ff_aac_sbr_ctx_alloc_init.L17f ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L123:
+    lea rdi, [rbx+477880] ;; aw=w64 ow=w64
+    call ff_psdsp_init ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L12f:
+    mov rdi, rbx ;; aw=w64 ow=w64
+    add rdi, 559872 ;; aw=w64 ow=w64
+    call ff_sbrdsp_init ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L13e:
+    lea rax, [rip+sbr_lf_gen] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+559984], rax ;; aw=w64 ow=w64
+    lea rax, [rip+sbr_hf_assemble] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+559992], rax ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L15a:
+    lea rax, [rip+sbr_x_gen] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+560000], rax ;; aw=w64 ow=w64
+    lea rax, [rip+sbr_hf_inverse_filter] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbx+560008], rax ;; aw=w64 ow=w64
+    xor eax, eax ;; aw=w64 ow=w32
+    jmp ff_aac_sbr_ctx_alloc_init.L17f ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.L17a:
+    mov eax, 4294967284 ;; aw=w64 ow=w32
+ff_aac_sbr_ctx_alloc_init.L17f:
+    add rsp, 24 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+ff_aac_sbr_ctx_alloc_init.done:
+    ret ;; aw=w64 ow=w64

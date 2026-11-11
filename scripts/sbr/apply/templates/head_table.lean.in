@@ -1,0 +1,179 @@
+import Kraken.X64.Examples.Sbr.ApplyText
+import Kraken.X64.Examples.Sbr.ApplySpec
+
+/-!
+# `ff_aac_sbr_apply`: the control flow, the footprint, the table
+
+`libavcodec/aacsbr_template.c` (FFmpeg n8.1), `ff_aac_sbr_apply(ac, che, id_aac, L, R)`
+from the `-c opt` object (`aacsbr.o`). The text (`ApplyText.lean`) is cut into 434 blocks (a
+label at every jump target, after every call, and inside long runs); each block's body is a
+separate definition `B.<id>` and the text is their concatenation, so the control-flow
+rule reads the block list without reducing the text (`Kraken/Rules/CfgTable.lean`).
+
+The table is position-indexed (`Program.LTable`): the entry of the `i`-th label is the
+`i`-th entry of `ENT`; `T.<id>` rewrites the table at a literal label to its entry.
+Block obligations (`BlockOb`) are stated on the literal block and proved in the
+phase files `Apply/<Phase>.lean`; `Apply.lean` assembles them with
+`ProcSpec.of_cfg_post_pre`.
+-/
+
+open Kraken Kraken.X64.Parser Std.WP MachineWP Kraken.SysV Mem
+
+namespace Kraken.Examples.Sbr.Apply
+
+/-- The `hlive` argument of `env_wf` / `ga_facts`. -/
+theorem ChLive.live {t : MachineData} {ch : Nat} {y : Args} (h : ChLive t ch y)
+    (hs : y.start ≠ 0) : ch ≠ 0 → y.idAac = 1#32 := fun hc => (h.1 hs).trans (h.2 hc)
+theorem IdLive.turnoff {t : MachineData} {y : Args} : IdLive t y.turnoff := fun h => absurd rfl h
+theorem IdLive.of_start0 {t : MachineData} {y : Args} (h : y.start = 0) : IdLive t y :=
+  fun h' => absurd h h'
+theorem IdLive.of_eq {t : MachineData} {y : Args} (h : y.idAac = BitVec.setWidth 32 (arg2 t)) :
+    IdLive t y := fun _ => h
+theorem ChLive.turnoff {t : MachineData} {ch : Nat} {y : Args} (h : ChLive t ch y) :
+    ChLive t ch y.turnoff := ⟨IdLive.turnoff, h.2⟩
+theorem ChLive.zero {t : MachineData} {y : Args} (h : IdLive t y) : ChLive t 0 y :=
+  ⟨h, fun h0 => absurd rfl h0⟩
+theorem ChLive.one {t : MachineData} {y : Args} (h : IdLive t y)
+    (hc : BitVec.setWidth 32 (arg2 t) = 1#32) : ChLive t 1 y := ⟨h, fun _ => hc⟩
+
+variable [CodeEnv]
+
+theorem Args.KeepT.rfl' {x : Args} : x.KeepT x := by
+  unfold Args.KeepT
+  exact ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, Or.inr ⟨rfl, rfl, rfl⟩⟩
+
+/-- `sbr_turnoff` (with its `spectrum_params` memset) keeps the tables and clears `start`. -/
+theorem Args.KeepT.turnoff {x y : Args} (h : x.KeepT y) : x.KeepT y.turnoff.spSet := by
+  unfold Args.KeepT at h ⊢
+  obtain ⟨t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, -⟩ := h
+  exact ⟨t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, Or.inl ⟨rfl, rfl, rfl⟩⟩
+
+theorem Args.KeepD.rfl' {x : Args} : x.KeepD x :=
+  ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, Args.KeepT.rfl'⟩
+
+theorem Args.Keep.rfl' {x : Args} : x.Keep x :=
+  ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, Args.KeepD.rfl'⟩
+
+/-- `sbr_turnoff` keeps what `Keep` fixes (`start = 0`: the clear case of `KeepT`). -/
+theorem Args.Keep.turnoff {x y : Args} (h : x.Keep y) : x.Keep y.turnoff.spSet := by
+  obtain ⟨a1, a2, a3, a4, a5, a6, a7, a8, d1, d2, d3, d4, d5, d6, d7, d8, d9, ht⟩ := h
+  exact ⟨a1, a2, a3, a4, a5, a6, a7, a8, d1, d2, d3, d4, d5, d6, d7, d8, d9, ht.turnoff⟩
+
+/-- The `kx_and_m_pushed` step keeps what `Keep` fixes. -/
+theorem Args.Keep.push {x y : Args} (h : x.Keep y) : x.Keep y.push := h
+
+/-- `DWF` with a stronger liveness guard. -/
+theorem DWF.mono {L L' : Prop} {v : DV} (hL : L' → L) (h : DWF L v) : DWF L' v := by
+  obtain ⟨a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16⟩ := h
+  exact ⟨a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, fun h => a16 (hL h)⟩
+
+/-- `sbr_turnoff` keeps the invariant (`kx[1] = 32`, `m[1] = 0`; the clauses under
+`start ≠ 0` become vacuous). -/
+theorem ApplyC.turnoff {y : Args} {t : MachineData} (h : ApplyC y t) : ApplyC y.turnoff t := by
+  obtain ⟨⟨h1, -, h3, -, -, h6, h7, h8, h9, h10, h11, h12, -, hd0, hd1, hps⟩, hL⟩ := h
+  exact ⟨⟨h1, Nat.le_refl _, h3, (by decide : 32 + 0 ≤ 64), Nat.zero_le _, h6, h7, h8, h9, h10, h11, h12,
+    fun h => (h rfl).elim, hd0.mono fun h => (h rfl).elim, hd1.mono fun h => (h.1 rfl).elim, hps⟩, hL⟩
+
+/-- A 4-byte cell loaded into a 32-bit register and stored back: the same bytes. -/
+theorem Int.toBytes4_reload (v : Int) :
+    Int.toBytes 4 (BitVec.setWidth 32 (BitVec.setWidth 64 (BitVec.ofInt 32 (Int.ofBytes (Int.toBytes 4 v))))).toInt
+      = Int.toBytes 4 v := by
+  rw [BitVec.setWidth_setWidth_of_le _ (by decide), BitVec.setWidth_eq, BitVec.toInt_ofInt,
+    ← Int.toBytes_emod, Int.take]
+  have h : (Int.ofBytes (Int.toBytes 4 v)).bmod (2 ^ 32) % (2 ^ (8 * 4) : Int)
+      = Int.ofBytes (Int.toBytes 4 v) % 2 ^ (8 * 4) := Int.bmod_emod
+  rw [h, show Int.ofBytes (Int.toBytes 4 v) % 2 ^ (8 * 4) = (Int.ofBytes (Int.toBytes 4 v)).take (8 * 4)
+    from rfl, Int.toBytes_emod, Int.toBytes_ofBytes_toBytes]
+
+/-- The `kx_and_m_pushed` step keeps the invariant: the new `kx[0]`, `m[0]` are `kx[1]`, `m[1]`
+(bounded by the `kx[1]`/`m[1]` clauses) or unchanged. -/
+theorem ApplyC.push {y : Args} {t : MachineData} (h : ApplyC y t) : ApplyC y.push t := by
+  obtain ⟨⟨h1, h2, h3, h4, rest⟩, hL⟩ := h
+  by_cases hp : y.pushed = 0
+  · exact ⟨⟨by simpa only [hp, if_true] using h2, h2, by simpa only [hp, if_true] using h4, h4, rest⟩, hL⟩
+  · exact ⟨⟨by simpa only [hp, if_false] using h1, h2, by simpa only [hp, if_false] using h3, h4, rest⟩, hL⟩
+
+/-- The `push` step touches only `kx[0]`, `m[0]`, `pushed`: the other groups do not see it. -/
+@[simp] theorem TabW_push (x : Args) (t : MachineData) : TabW x.push t = TabW x t := rfl
+@[simp] theorem FnW_push (e : Env) (x : Args) (t : MachineData) : FnW e x.push t = FnW e x t := rfl
+@[simp] theorem AcW_push (x : Args) (t : MachineData) : AcW x.push t = AcW x t := rfl
+@[simp] theorem OutW_push (x : Args) (t : MachineData) : OutW x.push t = OutW x t := rfl
+/-- `PsW` reads only `psc`/`psh`: `push` and `turnoff` do not change it (not `@[simp]`, so the
+plain `simp` calls of already-checked blocks are unaffected; use by name). -/
+theorem PsW_push (x : Args) (t : MachineData) : PsW x.push t = PsW x t := rfl
+theorem PsW_turnoff (x : Args) (t : MachineData) : PsW x.turnoff t = PsW x t := rfl
+
+/-- The `spectrum_params` memset touches no field `ApplyC`, `IdLive`, `ChLive` read. -/
+theorem ApplyC.spSet {y : Args} {t : MachineData} (h : ApplyC y t) : ApplyC y.spSet t := h
+theorem IdLive.spSet {t : MachineData} {y : Args} (h : IdLive t y) : IdLive t y.spSet := h
+theorem ChLive.spSet {t : MachineData} {ch : Nat} {y : Args} (h : ChLive t ch y) :
+    ChLive t ch y.spSet := h
+
+/-- The low byte after an 8-bit write (`mov $1,%bl`) is the byte written. -/
+@[simp] theorem setWidth8_replaceLow (old : BitVec 64) (new : BitVec 8) :
+    (old.replaceLow new).setWidth 8 = new := by
+  apply BitVec.eq_of_toNat_eq
+  rw [BitVec.toNat_setWidth]
+  exact BitVec.toNat_replaceLow8_mod old new
+
+/-- `setl` after `cmp b, a` (32 bit): signed `a < b`. -/
+theorem flags_l_sub32 (a b : BitVec 32) :
+    ((a - b).msb != ((a - b).signed != a.signed - b.signed)) = decide (a.toInt < b.toInt) := by
+  simp only [BitVec.signed]
+  have h1 := BitVec.toInt_sub (x := a) (y := b)
+  have h2 : (a - b).msb = decide ((a - b).toInt < 0) := by
+    rw [BitVec.msb_eq_toInt]
+  have ha := BitVec.toInt_lt (x := a); have ha' := BitVec.le_toInt (x := a)
+  have hb := BitVec.toInt_lt (x := b); have hb' := BitVec.le_toInt (x := b)
+  rw [h2]
+  rw [h1] at *
+  simp only [Int.bmod] at *
+  generalize a.toInt = x at *
+  generalize b.toInt = y at *
+  simp only [Nat.reducePow] at *
+  have hc : ((4294967296 : Nat) : Int) = 4294967296 := rfl
+  simp only [hc] at *
+  split
+  · by_cases h : (x - y) % 4294967296 = x - y
+    · simp only [h, bne_self_eq_false, Bool.bne_false, decide_eq_decide]
+      omega
+    · have h' : ((x - y) % 4294967296 != x - y) = true := bne_iff_ne.mpr h
+      simp only [h', Bool.bne_true, ← decide_not, decide_eq_decide]
+      omega
+  · by_cases h : (x - y) % 4294967296 - 4294967296 = x - y
+    · simp only [h, bne_self_eq_false, Bool.bne_false, decide_eq_decide]
+      omega
+    · have h' : ((x - y) % 4294967296 - 4294967296 != x - y) = true := bne_iff_ne.mpr h
+      simp only [h', Bool.bne_true, ← decide_not, decide_eq_decide]
+      omega
+
+/-- `incl %r` (32-bit; the upper half is zeroed). Missing from `IntMisc` (which has `decl`). -/
+@[spec low] theorem inc_reg_w32_spec {p : Program} {Q : Unit → MachineData → Prop}
+    {E : Int64 → MachineData → Prop} (asz : Width) (r : Reg64) :
+    ⦃ fun s =>
+        let a := (s.regs.get64 r).setWidth 32
+        let v := a + 1
+        WP.wp p Q E
+          { s with
+              regs := s.regs.set64 r (v.setWidth 64),
+              status := StatusFlags.from_result v
+                  { cf := s.status.cf,
+                    af := (v.take 4).unsigned != (a.take 4).unsigned + 1,
+                    of := v.signed != a.signed + 1 } } ⦄
+      (Directive.instr (.regular asz .W32 (.inc (.reg (.low r .W32)))) :: p)
+    ⦃ Q; E ⦄ :=
+  fallthrough_spec (fun s rng P hP => by
+    simp only [Directive.interp, Instr.interp, Operation.interp, RegOrMem.interp,
+      MachineData.set, MachineData.setReg, Reg64s.get_low64, Reg64s.set_low64, Effects.All]
+    (try simp only [Reg64s.get_low32, Reg64s.set_low32])
+    exact hP)
+
+/-- The `setl` byte after `cmp b, a` (32 bit). -/
+theorem setl_byte (a b : BitVec 32) (f : StatusFlags.from_result.Remaining)
+    (hf : f.of = ((a - b).signed != a.signed - b.signed)) :
+    (BitVec.ofNat 8 (CondCode.l.interp (StatusFlags.from_result (a - b) f)).toNat).toInt
+      = (((if a.toInt < b.toInt then 1 else 0 : Nat)) : Int) := by
+  simp only [CondCode.interp_l, StatusFlags.sf_from_result, StatusFlags.of_from_result, hf, flags_l_sub32]
+  by_cases h : a.toInt < b.toInt
+  · simp only [h, decide_true, Bool.toNat_true, ite_true]; decide
+  · simp only [h, decide_false, Bool.toNat_false, ite_false]; decide

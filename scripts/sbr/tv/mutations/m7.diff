@@ -1,0 +1,11 @@
+--- a/ff_aac_sbr_apply.txt
++++ b/ff_aac_sbr_apply.txt
+@@ -22,7 +22,7 @@
+     mov QWORD PTR [rbp+-56], rsi ;; aw=w64 ow=w64
+     mov QWORD PTR [rbp+-144], rdi ;; aw=w64 ow=w64
+     mov BYTE PTR [rbp+-57], al ;; aw=w64 ow=w8
+-    mov DWORD PTR [rbp+-156], edx ;; aw=w64 ow=w32
++    mov DWORD PTR [rbp+-152], edx ;; aw=w64 ow=w32
+     jne ff_aac_sbr_apply.L6797 ;; aw=w64 ow=w64
+     mov r9, rsi ;; aw=w64 ow=w64
+     mov bl, 1 ;; aw=w64 ow=w8

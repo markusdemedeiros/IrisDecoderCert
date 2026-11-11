@@ -1,0 +1,282 @@
+[
+  {
+    "check": "source-excerpts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.0824181791394949,
+    "log": "checks/20261111T151217Z/source-excerpts.log"
+  },
+  {
+    "check": "upstream-build",
+    "exit": 0,
+    "clean": true,
+    "seconds": 55.53797584306449,
+    "log": "checks/20261111T151217Z/upstream-build.log"
+  },
+  {
+    "check": "SbrClient.Execution",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8045247001573443,
+    "log": "checks/20261111T151217Z/SbrClient.Execution.log"
+  },
+  {
+    "check": "SbrClient.Frame",
+    "exit": 0,
+    "clean": true,
+    "seconds": 22.6052783629857,
+    "log": "checks/20261111T151217Z/SbrClient.Frame.log"
+  },
+  {
+    "check": "SbrClient.Language",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0604214440099895,
+    "log": "checks/20261111T151217Z/SbrClient.Language.log"
+  },
+  {
+    "check": "SbrClient.CertifiedWP",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3023102981969714,
+    "log": "checks/20261111T151217Z/SbrClient.CertifiedWP.log"
+  },
+  {
+    "check": "SbrClient.Adapter",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8036976186558604,
+    "log": "checks/20261111T151217Z/SbrClient.Adapter.log"
+  },
+  {
+    "check": "SbrClient.MapInstances",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.0525343180634081,
+    "log": "checks/20261111T151217Z/SbrClient.MapInstances.log"
+  },
+  {
+    "check": "SbrClient.Ownership",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.30478285998106,
+    "log": "checks/20261111T151217Z/SbrClient.Ownership.log"
+  },
+  {
+    "check": "SbrClient.Resources",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.052106759045273,
+    "log": "checks/20261111T151217Z/SbrClient.Resources.log"
+  },
+  {
+    "check": "SbrClient.SbrResources",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0540017187595367,
+    "log": "checks/20261111T151217Z/SbrClient.SbrResources.log"
+  },
+  {
+    "check": "SbrClient.Contracts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3073553419671953,
+    "log": "checks/20261111T151217Z/SbrClient.Contracts.log"
+  },
+  {
+    "check": "SbrClient.Host",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.5606464850716293,
+    "log": "checks/20261111T151217Z/SbrClient.Host.log"
+  },
+  {
+    "check": "SbrClient.HostRules",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3062496217899024,
+    "log": "checks/20261111T151217Z/SbrClient.HostRules.log"
+  },
+  {
+    "check": "SbrClient.Call",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.057658282108605,
+    "log": "checks/20261111T151217Z/SbrClient.Call.log"
+  },
+  {
+    "check": "SbrClient.SbrHost",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0588974030688405,
+    "log": "checks/20261111T151217Z/SbrClient.SbrHost.log"
+  },
+  {
+    "check": "SbrClient.Stores",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0555141209624708,
+    "log": "checks/20261111T151217Z/SbrClient.Stores.log"
+  },
+  {
+    "check": "SbrClient.CallSetup",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0516636380925775,
+    "log": "checks/20261111T151217Z/SbrClient.CallSetup.log"
+  },
+  {
+    "check": "SbrClient.Reusable",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0573490019887686,
+    "log": "checks/20261111T151217Z/SbrClient.Reusable.log"
+  },
+  {
+    "check": "SbrClient.Consumer",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.053943360224366,
+    "log": "checks/20261111T151217Z/SbrClient.Consumer.log"
+  },
+  {
+    "check": "SbrClient.OutputConsumer",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0585798830725253,
+    "log": "checks/20261111T151217Z/SbrClient.OutputConsumer.log"
+  },
+  {
+    "check": "SbrClient.HostLock",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.310831544920802,
+    "log": "checks/20261111T151217Z/SbrClient.HostLock.log"
+  },
+  {
+    "check": "SbrClient.Mailbox",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.303339459002018,
+    "log": "checks/20261111T151217Z/SbrClient.Mailbox.log"
+  },
+  {
+    "check": "SbrClient.Fork",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.054873920045793,
+    "log": "checks/20261111T151217Z/SbrClient.Fork.log"
+  },
+  {
+    "check": "SbrClient.Service",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3032036190852523,
+    "log": "checks/20261111T151217Z/SbrClient.Service.log"
+  },
+  {
+    "check": "SbrClient.Startup",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.059059883002192,
+    "log": "checks/20261111T151217Z/SbrClient.Startup.log"
+  },
+  {
+    "check": "SbrClient.Application",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0585790830664337,
+    "log": "checks/20261111T151217Z/SbrClient.Application.log"
+  },
+  {
+    "check": "SbrClient.CoreAudit",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.5529975593090057,
+    "log": "checks/20261111T151217Z/SbrClient.CoreAudit.log"
+  },
+  {
+    "check": "SbrClient.HostAudit",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8053090213797987,
+    "log": "checks/20261111T151217Z/SbrClient.HostAudit.log"
+  },
+  {
+    "check": "SbrClient.MachineAudit",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8033188190311193,
+    "log": "checks/20261111T151217Z/SbrClient.MachineAudit.log"
+  },
+  {
+    "check": "SbrClient.StrongOutput",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0524352779611945,
+    "log": "checks/20261111T151217Z/SbrClient.StrongOutput.log"
+  },
+  {
+    "check": "SbrClient.ReadyService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.3048459398560226,
+    "log": "checks/20261111T151217Z/SbrClient.ReadyService.log"
+  },
+  {
+    "check": "SbrClient.UpstreamCalls",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.5550353601574898,
+    "log": "checks/20261111T151217Z/SbrClient.UpstreamCalls.log"
+  },
+  {
+    "check": "SbrClient.SbrAPI",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.805984381120652,
+    "log": "checks/20261111T151217Z/SbrClient.SbrAPI.log"
+  },
+  {
+    "check": "SbrClient.VerifiedService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0544951600022614,
+    "log": "checks/20261111T151217Z/SbrClient.VerifiedService.log"
+  },
+  {
+    "check": "SbrClient.VerifiedReadyService",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.0530644790269434,
+    "log": "checks/20261111T151217Z/SbrClient.VerifiedReadyService.log"
+  },
+  {
+    "check": "SbrClient.ServiceAudit",
+    "exit": 0,
+    "clean": true,
+    "seconds": 1.8036639792844653,
+    "log": "checks/20261111T151217Z/SbrClient.ServiceAudit.log"
+  },
+  {
+    "check": "export-texts",
+    "exit": 0,
+    "clean": true,
+    "seconds": 2.051799757871777,
+    "log": "checks/20261111T151217Z/export-texts.log"
+  },
+  {
+    "check": "assemble-open-object",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.3265865547582507,
+    "log": "checks/20261111T151217Z/assemble-open-object.log"
+  },
+  {
+    "check": "check-open-object",
+    "exit": 0,
+    "clean": true,
+    "seconds": 0.26638839207589626,
+    "log": "checks/20261111T151217Z/check-open-object.log"
+  }
+]

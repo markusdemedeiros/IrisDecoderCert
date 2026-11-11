@@ -1,0 +1,24 @@
+{
+  "allowed": ["propext", "Classical.choice", "Quot.sound"],
+  "required": [
+    "BinaryCert.cwp_certificate",
+    "BinaryCert.external_adequate",
+    "BinaryCert.cwp_step",
+    "BinaryCert.cwp_eq_native",
+    "SbrClient.instruction_frame",
+    "SbrClient.machineWorld",
+    "SbrClient.certificate_of_eventually",
+    "SbrClient.Host.wp_native_certificate",
+    "SbrClient.Host.Lock.acquire",
+    "SbrClient.Host.Mailbox.claim",
+    "SbrClient.Host.wp_fork",
+    "SbrClient.SbrAPI.verifiedCalls",
+    "SbrClient.SbrAPI.wp_verifiedService",
+    "SbrClient.SbrAPI.cwp_verifiedService",
+    "SbrClient.SbrAPI.wp_consumeOutputs_exact",
+    "SbrClient.SbrAPI.wp_takeFinal",
+    "SbrClient.SbrAPI.wp_readyService",
+    "SbrClient.SbrAPI.wp_verifiedReadyService",
+    "SbrClient.SbrAPI.cwp_verifiedReadyService"
+  ]
+}

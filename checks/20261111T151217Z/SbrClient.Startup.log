@@ -1,0 +1,8 @@
+Waiting for shared experiment build slot
+SbrClient/Startup.lean:16:8: warning: automatically included section variable(s) unused in theorem `_private.SbrClient.Startup.0.SbrClient.SbrAPI.reserveZero`:
+  [CodeEnv]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CodeEnv] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Build exit=0; peak system unavailable RAM=9.49 GB

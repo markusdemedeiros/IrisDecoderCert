@@ -1,0 +1,76 @@
+# Per-module build peak and wall time, used by pbuild.py (SBR_JOBS>1) to order builds and keep
+# the sum of running peaks within SBR_MEM_BUDGET_GB. "MODULE PEAK_GB SECONDS", from the forced
+# parallel rebuild of 2026-10-11 21:00 (integration: SepAC + sepFast + F8/F9 + HfAsm K=2 + info_off;
+# SBR_JOBS=6, 30 GB; times include some contention).
+# fdsp (2026-10-12): + float_dsp modules (sequential lean, uncontended); Witness/Linked from CI.
+# integ2 (2026-10-12 03:15): all modules refreshed from the forced cold CI run 3 of the integration
+# (fdsp + placed + hfheavy; SBR_JOBS=6, 30 GB; times include some contention).
+# Refresh from a forced build: OUT/ci/build.txt lines "M rc=0 S s KB KB".
+Spec                    1.6     2.9
+DequantFloat            1.6     2.3
+Dsp.NegOdd64            1.8     9.0
+Dsp.Sum64x5             1.8     8.2
+Dsp.SumSquare           1.8     8.1
+Dsp.QmfPreShuffle       1.8    13.0
+Dsp.QmfPostShuffle      1.7     8.7
+Dsp.QmfDeintNeg         1.7     6.4
+Dsp.QmfDeintBfly        1.8    10.7
+Dsp.Autocorrelate       1.8    16.1
+Dsp.HfGen               1.7     7.6
+Dsp.HfGFilt             2.0    54.2
+Dsp.HfApplyNoise        2.0    16.2
+Dsp                     1.6     1.4
+Dsp.FloatDspCommon      1.6     2.2
+Dsp.VectorFmul          1.8    28.2
+Dsp.VectorFmulAdd       1.8    17.0
+Dsp.VectorFmulRev       1.9    21.9
+FloatDsp                1.6     1.7
+LfGen                   2.3    92.7
+HfInverseFilter         2.1    39.8
+XGen                    3.5    95.0
+QmfSynthesis            3.9   110.5
+HfAssemble.Cells        1.6     3.0
+HfAssemble.Base         3.2   170.3
+HfAssemble.Part1        5.0   244.2
+HfAssemble.Part2        5.1   316.9
+HfAssemble              1.9     4.3
+ApplyTable              8.6   106.7
+Apply.Trap              1.6     1.9
+Apply.EntrySyn          3.2    46.1
+Apply.DqCpl             3.1    40.6
+Apply.DqSce             3.2    94.9
+Apply.AnaHf             3.5    55.5
+Apply.EnvALem           1.7     5.4
+Apply.EnvA1             2.9    43.4
+Apply.EnvA2             3.6   130.8
+Apply.EnvA3             2.7    28.4
+Apply.EnvBLem           1.7     4.9
+Apply.EnvB1             2.6    28.3
+Apply.EnvB2             2.7    31.6
+Apply.EnvB3             2.6    28.9
+Apply.MapALem           2.9    16.5
+Apply.MapA1             1.9    21.2
+Apply.MapA2             2.1    67.5
+Apply.MapA3             2.3    50.7
+Apply.MapA4             2.1    20.6
+Apply.MapA5             2.2    18.8
+Apply.MapBLem           6.7    92.3
+Apply.MapB1             2.4    37.3
+Apply.MapB2             2.7    34.6
+Apply.MapB3             2.5    32.1
+Apply.MapB4             2.3    38.6
+Apply.MapB5             2.6    79.8
+Apply.MapB6             2.3    26.0
+Apply.MapB7             2.1    30.9
+Apply.MapB8             2.1    35.9
+Apply.MapB9             2.0    93.2
+Apply.MapB10            1.9    14.8
+Apply.MapB11            2.1    32.3
+Apply.MapB12            1.9    21.2
+Apply.MapB13            1.7    10.9
+Apply.GainAsm           4.8   167.5
+Apply                   1.9     2.6
+Link                    2.0     1.8
+Witness                 4.0    60.2
+Placement               1.6     1.6
+Linked                  5.9    60.5

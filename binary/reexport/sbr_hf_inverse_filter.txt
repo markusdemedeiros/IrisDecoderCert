@@ -1,0 +1,129 @@
+sbr_hf_inverse_filter:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 72 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-56], rdi ;; aw=w64 ow=w64
+    test r8d, r8d ;; aw=w64 ow=w32
+    jle sbr_hf_inverse_filter.Lc0dd ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.e1:
+    mov rbx, rcx ;; aw=w64 ow=w64
+    mov r14, rdx ;; aw=w64 ow=w64
+    mov r15, rsi ;; aw=w64 ow=w64
+    mov eax, r8d ;; aw=w64 ow=w32
+    shl rax, 3 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-48], rax ;; aw=w64 ow=w64
+    xor r12d, r12d ;; aw=w64 ow=w32
+    xor r13d, r13d ;; aw=w64 ow=w32
+    jmp sbr_hf_inverse_filter.Lbf6f ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lbf40:
+    mov DWORD PTR [rax+0], 0 ;; aw=w64 ow=w32
+    mov DWORD PTR [r14+r12*1+4], 0 ;; aw=w64 ow=w32
+    mov QWORD PTR [r15+r12*1+0], 0 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lbf57:
+    inc r13 ;; aw=w64 ow=w64
+    add r12, 8 ;; aw=w64 ow=w64
+    add rbx, 320 ;; aw=w64 ow=w64
+    cmp QWORD PTR [rbp+-48], r12 ;; aw=w64 ow=w64
+    je sbr_hf_inverse_filter.Lc0dd ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lbf6f:
+    mov rdi, rbx ;; aw=w64 ow=w64
+    lea rsi, [rbp+-112] ;; aw=w64 ow=w64
+    mov rax, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    call QWORD PTR [rax+56] ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.c1:
+    vxorps xmm7, xmm7, xmm7 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rbp+-96] ;; aw=w64 ow=w128
+    vmulss xmm3, xmm0, DWORD PTR [rbp+-72] ;; aw=w64 ow=w128
+    vmovsd xmm2, QWORD PTR [rbp+-88] ;; aw=w64 ow=w128
+    vshufps xmm1, xmm2, xmm2, 225 ;; aw=w64 ow=w128
+    vmulps xmm4, xmm2, xmm2 ;; aw=w64 ow=w128
+    vmovshdup xmm5, xmm4 ;; aw=w64 ow=w128
+    vaddss xmm4, xmm4, xmm5 ;; aw=w64 ow=w128
+    vdivss xmm4, xmm4, DWORD PTR [rip+LCPI19_0] ;; aw=w64 ow=w128
+    vaddss xmm3, xmm3, xmm4 ;; aw=w64 ow=w128
+    vucomiss xmm3, xmm7 ;; aw=w64 ow=w128
+    jne sbr_hf_inverse_filter.Lbfb5 ;; aw=w64 ow=w64
+    jnp sbr_hf_inverse_filter.Lc000 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lbfb5:
+    vbroadcastss xmm4, DWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    vmulps xmm4, xmm2, xmm4 ;; aw=w64 ow=w128
+    vbroadcastss xmm5, DWORD PTR [rbp+-108] ;; aw=w64 ow=w128
+    vmulps xmm5, xmm1, xmm5 ;; aw=w64 ow=w128
+    vaddsubps xmm4, xmm4, xmm5 ;; aw=w64 ow=w128
+    vmovsd xmm5, QWORD PTR [rbp+-104] ;; aw=w64 ow=w128
+    vmovsldup xmm6, xmm0 ;; aw=w64 ow=w128
+    vmulps xmm5, xmm6, xmm5 ;; aw=w64 ow=w128
+    vsubps xmm4, xmm4, xmm5 ;; aw=w64 ow=w128
+    vmovsldup xmm3, xmm3 ;; aw=w64 ow=w128
+    vdivps xmm4, xmm4, xmm3 ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+r12*1+0], xmm4 ;; aw=w64 ow=w128
+    vmovaps xmm3, xmm4 ;; aw=w64 ow=w128
+    jmp sbr_hf_inverse_filter.Lc010 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lc000:
+    mov DWORD PTR [r14+r12*1+0], 0 ;; aw=w64 ow=w32
+    vxorps xmm3, xmm3, xmm3 ;; aw=w64 ow=w128
+    vxorps xmm4, xmm4, xmm4 ;; aw=w64 ow=w128
+sbr_hf_inverse_filter.Lc010:
+    vmovshdup xmm5, xmm3 ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r14+r12*1+4], xmm5 ;; aw=w64 ow=w128
+    vucomiss xmm0, xmm7 ;; aw=w64 ow=w128
+    vmovss xmm6, DWORD PTR [rip+LCPI19_1] ;; aw=w64 ow=w128
+    jne sbr_hf_inverse_filter.Lc02f ;; aw=w64 ow=w64
+    jnp sbr_hf_inverse_filter.Lc0b0 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lc02f:
+    vmulss xmm4, xmm2, xmm4 ;; aw=w64 ow=w128
+    vaddss xmm4, xmm4, DWORD PTR [rbp+-112] ;; aw=w64 ow=w128
+    vmovshdup xmm2, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm2, xmm5 ;; aw=w64 ow=w128
+    vaddss xmm2, xmm4, xmm2 ;; aw=w64 ow=w128
+    vxorps xmm2, xmm2, XMMWORD PTR [rip+LCPI19_2] ;; aw=w64 ow=w128
+    vmulps xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vmovshdup xmm3, xmm1 ;; aw=w64 ow=w128
+    vaddss xmm3, xmm3, DWORD PTR [rbp+-108] ;; aw=w64 ow=w128
+    vsubss xmm1, xmm1, xmm3 ;; aw=w64 ow=w128
+    vinsertps xmm1, xmm2, xmm1, 28 ;; aw=w64 ow=w128
+    vmovsldup xmm0, xmm0 ;; aw=w64 ow=w128
+    vdivps xmm0, xmm1, xmm0 ;; aw=w64 ow=w128
+    vmovlps QWORD PTR [r15+r12*1+0], xmm0 ;; aw=w64 ow=w128
+sbr_hf_inverse_filter.c2:
+    lea rax, [r14+r13*8+0] ;; aw=w64 ow=w64
+    vmovsd xmm1, QWORD PTR [r14+r12*1+0] ;; aw=w64 ow=w128
+    vmulps xmm1, xmm1, xmm1 ;; aw=w64 ow=w128
+    vmovshdup xmm2, xmm1 ;; aw=w64 ow=w128
+    vaddss xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vucomiss xmm1, xmm6 ;; aw=w64 ow=w128
+    jae sbr_hf_inverse_filter.Lbf40 ;; aw=w64 ow=w64
+    vmulps xmm0, xmm0, xmm0 ;; aw=w64 ow=w128
+    vmovshdup xmm1, xmm0 ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vucomiss xmm0, xmm6 ;; aw=w64 ow=w128
+    jb sbr_hf_inverse_filter.Lbf57 ;; aw=w64 ow=w64
+    jmp sbr_hf_inverse_filter.Lbf40 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lc0b0:
+    mov QWORD PTR [r15+r12*1+0], 0 ;; aw=w64 ow=w64
+    vmovsd xmm0, QWORD PTR [r14+r12*1+0] ;; aw=w64 ow=w128
+    vmulps xmm0, xmm0, xmm0 ;; aw=w64 ow=w128
+    vmovshdup xmm1, xmm0 ;; aw=w64 ow=w128
+    vaddss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vucomiss xmm0, xmm6 ;; aw=w64 ow=w128
+    jb sbr_hf_inverse_filter.Lbf57 ;; aw=w64 ow=w64
+    lea rax, [r14+r12*1+0] ;; aw=w64 ow=w64
+    jmp sbr_hf_inverse_filter.Lbf40 ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.Lc0dd:
+    add rsp, 72 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_hf_inverse_filter.done:
+    ret ;; aw=w64 ow=w64

@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""Writes Parse/ResetFoot.lean: `sbr_reset`'s memory `Mm` as a flat separating conjunction of
+named atoms, and one focus equation per atom (`Mm_<atom> : Mm … = X ⋆ Mx_<atom> …`, the rest
+`Mx_<atom>` a `def` that does not mention the atom), plus multi-atom targets.
+
+Usage: foot.py OUT_DIR
+"""
+import sys
+
+B = "(k : Nat) (e : REnv) (a : RArgs) (ra : Int64) (t₀ : MachineData) (st : St) (fr : List UInt8)"
+A = "k e a ra t₀ st fr"
+R = "(t₀.regs.get64 .rsp)"
+S = "(arg1 t₀)"
+
+ATOMS = [
+    ("reserve", f"Reserve (8 + tlimNeed k) ({R} - 0x578#64)", "the callees' stack"),
+    ("fr", f"fr =@ ({R} - 0x578#64)", "the frame region (`rbp - 0x570`, 0x548 bytes)"),
+    ("saved", "Saved t₀", "the six pushes"),
+    ("ret", f"RetCell ra {R}", "the return address"),
+    ("sr", f"cell4 {S} st.x.sampleRate", "`sample_rate`"),
+    ("start", f"cell4 ({S} + 0x4#64) st.x.start", "`start`"),
+    ("ready", f"cell4 ({S} + 0x8#64) st.x.ready", "`ready_for_dequant`"),
+    ("usac", f"cell4 ({S} + 0x10#64) a.us", "`usac`"),
+    ("sp", f"st.sp =@ ({S} + 0x1c#64)", "`spectrum_params`"),
+    ("lb", f"cell4 ({S} + 0x2c#64) a.lb", "`bs_limiter_bands`"),
+    ("k0", f"c4 ({S} + 0x40#64) st.x.k0", "`k[0]`"),
+    ("k1", f"cell4 ({S} + 0x44#64) st.k1", "`k[1]`"),
+    ("k2", f"cell4 ({S} + 0x48#64) st.k2", "`k[2]`"),
+    ("kx1", f"c4 ({S} + 0x58#64) st.x.kx1", "`kx[1]`"),
+    ("m1", f"c4 ({S} + 0x60#64) st.x.m1", "`m[1]`"),
+    ("nm", f"cell4 ({S} + 0x68#64) st.nm", "`n_master`"),
+    ("n0", f"c4 ({S} + 0x4c1e0#64) st.x.n0", "`n[0]`"),
+    ("n1", f"c4 ({S} + 0x4c1e4#64) st.x.n1", "`n[1]`"),
+    ("nq", f"c4 ({S} + 0x4c1e8#64) st.x.nq", "`n_q`"),
+    ("nlim", f"c4 ({S} + 0x4c1ec#64) st.x.nlim", "`n_lim`"),
+    ("fm", f"st.fm =@ ({S} + 0x4c1f0#64)", "`f_master`"),
+    ("ftLow", f"st.x.ftLow =@ ({S} + 0x4c252#64)", "`f_tablelow`"),
+    ("ftHigh", f"st.x.ftHigh =@ ({S} + 0x4c284#64)", "`f_tablehigh`"),
+    ("ftNoise", f"st.x.ftNoise =@ ({S} + 0x4c2e6#64)", "`f_tablenoise`"),
+    ("ftLim", f"st.x.ftLim =@ ({S} + 0x4c2f2#64)", "`f_tablelim`"),
+    ("npatch", f"c4 ({S} + 0x4c330#64) st.x.npatch", "`num_patches`"),
+    ("pnum", f"st.x.pnum =@ ({S} + 0x4c334#64)", "`patch_num_subbands`"),
+    ("pstart", f"st.x.pstart =@ ({S} + 0x4c33a#64)", "`patch_start_subband`"),
+    ("ea0", f"4 ?@ ({S} + 0x3988#64)", "`data[0].e_a[1]` (raw)"),
+    ("idx0", f"c8 ({S} + 0x15b2c#64) st.x.d0.idx", "`data[0].f_indexnoise`, `f_indexsine`"),
+    ("ea1", f"4 ?@ ({S} + 0x19448#64)", "`data[1].e_a[1]` (raw)"),
+    ("idx1", f"c8 ({S} + 0x2b5ec#64) st.x.d1.idx", "`data[1].f_indexnoise`, `f_indexsine`"),
+    ("avctx", "c8 (arg0 t₀ + 0x8#64) st.x.avctx", "`ac->avctx`"),
+    ("cst", "CstR", "`sbr_offset` and the constants"),
+    ("bw", "BwR", "`sbr_make_f_tablelim`'s table"),
+    ("ext", "e.Ext", "the callees' state"),
+    ("R", "a.x.R", "the caller's memory"),
+]
+
+# Updatable atoms: name -> (type of the new value v, the state after the update). The atom's
+# expression at the new state reads `v`.
+XF = {"sr": ("sampleRate", "BitVec 32"), "start": ("start", "BitVec 32"),
+      "ready": ("ready", "BitVec 32"), "k0": ("k0", "Nat"), "kx1": ("kx1", "Nat"),
+      "m1": ("m1", "Nat"), "n0": ("n0", "Nat"), "n1": ("n1", "Nat"), "nq": ("nq", "Nat"),
+      "nlim": ("nlim", "Nat"), "ftLow": ("ftLow", "List UInt8"),
+      "ftHigh": ("ftHigh", "List UInt8"), "ftNoise": ("ftNoise", "List UInt8"),
+      "ftLim": ("ftLim", "List UInt8"), "npatch": ("npatch", "Nat"),
+      "pnum": ("pnum", "List UInt8"), "pstart": ("pstart", "List UInt8")}
+SF = {"sp": ("sp", "List UInt8"), "k1": ("k1", "BitVec 32"), "k2": ("k2", "BitVec 32"),
+      "nm": ("nm", "BitVec 32"), "fm": ("fm", "List UInt8")}
+UPD = {}
+for n, (fld, ty) in XF.items():
+  UPD[n] = (ty, f"st.x.{fld}", f"{{ st with x := {{ st.x with {fld} := v }} }}", "fr")
+for n, (fld, ty) in SF.items():
+  UPD[n] = (ty, f"st.{fld}", f"{{ st with {fld} := v }}", "fr")
+UPD["fr"] = ("List UInt8", "fr", "st", "v")
+
+# Multi-atom targets: name -> atoms (brought to the front, right-nested, in this order).
+MULTI = {
+    "call": ["reserve", "ext"],
+}
+
+
+def chain(xs):
+  if len(xs) == 1:
+    return xs[0]
+  return " ⋆ ".join(xs[:-1]) + " ⋆ " + xs[-1]
+
+
+def nested(xs):
+  """Right-nested with explicit parentheses (Lean's `⋆` is right-associative anyway)."""
+  if len(xs) == 1:
+    return xs[0]
+  return f"{xs[0]} ⋆ ({nested(xs[1:])})"
+
+
+def wrap(text, indent="    ", width=100):
+  parts = text.split(" ⋆ ")
+  out, cur = [], parts[0]
+  for p in parts[1:]:
+    if len(cur) + 3 + len(p) > width:
+      out.append(cur)
+      cur = indent + "⋆ " + p
+    else:
+      cur += " ⋆ " + p
+  out.append(cur)
+  return "\n".join(out)
+
+
+def main():
+  out_dir = sys.argv[1]
+  E = dict((n, e) for n, e, _ in ATOMS)
+  names = [n for n, _, _ in ATOMS]
+  o = []
+  p = o.append
+  p("import Kraken.X64.Examples.Sbr.Parse.ResetBase")
+  p("")
+  p("/-!")
+  p("# `sbr_reset`: the memory inside the body and its focus equations")
+  p("")
+  p("Generated by `scripts/sbr/parse/reset/foot.py`. `Mm` is a flat separating conjunction of")
+  p("cells (atoms); `Mm_<x> : Mm … = X ⋆ Mx_<x> …` brings the atom `x` to the front, the rest")
+  p("`Mx_<x>` does not mention `x` (a store into `x` keeps it; a change of `st` that only")
+  p("touches `x` leaves it unchanged by `rfl`).")
+  p("")
+  for n, e, d in ATOMS:
+    p(f"* `{n}`: {d}")
+  p("-/")
+  p("")
+  p("open Kraken Kraken.SysV Mem Kraken.X64.Parser Std.WP MachineWP")
+  p("open Kraken.Examples.Sbr Kraken.Examples.Sbr.Apply Kraken.Examples.Sbr.ParseModel")
+  p("open Kraken.Examples.Sbr.Parse")
+  p("")
+  p("namespace Kraken.Examples.Sbr.Reset")
+  p("")
+  p("variable [CodeEnv]")
+  p("")
+  p("/-- The memory at every label inside the body. -/")
+  p(f"def Mm {B} : Mem 64 → Prop :=")
+  p("  " + wrap(chain([E[n] for n in names])))
+  p("")
+  targets = [(n, [n]) for n in names] + list(MULTI.items())
+  for t, xs in targets:
+    rest = [E[n] for n in names if n not in xs]
+    p(f"/-- `Mm` without {', '.join('`' + x + '`' for x in xs)}. -/")
+    p(f"def Mx_{t} {B} : Mem 64 → Prop :=")
+    p("  " + wrap(chain(rest)))
+    p("")
+    head = chain([E[x] for x in xs])
+    if len(xs) > 1:
+      head = f"({head})"
+    p(f"theorem Mm_{t} {B} :")
+    p(f"    Mm {A} = " + wrap(f"{head} ⋆ Mx_{t} {A}", indent="      ") + " := by")
+    p(f"  simp only [Mm, Mx_{t}]; ac_rfl")
+    p("")
+  p("/-! ## Updates: the atom at a new value, with the rest, is `Mm` at the updated state -/")
+  p("")
+  import re as _re
+  for n, (ty, old, new_st, new_fr) in UPD.items():
+    pat = _re.compile(r"(?<![\w.])" + _re.escape(old) + r"(?![\w])")
+    ex = pat.sub("v", E[n])
+    assert ex != E[n], n
+    p(f"theorem Mm_upd_{n} {B} (v : {ty}) :")
+    p(f"    {ex} ⋆ Mx_{n} {A} = Mm k e a ra t₀ ({new_st}) {new_fr} := by")
+    p(f"  rw [Mm_{n}]; rfl")
+    p("")
+  p("end Kraken.Examples.Sbr.Reset")
+  open(f"{out_dir}/ResetFoot.lean", "w").write("\n".join(o) + "\n")
+
+
+if __name__ == "__main__":
+  main()

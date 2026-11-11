@@ -1,0 +1,2325 @@
+sbr_reset:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+sbr_reset.L1086:
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+sbr_reset.L108a:
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 1352 ;; aw=w64 ow=w64
+    mov r12, rsi ;; aw=w64 ow=w64
+    mov r15, rdi ;; aw=w64 ow=w64
+    mov ecx, DWORD PTR [rsi+0] ;; aw=w64 ow=w32
+    cmp ecx, 63999 ;; aw=w64 ow=w32
+    jg sbr_reset.L10d9 ;; aw=w64 ow=w64
+    cmp ecx, 31999 ;; aw=w64 ow=w32
+    jg sbr_reset.L10fe ;; aw=w64 ow=w64
+    cmp ecx, 16000 ;; aw=w64 ow=w32
+    je sbr_reset.L17fc ;; aw=w64 ow=w64
+sbr_reset.L10b8:
+    cmp ecx, 22050 ;; aw=w64 ow=w32
+    je sbr_reset.L1814 ;; aw=w64 ow=w64
+    cmp ecx, 24000 ;; aw=w64 ow=w32
+    jne sbr_reset.L1820 ;; aw=w64 ow=w64
+    lea rdi, [rip+sbr_offset_2] ;; aw=w64 ow=w64
+    jmp sbr_reset.L114a ;; aw=w64 ow=w64
+sbr_reset.L10d9:
+    cmp ecx, 127999 ;; aw=w64 ow=w32
+    jg sbr_reset.L1127 ;; aw=w64 ow=w64
+    cmp ecx, 64000 ;; aw=w64 ow=w32
+    je sbr_reset.L111e ;; aw=w64 ow=w64
+    cmp ecx, 88200 ;; aw=w64 ow=w32
+    je sbr_reset.L1143 ;; aw=w64 ow=w64
+    cmp ecx, 96000 ;; aw=w64 ow=w32
+    je sbr_reset.L1143 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1820 ;; aw=w64 ow=w64
+sbr_reset.L10fe:
+    cmp ecx, 32000 ;; aw=w64 ow=w32
+    je sbr_reset.L1808 ;; aw=w64 ow=w64
+    cmp ecx, 44100 ;; aw=w64 ow=w32
+    je sbr_reset.L111e ;; aw=w64 ow=w64
+    cmp ecx, 48000 ;; aw=w64 ow=w32
+    jne sbr_reset.L1820 ;; aw=w64 ow=w64
+sbr_reset.L111e:
+    lea rdi, [rip+sbr_offset_4] ;; aw=w64 ow=w64
+    jmp sbr_reset.L114a ;; aw=w64 ow=w64
+sbr_reset.L1127:
+    cmp ecx, 128000 ;; aw=w64 ow=w32
+    je sbr_reset.L1143 ;; aw=w64 ow=w64
+    cmp ecx, 176400 ;; aw=w64 ow=w32
+    je sbr_reset.L1143 ;; aw=w64 ow=w64
+    cmp ecx, 192000 ;; aw=w64 ow=w32
+    jne sbr_reset.L1820 ;; aw=w64 ow=w64
+sbr_reset.L1143:
+    lea rdi, [rip+sbr_offset_5] ;; aw=w64 ow=w64
+sbr_reset.L114a:
+    cmp ecx, 64000 ;; aw=w64 ow=w32
+    mov eax, 4000 ;; aw=w64 ow=w32
+    mov edx, 5000 ;; aw=w64 ow=w32
+    cmovb edx, eax ;; aw=w64 ow=w32
+    cmp ecx, 32000 ;; aw=w64 ow=w32
+    mov esi, 3000 ;; aw=w64 ow=w32
+    cmovae esi, edx ;; aw=w64 ow=w32
+    mov eax, esi ;; aw=w64 ow=w32
+    shl eax, 7 ;; aw=w64 ow=w32
+    mov r8d, ecx ;; aw=w64 ow=w32
+    shr r8d, 1 ;; aw=w64 ow=w32
+    add eax, r8d ;; aw=w64 ow=w32
+sbr_reset.L1179:
+    xor edx, edx ;; aw=w64 ow=w32
+    div ecx ;; aw=w64 ow=w32
+sbr_reset.L117d:
+    movzx edx, BYTE PTR [r12+28] ;; aw=w64 ow=w32
+    movsx edx, BYTE PTR [rdi+rdx*1+0] ;; aw=w64 ow=w32
+    add edx, eax ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+64], edx ;; aw=w64 ow=w32
+sbr_reset.L118e:
+    movzx eax, BYTE PTR [r12+29] ;; aw=w64 ow=w32
+    cmp eax, 13 ;; aw=w64 ow=w32
+    ja sbr_reset.L150a ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-64], r15 ;; aw=w64 ow=w64
+    shl esi, 8 ;; aw=w64 ow=w32
+    add esi, r8d ;; aw=w64 ow=w32
+sbr_reset.L11a7:
+    mov eax, esi ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    div ecx ;; aw=w64 ow=w32
+sbr_reset.L11ad:
+    mov r15d, eax ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-48], r12 ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+72], eax ;; aw=w64 ow=w32
+    vcvtsi2ss xmm1, xmm15, eax ;; aw=w64 ow=w128
+sbr_reset.L11bd:
+    vmovss DWORD PTR [rbp+-56], xmm1 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [rip+LCPI5_0] ;; aw=w64 ow=w128
+    vdivss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vmovss xmm1, DWORD PTR [rip+LCPI5_1] ;; aw=w64 ow=w128
+    call powf ;; aw=w64 ow=w64
+sbr_reset.L11db:
+    vmulss xmm1, xmm0, DWORD PTR [rbp+-56] ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si rax, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si rcx, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si rdx, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si rsi, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si rdi, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+sbr_reset.L1211:
+    vcvtss2si r8, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si r9, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si r11, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si r13, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm2, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si r12, xmm2 ;; aw=w64 ow=w128
+    vmulss xmm0, xmm0, xmm2 ;; aw=w64 ow=w128
+    vcvtss2si r14, xmm0 ;; aw=w64 ow=w128
+    mov r10d, 64 ;; aw=w64 ow=w32
+sbr_reset.L1249:
+    sub r10d, r14d ;; aw=w64 ow=w32
+    sub r14d, r12d ;; aw=w64 ow=w32
+    sub r12d, r13d ;; aw=w64 ow=w32
+    sub r13d, r11d ;; aw=w64 ow=w32
+    sub r11d, r9d ;; aw=w64 ow=w32
+    sub r9d, r8d ;; aw=w64 ow=w32
+    sub r8d, edi ;; aw=w64 ow=w32
+    sub edi, esi ;; aw=w64 ow=w32
+    sub esi, edx ;; aw=w64 ow=w32
+    sub edx, ecx ;; aw=w64 ow=w32
+    sub ecx, eax ;; aw=w64 ow=w32
+    vcvtss2si rbx, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L126b:
+    sub eax, ebx ;; aw=w64 ow=w32
+    sub ebx, r15d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-112], bx ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-110], ax ;; aw=w64 ow=w16
+sbr_reset.L1278:
+    mov WORD PTR [rbp+-108], cx ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-106], dx ;; aw=w64 ow=w16
+sbr_reset.L1280:
+    mov WORD PTR [rbp+-104], si ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-102], di ;; aw=w64 ow=w16
+sbr_reset.L1288:
+    mov WORD PTR [rbp+-100], r8w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-98], r9w ;; aw=w64 ow=w16
+sbr_reset.L1292:
+    mov WORD PTR [rbp+-96], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-94], r13w ;; aw=w64 ow=w16
+sbr_reset.L129c:
+    mov WORD PTR [rbp+-92], r12w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+-90], r14w ;; aw=w64 ow=w16
+    lea rax, [rbp+-88] ;; aw=w64 ow=w64
+sbr_reset.L12aa:
+    mov WORD PTR [rbp+-88], r10w ;; aw=w64 ow=w16
+    lea rcx, [rbp+-112] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-1392], rcx ;; aw=w64 ow=w64
+sbr_reset.L12ba:
+    mov QWORD PTR [rbp+-1384], rax ;; aw=w64 ow=w64
+    mov eax, 1 ;; aw=w64 ow=w32
+    jmp sbr_reset.L12d8 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L12d0:
+    test eax, eax ;; aw=w64 ow=w32
+    je sbr_reset.L1523 ;; aw=w64 ow=w64
+sbr_reset.L12d8:
+    cmp eax, 65 ;; aw=w64 ow=w32
+    jae sbr_reset.L3257 ;; aw=w64 ow=w64
+    dec eax ;; aw=w64 ow=w32
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 4 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+rcx*1+-1392] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+rcx*1+-1384] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1300:
+    cmp rdx, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L12d0 ;; aw=w64 ow=w64
+    lea rdi, [rcx+-2] ;; aw=w64 ow=w64
+    cmp rdx, rdi ;; aw=w64 ow=w64
+    jae sbr_reset.L14f0 ;; aw=w64 ow=w64
+    mov r8, rcx ;; aw=w64 ow=w64
+    sub r8, rdx ;; aw=w64 ow=w64
+    sar r8, 2 ;; aw=w64 ow=w64
+    lea rsi, [rdx+r8*2+0] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    movzx r8d, WORD PTR [rdx+r8*2+0] ;; aw=w64 ow=w32
+sbr_reset.L132d:
+    cmp r9w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L1350 ;; aw=w64 ow=w64
+    cmp r11w, r8w ;; aw=w64 ow=w16
+    jg sbr_reset.L135c ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r9w ;; aw=w64 ow=w16
+    mov r8d, r11d ;; aw=w64 ow=w32
+    jmp sbr_reset.L1360 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1350:
+    mov r10d, 1 ;; aw=w64 ow=w32
+    cmp r9w, r8w ;; aw=w64 ow=w16
+    jle sbr_reset.L136f ;; aw=w64 ow=w64
+sbr_reset.L135c:
+    mov WORD PTR [rsi+0], r9w ;; aw=w64 ow=w16
+sbr_reset.L1360:
+    mov WORD PTR [rdx+0], r8w ;; aw=w64 ow=w16
+    movzx r8d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+sbr_reset.L136f:
+    cmp r8w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L1390 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r8w ;; aw=w64 ow=w16
+    mov WORD PTR [rsi+0], r11w ;; aw=w64 ow=w16
+    xor r10d, r10d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L13a0 ;; aw=w64 ow=w64
+    jmp sbr_reset.L12d0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1390:
+    mov r11d, r8d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    je sbr_reset.L12d0 ;; aw=w64 ow=w64
+sbr_reset.L13a0:
+    lea r9, [rdx+2] ;; aw=w64 ow=w64
+    movzx ebx, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rsi+0], bx ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], r11w ;; aw=w64 ow=w16
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L13d9 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1424 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L13c0:
+    movzx r11d, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r8+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [r9+0], r14w ;; aw=w64 ow=w16
+    add r9, 2 ;; aw=w64 ow=w64
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L13d4:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L1420 ;; aw=w64 ow=w64
+sbr_reset.L13d9:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L13e0:
+    cmp WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    jge sbr_reset.L1404 ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L13e0 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1404 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1400:
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L1404:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L13d4 ;; aw=w64 ow=w64
+    movzx r14d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    cmp r14w, r11w ;; aw=w64 ow=w16
+    jg sbr_reset.L1400 ;; aw=w64 ow=w64
+    jmp sbr_reset.L13c0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1420:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+sbr_reset.L1424:
+    movzx ebx, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], bx ;; aw=w64 ow=w16
+    test r10d, r10d ;; aw=w64 ow=w32
+    je sbr_reset.L1470 ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    je sbr_reset.L1442 ;; aw=w64 ow=w64
+    lea rdi, [r9+-2] ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L1470 ;; aw=w64 ow=w64
+sbr_reset.L1442:
+    mov rdi, rdx ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1450:
+    mov rsi, rdi ;; aw=w64 ow=w64
+    cmp rdi, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L1467 ;; aw=w64 ow=w64
+    lea rdi, [rsi+2] ;; aw=w64 ow=w64
+    movzx r10d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    cmp r10w, WORD PTR [rsi+2] ;; aw=w64 ow=w16
+    jle sbr_reset.L1450 ;; aw=w64 ow=w64
+sbr_reset.L1467:
+    cmp rsi, rcx ;; aw=w64 ow=w64
+    je sbr_reset.L12d0 ;; aw=w64 ow=w64
+sbr_reset.L1470:
+    mov rsi, rcx ;; aw=w64 ow=w64
+    sub rsi, r9 ;; aw=w64 ow=w64
+    mov rdi, r9 ;; aw=w64 ow=w64
+    sub rdi, rdx ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jge sbr_reset.L14c0 ;; aw=w64 ow=w64
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L324d ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], rdx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], r8 ;; aw=w64 ow=w64
+sbr_reset.L14a2:
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rdx, r9 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L1300 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L14c0:
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L3252 ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], r9 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], rcx ;; aw=w64 ow=w64
+    mov rcx, r8 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L1300 ;; aw=w64 ow=w64
+sbr_reset.L14f0:
+    movzx esi, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx edi, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    cmp si, di ;; aw=w64 ow=w16
+    jle sbr_reset.L12d0 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], si ;; aw=w64 ow=w16
+    mov WORD PTR [rdx+0], di ;; aw=w64 ow=w16
+    jmp sbr_reset.L12d0 ;; aw=w64 ow=w64
+sbr_reset.L150a:
+    cmp eax, 15 ;; aw=w64 ow=w32
+    je sbr_reset.L161f ;; aw=w64 ow=w64
+    cmp eax, 14 ;; aw=w64 ow=w32
+    jne sbr_reset.L1762 ;; aw=w64 ow=w64
+    add edx, edx ;; aw=w64 ow=w32
+    jmp sbr_reset.L1622 ;; aw=w64 ow=w64
+sbr_reset.L1523:
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r12+29] ;; aw=w64 ow=w32
+    test al, al ;; aw=w64 ow=w8
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    je sbr_reset.L1618 ;; aw=w64 ow=w64
+    movsx edx, WORD PTR [rbp+-112] ;; aw=w64 ow=w32
+    add edx, DWORD PTR [r12+72] ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 1 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-110] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L1555:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 3 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-108] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 3 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-106] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L157b:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 5 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-104] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 5 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-102] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L15a1:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 7 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-100] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 7 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-98] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L15bf:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 9 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-96] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 9 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-94] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L15dd:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 11 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-92] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 11 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-90] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+sbr_reset.L15fb:
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 13 ;; aw=w64 ow=w8
+    jb sbr_reset.L1622 ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+-88] ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], edx ;; aw=w64 ow=w32
+    cmp al, 13 ;; aw=w64 ow=w8
+    je sbr_reset.L1622 ;; aw=w64 ow=w64
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L1618:
+    mov edx, DWORD PTR [r12+72] ;; aw=w64 ow=w32
+    jmp sbr_reset.L1622 ;; aw=w64 ow=w64
+sbr_reset.L161f:
+    lea edx, [rdx+rdx*2+0] ;; aw=w64 ow=w32
+sbr_reset.L1622:
+    cmp edx, 64 ;; aw=w64 ow=w32
+    mov esi, 64 ;; aw=w64 ow=w32
+    cmovb esi, edx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+72], esi ;; aw=w64 ow=w32
+    mov ecx, DWORD PTR [r12+0] ;; aw=w64 ow=w32
+    mov eax, 48 ;; aw=w64 ow=w32
+    cmp ecx, 32001 ;; aw=w64 ow=w32
+    jl sbr_reset.L1661 ;; aw=w64 ow=w64
+    mov eax, 35 ;; aw=w64 ow=w32
+    cmp ecx, 44100 ;; aw=w64 ow=w32
+    je sbr_reset.L1661 ;; aw=w64 ow=w64
+    mov eax, 32 ;; aw=w64 ow=w32
+sbr_reset.L1655:
+    cmp ecx, 47999 ;; aw=w64 ow=w32
+    jbe sbr_reset.L328e ;; aw=w64 ow=w64
+sbr_reset.L1661:
+    mov r13d, DWORD PTR [r12+64] ;; aw=w64 ow=w32
+    mov ecx, esi ;; aw=w64 ow=w32
+    sub ecx, r13d ;; aw=w64 ow=w32
+    cmp ecx, eax ;; aw=w64 ow=w32
+    jbe sbr_reset.L1684 ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_10] ;; aw=w64 ow=w64
+sbr_reset.L167a:
+    mov esi, 16 ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d2a ;; aw=w64 ow=w64
+sbr_reset.L1684:
+    movzx eax, BYTE PTR [r12+31] ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    je sbr_reset.L1779 ;; aw=w64 ow=w64
+    mov ecx, 7 ;; aw=w64 ow=w32
+    sub ecx, eax ;; aw=w64 ow=w32
+    imul eax, esi, 49 ;; aw=w64 ow=w32
+    imul edx, r13d, 110 ;; aw=w64 ow=w32
+    lea r14d, [r13*2+0] ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-128], eax ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-136], edx ;; aw=w64 ow=w32
+    cmp eax, edx ;; aw=w64 ow=w32
+    cmovbe r14d, esi ;; aw=w64 ow=w32
+sbr_reset.L16b7:
+    mov DWORD PTR [r12+68], r14d ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, ecx ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rbp+-56], xmm0 ;; aw=w64 ow=w128
+    vcvtsi2ss xmm0, xmm15, r14 ;; aw=w64 ow=w128
+    mov eax, r13d ;; aw=w64 ow=w32
+    vcvtsi2ss xmm1, xmm15, rax ;; aw=w64 ow=w128
+    vdivss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L16d6:
+    call log2f ;; aw=w64 ow=w64
+sbr_reset.L16db:
+    vmulss xmm0, xmm0, DWORD PTR [rbp+-56] ;; aw=w64 ow=w128
+    vcvtss2si rax, xmm0 ;; aw=w64 ow=w128
+    mov QWORD PTR [rbp+-80], rax ;; aw=w64 ow=w64
+    lea ecx, [rax+rax*1+0] ;; aw=w64 ow=w32
+    test ecx, ecx ;; aw=w64 ow=w32
+    jle sbr_reset.L17e7 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-64], r15 ;; aw=w64 ow=w64
+sbr_reset.L16f8:
+    mov QWORD PTR [rbp+-48], r12 ;; aw=w64 ow=w64
+    vcvtsi2ss xmm0, xmm15, r14d ;; aw=w64 ow=w128
+    vcvtsi2ss xmm2, xmm15, r13d ;; aw=w64 ow=w128
+    vcvtsi2ss xmm1, xmm15, ecx ;; aw=w64 ow=w128
+    vblendps xmm0, xmm0, XMMWORD PTR [rip+LCPI5_2], 14 ;; aw=w64 ow=w128
+    mov WORD PTR [rbp+-368], 0 ;; aw=w64 ow=w16
+sbr_reset.L171d:
+    vmovaps XMMWORD PTR [rbp+-256], xmm2 ;; aw=w64 ow=w128
+    vinsertps xmm1, xmm2, xmm1, 16 ;; aw=w64 ow=w128
+    vdivps xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vmovshdup xmm1, xmm0 ;; aw=w64 ow=w128
+    mov rbx, rcx ;; aw=w64 ow=w64
+sbr_reset.L1736:
+    call powf ;; aw=w64 ow=w64
+sbr_reset.L173b:
+    lea eax, [rbx+-1] ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-72], rbx ;; aw=w64 ow=w64
+    lea edx, [rbx+-2] ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and ecx, 7 ;; aw=w64 ow=w32
+    cmp edx, 7 ;; aw=w64 ow=w32
+    jae sbr_reset.L1830 ;; aw=w64 ow=w64
+    xor edx, edx ;; aw=w64 ow=w32
+    vmovaps xmm1, XMMWORD PTR [rbp+-256] ;; aw=w64 ow=w128
+    jmp sbr_reset.L1908 ;; aw=w64 ow=w64
+sbr_reset.L1762:
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_8] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d2a ;; aw=w64 ow=w64
+sbr_reset.L1779:
+    movzx eax, BYTE PTR [r12+32] ;; aw=w64 ow=w32
+    inc eax ;; aw=w64 ow=w32
+    mov edx, eax ;; aw=w64 ow=w32
+    and edx, 2 ;; aw=w64 ow=w32
+    add edx, ecx ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    shr edx, cl ;; aw=w64 ow=w32
+    lea ecx, [rdx+rdx*1+0] ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+104], ecx ;; aw=w64 ow=w32
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    test edx, edx ;; aw=w64 ow=w32
+    je sbr_reset.L1d0d ;; aw=w64 ow=w64
+sbr_reset.L17a0:
+    movzx r8d, BYTE PTR [r12+30] ;; aw=w64 ow=w32
+    cmp ecx, r8d ;; aw=w64 ow=w32
+    jbe sbr_reset.L1d1b ;; aw=w64 ow=w64
+    lea edx, [rcx+-1] ;; aw=w64 ow=w32
+    cmp edx, 48 ;; aw=w64 ow=w32
+    mov edi, 48 ;; aw=w64 ow=w32
+    cmovb edi, edx ;; aw=w64 ow=w32
+    cmp edi, 48 ;; aw=w64 ow=w32
+    je sbr_reset.L32d2 ;; aw=w64 ow=w64
+    mov edx, ecx ;; aw=w64 ow=w32
+    mov edi, 1 ;; aw=w64 ow=w32
+    cmp ecx, 8 ;; aw=w64 ow=w32
+    jb sbr_reset.L1ea8 ;; aw=w64 ow=w64
+sbr_reset.L17d6:
+    cmp ecx, 32 ;; aw=w64 ow=w32
+    jae sbr_reset.L1e09 ;; aw=w64 ow=w64
+    xor r8d, r8d ;; aw=w64 ow=w32
+    jmp sbr_reset.L1e6b ;; aw=w64 ow=w64
+sbr_reset.L17e7:
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_11] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d2a ;; aw=w64 ow=w64
+sbr_reset.L17fc:
+    lea rdi, [rip+sbr_offset_0] ;; aw=w64 ow=w64
+    jmp sbr_reset.L114a ;; aw=w64 ow=w64
+sbr_reset.L1808:
+    lea rdi, [rip+sbr_offset_3] ;; aw=w64 ow=w64
+    jmp sbr_reset.L114a ;; aw=w64 ow=w64
+sbr_reset.L1814:
+    lea rdi, [rip+sbr_offset_1] ;; aw=w64 ow=w64
+    jmp sbr_reset.L114a ;; aw=w64 ow=w64
+sbr_reset.L1820:
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_7] ;; aw=w64 ow=w64
+    jmp sbr_reset.L167a ;; aw=w64 ow=w64
+sbr_reset.L1830:
+    mov esi, eax ;; aw=w64 ow=w32
+    and esi, 2147483640 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    vmovaps xmm1, XMMWORD PTR [rbp+-256] ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1850:
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si rdi, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r8, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r9, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r10, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r11, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si rbx, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L1886:
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r12, xmm1 ;; aw=w64 ow=w128
+    mov r15d, r12d ;; aw=w64 ow=w32
+    sub r15d, ebx ;; aw=w64 ow=w32
+    sub ebx, r11d ;; aw=w64 ow=w32
+    sub r11d, r10d ;; aw=w64 ow=w32
+    sub r10d, r9d ;; aw=w64 ow=w32
+    sub r9d, r8d ;; aw=w64 ow=w32
+    sub r8d, edi ;; aw=w64 ow=w32
+    sub edi, r13d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rdx*2+-366], di ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-364], r8w ;; aw=w64 ow=w16
+sbr_reset.L18b8:
+    mov WORD PTR [rbp+rdx*2+-362], r9w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-360], r10w ;; aw=w64 ow=w16
+sbr_reset.L18ca:
+    mov WORD PTR [rbp+rdx*2+-358], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-356], bx ;; aw=w64 ow=w16
+sbr_reset.L18db:
+    mov WORD PTR [rbp+rdx*2+-354], r15w ;; aw=w64 ow=w16
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r13, xmm1 ;; aw=w64 ow=w128
+    mov edi, r13d ;; aw=w64 ow=w32
+    sub edi, r12d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rdx*2+-352], di ;; aw=w64 ow=w16
+    add rdx, 8 ;; aw=w64 ow=w64
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jne sbr_reset.L1850 ;; aw=w64 ow=w64
+sbr_reset.L1908:
+    lea rsi, [rbp+-366] ;; aw=w64 ow=w64
+    lea rdx, [rdx*2+-366] ;; aw=w64 ow=w64
+    add rdx, rbp ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1920:
+    mov r8d, r13d ;; aw=w64 ow=w32
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r13, xmm1 ;; aw=w64 ow=w128
+    mov r9d, r13d ;; aw=w64 ow=w32
+    sub r9d, r8d ;; aw=w64 ow=w32
+    mov WORD PTR [rdx+rdi*2+0], r9w ;; aw=w64 ow=w16
+    inc rdi ;; aw=w64 ow=w64
+    cmp rcx, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L1920 ;; aw=w64 ow=w64
+    sub r14d, r13d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rax*2+-366], r14w ;; aw=w64 ow=w16
+sbr_reset.L194b:
+    mov QWORD PTR [rbp+-1392], rsi ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rbp+-72] ;; aw=w64 ow=w32
+    lea rcx, [rsi+rax*2+0] ;; aw=w64 ow=w64
+    add rcx, -2 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-1384], rcx ;; aw=w64 ow=w64
+    mov ecx, 1 ;; aw=w64 ow=w32
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    jmp sbr_reset.L1988 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1980:
+    test ecx, ecx ;; aw=w64 ow=w32
+    je sbr_reset.L1bbd ;; aw=w64 ow=w64
+sbr_reset.L1988:
+    cmp ecx, 65 ;; aw=w64 ow=w32
+    jae sbr_reset.L3266 ;; aw=w64 ow=w64
+    dec ecx ;; aw=w64 ow=w32
+    mov rdx, rcx ;; aw=w64 ow=w64
+    shl rdx, 4 ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+rdx*1+-1392] ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+rdx*1+-1384] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L19b0:
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jae sbr_reset.L1980 ;; aw=w64 ow=w64
+    lea r8, [rdx+-2] ;; aw=w64 ow=w64
+    cmp rsi, r8 ;; aw=w64 ow=w64
+    jae sbr_reset.L1ba0 ;; aw=w64 ow=w64
+    mov r9, rdx ;; aw=w64 ow=w64
+    sub r9, rsi ;; aw=w64 ow=w64
+    sar r9, 2 ;; aw=w64 ow=w64
+    lea rdi, [rsi+r9*2+0] ;; aw=w64 ow=w64
+    movzx r10d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r14d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx r9d, WORD PTR [rsi+r9*2+0] ;; aw=w64 ow=w32
+sbr_reset.L19dd:
+    cmp r10w, r14w ;; aw=w64 ow=w16
+    jle sbr_reset.L1a00 ;; aw=w64 ow=w64
+    cmp r14w, r9w ;; aw=w64 ow=w16
+    jg sbr_reset.L1a0c ;; aw=w64 ow=w64
+    mov WORD PTR [rdx+0], r10w ;; aw=w64 ow=w16
+    mov r9d, r14d ;; aw=w64 ow=w32
+    jmp sbr_reset.L1a10 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1a00:
+    mov r11d, 1 ;; aw=w64 ow=w32
+    cmp r10w, r9w ;; aw=w64 ow=w16
+    jle sbr_reset.L1a1f ;; aw=w64 ow=w64
+sbr_reset.L1a0c:
+    mov WORD PTR [rdi+0], r10w ;; aw=w64 ow=w16
+sbr_reset.L1a10:
+    mov WORD PTR [rsi+0], r9w ;; aw=w64 ow=w16
+    movzx r9d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    movzx r14d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    xor r11d, r11d ;; aw=w64 ow=w32
+sbr_reset.L1a1f:
+    cmp r9w, r14w ;; aw=w64 ow=w16
+    jle sbr_reset.L1a40 ;; aw=w64 ow=w64
+    mov WORD PTR [rdx+0], r9w ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], r14w ;; aw=w64 ow=w16
+    xor r11d, r11d ;; aw=w64 ow=w32
+    lea r9, [rdx+-4] ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    jne sbr_reset.L1a50 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1980 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1a40:
+    mov r14d, r9d ;; aw=w64 ow=w32
+    lea r9, [rdx+-4] ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    je sbr_reset.L1980 ;; aw=w64 ow=w64
+sbr_reset.L1a50:
+    lea r10, [rsi+2] ;; aw=w64 ow=w64
+    movzx ebx, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rdi+0], bx ;; aw=w64 ow=w16
+    mov WORD PTR [r8+0], r14w ;; aw=w64 ow=w16
+    cmp r10, r9 ;; aw=w64 ow=w64
+    jbe sbr_reset.L1a89 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1ad4 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1a70:
+    movzx ebx, WORD PTR [r10+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r9+0], bx ;; aw=w64 ow=w16
+    mov WORD PTR [r10+0], r13w ;; aw=w64 ow=w16
+    add r10, 2 ;; aw=w64 ow=w64
+    add r9, -2 ;; aw=w64 ow=w64
+sbr_reset.L1a84:
+    cmp r10, r9 ;; aw=w64 ow=w64
+    ja sbr_reset.L1ad0 ;; aw=w64 ow=w64
+sbr_reset.L1a89:
+    movzx r14d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1a90:
+    cmp WORD PTR [r10+0], r14w ;; aw=w64 ow=w16
+    jge sbr_reset.L1ab4 ;; aw=w64 ow=w64
+    add r10, 2 ;; aw=w64 ow=w64
+    cmp r10, r9 ;; aw=w64 ow=w64
+    jbe sbr_reset.L1a90 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1ab4 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1ab0:
+    add r9, -2 ;; aw=w64 ow=w64
+sbr_reset.L1ab4:
+    cmp r10, r9 ;; aw=w64 ow=w64
+    ja sbr_reset.L1a84 ;; aw=w64 ow=w64
+    movzx r13d, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    cmp r13w, r14w ;; aw=w64 ow=w16
+    jg sbr_reset.L1ab0 ;; aw=w64 ow=w64
+    jmp sbr_reset.L1a70 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1ad0:
+    movzx r14d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+sbr_reset.L1ad4:
+    movzx ebx, WORD PTR [r10+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r10+0], r14w ;; aw=w64 ow=w16
+    mov WORD PTR [r8+0], bx ;; aw=w64 ow=w16
+    test r11d, r11d ;; aw=w64 ow=w32
+    je sbr_reset.L1b20 ;; aw=w64 ow=w64
+    cmp rdi, r10 ;; aw=w64 ow=w64
+    je sbr_reset.L1af3 ;; aw=w64 ow=w64
+    lea r8, [r10+-2] ;; aw=w64 ow=w64
+    cmp rdi, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L1b20 ;; aw=w64 ow=w64
+sbr_reset.L1af3:
+    mov r8, rsi ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1b00:
+    mov rdi, r8 ;; aw=w64 ow=w64
+    cmp r8, rdx ;; aw=w64 ow=w64
+    jae sbr_reset.L1b17 ;; aw=w64 ow=w64
+    lea r8, [rdi+2] ;; aw=w64 ow=w64
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    cmp r11w, WORD PTR [rdi+2] ;; aw=w64 ow=w16
+    jle sbr_reset.L1b00 ;; aw=w64 ow=w64
+sbr_reset.L1b17:
+    cmp rdi, rdx ;; aw=w64 ow=w64
+    je sbr_reset.L1980 ;; aw=w64 ow=w64
+sbr_reset.L1b20:
+    mov rdi, rdx ;; aw=w64 ow=w64
+    sub rdi, r10 ;; aw=w64 ow=w64
+    mov r8, r10 ;; aw=w64 ow=w64
+    sub r8, rsi ;; aw=w64 ow=w64
+    cmp rdi, r8 ;; aw=w64 ow=w64
+    jge sbr_reset.L1b70 ;; aw=w64 ow=w64
+    cmp rcx, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L325c ;; aw=w64 ow=w64
+    mov rdi, rcx ;; aw=w64 ow=w64
+    shl rdi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1392], rsi ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1384], r9 ;; aw=w64 ow=w64
+sbr_reset.L1b52:
+    add r10, 2 ;; aw=w64 ow=w64
+    mov rsi, r10 ;; aw=w64 ow=w64
+    inc rcx ;; aw=w64 ow=w64
+    jmp sbr_reset.L19b0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1b70:
+    cmp rcx, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L3261 ;; aw=w64 ow=w64
+    add r10, 2 ;; aw=w64 ow=w64
+    mov rdi, rcx ;; aw=w64 ow=w64
+    shl rdi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1392], r10 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rdi*1+-1384], rdx ;; aw=w64 ow=w64
+    mov rdx, r9 ;; aw=w64 ow=w64
+    inc rcx ;; aw=w64 ow=w64
+    jmp sbr_reset.L19b0 ;; aw=w64 ow=w64
+sbr_reset.L1ba0:
+    movzx edi, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r8d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    cmp di, r8w ;; aw=w64 ow=w16
+    jle sbr_reset.L1980 ;; aw=w64 ow=w64
+    mov WORD PTR [rdx+0], di ;; aw=w64 ow=w16
+    mov WORD PTR [rsi+0], r8w ;; aw=w64 ow=w16
+    jmp sbr_reset.L1980 ;; aw=w64 ow=w64
+sbr_reset.L1bbd:
+    mov rcx, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    cmp ecx, 49 ;; aw=w64 ow=w32
+    jae sbr_reset.L32be ;; aw=w64 ow=w64
+    movsx edi, WORD PTR [rbp+rax*2+-368] ;; aw=w64 ow=w32
+    movzx eax, WORD PTR [r12+64] ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-368], ax ;; aw=w64 ow=w16
+    lea esi, [rcx+1] ;; aw=w64 ow=w32
+    mov rax, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    add eax, eax ;; aw=w64 ow=w32
+    neg rax ;; aw=w64 ow=w64
+    mov ecx, 1 ;; aw=w64 ow=w32
+sbr_reset.L1bf0:
+    movsx r8d, WORD PTR [rbp+rcx*2+-368] ;; aw=w64 ow=w32
+    test r8d, r8d ;; aw=w64 ow=w32
+    jle sbr_reset.L1cf4 ;; aw=w64 ow=w64
+    add r8w, WORD PTR [rbp+rcx*2+-370] ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rcx*2+-368], r8w ;; aw=w64 ow=w16
+    lea rdx, [rax+rcx*1+0] ;; aw=w64 ow=w64
+    inc rdx ;; aw=w64 ow=w64
+    inc rcx ;; aw=w64 ow=w64
+    cmp rdx, 1 ;; aw=w64 ow=w64
+    jne sbr_reset.L1bf0 ;; aw=w64 ow=w64
+    mov eax, DWORD PTR [rbp+-136] ;; aw=w64 ow=w32
+    cmp DWORD PTR [rbp+-128], eax ;; aw=w64 ow=w32
+    jbe sbr_reset.L1da7 ;; aw=w64 ow=w64
+sbr_reset.L1c33:
+    mov DWORD PTR [rbp+-80], edi ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-136], rsi ;; aw=w64 ow=w64
+    xor eax, eax ;; aw=w64 ow=w32
+    cmp BYTE PTR [r12+32], 0 ;; aw=w64 ow=w8
+    sete al ;; aw=w64 ow=w8
+    lea rcx, [rip+LCPI5_3] ;; aw=w64 ow=w64
+    vmovss xmm0, DWORD PTR [rbp+-56] ;; aw=w64 ow=w128
+    vmulss xmm0, xmm0, DWORD PTR [rcx+rax*4+0] ;; aw=w64 ow=w128
+sbr_reset.L1c59:
+    vmovss DWORD PTR [rbp+-56], xmm0 ;; aw=w64 ow=w128
+    mov r13d, DWORD PTR [r12+68] ;; aw=w64 ow=w32
+    mov r14d, DWORD PTR [r12+72] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, r14 ;; aw=w64 ow=w128
+    vcvtsi2ss xmm1, xmm15, r13 ;; aw=w64 ow=w128
+    vdivss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L1c76:
+    call log2f ;; aw=w64 ow=w64
+sbr_reset.L1c7b:
+    vmulss xmm0, xmm0, DWORD PTR [rbp+-56] ;; aw=w64 ow=w128
+    vcvtss2si r15, xmm0 ;; aw=w64 ow=w128
+    lea ebx, [r15+r15*1+0] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, r14d ;; aw=w64 ow=w128
+    vmovd xmm1, r13d ;; aw=w64 ow=w128
+    vpinsrd xmm1, xmm1, ebx, 1 ;; aw=w64 ow=w128
+    vcvtdq2ps xmm1, xmm1 ;; aw=w64 ow=w128
+    vblendps xmm0, xmm0, XMMWORD PTR [rip+LCPI5_2], 14 ;; aw=w64 ow=w128
+    vmovaps XMMWORD PTR [rbp+-128], xmm1 ;; aw=w64 ow=w128
+    vdivps xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vmovshdup xmm1, xmm0 ;; aw=w64 ow=w128
+sbr_reset.L1cb4:
+    call powf ;; aw=w64 ow=w64
+sbr_reset.L1cb9:
+    lea eax, [r15*2+-1] ;; aw=w64 ow=w32
+    cmp ebx, 2 ;; aw=w64 ow=w32
+    jl sbr_reset.L1de3 ;; aw=w64 ow=w64
+    mov eax, eax ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-56], rbx ;; aw=w64 ow=w64
+    lea edx, [rbx+-2] ;; aw=w64 ow=w32
+    mov ecx, eax ;; aw=w64 ow=w32
+    and ecx, 7 ;; aw=w64 ow=w32
+    cmp edx, 7 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-256], rax ;; aw=w64 ow=w64
+    jae sbr_reset.L2112 ;; aw=w64 ow=w64
+    xor edx, edx ;; aw=w64 ow=w32
+sbr_reset.L1cea:
+    vmovaps xmm1, XMMWORD PTR [rbp+-128] ;; aw=w64 ow=w128
+    jmp sbr_reset.L21e6 ;; aw=w64 ow=w64
+sbr_reset.L1cf4:
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_12] ;; aw=w64 ow=w64
+sbr_reset.L1cff:
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L1d0b:
+    jmp sbr_reset.L1d31 ;; aw=w64 ow=w64
+sbr_reset.L1d0d:
+    lea rdx, [rip+L_str_14] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d2a ;; aw=w64 ow=w64
+sbr_reset.L1d1b:
+    lea rdx, [rip+L_str_15] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, r8d ;; aw=w64 ow=w32
+sbr_reset.L1d2a:
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L1d31:
+    lea rbx, [r12+28] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_6] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+sbr_reset.L1d48:
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L1d4d:
+    mov QWORD PTR [r12+4], 0 ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+16], 0 ;; aw=w64 ow=w32
+sbr_reset.L1d5f:
+    mov DWORD PTR [r12+88], 32 ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+96], 0 ;; aw=w64 ow=w32
+sbr_reset.L1d71:
+    mov DWORD PTR [r12+103496], 4294967295 ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+14728], 4294967295 ;; aw=w64 ow=w32
+sbr_reset.L1d89:
+    mov WORD PTR [rbx+4], 65535 ;; aw=w64 ow=w16
+    mov DWORD PTR [rbx+0], 4294967295 ;; aw=w64 ow=w32
+sbr_reset.L1d95:
+    add rsp, 1352 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_reset.done:
+    ret ;; aw=w64 ow=w64
+sbr_reset.L1da7:
+    mov r13, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+104], r13d ;; aw=w64 ow=w32
+    movzx r14d, BYTE PTR [r12+30] ;; aw=w64 ow=w32
+    movzx ecx, r14b ;; aw=w64 ow=w32
+    cmp r13d, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L1e00 ;; aw=w64 ow=w64
+    lea rdi, [r12+311792] ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-80] ;; aw=w64 ow=w64
+    shl edx, 2 ;; aw=w64 ow=w32
+    or rdx, 2 ;; aw=w64 ow=w64
+    lea rsi, [rbp+-368] ;; aw=w64 ow=w64
+sbr_reset.L1dd9:
+    call memcpy ;; aw=w64 ow=w64
+sbr_reset.L1dde:
+    jmp sbr_reset.L2012 ;; aw=w64 ow=w64
+sbr_reset.L1de3:
+    sub r14d, r13d ;; aw=w64 ow=w32
+    cdqe ;; aw=w64 ow=w64
+    mov WORD PTR [rbp+rax*2+-238], r14w ;; aw=w64 ow=w16
+    movsx edi, WORD PTR [rbp+-238] ;; aw=w64 ow=w32
+    mov r13, rbx ;; aw=w64 ow=w64
+    jmp sbr_reset.L2357 ;; aw=w64 ow=w64
+sbr_reset.L1e00:
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    jmp sbr_reset.L29ad ;; aw=w64 ow=w64
+sbr_reset.L1e09:
+    mov r8d, edx ;; aw=w64 ow=w32
+    and r8d, 4294967264 ;; aw=w64 ow=w32
+    lea rdi, [r8+1] ;; aw=w64 ow=w64
+    vmovd xmm0, eax ;; aw=w64 ow=w128
+    vpshufb xmm0, xmm0, XMMWORD PTR [rip+LCPI5_4] ;; aw=w64 ow=w128
+    xor r9d, r9d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1e30:
+    vmovdqu XMMWORD PTR [r12+r9*2+311794], xmm0 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [r12+r9*2+311810], xmm0 ;; aw=w64 ow=w128
+sbr_reset.L1e44:
+    vmovdqu XMMWORD PTR [r12+r9*2+311826], xmm0 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [r12+r9*2+311842], xmm0 ;; aw=w64 ow=w128
+    add r9, 32 ;; aw=w64 ow=w64
+    cmp r8, r9 ;; aw=w64 ow=w64
+    jne sbr_reset.L1e30 ;; aw=w64 ow=w64
+    cmp r8d, edx ;; aw=w64 ow=w32
+    je sbr_reset.L1ec1 ;; aw=w64 ow=w64
+    test dl, 24 ;; aw=w64 ow=w8
+    je sbr_reset.L1ea8 ;; aw=w64 ow=w64
+sbr_reset.L1e6b:
+    mov r9d, edx ;; aw=w64 ow=w32
+    and r9d, 4294967288 ;; aw=w64 ow=w32
+    lea rdi, [r9+1] ;; aw=w64 ow=w64
+    vmovd xmm0, eax ;; aw=w64 ow=w128
+    vpshufb xmm0, xmm0, XMMWORD PTR [rip+LCPI5_4] ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1e90:
+    vmovdqu XMMWORD PTR [r12+r8*2+311794], xmm0 ;; aw=w64 ow=w128
+    add r8, 8 ;; aw=w64 ow=w64
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L1e90 ;; aw=w64 ow=w64
+    cmp r9d, edx ;; aw=w64 ow=w32
+    je sbr_reset.L1ec1 ;; aw=w64 ow=w64
+sbr_reset.L1ea8:
+    lea r8, [rdx+1] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1eb0:
+    mov WORD PTR [r12+rdi*2+311792], ax ;; aw=w64 ow=w16
+    inc rdi ;; aw=w64 ow=w64
+    cmp r8, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L1eb0 ;; aw=w64 ow=w64
+sbr_reset.L1ec1:
+    imul eax, ecx ;; aw=w64 ow=w32
+    add eax, r13d ;; aw=w64 ow=w32
+    sub esi, eax ;; aw=w64 ow=w32
+    js sbr_reset.L1ed8 ;; aw=w64 ow=w64
+    je sbr_reset.L1f08 ;; aw=w64 ow=w64
+    inc WORD PTR [r12+rdx*2+311792] ;; aw=w64 ow=w16
+    jmp sbr_reset.L1f08 ;; aw=w64 ow=w64
+sbr_reset.L1ed8:
+    xor eax, eax ;; aw=w64 ow=w32
+    cmp esi, 4294967295 ;; aw=w64 ow=w32
+    setne al ;; aw=w64 ow=w8
+    neg eax ;; aw=w64 ow=w32
+    vbroadcastss xmm0, DWORD PTR [rip+LCPI5_8] ;; aw=w64 ow=w128
+    vpinsrw xmm0, xmm0, eax, 1 ;; aw=w64 ow=w128
+    vmovd xmm1, DWORD PTR [r12+311794] ;; aw=w64 ow=w128
+    vpaddw xmm0, xmm1, xmm0 ;; aw=w64 ow=w128
+    vmovd DWORD PTR [r12+311794], xmm0 ;; aw=w64 ow=w128
+sbr_reset.L1f08:
+    mov WORD PTR [r12+311792], r13w ;; aw=w64 ow=w16
+    mov eax, 1 ;; aw=w64 ow=w32
+    cmp ecx, 8 ;; aw=w64 ow=w32
+    jb sbr_reset.L1fd5 ;; aw=w64 ow=w64
+    mov ecx, edx ;; aw=w64 ow=w32
+    and ecx, 4294967288 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1f30:
+    add r13w, WORD PTR [r12+rax*2+311794] ;; aw=w64 ow=w16
+    mov WORD PTR [r12+rax*2+311794], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311796] ;; aw=w64 ow=w16
+    mov WORD PTR [r12+rax*2+311796], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311798] ;; aw=w64 ow=w16
+sbr_reset.L1f5d:
+    mov WORD PTR [r12+rax*2+311798], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311800] ;; aw=w64 ow=w16
+    mov WORD PTR [r12+rax*2+311800], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311802] ;; aw=w64 ow=w16
+sbr_reset.L1f81:
+    mov WORD PTR [r12+rax*2+311802], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311804] ;; aw=w64 ow=w16
+    mov WORD PTR [r12+rax*2+311804], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311806] ;; aw=w64 ow=w16
+sbr_reset.L1fa5:
+    mov WORD PTR [r12+rax*2+311806], r13w ;; aw=w64 ow=w16
+    add r13w, WORD PTR [r12+rax*2+311808] ;; aw=w64 ow=w16
+    mov WORD PTR [r12+rax*2+311808], r13w ;; aw=w64 ow=w16
+    add rax, 8 ;; aw=w64 ow=w64
+    cmp rcx, rax ;; aw=w64 ow=w64
+    jne sbr_reset.L1f30 ;; aw=w64 ow=w64
+    test dl, 6 ;; aw=w64 ow=w8
+    je sbr_reset.L2003 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+sbr_reset.L1fd5:
+    lea rax, [r12+rax*2+0] ;; aw=w64 ow=w64
+    add rax, 311792 ;; aw=w64 ow=w64
+    lea ecx, [rdx+rdx*1+0] ;; aw=w64 ow=w32
+    and ecx, 12 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L1ff0:
+    add r13w, WORD PTR [rax+rdx*1+0] ;; aw=w64 ow=w16
+    mov WORD PTR [rax+rdx*1+0], r13w ;; aw=w64 ow=w16
+    add rdx, 2 ;; aw=w64 ow=w64
+    cmp rcx, rdx ;; aw=w64 ow=w64
+    jne sbr_reset.L1ff0 ;; aw=w64 ow=w64
+sbr_reset.L2003:
+    mov QWORD PTR [rbp+-64], r15 ;; aw=w64 ow=w64
+    mov r13d, DWORD PTR [r12+104] ;; aw=w64 ow=w32
+    movzx r14d, BYTE PTR [r12+30] ;; aw=w64 ow=w32
+sbr_reset.L2012:
+    movzx eax, r14b ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-56], r13 ;; aw=w64 ow=w64
+    sub r13d, eax ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+311780], r13d ;; aw=w64 ow=w32
+    mov rbx, r12 ;; aw=w64 ow=w64
+    lea r12d, [r13+1] ;; aw=w64 ow=w32
+    mov r15d, r12d ;; aw=w64 ow=w32
+    shr r15d, 1 ;; aw=w64 ow=w32
+sbr_reset.L2032:
+    mov DWORD PTR [rbx+311776], r15d ;; aw=w64 ow=w32
+    cmp al, 50 ;; aw=w64 ow=w8
+    jae sbr_reset.L32c8 ;; aw=w64 ow=w64
+    lea rdi, [rbx+311940] ;; aw=w64 ow=w64
+    lea rsi, [rbx+rax*2+0] ;; aw=w64 ow=w64
+    add rsi, 311792 ;; aw=w64 ow=w64
+    mov edx, r12d ;; aw=w64 ow=w32
+    add rdx, rdx ;; aw=w64 ow=w64
+sbr_reset.L2059:
+    call memcpy ;; aw=w64 ow=w64
+sbr_reset.L205e:
+    cmp r13d, 49 ;; aw=w64 ow=w32
+    jae sbr_reset.L32cd ;; aw=w64 ow=w64
+    mov eax, r13d ;; aw=w64 ow=w32
+    movzx ecx, WORD PTR [rbx+rax*2+311940] ;; aw=w64 ow=w32
+    movzx r14d, WORD PTR [rbx+311940] ;; aw=w64 ow=w32
+    movzx r10d, r14w ;; aw=w64 ow=w32
+    mov eax, ecx ;; aw=w64 ow=w32
+    sub eax, r10d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbx+96], eax ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-48], rbx ;; aw=w64 ow=w64
+sbr_reset.L208b:
+    mov DWORD PTR [rbx+88], r10d ;; aw=w64 ow=w32
+    cmp ecx, 65 ;; aw=w64 ow=w32
+    jb sbr_reset.L20aa ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_16] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    jmp sbr_reset.L20c8 ;; aw=w64 ow=w64
+sbr_reset.L20aa:
+    cmp r14w, 33 ;; aw=w64 ow=w16
+    jb sbr_reset.L20d8 ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_17] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, r10d ;; aw=w64 ow=w32
+sbr_reset.L20c8:
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L20cf:
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    jmp sbr_reset.L1d31 ;; aw=w64 ow=w64
+sbr_reset.L20d8:
+    mov rax, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov WORD PTR [rax+311890], r14w ;; aw=w64 ow=w16
+    test r15d, r15d ;; aw=w64 ow=w32
+    je sbr_reset.L2b30 ;; aw=w64 ow=w64
+    and r13d, 1 ;; aw=w64 ow=w32
+    mov eax, 1 ;; aw=w64 ow=w32
+    cmp r12d, 10 ;; aw=w64 ow=w32
+    jb sbr_reset.L2aef ;; aw=w64 ow=w64
+    cmp r12d, 34 ;; aw=w64 ow=w32
+    jae sbr_reset.L29f4 ;; aw=w64 ow=w64
+    xor r9d, r9d ;; aw=w64 ow=w32
+    jmp sbr_reset.L2a85 ;; aw=w64 ow=w64
+sbr_reset.L2112:
+    mov rsi, rax ;; aw=w64 ow=w64
+    and esi, 2147483640 ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    vmovaps xmm1, XMMWORD PTR [rbp+-128] ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2130:
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si rdi, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r8, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r9, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r10, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r11, xmm1 ;; aw=w64 ow=w128
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si rbx, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L2166:
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r12, xmm1 ;; aw=w64 ow=w128
+    mov eax, r12d ;; aw=w64 ow=w32
+    sub eax, ebx ;; aw=w64 ow=w32
+    sub ebx, r11d ;; aw=w64 ow=w32
+    sub r11d, r10d ;; aw=w64 ow=w32
+    sub r10d, r9d ;; aw=w64 ow=w32
+    sub r9d, r8d ;; aw=w64 ow=w32
+    sub r8d, edi ;; aw=w64 ow=w32
+    sub edi, r13d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rdx*2+-238], di ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-236], r8w ;; aw=w64 ow=w16
+sbr_reset.L2197:
+    mov WORD PTR [rbp+rdx*2+-234], r9w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-232], r10w ;; aw=w64 ow=w16
+sbr_reset.L21a9:
+    mov WORD PTR [rbp+rdx*2+-230], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rdx*2+-228], bx ;; aw=w64 ow=w16
+sbr_reset.L21ba:
+    mov WORD PTR [rbp+rdx*2+-226], ax ;; aw=w64 ow=w16
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r13, xmm1 ;; aw=w64 ow=w128
+    mov eax, r13d ;; aw=w64 ow=w32
+    sub eax, r12d ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rdx*2+-224], ax ;; aw=w64 ow=w16
+    add rdx, 8 ;; aw=w64 ow=w64
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jne sbr_reset.L2130 ;; aw=w64 ow=w64
+sbr_reset.L21e6:
+    lea rdx, [rdx*2+-238] ;; aw=w64 ow=w64
+    add rdx, rbp ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2200:
+    mov eax, r13d ;; aw=w64 ow=w32
+    vmulss xmm1, xmm0, xmm1 ;; aw=w64 ow=w128
+    vcvtss2si r13, xmm1 ;; aw=w64 ow=w128
+    mov edi, r13d ;; aw=w64 ow=w32
+    sub edi, eax ;; aw=w64 ow=w32
+    mov WORD PTR [rdx+rsi*2+0], di ;; aw=w64 ow=w16
+    inc rsi ;; aw=w64 ow=w64
+    cmp rcx, rsi ;; aw=w64 ow=w64
+    jne sbr_reset.L2200 ;; aw=w64 ow=w64
+    sub r14d, r13d ;; aw=w64 ow=w32
+    mov rax, QWORD PTR [rbp+-256] ;; aw=w64 ow=w64
+    mov WORD PTR [rbp+rax*2+-238], r14w ;; aw=w64 ow=w16
+sbr_reset.L2230:
+    movsx edi, WORD PTR [rbp+-238] ;; aw=w64 ow=w32
+    mov r13, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov eax, r13d ;; aw=w64 ow=w32
+    mov ecx, 1 ;; aw=w64 ow=w32
+    cmp r13d, 5 ;; aw=w64 ow=w32
+    jae sbr_reset.L2252 ;; aw=w64 ow=w64
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    jmp sbr_reset.L2340 ;; aw=w64 ow=w64
+sbr_reset.L2252:
+    lea rdx, [rax+-1] ;; aw=w64 ow=w64
+    cmp r13d, 17 ;; aw=w64 ow=w32
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    jae sbr_reset.L2267 ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    jmp sbr_reset.L22fa ;; aw=w64 ow=w64
+sbr_reset.L2267:
+    mov rsi, rdx ;; aw=w64 ow=w64
+    and rsi, -16 ;; aw=w64 ow=w64
+    lea rcx, [rsi+1] ;; aw=w64 ow=w64
+    vmovd xmm0, edi ;; aw=w64 ow=w128
+    vpshufd xmm0, xmm0, 0 ;; aw=w64 ow=w128
+    xor edi, edi ;; aw=w64 ow=w32
+    vmovdqa xmm1, xmm0 ;; aw=w64 ow=w128
+    vmovdqa xmm2, xmm0 ;; aw=w64 ow=w128
+    vmovdqa xmm3, xmm0 ;; aw=w64 ow=w128
+sbr_reset.L2289:
+    vpmovsxwd xmm4, QWORD PTR [rbp+rdi*2+-236] ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm4 ;; aw=w64 ow=w128
+    vpmovsxwd xmm4, QWORD PTR [rbp+rdi*2+-228] ;; aw=w64 ow=w128
+    vpminsd xmm1, xmm1, xmm4 ;; aw=w64 ow=w128
+    vpmovsxwd xmm4, QWORD PTR [rbp+rdi*2+-220] ;; aw=w64 ow=w128
+    vpmovsxwd xmm5, QWORD PTR [rbp+rdi*2+-212] ;; aw=w64 ow=w128
+    vpminsd xmm2, xmm2, xmm4 ;; aw=w64 ow=w128
+    vpminsd xmm3, xmm3, xmm5 ;; aw=w64 ow=w128
+    add rdi, 16 ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L2289 ;; aw=w64 ow=w64
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L22d3:
+    vpminsd xmm1, xmm2, xmm3 ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vpshufd xmm1, xmm0, 238 ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vpshufd xmm1, xmm0, 85 ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vmovd edi, xmm0 ;; aw=w64 ow=w128
+    test dl, 12 ;; aw=w64 ow=w8
+    je sbr_reset.L2340 ;; aw=w64 ow=w64
+sbr_reset.L22fa:
+    and rdx, -4 ;; aw=w64 ow=w64
+    lea rcx, [rdx+1] ;; aw=w64 ow=w64
+    vmovd xmm0, edi ;; aw=w64 ow=w128
+    vpshufd xmm0, xmm0, 0 ;; aw=w64 ow=w128
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2310:
+    vpmovsxwd xmm1, QWORD PTR [rbp+rsi*2+-236] ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    add rsi, 4 ;; aw=w64 ow=w64
+    cmp rdx, rsi ;; aw=w64 ow=w64
+    jne sbr_reset.L2310 ;; aw=w64 ow=w64
+    vpshufd xmm1, xmm0, 238 ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vpshufd xmm1, xmm0, 85 ;; aw=w64 ow=w128
+    vpminsd xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+    vmovd edi, xmm0 ;; aw=w64 ow=w128
+sbr_reset.L2340:
+    mov edx, edi ;; aw=w64 ow=w32
+    movsx edi, WORD PTR [rbp+rcx*2+-238] ;; aw=w64 ow=w32
+    cmp edx, edi ;; aw=w64 ow=w32
+    cmovl edi, edx ;; aw=w64 ow=w32
+    inc rcx ;; aw=w64 ow=w64
+    cmp rax, rcx ;; aw=w64 ow=w64
+    jne sbr_reset.L2340 ;; aw=w64 ow=w64
+sbr_reset.L2357:
+    lea rax, [rbp+-238] ;; aw=w64 ow=w64
+    cmp edi, DWORD PTR [rbp+-80] ;; aw=w64 ow=w32
+    jge sbr_reset.L25ca ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-1392], rax ;; aw=w64 ow=w64
+    movsxd rcx, r13d ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-48], rcx ;; aw=w64 ow=w64
+    lea rax, [rax+rcx*2+0] ;; aw=w64 ow=w64
+    add rax, -2 ;; aw=w64 ow=w64
+sbr_reset.L237d:
+    mov QWORD PTR [rbp+-1384], rax ;; aw=w64 ow=w64
+    mov eax, 1 ;; aw=w64 ow=w32
+    jmp sbr_reset.L2398 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2390:
+    test eax, eax ;; aw=w64 ow=w32
+    je sbr_reset.L25cf ;; aw=w64 ow=w64
+sbr_reset.L2398:
+    cmp eax, 65 ;; aw=w64 ow=w32
+    jae sbr_reset.L3289 ;; aw=w64 ow=w64
+    dec eax ;; aw=w64 ow=w32
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 4 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+rcx*1+-1392] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+rcx*1+-1384] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L23c0:
+    cmp rdx, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L2390 ;; aw=w64 ow=w64
+    lea rdi, [rcx+-2] ;; aw=w64 ow=w64
+    cmp rdx, rdi ;; aw=w64 ow=w64
+    jae sbr_reset.L25b0 ;; aw=w64 ow=w64
+    mov r8, rcx ;; aw=w64 ow=w64
+    sub r8, rdx ;; aw=w64 ow=w64
+    sar r8, 2 ;; aw=w64 ow=w64
+    lea rsi, [rdx+r8*2+0] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    movzx r8d, WORD PTR [rdx+r8*2+0] ;; aw=w64 ow=w32
+sbr_reset.L23ed:
+    cmp r9w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L2410 ;; aw=w64 ow=w64
+    cmp r11w, r8w ;; aw=w64 ow=w16
+    jg sbr_reset.L241c ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r9w ;; aw=w64 ow=w16
+    mov r8d, r11d ;; aw=w64 ow=w32
+    jmp sbr_reset.L2420 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2410:
+    mov r10d, 1 ;; aw=w64 ow=w32
+    cmp r9w, r8w ;; aw=w64 ow=w16
+    jle sbr_reset.L242f ;; aw=w64 ow=w64
+sbr_reset.L241c:
+    mov WORD PTR [rsi+0], r9w ;; aw=w64 ow=w16
+sbr_reset.L2420:
+    mov WORD PTR [rdx+0], r8w ;; aw=w64 ow=w16
+    movzx r8d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+sbr_reset.L242f:
+    cmp r8w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L2450 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r8w ;; aw=w64 ow=w16
+    mov WORD PTR [rsi+0], r11w ;; aw=w64 ow=w16
+    xor r10d, r10d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L2460 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2390 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2450:
+    mov r11d, r8d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    je sbr_reset.L2390 ;; aw=w64 ow=w64
+sbr_reset.L2460:
+    lea r9, [rdx+2] ;; aw=w64 ow=w64
+    movzx ebx, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rsi+0], bx ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], r11w ;; aw=w64 ow=w16
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L2499 ;; aw=w64 ow=w64
+    jmp sbr_reset.L24e4 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2480:
+    movzx r11d, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r8+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [r9+0], r14w ;; aw=w64 ow=w16
+    add r9, 2 ;; aw=w64 ow=w64
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L2494:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L24e0 ;; aw=w64 ow=w64
+sbr_reset.L2499:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L24a0:
+    cmp WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    jge sbr_reset.L24c4 ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L24a0 ;; aw=w64 ow=w64
+    jmp sbr_reset.L24c4 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L24c0:
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L24c4:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L2494 ;; aw=w64 ow=w64
+    movzx r14d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    cmp r14w, r11w ;; aw=w64 ow=w16
+    jg sbr_reset.L24c0 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2480 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L24e0:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+sbr_reset.L24e4:
+    movzx ebx, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], bx ;; aw=w64 ow=w16
+    test r10d, r10d ;; aw=w64 ow=w32
+    je sbr_reset.L2530 ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    je sbr_reset.L2502 ;; aw=w64 ow=w64
+    lea rdi, [r9+-2] ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L2530 ;; aw=w64 ow=w64
+sbr_reset.L2502:
+    mov rdi, rdx ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2510:
+    mov rsi, rdi ;; aw=w64 ow=w64
+    cmp rdi, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L2527 ;; aw=w64 ow=w64
+    lea rdi, [rsi+2] ;; aw=w64 ow=w64
+    movzx r10d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    cmp r10w, WORD PTR [rsi+2] ;; aw=w64 ow=w16
+    jle sbr_reset.L2510 ;; aw=w64 ow=w64
+sbr_reset.L2527:
+    cmp rsi, rcx ;; aw=w64 ow=w64
+    je sbr_reset.L2390 ;; aw=w64 ow=w64
+sbr_reset.L2530:
+    mov rsi, rcx ;; aw=w64 ow=w64
+    sub rsi, r9 ;; aw=w64 ow=w64
+    mov rdi, r9 ;; aw=w64 ow=w64
+    sub rdi, rdx ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jge sbr_reset.L2580 ;; aw=w64 ow=w64
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L327a ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], rdx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], r8 ;; aw=w64 ow=w64
+sbr_reset.L2562:
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rdx, r9 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L23c0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2580:
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L327f ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], r9 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], rcx ;; aw=w64 ow=w64
+    mov rcx, r8 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L23c0 ;; aw=w64 ow=w64
+sbr_reset.L25b0:
+    movzx esi, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx edi, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    cmp si, di ;; aw=w64 ow=w16
+    jle sbr_reset.L2390 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], si ;; aw=w64 ow=w16
+    mov WORD PTR [rdx+0], di ;; aw=w64 ow=w16
+    jmp sbr_reset.L2390 ;; aw=w64 ow=w64
+sbr_reset.L25ca:
+    movsxd rcx, r13d ;; aw=w64 ow=w64
+    jmp sbr_reset.L2619 ;; aw=w64 ow=w64
+sbr_reset.L25cf:
+    cmp r13d, 49 ;; aw=w64 ow=w32
+    jae sbr_reset.L32d7 ;; aw=w64 ow=w64
+    movsx eax, WORD PTR [rbp+-238] ;; aw=w64 ow=w32
+    mov edi, DWORD PTR [rbp+-80] ;; aw=w64 ow=w32
+    sub edi, eax ;; aw=w64 ow=w32
+    mov rsi, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movsx ecx, WORD PTR [rbp+rsi*2+-240] ;; aw=w64 ow=w32
+    mov edx, ecx ;; aw=w64 ow=w32
+    sub edx, eax ;; aw=w64 ow=w32
+    sar edx, 1 ;; aw=w64 ow=w32
+    cmp edi, edx ;; aw=w64 ow=w32
+    cmovl edx, edi ;; aw=w64 ow=w32
+sbr_reset.L25fc:
+    add eax, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-238], ax ;; aw=w64 ow=w16
+    sub ecx, edx ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+rsi*2+-240], cx ;; aw=w64 ow=w16
+    mov rcx, rsi ;; aw=w64 ow=w64
+    lea rax, [rbp+-238] ;; aw=w64 ow=w64
+sbr_reset.L2619:
+    mov QWORD PTR [rbp+-1392], rax ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-48], rcx ;; aw=w64 ow=w64
+    lea rax, [rax+rcx*2+0] ;; aw=w64 ow=w64
+    add rax, -2 ;; aw=w64 ow=w64
+sbr_reset.L262c:
+    mov QWORD PTR [rbp+-1384], rax ;; aw=w64 ow=w64
+    mov eax, 1 ;; aw=w64 ow=w32
+    jmp sbr_reset.L2648 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2640:
+    test eax, eax ;; aw=w64 ow=w32
+    je sbr_reset.L287a ;; aw=w64 ow=w64
+sbr_reset.L2648:
+    cmp eax, 65 ;; aw=w64 ow=w32
+    jae sbr_reset.L3284 ;; aw=w64 ow=w64
+    dec eax ;; aw=w64 ow=w32
+    mov rcx, rax ;; aw=w64 ow=w64
+    shl rcx, 4 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+rcx*1+-1392] ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+rcx*1+-1384] ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2670:
+    cmp rdx, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L2640 ;; aw=w64 ow=w64
+    lea rdi, [rcx+-2] ;; aw=w64 ow=w64
+    cmp rdx, rdi ;; aw=w64 ow=w64
+    jae sbr_reset.L2860 ;; aw=w64 ow=w64
+    mov r8, rcx ;; aw=w64 ow=w64
+    sub r8, rdx ;; aw=w64 ow=w64
+    sar r8, 2 ;; aw=w64 ow=w64
+    lea rsi, [rdx+r8*2+0] ;; aw=w64 ow=w64
+    movzx r9d, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    movzx r8d, WORD PTR [rdx+r8*2+0] ;; aw=w64 ow=w32
+sbr_reset.L269d:
+    cmp r9w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L26c0 ;; aw=w64 ow=w64
+    cmp r11w, r8w ;; aw=w64 ow=w16
+    jg sbr_reset.L26cc ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r9w ;; aw=w64 ow=w16
+    mov r8d, r11d ;; aw=w64 ow=w32
+    jmp sbr_reset.L26d0 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L26c0:
+    mov r10d, 1 ;; aw=w64 ow=w32
+    cmp r9w, r8w ;; aw=w64 ow=w16
+    jle sbr_reset.L26df ;; aw=w64 ow=w64
+sbr_reset.L26cc:
+    mov WORD PTR [rsi+0], r9w ;; aw=w64 ow=w16
+sbr_reset.L26d0:
+    mov WORD PTR [rdx+0], r8w ;; aw=w64 ow=w16
+    movzx r8d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    movzx r11d, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    xor r10d, r10d ;; aw=w64 ow=w32
+sbr_reset.L26df:
+    cmp r8w, r11w ;; aw=w64 ow=w16
+    jle sbr_reset.L2700 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], r8w ;; aw=w64 ow=w16
+    mov WORD PTR [rsi+0], r11w ;; aw=w64 ow=w16
+    xor r10d, r10d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L2710 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2640 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2700:
+    mov r11d, r8d ;; aw=w64 ow=w32
+    lea r8, [rcx+-4] ;; aw=w64 ow=w64
+    cmp rdx, r8 ;; aw=w64 ow=w64
+    je sbr_reset.L2640 ;; aw=w64 ow=w64
+sbr_reset.L2710:
+    lea r9, [rdx+2] ;; aw=w64 ow=w64
+    movzx ebx, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rsi+0], bx ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], r11w ;; aw=w64 ow=w16
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L2749 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2794 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2730:
+    movzx r11d, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r8+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [r9+0], r14w ;; aw=w64 ow=w16
+    add r9, 2 ;; aw=w64 ow=w64
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L2744:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L2790 ;; aw=w64 ow=w64
+sbr_reset.L2749:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2750:
+    cmp WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    jge sbr_reset.L2774 ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jbe sbr_reset.L2750 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2774 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2770:
+    add r8, -2 ;; aw=w64 ow=w64
+sbr_reset.L2774:
+    cmp r9, r8 ;; aw=w64 ow=w64
+    ja sbr_reset.L2744 ;; aw=w64 ow=w64
+    movzx r14d, WORD PTR [r8+0] ;; aw=w64 ow=w32
+    cmp r14w, r11w ;; aw=w64 ow=w16
+    jg sbr_reset.L2770 ;; aw=w64 ow=w64
+    jmp sbr_reset.L2730 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2790:
+    movzx r11d, WORD PTR [rdi+0] ;; aw=w64 ow=w32
+sbr_reset.L2794:
+    movzx ebx, WORD PTR [r9+0] ;; aw=w64 ow=w32
+    mov WORD PTR [r9+0], r11w ;; aw=w64 ow=w16
+    mov WORD PTR [rdi+0], bx ;; aw=w64 ow=w16
+    test r10d, r10d ;; aw=w64 ow=w32
+    je sbr_reset.L27e0 ;; aw=w64 ow=w64
+    cmp rsi, r9 ;; aw=w64 ow=w64
+    je sbr_reset.L27b2 ;; aw=w64 ow=w64
+    lea rdi, [r9+-2] ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L27e0 ;; aw=w64 ow=w64
+sbr_reset.L27b2:
+    mov rdi, rdx ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L27c0:
+    mov rsi, rdi ;; aw=w64 ow=w64
+    cmp rdi, rcx ;; aw=w64 ow=w64
+    jae sbr_reset.L27d7 ;; aw=w64 ow=w64
+    lea rdi, [rsi+2] ;; aw=w64 ow=w64
+    movzx r10d, WORD PTR [rsi+0] ;; aw=w64 ow=w32
+    cmp r10w, WORD PTR [rsi+2] ;; aw=w64 ow=w16
+    jle sbr_reset.L27c0 ;; aw=w64 ow=w64
+sbr_reset.L27d7:
+    cmp rsi, rcx ;; aw=w64 ow=w64
+    je sbr_reset.L2640 ;; aw=w64 ow=w64
+sbr_reset.L27e0:
+    mov rsi, rcx ;; aw=w64 ow=w64
+    sub rsi, r9 ;; aw=w64 ow=w64
+    mov rdi, r9 ;; aw=w64 ow=w64
+    sub rdi, rdx ;; aw=w64 ow=w64
+    cmp rsi, rdi ;; aw=w64 ow=w64
+    jge sbr_reset.L2830 ;; aw=w64 ow=w64
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L3270 ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], rdx ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], r8 ;; aw=w64 ow=w64
+sbr_reset.L2812:
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rdx, r9 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L2670 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2830:
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jae sbr_reset.L3275 ;; aw=w64 ow=w64
+    add r9, 2 ;; aw=w64 ow=w64
+    mov rsi, rax ;; aw=w64 ow=w64
+    shl rsi, 4 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1392], r9 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+rsi*1+-1384], rcx ;; aw=w64 ow=w64
+    mov rcx, r8 ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    jmp sbr_reset.L2670 ;; aw=w64 ow=w64
+sbr_reset.L2860:
+    movzx esi, WORD PTR [rdx+0] ;; aw=w64 ow=w32
+    movzx edi, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    cmp si, di ;; aw=w64 ow=w16
+    jle sbr_reset.L2640 ;; aw=w64 ow=w64
+    mov WORD PTR [rcx+0], si ;; aw=w64 ow=w16
+    mov WORD PTR [rdx+0], di ;; aw=w64 ow=w16
+    jmp sbr_reset.L2640 ;; aw=w64 ow=w64
+sbr_reset.L287a:
+    movzx eax, WORD PTR [r12+68] ;; aw=w64 ow=w32
+    mov WORD PTR [rbp+-240], ax ;; aw=w64 ow=w16
+    test r13d, r13d ;; aw=w64 ow=w32
+    jle sbr_reset.L2949 ;; aw=w64 ow=w64
+    add r15d, r15d ;; aw=w64 ow=w32
+    neg r15 ;; aw=w64 ow=w64
+    mov ecx, 4 ;; aw=w64 ow=w32
+sbr_reset.L289b:
+    cmp rcx, 52 ;; aw=w64 ow=w64
+    je sbr_reset.L32c3 ;; aw=w64 ow=w64
+    movzx eax, WORD PTR [rbp+rcx*2+-246] ;; aw=w64 ow=w32
+    test ax, ax ;; aw=w64 ow=w16
+    jle sbr_reset.L29cd ;; aw=w64 ow=w64
+    add ax, WORD PTR [rbp+rcx*2+-248] ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rcx*2+-246], ax ;; aw=w64 ow=w16
+    movzx eax, WORD PTR [rbp+rcx*2+-244] ;; aw=w64 ow=w32
+    test ax, ax ;; aw=w64 ow=w16
+    jle sbr_reset.L29d3 ;; aw=w64 ow=w64
+    add ax, WORD PTR [rbp+rcx*2+-246] ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rcx*2+-244], ax ;; aw=w64 ow=w16
+sbr_reset.L28e7:
+    lea rax, [r15+rcx*1+0] ;; aw=w64 ow=w64
+    cmp rax, 2 ;; aw=w64 ow=w64
+    je sbr_reset.L2949 ;; aw=w64 ow=w64
+    movzx eax, WORD PTR [rbp+rcx*2+-242] ;; aw=w64 ow=w32
+    test ax, ax ;; aw=w64 ow=w16
+    jle sbr_reset.L29d9 ;; aw=w64 ow=w64
+    add ax, WORD PTR [rbp+rcx*2+-244] ;; aw=w64 ow=w16
+    mov WORD PTR [rbp+rcx*2+-242], ax ;; aw=w64 ow=w16
+    movzx eax, WORD PTR [rbp+rcx*2+-240] ;; aw=w64 ow=w32
+    test ax, ax ;; aw=w64 ow=w16
+    jle sbr_reset.L29dc ;; aw=w64 ow=w64
+    add ax, WORD PTR [rbp+rcx*2+-242] ;; aw=w64 ow=w16
+sbr_reset.L292b:
+    mov WORD PTR [rbp+rcx*2+-240], ax ;; aw=w64 ow=w16
+    lea rax, [r15+rcx*1+0] ;; aw=w64 ow=w64
+    add rax, 4 ;; aw=w64 ow=w64
+    add rcx, 4 ;; aw=w64 ow=w64
+    cmp rax, 4 ;; aw=w64 ow=w64
+    jne sbr_reset.L289b ;; aw=w64 ow=w64
+sbr_reset.L2949:
+    add r13d, DWORD PTR [rbp+-72] ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+104], r13d ;; aw=w64 ow=w32
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    jle sbr_reset.L29b9 ;; aw=w64 ow=w64
+    movzx r14d, BYTE PTR [r12+30] ;; aw=w64 ow=w32
+    movzx ecx, r14b ;; aw=w64 ow=w32
+    cmp r13d, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L29ad ;; aw=w64 ow=w64
+    lea rdi, [r12+311792] ;; aw=w64 ow=w64
+    mov rbx, QWORD PTR [rbp+-136] ;; aw=w64 ow=w64
+    lea rdx, [rbx+rbx*1+0] ;; aw=w64 ow=w64
+sbr_reset.L297e:
+    lea rsi, [rbp+-368] ;; aw=w64 ow=w64
+    call memcpy ;; aw=w64 ow=w64
+sbr_reset.L298a:
+    lea rdi, [r12+rbx*2+0] ;; aw=w64 ow=w64
+    add rdi, 311792 ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    add rdx, rdx ;; aw=w64 ow=w64
+    lea rsi, [rbp+-238] ;; aw=w64 ow=w64
+sbr_reset.L29a3:
+    call memcpy ;; aw=w64 ow=w64
+sbr_reset.L29a8:
+    jmp sbr_reset.L2012 ;; aw=w64 ow=w64
+sbr_reset.L29ad:
+    lea rdx, [rip+L_str_15] ;; aw=w64 ow=w64
+    jmp sbr_reset.L167a ;; aw=w64 ow=w64
+sbr_reset.L29b9:
+    lea rdx, [rip+L_str_14] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    mov ecx, r13d ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d2a ;; aw=w64 ow=w64
+sbr_reset.L29cd:
+    add rcx, -3 ;; aw=w64 ow=w64
+    jmp sbr_reset.L29dc ;; aw=w64 ow=w64
+sbr_reset.L29d3:
+    add rcx, -2 ;; aw=w64 ow=w64
+    jmp sbr_reset.L29dc ;; aw=w64 ow=w64
+sbr_reset.L29d9:
+    dec rcx ;; aw=w64 ow=w64
+sbr_reset.L29dc:
+    movsx r8d, ax ;; aw=w64 ow=w32
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_13] ;; aw=w64 ow=w64
+    jmp sbr_reset.L1cff ;; aw=w64 ow=w64
+sbr_reset.L29f4:
+    mov eax, r15d ;; aw=w64 ow=w32
+    and eax, 15 ;; aw=w64 ow=w32
+    mov edx, 16 ;; aw=w64 ow=w32
+    cmovne rdx, rax ;; aw=w64 ow=w64
+    mov r9, r15 ;; aw=w64 ow=w64
+    sub r9, rdx ;; aw=w64 ow=w64
+    lea rax, [r9+1] ;; aw=w64 ow=w64
+    lea edi, [r13*2+0] ;; aw=w64 ow=w32
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov rsi, r8 ;; aw=w64 ow=w64
+    sub rsi, rdi ;; aw=w64 ow=w64
+    add rsi, 311992 ;; aw=w64 ow=w64
+sbr_reset.L2a26:
+    xor edi, edi ;; aw=w64 ow=w32
+    vmovdqa xmm0, XMMWORD PTR [rip+LCPI5_6] ;; aw=w64 ow=w128
+sbr_reset.L2a30:
+    vmovdqu xmm1, XMMWORD PTR [rsi+rdi*4+-48] ;; aw=w64 ow=w128
+    vmovdqu xmm2, XMMWORD PTR [rsi+rdi*4+-32] ;; aw=w64 ow=w128
+    vmovdqu xmm3, XMMWORD PTR [rsi+rdi*4+-16] ;; aw=w64 ow=w128
+    vmovdqu xmm4, XMMWORD PTR [rsi+rdi*4+0] ;; aw=w64 ow=w128
+    vpshufb xmm1, xmm1, xmm0 ;; aw=w64 ow=w128
+    vpshufb xmm2, xmm2, xmm0 ;; aw=w64 ow=w128
+    vpunpcklqdq xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [r8+rdi*2+311892], xmm1 ;; aw=w64 ow=w128
+    vpshufb xmm1, xmm3, xmm0 ;; aw=w64 ow=w128
+    vpshufb xmm2, xmm4, xmm0 ;; aw=w64 ow=w128
+    vpunpcklqdq xmm1, xmm1, xmm2 ;; aw=w64 ow=w128
+    vmovdqu XMMWORD PTR [r8+rdi*2+311908], xmm1 ;; aw=w64 ow=w128
+sbr_reset.L2a77:
+    add rdi, 16 ;; aw=w64 ow=w64
+    cmp r9, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L2a30 ;; aw=w64 ow=w64
+    cmp edx, 5 ;; aw=w64 ow=w32
+    jb sbr_reset.L2aef ;; aw=w64 ow=w64
+sbr_reset.L2a85:
+    mov eax, r15d ;; aw=w64 ow=w32
+    and eax, 3 ;; aw=w64 ow=w32
+    mov esi, 4 ;; aw=w64 ow=w32
+    cmovne rsi, rax ;; aw=w64 ow=w64
+    mov rdx, r15 ;; aw=w64 ow=w64
+    sub rdx, rsi ;; aw=w64 ow=w64
+    neg rsi ;; aw=w64 ow=w64
+    lea rax, [r15+rsi*1+0] ;; aw=w64 ow=w64
+    inc rax ;; aw=w64 ow=w64
+    sub rdx, r9 ;; aw=w64 ow=w64
+    mov r8, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    lea rsi, [r8+r9*2+0] ;; aw=w64 ow=w64
+sbr_reset.L2aaf:
+    add rsi, 311892 ;; aw=w64 ow=w64
+    lea edi, [r13*2+0] ;; aw=w64 ow=w32
+    lea r8, [r8+r9*4+0] ;; aw=w64 ow=w64
+    sub r8, rdi ;; aw=w64 ow=w64
+    add r8, 311944 ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+    vmovq xmm0, QWORD PTR [rip+LCPI5_9] ;; aw=w64 ow=w128
+sbr_reset.L2ad6:
+    vmovdqu xmm1, XMMWORD PTR [r8+rdi*4+0] ;; aw=w64 ow=w128
+    vpshufb xmm1, xmm1, xmm0 ;; aw=w64 ow=w128
+    vmovq QWORD PTR [rsi+rdi*2+0], xmm1 ;; aw=w64 ow=w128
+    add rdi, 4 ;; aw=w64 ow=w64
+    cmp rdx, rdi ;; aw=w64 ow=w64
+    jne sbr_reset.L2ad6 ;; aw=w64 ow=w64
+sbr_reset.L2aef:
+    mov r8, r15 ;; aw=w64 ow=w64
+    sub r8, rax ;; aw=w64 ow=w64
+    inc r8 ;; aw=w64 ow=w64
+    mov rsi, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    lea rdx, [rsi+rax*2+0] ;; aw=w64 ow=w64
+    add rdx, 311890 ;; aw=w64 ow=w64
+    add r13d, r13d ;; aw=w64 ow=w32
+    lea rax, [rsi+rax*4+0] ;; aw=w64 ow=w64
+    sub rax, r13 ;; aw=w64 ow=w64
+    add rax, 311940 ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L2b20:
+    movzx edi, WORD PTR [rax+rsi*4+0] ;; aw=w64 ow=w32
+    mov WORD PTR [rdx+rsi*2+0], di ;; aw=w64 ow=w16
+    inc rsi ;; aw=w64 ow=w64
+    cmp r8, rsi ;; aw=w64 ow=w64
+    jne sbr_reset.L2b20 ;; aw=w64 ow=w64
+sbr_reset.L2b30:
+    mov DWORD PTR [rbp+-128], r10d ;; aw=w64 ow=w32
+    mov DWORD PTR [rbp+-80], ecx ;; aw=w64 ow=w32
+    mov r12, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [r12+33] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, eax ;; aw=w64 ow=w128
+sbr_reset.L2b45:
+    vmovss DWORD PTR [rbp+-72], xmm0 ;; aw=w64 ow=w128
+    mov eax, DWORD PTR [r12+72] ;; aw=w64 ow=w32
+    vcvtsi2ss xmm0, xmm15, rax ;; aw=w64 ow=w128
+    movsx eax, r14w ;; aw=w64 ow=w32
+    vcvtsi2ss xmm1, xmm15, eax ;; aw=w64 ow=w128
+    vdivss xmm0, xmm0, xmm1 ;; aw=w64 ow=w128
+sbr_reset.L2b60:
+    call log2f ;; aw=w64 ow=w64
+sbr_reset.L2b65:
+    vmulss xmm0, xmm0, DWORD PTR [rbp+-72] ;; aw=w64 ow=w128
+    vcvtss2si rax, xmm0 ;; aw=w64 ow=w128
+    cmp rax, 2 ;; aw=w64 ow=w64
+    mov ecx, 1 ;; aw=w64 ow=w32
+    cmovge rcx, rax ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+311784], ecx ;; aw=w64 ow=w32
+    cmp ecx, 6 ;; aw=w64 ow=w32
+    jb sbr_reset.L2bb5 ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_18] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+sbr_reset.L2b9d:
+    xor eax, eax ;; aw=w64 ow=w32
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L2ba4:
+    mov DWORD PTR [r12+311784], 1 ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d31 ;; aw=w64 ow=w64
+sbr_reset.L2bb5:
+    mov WORD PTR [r12+312038], r14w ;; aw=w64 ow=w16
+    test ecx, ecx ;; aw=w64 ow=w32
+    mov r11, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    je sbr_reset.L2c89 ;; aw=w64 ow=w64
+    mov eax, ecx ;; aw=w64 ow=w32
+    and eax, 7 ;; aw=w64 ow=w32
+    cmp eax, 1 ;; aw=w64 ow=w32
+    jne sbr_reset.L2bde ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    mov r8d, 1 ;; aw=w64 ow=w32
+    jmp sbr_reset.L2c5b ;; aw=w64 ow=w64
+sbr_reset.L2bde:
+    mov r9d, ecx ;; aw=w64 ow=w32
+    and r9d, 6 ;; aw=w64 ow=w32
+    xor esi, esi ;; aw=w64 ow=w32
+    mov r10d, ecx ;; aw=w64 ow=w32
+    xor r8d, r8d ;; aw=w64 ow=w32
+sbr_reset.L2bed:
+    mov eax, r15d ;; aw=w64 ow=w32
+    sub eax, esi ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    div r10d ;; aw=w64 ow=w32
+    mov edi, eax ;; aw=w64 ow=w32
+    add edi, esi ;; aw=w64 ow=w32
+    cmp edi, 25 ;; aw=w64 ow=w32
+    jae sbr_reset.L32b9 ;; aw=w64 ow=w64
+    mov eax, edi ;; aw=w64 ow=w32
+    movzx eax, WORD PTR [r12+rax*2+311890] ;; aw=w64 ow=w32
+    mov WORD PTR [r12+r8*2+312040], ax ;; aw=w64 ow=w16
+    mov eax, r15d ;; aw=w64 ow=w32
+sbr_reset.L2c1b:
+    sub eax, edi ;; aw=w64 ow=w32
+    lea esi, [r10+-1] ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    div esi ;; aw=w64 ow=w32
+    mov esi, eax ;; aw=w64 ow=w32
+    add esi, edi ;; aw=w64 ow=w32
+    cmp esi, 24 ;; aw=w64 ow=w32
+    ja sbr_reset.L32b9 ;; aw=w64 ow=w64
+    mov eax, esi ;; aw=w64 ow=w32
+    movzx eax, WORD PTR [r12+rax*2+311890] ;; aw=w64 ow=w32
+    mov WORD PTR [r12+r8*2+312042], ax ;; aw=w64 ow=w16
+    add r8, 2 ;; aw=w64 ow=w64
+sbr_reset.L2c4a:
+    add r10d, 4294967294 ;; aw=w64 ow=w32
+    cmp r9, r8 ;; aw=w64 ow=w64
+    jne sbr_reset.L2bed ;; aw=w64 ow=w64
+    test cl, 1 ;; aw=w64 ow=w8
+    je sbr_reset.L2c89 ;; aw=w64 ow=w64
+    inc r8 ;; aw=w64 ow=w64
+sbr_reset.L2c5b:
+    inc ecx ;; aw=w64 ow=w32
+    sub r15d, esi ;; aw=w64 ow=w32
+    sub ecx, r8d ;; aw=w64 ow=w32
+    mov eax, r15d ;; aw=w64 ow=w32
+    xor edx, edx ;; aw=w64 ow=w32
+    div ecx ;; aw=w64 ow=w32
+    add eax, esi ;; aw=w64 ow=w32
+    cmp eax, 24 ;; aw=w64 ow=w32
+    ja sbr_reset.L32b9 ;; aw=w64 ow=w64
+    mov eax, eax ;; aw=w64 ow=w32
+    movzx eax, WORD PTR [r12+rax*2+311890] ;; aw=w64 ow=w32
+    mov WORD PTR [r12+r8*2+312038], ax ;; aw=w64 ow=w16
+sbr_reset.L2c89:
+    mov ecx, DWORD PTR [r12+0] ;; aw=w64 ow=w32
+    mov esi, DWORD PTR [r12+64] ;; aw=w64 ow=w32
+    mov eax, ecx ;; aw=w64 ow=w32
+    sar eax, 1 ;; aw=w64 ow=w32
+    add eax, 2048000 ;; aw=w64 ow=w32
+    cdq ;; aw=w64 ow=w32
+    idiv ecx ;; aw=w64 ow=w32
+    lea rcx, [r12+311792] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-72], rcx ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+312112], 0 ;; aw=w64 ow=w32
+    mov edi, r11d ;; aw=w64 ow=w32
+    cmp eax, DWORD PTR [rbp+-80] ;; aw=w64 ow=w32
+    jae sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2cc2:
+    lea rcx, [r12+311792] ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [rcx+0] ;; aw=w64 ow=w32
+    xor edi, edi ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jle sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311794] ;; aw=w64 ow=w32
+    mov edi, 1 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311796] ;; aw=w64 ow=w32
+    mov edi, 2 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2d03:
+    movzx ecx, WORD PTR [r12+311798] ;; aw=w64 ow=w32
+    mov edi, 3 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311800] ;; aw=w64 ow=w32
+    mov edi, 4 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311802] ;; aw=w64 ow=w32
+    mov edi, 5 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2d45:
+    movzx ecx, WORD PTR [r12+311804] ;; aw=w64 ow=w32
+    mov edi, 6 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311806] ;; aw=w64 ow=w32
+    mov edi, 7 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311808] ;; aw=w64 ow=w32
+    mov edi, 8 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2d87:
+    movzx ecx, WORD PTR [r12+311810] ;; aw=w64 ow=w32
+    mov edi, 9 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311812] ;; aw=w64 ow=w32
+    mov edi, 10 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311814] ;; aw=w64 ow=w32
+    mov edi, 11 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2dc9:
+    movzx ecx, WORD PTR [r12+311816] ;; aw=w64 ow=w32
+    mov edi, 12 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311818] ;; aw=w64 ow=w32
+    mov edi, 13 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311820] ;; aw=w64 ow=w32
+    mov edi, 14 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2e0b:
+    movzx ecx, WORD PTR [r12+311822] ;; aw=w64 ow=w32
+    mov edi, 15 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311824] ;; aw=w64 ow=w32
+    mov edi, 16 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311826] ;; aw=w64 ow=w32
+    mov edi, 17 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2e4d:
+    movzx ecx, WORD PTR [r12+311828] ;; aw=w64 ow=w32
+    mov edi, 18 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311830] ;; aw=w64 ow=w32
+    mov edi, 19 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311832] ;; aw=w64 ow=w32
+    mov edi, 20 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2e8f:
+    movzx ecx, WORD PTR [r12+311834] ;; aw=w64 ow=w32
+    mov edi, 21 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311836] ;; aw=w64 ow=w32
+    mov edi, 22 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311838] ;; aw=w64 ow=w32
+    mov edi, 23 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2ed1:
+    movzx ecx, WORD PTR [r12+311840] ;; aw=w64 ow=w32
+    mov edi, 24 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311842] ;; aw=w64 ow=w32
+    mov edi, 25 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311844] ;; aw=w64 ow=w32
+    mov edi, 26 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2f13:
+    movzx ecx, WORD PTR [r12+311846] ;; aw=w64 ow=w32
+    mov edi, 27 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311848] ;; aw=w64 ow=w32
+    mov edi, 28 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311850] ;; aw=w64 ow=w32
+    mov edi, 29 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2f55:
+    movzx ecx, WORD PTR [r12+311852] ;; aw=w64 ow=w32
+    mov edi, 30 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311854] ;; aw=w64 ow=w32
+    mov edi, 31 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311856] ;; aw=w64 ow=w32
+    mov edi, 32 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2f97:
+    movzx ecx, WORD PTR [r12+311858] ;; aw=w64 ow=w32
+    mov edi, 33 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311860] ;; aw=w64 ow=w32
+    mov edi, 34 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311862] ;; aw=w64 ow=w32
+    mov edi, 35 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L2fd9:
+    movzx ecx, WORD PTR [r12+311864] ;; aw=w64 ow=w32
+    mov edi, 36 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311866] ;; aw=w64 ow=w32
+    mov edi, 37 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311868] ;; aw=w64 ow=w32
+    mov edi, 38 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L301b:
+    movzx ecx, WORD PTR [r12+311870] ;; aw=w64 ow=w32
+    mov edi, 39 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311872] ;; aw=w64 ow=w32
+    mov edi, 40 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311874] ;; aw=w64 ow=w32
+    mov edi, 41 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L305d:
+    movzx ecx, WORD PTR [r12+311876] ;; aw=w64 ow=w32
+    mov edi, 42 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311878] ;; aw=w64 ow=w32
+    mov edi, 43 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311880] ;; aw=w64 ow=w32
+    mov edi, 44 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L3093:
+    movzx ecx, WORD PTR [r12+311882] ;; aw=w64 ow=w32
+    mov edi, 45 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311884] ;; aw=w64 ow=w32
+    mov edi, 46 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+    movzx ecx, WORD PTR [r12+311886] ;; aw=w64 ow=w32
+    mov edi, 47 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    jbe sbr_reset.L30df ;; aw=w64 ow=w64
+sbr_reset.L30c9:
+    movzx ecx, WORD PTR [r12+311888] ;; aw=w64 ow=w32
+    mov edi, 48 ;; aw=w64 ow=w32
+    cmp eax, ecx ;; aw=w64 ow=w32
+    ja sbr_reset.L32dc ;; aw=w64 ow=w64
+sbr_reset.L30df:
+    mov eax, 4294967295 ;; aw=w64 ow=w32
+    xor r8d, r8d ;; aw=w64 ow=w32
+    xor ecx, ecx ;; aw=w64 ow=w32
+    mov r15d, 4294967295 ;; aw=w64 ow=w32
+    mov r9d, esi ;; aw=w64 ow=w32
+    mov r10d, DWORD PTR [rbp+-128] ;; aw=w64 ow=w32
+    jmp sbr_reset.L312e ;; aw=w64 ow=w64
+sbr_reset.L30f8:
+    inc ecx ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+312112], ecx ;; aw=w64 ow=w32
+    mov r14d, r11d ;; aw=w64 ow=w32
+    mov r10d, r11d ;; aw=w64 ow=w32
+sbr_reset.L3108:
+    mov rdx, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    mov rbx, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    movzx ebx, WORD PTR [rbx+rdi*2+0] ;; aw=w64 ow=w32
+    sub ebx, r11d ;; aw=w64 ow=w32
+    cmp ebx, 3 ;; aw=w64 ow=w32
+    cmovl edi, edx ;; aw=w64 ow=w32
+    mov r15d, r9d ;; aw=w64 ow=w32
+    mov r9d, r14d ;; aw=w64 ow=w32
+    cmp WORD PTR [rbp+-80], r11w ;; aw=w64 ow=w16
+    je sbr_reset.L320e ;; aw=w64 ow=w64
+sbr_reset.L312e:
+    mov r11d, eax ;; aw=w64 ow=w32
+    mov eax, edi ;; aw=w64 ow=w32
+    cmp edi, r11d ;; aw=w64 ow=w32
+    jne sbr_reset.L3141 ;; aw=w64 ow=w64
+    cmp r9d, r15d ;; aw=w64 ow=w32
+    je sbr_reset.L31d5 ;; aw=w64 ow=w64
+sbr_reset.L3141:
+    mov edi, eax ;; aw=w64 ow=w32
+    cmp edi, 48 ;; aw=w64 ow=w32
+    ja sbr_reset.L326b ;; aw=w64 ow=w64
+    lea r14d, [r9+rsi*1+0] ;; aw=w64 ow=w32
+    mov rdx, QWORD PTR [rbp+-72] ;; aw=w64 ow=w64
+    lea r15, [rdx+rdi*2+0] ;; aw=w64 ow=w64
+    xor r12d, r12d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_reset.L3160:
+    movzx r11d, WORD PTR [r15+r12*2+0] ;; aw=w64 ow=w32
+    lea r13d, [rsi+r11*1+0] ;; aw=w64 ow=w32
+    and r13d, 1 ;; aw=w64 ow=w32
+    mov ebx, r13d ;; aw=w64 ow=w32
+    not ebx ;; aw=w64 ow=w32
+    add ebx, r14d ;; aw=w64 ow=w32
+    cmp ebx, r11d ;; aw=w64 ow=w32
+    jae sbr_reset.L318c ;; aw=w64 ow=w64
+    dec r12 ;; aw=w64 ow=w64
+    lea r11d, [rdi+r12*1+0] ;; aw=w64 ow=w32
+    cmp r11d, 49 ;; aw=w64 ow=w32
+    jb sbr_reset.L3160 ;; aw=w64 ow=w64
+sbr_reset.L3187:
+    jmp sbr_reset.L326b ;; aw=w64 ow=w64
+sbr_reset.L318c:
+    cmp ecx, 6 ;; aw=w64 ow=w32
+    jae sbr_reset.L31f5 ;; aw=w64 ow=w64
+    mov ebx, ecx ;; aw=w64 ow=w32
+    mov r14d, r11d ;; aw=w64 ow=w32
+    sub r14d, r10d ;; aw=w64 ow=w32
+    test r14d, r14d ;; aw=w64 ow=w32
+    cmovle r14d, r8d ;; aw=w64 ow=w32
+    mov rdx, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    mov BYTE PTR [rdx+rbx*1+312116], r14b ;; aw=w64 ow=w8
+    mov r15d, r14d ;; aw=w64 ow=w32
+    add r15d, r13d ;; aw=w64 ow=w32
+    mov r12d, esi ;; aw=w64 ow=w32
+sbr_reset.L31b5:
+    sub r12d, r15d ;; aw=w64 ow=w32
+    mov BYTE PTR [rdx+rbx*1+312122], r12b ;; aw=w64 ow=w8
+    mov r12, rdx ;; aw=w64 ow=w64
+    test r14b, r14b ;; aw=w64 ow=w8
+    jne sbr_reset.L30f8 ;; aw=w64 ow=w64
+    mov r14d, DWORD PTR [rbp+-128] ;; aw=w64 ow=w32
+    jmp sbr_reset.L3108 ;; aw=w64 ow=w64
+sbr_reset.L31d5:
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_19] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+sbr_reset.L31eb:
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L31f0:
+    jmp sbr_reset.L1d31 ;; aw=w64 ow=w64
+sbr_reset.L31f5:
+    mov r15, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    mov rdi, QWORD PTR [r15+8] ;; aw=w64 ow=w64
+    lea rdx, [rip+L_str_20] ;; aw=w64 ow=w64
+    mov esi, 16 ;; aw=w64 ow=w32
+    jmp sbr_reset.L20c8 ;; aw=w64 ow=w64
+sbr_reset.L320e:
+    cmp ecx, 2 ;; aw=w64 ow=w32
+    jb sbr_reset.L3228 ;; aw=w64 ow=w64
+    dec ecx ;; aw=w64 ow=w32
+    cmp BYTE PTR [r12+rcx*1+312116], 2 ;; aw=w64 ow=w8
+    ja sbr_reset.L3228 ;; aw=w64 ow=w64
+    mov DWORD PTR [r12+312112], ecx ;; aw=w64 ow=w32
+sbr_reset.L3228:
+    mov rdi, r12 ;; aw=w64 ow=w64
+    call sbr_make_f_tablelim ;; aw=w64 ow=w64
+sbr_reset.L3230:
+    mov DWORD PTR [r12+88876], 0 ;; aw=w64 ow=w32
+    mov DWORD PTR [r12+177644], 0 ;; aw=w64 ow=w32
+    jmp sbr_reset.L1d95 ;; aw=w64 ow=w64
+sbr_reset.L324d:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3252:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3257:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L325c:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3261:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3266:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L326b:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3270:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3275:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L327a:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L327f:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3284:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L3289:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L328e:
+    lea rdx, [rip+L_str_3] ;; aw=w64 ow=w64
+    lea rcx, [rip+L_str_9] ;; aw=w64 ow=w64
+    lea r8, [rip+L_str_5] ;; aw=w64 ow=w64
+    xor edi, edi ;; aw=w64 ow=w32
+    xor esi, esi ;; aw=w64 ow=w32
+    mov r9d, 345 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+sbr_reset.L32af:
+    call av_log ;; aw=w64 ow=w64
+sbr_reset.L32b4:
+    call abort ;; aw=w64 ow=w64
+sbr_reset.L32b9:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32be:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32c3:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32c8:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32cd:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32d2:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32d7:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_reset.L32dc:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+sbr_reset.L32ec:
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

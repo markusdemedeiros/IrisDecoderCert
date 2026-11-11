@@ -1,0 +1,392 @@
+sbr_x_gen:
+    push rbp ;; aw=w64 ow=w64
+    mov rbp, rsp ;; aw=w64 ow=w64
+    push r15 ;; aw=w64 ow=w64
+    push r14 ;; aw=w64 ow=w64
+    push r13 ;; aw=w64 ow=w64
+    push r12 ;; aw=w64 ow=w64
+    push rbx ;; aw=w64 ow=w64
+    sub rsp, 40 ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-56], rcx ;; aw=w64 ow=w64
+    cmp r9d, 2 ;; aw=w64 ow=w32
+    jae sbr_x_gen.Lbef3 ;; aw=w64 ow=w64
+sbr_x_gen.e1:
+    mov r12, r8 ;; aw=w64 ow=w64
+    mov r13, rdx ;; aw=w64 ow=w64
+    mov rbx, rdi ;; aw=w64 ow=w64
+    mov eax, r9d ;; aw=w64 ow=w32
+    imul rax, rax, 88768 ;; aw=w64 ow=w64
+    movzx eax, BYTE PTR [rdi+rax*1+88869] ;; aw=w64 ow=w32
+    xor r15d, r15d ;; aw=w64 ow=w32
+    cmp eax, 17 ;; aw=w64 ow=w32
+    lea r14d, [rax+rax*1+-32] ;; aw=w64 ow=w32
+    cmovb r14d, r15d ;; aw=w64 ow=w32
+sbr_x_gen.e2:
+    mov edx, 19456 ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-48], rsi ;; aw=w64 ow=w64
+    mov rdi, rsi ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    call memset ;; aw=w64 ow=w64
+sbr_x_gen.m1:
+    mov eax, DWORD PTR [rbx+84] ;; aw=w64 ow=w32
+    mov esi, 0 ;; aw=w64 ow=w32
+    test eax, eax ;; aw=w64 ow=w32
+    je sbr_x_gen.Lb9cc ;; aw=w64 ow=w64
+    mov r15d, eax ;; aw=w64 ow=w32
+    mov esi, eax ;; aw=w64 ow=w32
+    test r14d, r14d ;; aw=w64 ow=w32
+    jle sbr_x_gen.Lb9cc ;; aw=w64 ow=w64
+sbr_x_gen.a0:
+    mov eax, r14d ;; aw=w64 ow=w32
+    shl rax, 8 ;; aw=w64 ow=w64
+    mov rcx, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    add rcx, 10240 ;; aw=w64 ow=w64
+    lea rdx, [r12+36] ;; aw=w64 ow=w64
+    lea rdi, [rax+-512] ;; aw=w64 ow=w64
+    lea r8, [rax+-256] ;; aw=w64 ow=w64
+    xor esi, esi ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lb910:
+    mov r9, rdx ;; aw=w64 ow=w64
+    xor r10d, r10d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lb920:
+    vmovss xmm0, DWORD PTR [r9+-20] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+-10240], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r9+-16] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+-512], xmm0 ;; aw=w64 ow=w128
+    cmp r8, r10 ;; aw=w64 ow=w64
+    je sbr_x_gen.Lb9a6 ;; aw=w64 ow=w64
+sbr_x_gen.a2:
+    vmovss xmm0, DWORD PTR [r9+-12] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+-9984], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r9+-8] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+-256], xmm0 ;; aw=w64 ow=w128
+    cmp rdi, r10 ;; aw=w64 ow=w64
+    je sbr_x_gen.Lb9a6 ;; aw=w64 ow=w64
+    cmp r10, 9216 ;; aw=w64 ow=w64
+    je sbr_x_gen.Lbee9 ;; aw=w64 ow=w64
+sbr_x_gen.a3:
+    vmovss xmm0, DWORD PTR [r9+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+-9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r9+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rcx+r10*1+0], xmm0 ;; aw=w64 ow=w128
+    add r10, 768 ;; aw=w64 ow=w64
+    add r9, 24 ;; aw=w64 ow=w64
+    cmp rax, r10 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lb920 ;; aw=w64 ow=w64
+sbr_x_gen.Lb9a6:
+    inc rsi ;; aw=w64 ow=w64
+    mov r15d, DWORD PTR [rbx+84] ;; aw=w64 ow=w32
+    cmp rsi, r15 ;; aw=w64 ow=w64
+    jae sbr_x_gen.Lb9cc ;; aw=w64 ow=w64
+    add rcx, 4 ;; aw=w64 ow=w64
+    add rdx, 320 ;; aw=w64 ow=w64
+    cmp rsi, 64 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lb910 ;; aw=w64 ow=w64
+sbr_x_gen.t1:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lb9cc:
+    add r15d, DWORD PTR [rbx+92] ;; aw=w64 ow=w32
+    cmp esi, r15d ;; aw=w64 ow=w32
+    jae sbr_x_gen.Lbba9 ;; aw=w64 ow=w64
+    test r14d, r14d ;; aw=w64 ow=w32
+    jle sbr_x_gen.Lbba9 ;; aw=w64 ow=w64
+    lea ecx, [r14+-1] ;; aw=w64 ow=w32
+    cmp ecx, 38 ;; aw=w64 ow=w32
+    mov eax, 38 ;; aw=w64 ow=w32
+    cmovb eax, ecx ;; aw=w64 ow=w32
+    cmp esi, 65 ;; aw=w64 ow=w32
+    mov ecx, 64 ;; aw=w64 ow=w32
+    cmovae ecx, esi ;; aw=w64 ow=w32
+    cmp esi, 63 ;; aw=w64 ow=w32
+    ja sbr_x_gen.Lbba4 ;; aw=w64 ow=w64
+sbr_x_gen.b0:
+    mov edi, r14d ;; aw=w64 ow=w32
+    mov esi, esi ;; aw=w64 ow=w32
+    mov QWORD PTR [rbp+-72], rdi ;; aw=w64 ow=w64
+    and edi, 2147483644 ;; aw=w64 ow=w32
+    lea rdx, [rsi*4+0] ;; aw=w64 ow=w64
+    mov QWORD PTR [rbp+-64], rdx ;; aw=w64 ow=w64
+    mov rdx, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    lea r9, [rdx+10496] ;; aw=w64 ow=w64
+    lea r10, [rdx+rsi*4+0] ;; aw=w64 ow=w64
+    lea r11, [rsi*8+16384] ;; aw=w64 ow=w64
+    add r11, r13 ;; aw=w64 ow=w64
+    add r13, 17924 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lba50:
+    cmp eax, 38 ;; aw=w64 ow=w32
+    je sbr_x_gen.Lbeee ;; aw=w64 ow=w64
+    cmp r14d, 4 ;; aw=w64 ow=w32
+    jae sbr_x_gen.Lba70 ;; aw=w64 ow=w64
+    xor r15d, r15d ;; aw=w64 ow=w32
+    jmp sbr_x_gen.Lbb30 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lba70:
+    mov r8, QWORD PTR [rbp+-64] ;; aw=w64 ow=w64
+    xor r15d, r15d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lba80:
+    vmovss xmm0, DWORD PTR [r13+r8*2+-1540] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-10496], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+-1536] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-768], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+-1028] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-10240], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+-1024] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-512], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.b2:
+    vmovss xmm0, DWORD PTR [r13+r8*2+-516] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-9984], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+-512] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-256], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+-9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r13+r8*2+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r9+r8*1+0], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.b3:
+    add r15, 4 ;; aw=w64 ow=w64
+    add r8, 1024 ;; aw=w64 ow=w64
+    cmp rdi, r15 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lba80 ;; aw=w64 ow=w64
+    test BYTE PTR [rbp+-72], 2 ;; aw=w64 ow=w8
+    je sbr_x_gen.Lbb7d ;; aw=w64 ow=w64
+sbr_x_gen.Lbb30:
+    mov r8, r15 ;; aw=w64 ow=w64
+    shl r8, 8 ;; aw=w64 ow=w64
+    add r8, r10 ;; aw=w64 ow=w64
+    shl r15, 9 ;; aw=w64 ow=w64
+    add r15, r11 ;; aw=w64 ow=w64
+    xor edx, edx ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbb50:
+    vmovss xmm0, DWORD PTR [r15+rdx*2+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r8+rdx*1+0], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+rdx*2+4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r8+rdx*1+9728], xmm0 ;; aw=w64 ow=w128
+    add rdx, 256 ;; aw=w64 ow=w64
+    cmp rdx, 512 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lbb50 ;; aw=w64 ow=w64
+sbr_x_gen.Lbb7d:
+    inc rsi ;; aw=w64 ow=w64
+    mov edx, DWORD PTR [rbx+92] ;; aw=w64 ow=w32
+    add edx, DWORD PTR [rbx+84] ;; aw=w64 ow=w32
+    cmp rsi, rdx ;; aw=w64 ow=w64
+    jae sbr_x_gen.Lbba9 ;; aw=w64 ow=w64
+    add r13, 8 ;; aw=w64 ow=w64
+    add r9, 4 ;; aw=w64 ow=w64
+    add r10, 4 ;; aw=w64 ow=w64
+    add r11, 8 ;; aw=w64 ow=w64
+    cmp rsi, rcx ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lba50 ;; aw=w64 ow=w64
+sbr_x_gen.Lbba4:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lbba9:
+    mov r11d, DWORD PTR [rbx+88] ;; aw=w64 ow=w32
+    test r11d, r11d ;; aw=w64 ow=w32
+    je sbr_x_gen.Lbd11 ;; aw=w64 ow=w64
+    mov eax, r11d ;; aw=w64 ow=w32
+    cmp r14d, 37 ;; aw=w64 ow=w32
+    jg sbr_x_gen.Lbd16 ;; aw=w64 ow=w64
+sbr_x_gen.c0:
+    movsxd rcx, r14d ;; aw=w64 ow=w64
+    mov edx, 2 ;; aw=w64 ow=w32
+    sub rdx, rcx ;; aw=w64 ow=w64
+    lea rsi, [rcx+-35] ;; aw=w64 ow=w64
+    mov rax, rcx ;; aw=w64 ow=w64
+    shl rax, 8 ;; aw=w64 ow=w64
+    mov r10, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    lea rdi, [rax+r10*1+0] ;; aw=w64 ow=w64
+    add rdi, 9728 ;; aw=w64 ow=w64
+    lea r8, [r12+20] ;; aw=w64 ow=w64
+    mov r9d, edx ;; aw=w64 ow=w32
+    shl r9d, 5 ;; aw=w64 ow=w32
+    and r9d, 64 ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbc00:
+    mov r11, rcx ;; aw=w64 ow=w64
+    test dl, 2 ;; aw=w64 ow=w8
+    je sbr_x_gen.Lbc39 ;; aw=w64 ow=w64
+    xor r15d, r15d ;; aw=w64 ow=w32
+    mov r11, rcx ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbc10:
+    vmovss xmm0, DWORD PTR [r8+r11*8+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdi+r15*8+-9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r8+r11*8+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdi+r15*8+0], xmm0 ;; aw=w64 ow=w128
+    inc r11 ;; aw=w64 ow=w64
+    add r15, 32 ;; aw=w64 ow=w64
+    cmp r9, r15 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lbc10 ;; aw=w64 ow=w64
+sbr_x_gen.Lbc39:
+    cmp esi, 3 ;; aw=w64 ow=w32
+    jb sbr_x_gen.Lbce0 ;; aw=w64 ow=w64
+    lea r15, [r11+5] ;; aw=w64 ow=w64
+    shl r11, 8 ;; aw=w64 ow=w64
+    add r11, r10 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbc50:
+    vmovss xmm0, DWORD PTR [r12+r15*8+-24] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+0], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+-20] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+-16] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+256], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+-12] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+9984], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.c2:
+    vmovss xmm0, DWORD PTR [r12+r15*8+-8] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+512], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+10240], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+768], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r12+r15*8+4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+10496], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.c3:
+    add r15, 4 ;; aw=w64 ow=w64
+    add r11, 1024 ;; aw=w64 ow=w64
+    cmp r15, 43 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lbc50 ;; aw=w64 ow=w64
+sbr_x_gen.Lbce0:
+    inc rax ;; aw=w64 ow=w64
+    mov r11d, DWORD PTR [rbx+88] ;; aw=w64 ow=w32
+    cmp rax, r11 ;; aw=w64 ow=w64
+    jae sbr_x_gen.Lbd16 ;; aw=w64 ow=w64
+    add rdi, 4 ;; aw=w64 ow=w64
+    add r8, 320 ;; aw=w64 ow=w64
+    add r10, 4 ;; aw=w64 ow=w64
+    add r12, 320 ;; aw=w64 ow=w64
+    cmp rax, 64 ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lbc00 ;; aw=w64 ow=w64
+sbr_x_gen.t2:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lbd11:
+    xor r11d, r11d ;; aw=w64 ow=w32
+    xor eax, eax ;; aw=w64 ow=w32
+sbr_x_gen.Lbd16:
+    add r11d, DWORD PTR [rbx+96] ;; aw=w64 ow=w32
+    cmp eax, r11d ;; aw=w64 ow=w32
+    jae sbr_x_gen.Lbed8 ;; aw=w64 ow=w64
+    cmp r14d, 31 ;; aw=w64 ow=w32
+    jg sbr_x_gen.Lbed8 ;; aw=w64 ow=w64
+    cmp eax, 65 ;; aw=w64 ow=w32
+    mov ecx, 64 ;; aw=w64 ow=w32
+    cmovae ecx, eax ;; aw=w64 ow=w32
+    cmp eax, 63 ;; aw=w64 ow=w32
+    ja sbr_x_gen.Lbed3 ;; aw=w64 ow=w64
+sbr_x_gen.d0:
+    mov edx, r14d ;; aw=w64 ow=w32
+    mov eax, eax ;; aw=w64 ow=w32
+    mov esi, r14d ;; aw=w64 ow=w32
+    neg esi ;; aw=w64 ow=w32
+    and esi, 2 ;; aw=w64 ow=w32
+    add r14d, 4294967267 ;; aw=w64 ow=w32
+    mov rdi, rdx ;; aw=w64 ow=w64
+    shl rdi, 8 ;; aw=w64 ow=w64
+    lea rdi, [rdi+rax*4+0] ;; aw=w64 ow=w64
+    mov r11, QWORD PTR [rbp+-48] ;; aw=w64 ow=w64
+    add rdi, r11 ;; aw=w64 ow=w64
+    add rdi, 9728 ;; aw=w64 ow=w64
+sbr_x_gen.d1:
+    mov r8, rdx ;; aw=w64 ow=w64
+    shl r8, 9 ;; aw=w64 ow=w64
+    mov r15, QWORD PTR [rbp+-56] ;; aw=w64 ow=w64
+    lea r9, [r15+rax*8+0] ;; aw=w64 ow=w64
+    add r8, r9 ;; aw=w64 ow=w64
+    add r8, 4 ;; aw=w64 ow=w64
+    mov r9d, esi ;; aw=w64 ow=w32
+    shl r9d, 8 ;; aw=w64 ow=w32
+    lea r10d, [rsi+-2] ;; aw=w64 ow=w32
+    add r10, rdx ;; aw=w64 ow=w64
+    add r10, 2 ;; aw=w64 ow=w64
+    lea r11, [r11+rax*4+0] ;; aw=w64 ow=w64
+    lea r15, [r15+rax*8+0] ;; aw=w64 ow=w64
+    add r15, 1540 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbdb0:
+    mov r12, rdx ;; aw=w64 ow=w64
+    test esi, esi ;; aw=w64 ow=w32
+    je sbr_x_gen.Lbdec ;; aw=w64 ow=w64
+    xor r12d, r12d ;; aw=w64 ow=w32
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbdc0:
+    vmovss xmm0, DWORD PTR [r8+r12*2+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdi+r12*1+-9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r8+r12*2+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [rdi+r12*1+0], xmm0 ;; aw=w64 ow=w128
+    add r12, 256 ;; aw=w64 ow=w64
+    cmp r9d, r12d ;; aw=w64 ow=w32
+    jne sbr_x_gen.Lbdc0 ;; aw=w64 ow=w64
+    mov r12, r10 ;; aw=w64 ow=w64
+sbr_x_gen.Lbdec:
+    cmp r14d, 3 ;; aw=w64 ow=w32
+    jb sbr_x_gen.Lbeaa ;; aw=w64 ow=w64
+    lea r13d, [r12+-1] ;; aw=w64 ow=w32
+    shl r12, 8 ;; aw=w64 ow=w64
+    .nops 1 ;; aw=w64 ow=w64
+sbr_x_gen.Lbe00:
+    vmovss xmm0, DWORD PTR [r15+r12*2+-1540] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+0], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+-1536] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+9728], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+-1028] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+256], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+-1024] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+9984], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.d2:
+    vmovss xmm0, DWORD PTR [r15+r12*2+-516] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+512], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+-512] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+10240], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+-4] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+768], xmm0 ;; aw=w64 ow=w128
+    vmovss xmm0, DWORD PTR [r15+r12*2+0] ;; aw=w64 ow=w128
+    vmovss DWORD PTR [r11+r12*1+10496], xmm0 ;; aw=w64 ow=w128
+sbr_x_gen.d3:
+    add r13d, 4 ;; aw=w64 ow=w32
+    add r12, 1024 ;; aw=w64 ow=w64
+    cmp r13d, 31 ;; aw=w64 ow=w32
+    jl sbr_x_gen.Lbe00 ;; aw=w64 ow=w64
+sbr_x_gen.Lbeaa:
+    inc rax ;; aw=w64 ow=w64
+    mov r12d, DWORD PTR [rbx+96] ;; aw=w64 ow=w32
+    add r12d, DWORD PTR [rbx+88] ;; aw=w64 ow=w32
+    cmp rax, r12 ;; aw=w64 ow=w64
+    jae sbr_x_gen.Lbed8 ;; aw=w64 ow=w64
+    add rdi, 4 ;; aw=w64 ow=w64
+    add r8, 8 ;; aw=w64 ow=w64
+    add r11, 4 ;; aw=w64 ow=w64
+    add r15, 8 ;; aw=w64 ow=w64
+    cmp rax, rcx ;; aw=w64 ow=w64
+    jne sbr_x_gen.Lbdb0 ;; aw=w64 ow=w64
+sbr_x_gen.Lbed3:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lbed8:
+    xor eax, eax ;; aw=w64 ow=w32
+    add rsp, 40 ;; aw=w64 ow=w64
+    pop rbx ;; aw=w64 ow=w64
+    pop r12 ;; aw=w64 ow=w64
+    pop r13 ;; aw=w64 ow=w64
+    pop r14 ;; aw=w64 ow=w64
+    pop r15 ;; aw=w64 ow=w64
+    pop rbp ;; aw=w64 ow=w64
+sbr_x_gen.done:
+    ret ;; aw=w64 ow=w64
+sbr_x_gen.Lbee9:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lbeee:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+sbr_x_gen.Lbef3:
+    ud1 eax, DWORD PTR [eax+18] ;; aw=w32 ow=w32
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64
+    int3 ;; aw=w64 ow=w64

@@ -1,0 +1,5 @@
+Building 166 modules for SbrClient.UpstreamCalls
+1/166 Kraken.InfoOff: exit=1 elapsed=0.1s
+Waiting for shared experiment build slot
+Insufficient memory headroom for both capped lanes; retry after checking other processes.
+

@@ -1,0 +1,134 @@
+MachineWP.vmovaps_load_mem_spec	`vmovaps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.vmovaps_store_mem_spec	`vmovaps %xmm, m128`: 16 owned bytes, 16-byte aligned.
+MachineWP.vmovaps256_load_mem_spec	`vmovaps m256, %ymm`: 32 readable bytes, 32-byte aligned.
+MachineWP.vmovaps256_store_mem_spec	`vmovaps %ymm, m256`: 32 owned bytes, 32-byte aligned.
+MachineWP.vmovapd_load_mem_spec	`vmovapd m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.vmovapd_store_mem_spec	`vmovapd %xmm, m128`: 16 owned bytes, 16-byte aligned.
+MachineWP.vmovapd256_load_mem_spec	`vmovapd m256, %ymm`: 32 readable bytes, 32-byte aligned.
+MachineWP.vmovapd256_store_mem_spec	`vmovapd %ymm, m256`: 32 owned bytes, 32-byte aligned.
+MachineWP.vmovdqa_load_mem_spec	`vmovdqa m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.vmovdqa_store_mem_spec	`vmovdqa %xmm, m128`: 16 owned bytes, 16-byte aligned.
+MachineWP.vmovdqa256_load_mem_spec	`vmovdqa m256, %ymm`: 32 readable bytes, 32-byte aligned.
+MachineWP.vmovdqa256_store_mem_spec	`vmovdqa %ymm, m256`: 32 owned bytes, 32-byte aligned.
+MachineWP.vmovups_load_mem_spec	`vmovups m128, %xmm`: 16 readable bytes, at any alignment.
+MachineWP.vmovups_store_mem_spec	`vmovups %xmm, m128`: 16 owned bytes, at any alignment.
+MachineWP.vmovups256_load_mem_spec	`vmovups m256, %ymm`: 32 readable bytes, at any alignment.
+MachineWP.vmovups256_store_mem_spec	`vmovups %ymm, m256`: 32 owned bytes, at any alignment.
+MachineWP.vmovaps_reg_spec	`vmovaps %src, %dst` (register form, any width).
+MachineWP.vmovapd_reg_spec	`vmovapd %src, %dst` (register form, any width).
+MachineWP.vmovdqa_reg_spec	`vmovdqa %src, %dst` (register form, any width).
+MachineWP.vmovups_reg_spec	`vmovups %src, %dst` (register form, any width).
+MachineWP.vmovlps_store_mem_spec	`vmovlps %xmm, m64`: 8 owned bytes, any alignment; the low quadword is stored.
+MachineWP.vaddps_load_mem_spec	`vaddps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vmulps_load_mem_spec	`vmulps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vsubps_load_mem_spec	`vsubps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vsubps_reg_spec	`vsubps %src2, %src1, %dst` (register form, any width).
+MachineWP.vdivps_load_mem_spec	`vdivps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vdivps_reg_spec	`vdivps %src2, %src1, %dst` (register form, any width).
+MachineWP.vaddsubps_load_mem_spec	`vaddsubps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vaddsubps_reg_spec	`vaddsubps %src2, %src1, %dst` (register form, any width).
+MachineWP.vandps_load_mem_spec	`vandps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vandps_reg_spec	`vandps %src2, %src1, %dst` (register form, any width).
+MachineWP.vandnps_load_mem_spec	`vandnps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vandnps_reg_spec	`vandnps %src2, %src1, %dst` (register form, any width).
+MachineWP.vxorps_load_mem_spec	`vxorps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vxorps_load_rip_spec	`vxorps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vxorps_load_rip_off_spec	`vxorps m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vxorpd_load_mem_spec	`vxorpd m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vxorpd_reg_spec	`vxorpd %src2, %src1, %dst` (register form, any width).
+MachineWP.vpaddd_load_mem_spec	`vpaddd m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpaddd_load_rip_spec	`vpaddd m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpaddd_load_rip_off_spec	`vpaddd m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpaddd_reg_spec	`vpaddd %src2, %src1, %dst` (register form, any width).
+MachineWP.vpand_load_mem_spec	`vpand m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpand_load_rip_spec	`vpand m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpand_load_rip_off_spec	`vpand m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpand_reg_spec	`vpand %src2, %src1, %dst` (register form, any width).
+MachineWP.vpxor_load_mem_spec	`vpxor m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpxor_reg_spec	`vpxor %src2, %src1, %dst` (register form, any width).
+MachineWP.vmulps_reg_spec	`vmulps %src2, %src1, %dst` (register form, any width).
+MachineWP.vblendvps_load_mem_spec	`vblendvps %mask, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vblendvps_load_rip_spec	`vblendvps %mask, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vblendvps_load_rip_off_spec	`vblendvps %mask, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vblendvps_reg_spec	`vblendvps %mask, %src2, %src1, %dst` (register form).
+MachineWP.vshufpd_load_mem_spec	`vshufpd $imm, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vshufpd_reg_spec	`vshufpd $imm, %src2, %src1, %dst` (register form).
+MachineWP.vshufps_load_mem_spec	`vshufps $imm, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpblendw_load_mem_spec	`vpblendw $imm, m128, %src1, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpblendw_reg_spec	`vpblendw $imm, %src2, %src1, %dst` (register form).
+MachineWP.vpermilps_load_mem_spec	`vpermilps $imm, m128, %dst`: 16 readable bytes, any alignment.
+MachineWP.vpermilps_reg_spec	`vpermilps $imm, %src, %dst` (register form).
+MachineWP.vmovshdup_load_mem_spec	`vmovshdup m128, %dst`: 16 readable bytes, any alignment.
+MachineWP.vmovshdup_reg_spec	`vmovshdup %src, %dst` (register form).
+MachineWP.vmovsldup_load_mem_spec	`vmovsldup m128, %dst`: 16 readable bytes, any alignment.
+MachineWP.vmovsldup_reg_spec	`vmovsldup %src, %dst` (register form).
+MachineWP.vpslld_imm_spec	`vpslld $imm, %src, %dst`: each dword shifted left (zero past 31).
+MachineWP.vbroadcastss_load_mem_spec	`vbroadcastss m32, %dst` (any width): 4 readable bytes, any alignment.
+MachineWP.vbroadcastss_load_rip_spec	`vbroadcastss m32, %dst` (any width): 4 readable bytes, any alignment.
+MachineWP.vbroadcastss_load_rip_off_spec	`vbroadcastss m32, %dst` (any width): 4 readable bytes, any alignment.
+MachineWP.vbroadcastss_reg_spec	`vbroadcastss %xmm, %dst` (register form).
+MachineWP.vinsertps_load_mem_spec	`vinsertps $imm, m32, %src1, %dst`: 4 readable bytes, any alignment.
+MachineWP.vinsertps_reg_spec	`vinsertps $imm, %src2, %src1, %dst` (register form).
+MachineWP.vpinsrd_reg_spec	`vpinsrd $imm, %r32, %src1, %dst`.
+MachineWP.vpextrd_reg_spec	`vpextrd $imm, %src, %r32`: the dword, zero-extended into the register.
+MachineWP.movdqa_load_mem_spec	`movdqa m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movdqa_load_rip_spec	`movdqa m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movdqa_load_rip_off_spec	`movdqa m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movdqa_store_mem_spec	`movdqa %xmm, m128`: 16 owned bytes, 16-byte aligned.
+MachineWP.movdqa_reg_spec	`movdqa %xs, %xd`.
+MachineWP.movdqu_load_mem_spec	`movdqu m128, %xmm`: 16 readable bytes, any alignment.
+MachineWP.movdqu_store_mem_spec	`movdqu %xmm, m128`: 16 owned bytes, any alignment.
+MachineWP.movdqu_reg_spec	`movdqu %xs, %xd`.
+MachineWP.movups_load_mem_spec	`movups m128, %xmm`: 16 readable bytes, any alignment.
+MachineWP.movups_store_mem_spec	`movups %xmm, m128`: 16 owned bytes, any alignment.
+MachineWP.movups_reg_spec	`movups %xs, %xd`.
+MachineWP.movaps_load_rip_spec	`movaps sym(%rip), %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movaps_load_rip_off_spec	`movaps sym+o(%rip), %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movaps_store_mem_spec	`movaps %xmm, m128`: 16 owned bytes, 16-byte aligned.
+MachineWP.movss_load_mem_spec	`movss m32, %xmm`: 4 readable bytes, any alignment; bits 127..32 cleared.
+MachineWP.movss_store_mem_spec	`movss %xmm, m32`: 4 owned bytes, any alignment.
+MachineWP.movsd_load_mem_spec	`movsd m64, %xmm`: 8 readable bytes, any alignment; bits 127..64 cleared.
+MachineWP.movsd_store_mem_spec	`movsd %xmm, m64`: 8 owned bytes, any alignment.
+MachineWP.movqx_load_mem_spec	`movqx m64, %xmm`: 8 readable bytes, any alignment; bits 127..64 cleared.
+MachineWP.movqx_store_mem_spec	`movqx %xmm, m64`: 8 owned bytes, any alignment.
+MachineWP.movss_reg_spec	`movss %xs, %xd`: merges the low float.
+MachineWP.movsd_reg_spec	`movsd %xs, %xd`: merges the low double.
+MachineWP.movqx_reg_spec	`movq %xs, %xd`: the low quadword, zero-extended.
+MachineWP.movlps_load_mem_spec	`movlps m64, %xmm`: 8 readable bytes, any alignment; the low quadword replaced.
+MachineWP.movlps_store_mem_spec	`movlps %xmm, m64`: 8 owned bytes, any alignment.
+MachineWP.movhps_load_mem_spec	`movhps m64, %xmm`: 8 readable bytes, any alignment; the high quadword replaced.
+MachineWP.movhps_store_mem_spec	`movhps %xmm, m64`: 8 owned bytes, any alignment; the high quadword stored.
+MachineWP.movlhps_spec	`movlhps %xs, %xd`.
+MachineWP.movhlps_spec	`movhlps %xs, %xd`.
+MachineWP.addps_load_mem_spec	`addps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.subps_load_mem_spec	`subps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.mulps_load_mem_spec	`mulps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.mulps_reg_spec	`mulps %xs, %xd`.
+MachineWP.xorps_load_mem_spec	`xorps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.xorps_reg_spec	`xorps %xs, %xd`.
+MachineWP.shufps_load_mem_spec	`shufps $imm, m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.shufps_reg_spec	`shufps $imm, %xs, %xd`.
+MachineWP.unpcklps_load_mem_spec	`unpcklps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.unpcklps_reg_spec	`unpcklps %xs, %xd`.
+MachineWP.punpckldq_load_mem_spec	`punpckldq m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.punpckldq_reg_spec	`punpckldq %xs, %xd`.
+MachineWP.unpckhps_load_mem_spec	`unpckhps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.unpckhps_reg_spec	`unpckhps %xs, %xd`.
+MachineWP.punpckhdq_load_mem_spec	`punpckhdq m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.punpckhdq_reg_spec	`punpckhdq %xs, %xd`.
+MachineWP.haddps_load_mem_spec	`haddps m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.haddps_reg_spec	`haddps %xs, %xd`.
+MachineWP.movshdup_load_mem_spec	`movshdup m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.movshdup_reg_spec	`movshdup %xs, %xd`.
+MachineWP.pxor_load_mem_spec	`pxor m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.pxor_reg_spec	`pxor %xs, %xd`.
+MachineWP.pand_load_mem_spec	`pand m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.pand_reg_spec	`pand %xs, %xd`.
+MachineWP.pcmpeqd_load_mem_spec	`pcmpeqd m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.pcmpeqd_reg_spec	`pcmpeqd %xs, %xd`.
+MachineWP.pshufd_load_mem_spec	`pshufd $imm, m128, %xmm`: 16 readable bytes, 16-byte aligned.
+MachineWP.pshufd_reg_spec	`pshufd $imm, %xs, %xd`.
+MachineWP.addss_load_mem_spec	`addss m32, %xmm`: 4 readable bytes, any alignment.
+MachineWP.addss_reg_spec	`addss %xs, %xd`.
+MachineWP.movddup_load_mem_spec	`movddup m64, %xmm`: 8 readable bytes, any alignment.
+MachineWP.movddup_reg_spec	`movddup %xs, %xd`.

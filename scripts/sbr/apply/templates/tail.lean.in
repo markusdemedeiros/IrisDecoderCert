@@ -1,0 +1,16 @@
+
+abbrev var : Label → MachineData → Nat := fun _ _ => 0
+
+abbrev Post' (k : Nat) (e : Env) (x : Args) (ra : Int64) (t₀ s : MachineData) : Prop := ApplyPost k e x ra t₀ s
+
+/-- The obligation of the block `blk` at the literal label `l`. -/
+abbrev BlockOb (k : Nat) (e : Env) (x : Args) (ra : Int64) (t₀ : MachineData) (l : Label)
+    (blk : Program.Block) : Prop :=
+  ∀ n : Nat,
+    ⦃ fun s => table k e x ra t₀ l s ∧ var l s = n ⦄ blk.body
+    ⦃ (match blk.next with
+       | some l' => fun _ s => table k e x ra t₀ l' s ∧ var l' s ≤ n
+       | none => fun _ _ => False);
+      fun a s => Table.ofLabels (fun l' s => (Program.blockAt body l').isSome
+          ∧ table k e x ra t₀ l' s ∧ Program.EdgeLt body var l n l' s) a s
+        ∨ (a = ra ∧ Post' k e x ra t₀ s) ⦄

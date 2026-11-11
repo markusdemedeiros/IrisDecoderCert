@@ -1,0 +1,143 @@
+
+open Kraken.X64.Parser
+open Std.WP
+open MachineWP
+open scoped Kraken.FrameLemmas.Int32Nat
+open scoped Kraken.HelperLemmas.Bytes16
+
+set_option mvcgen.warning false
+set_option grind.warning false
+
+namespace Kraken.Examples.Sbr.HfAssemble
+
+variable [CodeEnv]
+
+abbrev c8 (a v : BitVec 64) : Mem 64 → Prop := Int.toBytes 8 v.toInt =@ a
+
+/-- The caller's memory behind the footprint: the return address and `R`. -/
+def Rest (R : Mem 64 → Prop) (ra : Int64) (t₀ : MachineData) : Mem 64 → Prop :=
+  RetCell ra (t₀.regs.get64 .rsp) ⋆ R
+
+/-- The data in the layout the proof uses: `Y1` at `arg0` (`= Y[ypos]`, `HfC`), `X_high`,
+`q_m`/`s_m`/`gain` as one block, `g_temp`/`q_temp` as one block, the read-only data, and last
+the 24 bytes after `Y1` when `ypos = 0` (`Y[1][0][0..3)`; for `ypos = 1` these bytes are
+`g_temp[0][0..6)`, already in the `g_temp` block, and the last block is empty). `DataW_eq`:
+this is `HfData x.ypos` under `HfC`. -/
+def DataW (x : HfArgs) (t : MachineData) : Mem 64 → Prop :=
+  Blocks [(arg0 t, 19456), (arg1 t, 20480), (arg2 t + 0x5eac0#64, 4608),
+    (arg3 t + 0x11130#64, 16128), (lab "ff_sbr_noise_table", 4160), (lab "ps_noise0", 16),
+    (lab "ps_noise13", 48), (lab "ps_noise2", 16), (arg0 t + 19456#64, 24 - 24 * x.ypos)]
+  ⋆ (4 ?@ lab "LCPI17_6" ⋆ (4 ?@ lab "LCPI17_7" ⋆ (4 ?@ lab "LCPI17_8" ⋆ (4 ?@ lab "LCPI17_9"
+  ⋆ (4 ?@ lab "LCPI17_10" ⋆ (4 ?@ lab "LCPI17_12"
+  ⋆ Int.toBytes 16 0x3000001ff =@ lab "LCPI17_11"))))))
+
+/-- `DataW` without the `g_temp`/`q_temp` block (the frame when a `g_temp`/`q_temp` piece is cut out). -/
+def DataWG (x : HfArgs) (t : MachineData) : Mem 64 → Prop :=
+  Blocks [(arg0 t, 19456), (arg1 t, 20480), (arg2 t + 0x5eac0#64, 4608),
+    (lab "ff_sbr_noise_table", 4160), (lab "ps_noise0", 16),
+    (lab "ps_noise13", 48), (lab "ps_noise2", 16), (arg0 t + 19456#64, 24 - 24 * x.ypos)]
+  ⋆ (4 ?@ lab "LCPI17_6" ⋆ (4 ?@ lab "LCPI17_7" ⋆ (4 ?@ lab "LCPI17_8" ⋆ (4 ?@ lab "LCPI17_9"
+  ⋆ (4 ?@ lab "LCPI17_10" ⋆ (4 ?@ lab "LCPI17_12"
+  ⋆ Int.toBytes 16 0x3000001ff =@ lab "LCPI17_11"))))))
+
+/-- `DataW` without the `g_temp`/`q_temp` and `q_m`/`s_m`/`gain` blocks (the frame of the `memcpy` footprints). -/
+def DataWGS (x : HfArgs) (t : MachineData) : Mem 64 → Prop :=
+  Blocks [(arg0 t, 19456), (arg1 t, 20480),
+    (lab "ff_sbr_noise_table", 4160), (lab "ps_noise0", 16),
+    (lab "ps_noise13", 48), (lab "ps_noise2", 16), (arg0 t + 19456#64, 24 - 24 * x.ypos)]
+  ⋆ (4 ?@ lab "LCPI17_6" ⋆ (4 ?@ lab "LCPI17_7" ⋆ (4 ?@ lab "LCPI17_8" ⋆ (4 ?@ lab "LCPI17_9"
+  ⋆ (4 ?@ lab "LCPI17_10" ⋆ (4 ?@ lab "LCPI17_12"
+  ⋆ Int.toBytes 16 0x3000001ff =@ lab "LCPI17_11"))))))
+
+theorem DataW_G (x : HfArgs) (t : MachineData) :
+    DataW x t = Block (arg3 t + 0x11130#64) 16128 ⋆ DataWG x t := by
+  simp only [DataW, DataWG, Blocks]
+  ac_rfl
+
+theorem DataW_GS (x : HfArgs) (t : MachineData) :
+    DataW x t = Block (arg3 t + 0x11130#64) 16128 ⋆ (Block (arg2 t + 0x5eac0#64) 4608 ⋆ DataWGS x t) := by
+  simp only [DataW, DataWGS, Blocks]
+  ac_rfl
+omit [CodeEnv] in
+theorem hf_block0 (a : BitVec 64) : (0 ?@ a : Mem 64 → Prop) = Std.ExtHashMap.emp := by
+  funext m
+  apply propext
+  constructor
+  · rintro ⟨-, bs, hl, rfl⟩
+    rw [List.length_eq_zero_iff] at hl
+    subst hl
+    rfl
+  · intro h
+    refine ⟨by decide, [], rfl, ?_⟩
+    exact h.symm
+
+omit [CodeEnv] in
+/-- `q_m`, `s_m`, `gain` (contiguous `[8][48]` floats each) as one block. -/
+theorem hf_qsg (a : BitVec 64) (K : Mem 64 → Prop) :
+    Block (a + 0x5eac0#64) 1536 ⋆ (Block (a + 0x5f0c0#64) 1536 ⋆ (Block (a + 0x5f6c0#64) 1536 ⋆ K))
+      = Block (a + 0x5eac0#64) 4608 ⋆ K := by
+  rw [show (Block (a + 0x5eac0#64) 4608 : Mem 64 → Prop) = (1536 + 3072) ?@ (a + 0x5eac0#64) from rfl,
+    Block.split _ 1536 3072 (by decide),
+    show ((3072 : Nat) ?@ (a + 0x5eac0#64 + BitVec.ofNat 64 1536) : Mem 64 → Prop)
+      = (1536 + 1536) ?@ (a + 0x5eac0#64 + BitVec.ofNat 64 1536) from rfl,
+    Block.split _ 1536 1536 (by decide),
+    show a + 0x5eac0#64 + BitVec.ofNat 64 1536 = a + 0x5f0c0#64 by bv_omega,
+    show a + 0x5f0c0#64 + BitVec.ofNat 64 1536 = a + 0x5f6c0#64 by bv_omega]
+  simp only [Std.ExtHashMap.sep_assoc]
+
+/-- `HfData` (the statement's layout) is the proof's `DataW` when `arg0 = Y[ypos]`. -/
+theorem DataW_eq (x : HfArgs) (t : MachineData) (hy : x.ypos ≤ 1)
+    (h0 : arg0 t = arg3 t + 0x7930#64 + BitVec.ofNat 64 (19456 * x.ypos)) :
+    HfData x.ypos t = DataW x t := by
+  simp only [HfData, DataW, Blocks]
+  rw [← h0]
+  obtain hy0 | hy1 : x.ypos = 0 ∨ x.ypos = 1 := by omega
+  · rw [hy0]
+    simp only [Nat.mul_zero, Nat.sub_zero, BitVec.add_zero]
+    rw [hf_qsg]
+    simp only [Std.ExtHashMap.sep_assoc]
+    ac_rfl
+  · rw [hy1]
+    have e1 : arg0 t + 19456#64 = arg3 t + 0x11130#64 := by
+      rw [h0, hy1]; bv_omega
+    simp only [Nat.mul_one, Nat.reduceSub]
+    rw [e1, hf_block0, Std.ExtHashMap.sep_emp,
+      show (Block (arg3 t + 0x11130#64) 16128 : Mem 64 → Prop) = (24 + 16104) ?@ (arg3 t + 0x11130#64) from rfl,
+      Block.split _ 24 16104 (by decide),
+      hf_qsg]
+    simp only [Std.ExtHashMap.sep_assoc]
+    ac_rfl
+
+
+/-! `HfC`'s clauses by name. -/
+theorem hfc_te {x : HfArgs} {t : MachineData} (h : HfC x t) : ∀ e, e ≤ x.nenv → x.te e ≤ 19 :=
+  h.2.2.2.2.2.2.2.2.2.2.1
+theorem hfc_ypos {x : HfArgs} {t : MachineData} (h : HfC x t) : x.ypos ≤ 1 :=
+  h.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1
+theorem hfc_y1 {x : HfArgs} {t : MachineData} (h : HfC x t) :
+    arg0 t = arg3 t + 0x7930#64 + BitVec.ofNat 64 (19456 * x.ypos) :=
+  h.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2
+
+def ScW (x : HfArgs) (t : MachineData) : Mem 64 → Prop := HfSc x t
+def FnW (fs : HfFns) (t : MachineData) : Mem 64 → Prop := HfFn fs t
+def TeW (x : HfArgs) (t : MachineData) : Mem 64 → Prop := HfTe x t
+def EaW (x : HfArgs) (t : MachineData) : Mem 64 → Prop := HfEa x t
+
+/-- The `f_indexnoise`/`f_indexsine` cell. -/
+abbrev IdxC (x : HfArgs) (t : MachineData) : Mem 64 → Prop :=
+  Int.toBytes 8 x.idx.toInt =@ (arg3 t + 0x15aac#64)
+
+/-- The memory at every label: the callees' return-address slot and
+reservation, the data groups, the index cell `IC`, the frame `FR`, the rest. -/
+abbrev T (k : Nat) (fs : HfFns) (x : HfArgs) (ra : Int64) (t₀ : MachineData)
+    (IC : Mem 64 → Prop) (FR : (Mem 64 → Prop) → Mem 64 → Prop) : Mem 64 → Prop :=
+  let r := t₀.regs.get64 .rsp
+  8 ?@ (r - 0x290#64) ⋆ (Reserve k (r - 0x290#64) ⋆ (DataW x t₀ ⋆ (ScW x t₀ ⋆ (FnW fs t₀
+    ⋆ (TeW x t₀ ⋆ (EaW x t₀ ⋆ (IC ⋆ FR (Rest x.R ra t₀))))))))
+
+/-- `rsp`/`rbp` inside the body. -/
+abbrev Base (t₀ s : MachineData) : Prop :=
+  s.regs.get64 .rsp = t₀.regs.get64 .rsp - 0x288#64 ∧ s.regs.get64 .rbp = t₀.regs.get64 .rsp - 8#64
+
+/-- `h_SL = 4 * !bs_smoothing_mode`. -/
+abbrev hSL (x : HfArgs) : Nat := if x.smooth = 0 then 4 else 0

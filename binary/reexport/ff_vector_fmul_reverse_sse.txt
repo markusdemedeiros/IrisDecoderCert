@@ -1,0 +1,17 @@
+ff_vector_fmul_reverse_sse:
+    lea rcx, [ecx*4+-32] ;; aw=w32 ow=w64
+    .nops 7 ;; aw=w64 ow=w64
+ff_vector_fmul_reverse_sse.loop:
+    movaps xmm0, XMMWORD PTR [rdx+0] ;; aw=w64 ow=w128
+    movaps xmm1, XMMWORD PTR [rdx+16] ;; aw=w64 ow=w128
+    shufps xmm0, xmm0, 27 ;; aw=w64 ow=w128
+    shufps xmm1, xmm1, 27 ;; aw=w64 ow=w128
+    mulps xmm0, XMMWORD PTR [rsi+rcx*1+16] ;; aw=w64 ow=w128
+    mulps xmm1, XMMWORD PTR [rsi+rcx*1+0] ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+rcx*1+16], xmm0 ;; aw=w64 ow=w128
+    movaps XMMWORD PTR [rdi+rcx*1+0], xmm1 ;; aw=w64 ow=w128
+    add rdx, 32 ;; aw=w64 ow=w64
+    sub rcx, 32 ;; aw=w64 ow=w64
+    jge ff_vector_fmul_reverse_sse.loop ;; aw=w64 ow=w64
+ff_vector_fmul_reverse_sse.done:
+    ret ;; aw=w64 ow=w64

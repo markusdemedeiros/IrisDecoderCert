@@ -1,0 +1,26 @@
+ff_sbr_qmf_deint_bfly_sse2:
+    mov r8d, 224 ;; aw=w64 ow=w32
+    lea rcx, [rdi+256] ;; aw=w64 ow=w64
+ff_sbr_qmf_deint_bfly_sse2.loop:
+    movdqa xmm0, XMMWORD PTR [rsi+r8*1+0] ;; aw=w64 ow=w128
+    movdqa xmm1, XMMWORD PTR [rdx+0] ;; aw=w64 ow=w128
+    movdqa xmm4, XMMWORD PTR [rsi+r8*1+16] ;; aw=w64 ow=w128
+    movdqa xmm5, XMMWORD PTR [rdx+16] ;; aw=w64 ow=w128
+    pshufd xmm2, xmm0, 27 ;; aw=w64 ow=w128
+    pshufd xmm3, xmm1, 27 ;; aw=w64 ow=w128
+    pshufd xmm6, xmm4, 27 ;; aw=w64 ow=w128
+    pshufd xmm7, xmm5, 27 ;; aw=w64 ow=w128
+    addps xmm5, xmm2 ;; aw=w64 ow=w128
+    subps xmm0, xmm7 ;; aw=w64 ow=w128
+    addps xmm1, xmm6 ;; aw=w64 ow=w128
+    subps xmm4, xmm3 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rcx+0], xmm1 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rcx+16], xmm5 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdi+r8*1+0], xmm0 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdi+r8*1+16], xmm4 ;; aw=w64 ow=w128
+    add rdx, 32 ;; aw=w64 ow=w64
+    add rcx, 32 ;; aw=w64 ow=w64
+    sub r8, 32 ;; aw=w64 ow=w64
+    jge ff_sbr_qmf_deint_bfly_sse2.loop ;; aw=w64 ow=w64
+ff_sbr_qmf_deint_bfly_sse2.done:
+    ret ;; aw=w64 ow=w64

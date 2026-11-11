@@ -1,0 +1,32 @@
+ff_sbr_qmf_pre_shuffle_sse2:
+    mov ecx, 96 ;; aw=w64 ow=w32
+    lea rsi, [rdi+132] ;; aw=w64 ow=w64
+    lea rdx, [rdi+256] ;; aw=w64 ow=w64
+    movdqa xmm5, XMMWORD PTR [rip+ff_ps_neg] ;; aw=w64 ow=w128
+ff_sbr_qmf_pre_shuffle_sse2.loop:
+    movdqu xmm0, XMMWORD PTR [rsi+0] ;; aw=w64 ow=w128
+    movdqu xmm2, XMMWORD PTR [rsi+16] ;; aw=w64 ow=w128
+    movdqu xmm1, XMMWORD PTR [rcx+rdi*1+20] ;; aw=w64 ow=w128
+    movdqu xmm3, XMMWORD PTR [rdi+rcx*1+4] ;; aw=w64 ow=w128
+    pxor xmm2, xmm5 ;; aw=w64 ow=w128
+    pxor xmm0, xmm5 ;; aw=w64 ow=w128
+    pshufd xmm2, xmm2, 27 ;; aw=w64 ow=w128
+    pshufd xmm0, xmm0, 27 ;; aw=w64 ow=w128
+    movdqa xmm4, xmm2 ;; aw=w64 ow=w128
+    punpckldq xmm2, xmm3 ;; aw=w64 ow=w128
+    punpckhdq xmm4, xmm3 ;; aw=w64 ow=w128
+    movdqa xmm3, xmm0 ;; aw=w64 ow=w128
+    punpckldq xmm0, xmm1 ;; aw=w64 ow=w128
+    punpckhdq xmm3, xmm1 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdx+rcx*2+0], xmm2 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdx+rcx*2+16], xmm4 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdx+rcx*2+32], xmm0 ;; aw=w64 ow=w128
+    movdqa XMMWORD PTR [rdx+rcx*2+48], xmm3 ;; aw=w64 ow=w128
+    add rsi, 32 ;; aw=w64 ow=w64
+    sub rcx, 32 ;; aw=w64 ow=w64
+    jge ff_sbr_qmf_pre_shuffle_sse2.loop ;; aw=w64 ow=w64
+ff_sbr_qmf_pre_shuffle_sse2.tail:
+    movq xmm2, QWORD PTR [rdi+0] ;; aw=w64 ow=w128
+    movq QWORD PTR [rdx+0], xmm2 ;; aw=w64 ow=w128
+ff_sbr_qmf_pre_shuffle_sse2.done:
+    ret ;; aw=w64 ow=w64

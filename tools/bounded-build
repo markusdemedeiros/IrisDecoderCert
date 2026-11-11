@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Serialize builds, capped at 8 GiB (or 2 GiB with --small).
+
+Use: tools/bounded-build [--small] COMMAND ARG...
+An independent system-wide pressure guard terminates this build at 24 GB
+of unavailable RAM, leaving headroom below the user's 26 GB limit.
+"""
+import fcntl
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parent.parent
+LIMIT = 24_000_000_000
+
+
+def pressure():
+    mem = {}
+    for line in Path('/proc/meminfo').read_text().splitlines():
+        key, value, *_ = line.split()
+        mem[key.rstrip(':')] = int(value) * 1024
+    return mem['MemTotal'] - mem['MemAvailable']
+
+
+arguments = sys.argv[1:]
+small = bool(arguments and arguments[0] == '--small')
+if small:
+    arguments.pop(0)
+if not arguments:
+    sys.exit('usage: bounded-build [--small] COMMAND ARG...')
+cap_gib = 2 if small else 8
+# Both sizes share the same lock, so only one owned build can grow at a time.
+# Reserve its full cgroup limit before starting it.
+reserved_bytes = cap_gib * 1024**3
+with (ROOT / '.build.lock').open('w') as lock:
+    print('Waiting for project build slot', flush=True)
+    fcntl.flock(lock, fcntl.LOCK_EX)
+    if pressure() + reserved_bytes >= LIMIT:
+        sys.exit(f'Insufficient memory headroom for the {cap_gib} GiB capped build; retry after checking other processes.')
+    unit = f'iris-binary-build-{os.getpid()}'
+    command = ['systemd-run', '--user', '--scope', '--quiet', f'--unit={unit}',
+               '-p', f'MemoryMax={cap_gib}G', '-p', f'MemoryHigh={cap_gib - 1}G', '-p', 'MemorySwapMax=0',
+               '--', *arguments]
+    proc = subprocess.Popen(command)
+    peak = pressure()
+
+    def stop(*_):
+        subprocess.run(['systemctl', '--user', 'kill', '--signal=SIGTERM', unit + '.scope'],
+                       check=False)
+
+    signal.signal(signal.SIGTERM, stop)
+    signal.signal(signal.SIGINT, stop)
+    while proc.poll() is None:
+        used = pressure()
+        peak = max(peak, used)
+        if used >= LIMIT:
+            print(f'Memory guard: stopping build at {used / 1e9:.2f} GB unavailable RAM', flush=True)
+            stop()
+            try:
+                proc.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                subprocess.run(['systemctl', '--user', 'kill', '--signal=SIGKILL', unit + '.scope'],
+                               check=False)
+            break
+        time.sleep(0.25)
+    result = proc.wait()
+    print(f'Build exit={result}; peak system unavailable RAM={peak / 1e9:.2f} GB', flush=True)
+    with (ROOT / 'build-audit.jsonl').open('a') as audit:
+        audit.write(json.dumps({'time': time.time(), 'cwd': os.getcwd(),
+                                'command': arguments, 'lane': 'small' if small else 'primary', 'exit': result,
+                                'peak_unavailable_bytes': peak,
+                                'cgroup_memory_max_bytes': cap_gib * 1024**3}) + '\n')
+    sys.exit(result)
